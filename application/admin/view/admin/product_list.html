@@ -38,11 +38,11 @@
             <!--&lt;!&ndash;<input class="layui-input" placeholder="截止日" name="end" id="end" value="{:input('get.end')}">&ndash;&gt;-->
             <!--<input type="text" name="name"  placeholder="产品名称" autocomplete="off" class="layui-input" value="{:input('get.name')}">-->
             <!--<button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>-->
-            <!--<a href="{$_SERVER['REDIRECT_URL']}"  class="layui-btn layui-btn-normal">重置</a>-->
+            <!--<a href="{$_SERVER['REQUEST_URI']}"  class="layui-btn layui-btn-normal">重置</a>-->
         <!--</form>-->
     <!--</div>-->
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加产品','/admin/admin/product_add')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加产品','/admin/Admin/product_add')"><i class="layui-icon"></i>添加</button>
     </xblock>
     <table class="layui-table">
         <thead>
@@ -92,7 +92,7 @@
                     {/if}
                 </td>
                 <td class="td-manage">
-                    <a title="编辑"  onclick="x_admin_show('编辑','/admin/admin/product_edit?id={$vo.id}')" href="javascript:;">
+                    <a title="编辑"  onclick="x_admin_show('编辑','/admin/Admin/product_edit?id={$vo.id}')" href="javascript:;">
                         <i class="layui-icon">&#xe642;</i>
                     </a>
                     <a title="删除" onclick="member_del(this,{$vo['id']})" href="javascript:;">

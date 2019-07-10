@@ -137,7 +137,7 @@
         //监听提交
         form.on('submit(add)', function(data){
             $('.layui-btn').attr("disabled",true);
-            $.post("/admin/user/user_bank_edit",data.field,function(res){
+            $.post("/admin/User/user_bank_edit",data.field,function(res){
                 if(res.status==0){
                     layer.msg(res.msg,{icon: 2,time:2000},function(){
                         $('.layui-btn').removeAttr("disabled");

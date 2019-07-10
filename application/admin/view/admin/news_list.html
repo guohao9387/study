@@ -45,13 +45,13 @@
                 </select>
             </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
-            <a href="{$_SERVER['REDIRECT_URL']}"  class="layui-btn layui-btn-normal">重置</a>
+            <a href="{$_SERVER['REQUEST_URI']}"  class="layui-btn layui-btn-normal">重置</a>
 
         </form>
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加资讯','/admin/admin/news_add')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加资讯','/admin/Admin/news_add')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">资讯数量：{$count} 条</span>
     </xblock>
     <table class="layui-table">
@@ -90,7 +90,7 @@
                 </td>
 
                 <td class="td-manage">
-                    <a title="编辑"  onclick="x_admin_show('编辑','/admin/admin/news_edit?id={$vo.id}')" href="javascript:;">
+                    <a title="编辑"  onclick="x_admin_show('编辑','/admin/Admin/news_edit?id={$vo.id}')" href="javascript:;">
                         <i class="layui-icon">&#xe642;</i>
                     </a>
                     <a title="删除" onclick="member_del(this,{$vo['id']})" href="javascript:;">

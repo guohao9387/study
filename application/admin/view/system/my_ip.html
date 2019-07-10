@@ -33,7 +33,7 @@
 </div>
 <div class="x-body">
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加IP','/admin/system/add_ip')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加IP','/admin/System/add_ip')"><i class="layui-icon"></i>添加</button>
     </xblock>
     <table class="layui-table">
         <thead>
@@ -72,7 +72,7 @@
         layer.confirm('确认要删除吗？',function(index){
             //发异步删除数据
             $.ajax({
-                url:'/admin/api/status_change',
+                url:'/admin/Api/status_change',
                 data:{id:id,status:2,db:'ip'},
                 type:'post',
                 dataType:'json',

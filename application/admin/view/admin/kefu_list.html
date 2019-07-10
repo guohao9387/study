@@ -38,12 +38,12 @@
             <input class="layui-input" placeholder="截止日" name="end" id="end" value="{:input('get.end')}">
             <input type="text" name="name"  placeholder="客服名称" autocomplete="off" class="layui-input" value="{:input('get.name')}">
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
-            <a href="{$_SERVER['REDIRECT_URL']}"  class="layui-btn layui-btn-normal">重置</a>
+            <a href="{$_SERVER['REQUEST_URI']}"  class="layui-btn layui-btn-normal">重置</a>
 
         </form>
     </div>
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加客服','/admin/admin/kefu_add')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加客服','/admin/Admin/kefu_add')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">数量：{$count} 条</span>
     </xblock>
     <table class="layui-table">

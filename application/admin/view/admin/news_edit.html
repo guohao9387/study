@@ -73,7 +73,7 @@
         layedit = layui.layedit;
         layedit.set({
             uploadImage: {
-                url: '/admin/admin/edit_upload', //接口url
+                url: '/admin/Admin/edit_upload', //接口url
                 type: 'post' //默认post
             }
         });
@@ -103,7 +103,7 @@
         //监听提交
         form.on('submit(add)', function(data){
             $('.layui-btn').attr("disabled",true);
-            $.post("/admin/admin/news_edit",data.field,function(res){
+            $.post("/admin/Admin/news_edit",data.field,function(res){
                 if(res.status==0){
                     layer.msg(res.msg,{icon: 2,time:2000},function(){
                         $('.layui-btn').removeAttr("disabled");

@@ -66,8 +66,8 @@
                 </select>
             </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
-            <a href="{$_SERVER['REDIRECT_URL']}"  class="layui-btn layui-btn-normal">重置</a>
-            <a href="{:url('admin/api/excel_bank_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>
+            <a href="{$_SERVER['REQUEST_URI']}"  class="layui-btn layui-btn-normal">重置</a>
+            <a href="{:url('admin/Api/excel_bank_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>
         </form>
     </div>
     <xblock>
@@ -114,7 +114,7 @@
                 </td>
                 <td>{$vo.add_time}</td>
                 <td class="td-manage">
-                    <button class="layui-btn layui-btn-sm" onclick="x_admin_show('修改','/admin/user/bank_info?id={$vo.id}')">修改</button>
+                    <button class="layui-btn layui-btn-sm" onclick="x_admin_show('修改','/admin/User/bank_info?id={$vo.id}')">修改</button>
                 </td>
             </tr>
         {/volist}
@@ -158,7 +158,7 @@
                 status = 2;
             }
             $.ajax({
-                url:'/admin/api/status_change',
+                url:'/admin/Api/status_change',
                 data:{id:id,status:status,db:'bank_info'},
                 type:'post',
                 dataType:'json',

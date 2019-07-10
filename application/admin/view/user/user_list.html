@@ -165,13 +165,13 @@
                 </select>
             </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
-            <a href="{$_SERVER['REDIRECT_URL']}"  class="layui-btn layui-btn-normal">重置</a>
-            <a href="{:url('admin/api/excel_user_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>
+            <a href="{$_SERVER['REQUEST_URI']}"  class="layui-btn layui-btn-normal">重置</a>
+            <a href="{:url('admin/Api/excel_user_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>
         </form>
     </div>
     <xblock>
         <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-        <button class="layui-btn" onclick="x_admin_show('添加会员','/admin/user/user_add')"><i class="layui-icon"></i>添加会员</button>
+        <button class="layui-btn" onclick="x_admin_show('添加会员','/admin/User/user_add')"><i class="layui-icon"></i>添加会员</button>
         <span class="x-right" style="line-height:40px">合计余额：{$count.sum_money|number_format=###,2,'.',''};数量：{$count.count} 条</span>
     </xblock>
 
@@ -237,12 +237,12 @@
                 </td>
 
                 <td class="td-status">
-                    <a onclick="x_admin_show('会员邀请码','/admin/user/user_code?id={$vo.uid}')" href="javascript:;"  title="会员邀请码">
+                    <a onclick="x_admin_show('会员邀请码','/admin/User/user_code?id={$vo.uid}')" href="javascript:;"  title="会员邀请码">
                         <span class="layui-btn layui-btn-mini " style="background-color: #C57979">查看</span>
                     </a>
                 </td>
                 <td class="td-status">
-                    <a onclick="x_admin_show('银行卡信息','/admin/user/bank_list?username={$vo.username}&utype=1')" href="javascript:;"  title="银行卡信息">
+                    <a onclick="x_admin_show('银行卡信息','/admin/User/bank_list?username={$vo.username}&utype=1')" href="javascript:;"  title="银行卡信息">
                         <span class="layui-btn layui-btn-mini " style="background-color: #84AF9B">查看</span>
                     </a>
                 </td>
@@ -251,7 +251,7 @@
                     <div class="layui-btn-group">
                         <button class="layui-btn layui-btn-warm layui-btn-sm" onclick="myshow('up',{$vo['uid']},'{$vo['username']}')">上分</button>
                         <button class="layui-btn layui-btn-sm " style="background-color: #5BB75B;" onclick="myshow('down',{$vo['uid']},'{$vo['username']}')">下分</button>
-                        <button class="layui-btn layui-btn-sm" onclick="x_admin_show('修改','/admin/user/user_edit?uid={$vo.uid}')">修改</button>
+                        <button class="layui-btn layui-btn-sm" onclick="x_admin_show('修改','/admin/User/user_edit?uid={$vo.uid}')">修改</button>
                         <button class="layui-btn layui-btn-danger layui-btn-sm" onclick="member_del(this,{$vo['uid']})">删除</button>
                     </div>
                 </td>
@@ -322,7 +322,7 @@ function tijiao(){
     var type=$('#my_type').val();
 //    var load = layer.load();
     $.ajax({
-        url:"/admin/api/new_user_money_change",
+        url:"/admin/Api/new_user_money_change",
         data:{uid:uid,money:money,param:type},
         dataType:"json",
         type:"post",
@@ -400,7 +400,7 @@ function intToChinese ( str ) {
         }, function(value, index, elem){
             var load = layer.load();
             $.ajax({
-                url:"/admin/api/user_money_change",
+                url:"/admin/Api/user_money_change",
                 data:{uid:id,param:param,money:value},
                 dataType:"json",
                 type:"post",
@@ -431,7 +431,7 @@ function intToChinese ( str ) {
                 status = 2;
             }
             $.ajax({
-                url:'/admin/user/user_status_change',
+                url:'/admin/User/user_status_change',
                 data:{uid:id,status:status},
                 type:'post',
                 dataType:'json',
@@ -461,7 +461,7 @@ function intToChinese ( str ) {
                 status = 2;
             }
             $.ajax({
-                url:'/admin/user/user_trade_status',
+                url:'/admin/User/user_trade_status',
                 data:{uid:id,status:status},
                 type:'post',
                 dataType:'json',
@@ -490,7 +490,7 @@ function intToChinese ( str ) {
             var load = layer.load();
             //发异步删除数据
             $.ajax({
-                url:'/admin/user/user_del',
+                url:'/admin/User/user_del',
                 data:{uid:id},
                 type:'post',
                 dataType:'json',
@@ -521,7 +521,7 @@ function intToChinese ( str ) {
         layer.confirm('确认要删除编号为：'+data+'的会员吗？',function(index){
             //捉到所有被选中的，发异步进行删除
             $.ajax({
-                url:'/admin/user/user_del',
+                url:'/admin/User/user_del',
                 data:{uid:data},
                 type:'post',
                 dataType:'json',

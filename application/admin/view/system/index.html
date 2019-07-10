@@ -44,7 +44,7 @@
 
         //监听提交
         form.on('submit(add)', function(data){
-            $.post("/admin/system/index",data.field,function(res){
+            $.post("/admin/System/index",data.field,function(res){
                 layer.msg(res.msg,{icon: 1,time:2000},function(){
                     window.location.reload();
                 });

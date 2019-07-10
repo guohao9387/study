@@ -47,18 +47,18 @@
                 </select>
             </div> -->
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
-            <a href="{$_SERVER['REDIRECT_URL']}?start={$mytime}"  class="layui-btn layui-btn-normal">重置</a>
-            <a href="{:url('admin/api/excel_agent_xm_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>
+            <a href="{$_SERVER['REQUEST_URI']}?start={$mytime}"  class="layui-btn layui-btn-normal">重置</a>
+            <a href="{:url('admin/Api/excel_agent_xm_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>
 
         </form>
     </div>
     <div class="layui-row">
-        <a href="{:url('admin/money/agent_xm_list',input('get.'))}&start={:quick_time_select(1)}&end={:quick_time_select(2)}" class="layui-btn layui-btn-sm layui-btn-normal">昨天</a>
-        <a href="{:url('admin/money/agent_xm_list',input('get.'))}&start={:quick_time_select(2)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">今天</a>
-        <a href="{:url('admin/money/agent_xm_list',input('get.'))}&start={:quick_time_select(3)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本周</a>
-        <a href="{:url('admin/money/agent_xm_list',input('get.'))}&start={:quick_time_select(4)}&end={:quick_time_select(5)}" class="layui-btn layui-btn-sm layui-btn-normal">上周</a>
-        <a href="{:url('admin/money/agent_xm_list',input('get.'))}&start={:quick_time_select(6)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本月</a>
-        <a href="{:url('admin/money/agent_xm_list',input('get.'))}&start={:quick_time_select(7)}&end={:quick_time_select(8)}" class="layui-btn layui-btn-sm layui-btn-normal">上月</a>
+        <a href="{:url('admin/Money/agent_xm_list',input('get.'))}&start={:quick_time_select(1)}&end={:quick_time_select(2)}" class="layui-btn layui-btn-sm layui-btn-normal">昨天</a>
+        <a href="{:url('admin/Money/agent_xm_list',input('get.'))}&start={:quick_time_select(2)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">今天</a>
+        <a href="{:url('admin/Money/agent_xm_list',input('get.'))}&start={:quick_time_select(3)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本周</a>
+        <a href="{:url('admin/Money/agent_xm_list',input('get.'))}&start={:quick_time_select(4)}&end={:quick_time_select(5)}" class="layui-btn layui-btn-sm layui-btn-normal">上周</a>
+        <a href="{:url('admin/Money/agent_xm_list',input('get.'))}&start={:quick_time_select(6)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本月</a>
+        <a href="{:url('admin/Money/agent_xm_list',input('get.'))}&start={:quick_time_select(7)}&end={:quick_time_select(8)}" class="layui-btn layui-btn-sm layui-btn-normal">上月</a>
     </div>
     <xblock>
         <span class="x-right" style="line-height:40px">合计金额：{$count.sum|number_format=###,2,'.',''};数量：{$count.count} 条</span>

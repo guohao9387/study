@@ -4,8 +4,8 @@
     <list default="true" id="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" name="Default" comment="" />
     <ignored path="study.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Index.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745703838" ignored="false" />
-    <file path="/a.dummy" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745849733" ignored="false" />
+    <file path="/Index.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562750405502" ignored="false" />
+    <file path="/a.dummy" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751395997" ignored="false" />
     <file path="$PROJECT_DIR$/application/index/view/Index/agreement.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562329124805" ignored="false" />
     <file path="$PROJECT_DIR$/application/index/view/Login/login.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562329124805" ignored="false" />
     <file path="$PROJECT_DIR$/runtime/temp/850824784d7a4a0b4c952f9a70359cd5.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562329374077" ignored="false" />
@@ -83,9 +83,25 @@
     <file path="/admin.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745329369" ignored="false" />
     <file path="$PROJECT_DIR$/../yule/application/admin/view/index/main.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745765804" ignored="false" />
     <file path="$PROJECT_DIR$/../yule/application/admin/view/index/index.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745765804" ignored="false" />
-    <file path="$PROJECT_DIR$/application/admin/view/index/personal.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745857713" ignored="false" />
-    <file path="$PROJECT_DIR$/application/admin/view/login/login.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745857713" ignored="false" />
-    <file path="$PROJECT_DIR$/application/admin/view/index/index.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745857713" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/login/login.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751400922" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/money/agent_xm_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751291899" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/log/agent_log.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751350333" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/log/admin_log.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751350333" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/money/recharge_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751291899" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/money/user_money_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751291899" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/money/user_withdraw_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751291899" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/money/agent_withdraw_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751291899" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/money/agent_money_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751291899" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/log/user_log.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751350333" ignored="false" />
+    <file path="$PROJECT_DIR$/application/agent/view/withdraw/agent_withdraw_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562750581058" ignored="false" />
+    <file path="$PROJECT_DIR$/application/agent/view/order/order_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562750581058" ignored="false" />
+    <file path="$PROJECT_DIR$/application/agent/view/order/keep_order_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562750581058" ignored="false" />
+    <file path="$PROJECT_DIR$/application/agent/view/log/agent_log.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562750581058" ignored="false" />
+    <file path="$PROJECT_DIR$/application/agent/view/user/user_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562750581058" ignored="false" />
+    <file path="$PROJECT_DIR$/application/agent/view/withdraw/withdraw_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562750581058" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/system/my_ip.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751386842" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/system/index.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751386842" ignored="false" />
+    <file path="$PROJECT_DIR$/application/admin/view/system/add_ip.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751386842" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,19 +121,93 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="adv_add.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/view/admin/adv_add.html">
+      <file leaf-file-name="apply_coin_give_log.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/coin/apply_coin_give_log.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="50" selection-start="4118" selection-end="4118" vertical-scroll-proportion="-78.0">
+            <state line="62" column="28" selection-start="3244" selection-end="3244" vertical-scroll-proportion="-4.3333335">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adv_edit.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/admin/view/admin/adv_edit.html">
+      <file leaf-file-name="coin_add.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/coin/coin_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="40" selection-start="4612" selection-end="4612" vertical-scroll-proportion="0.33128834">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="110.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coin_edit.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/coin/coin_edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="114.75">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coin_list.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/coin/coin_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="154" column="21" selection-start="5964" selection-end="5974" vertical-scroll-proportion="-43.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user_apply_coin.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/coin/user_apply_coin.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="24.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/index/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="32" selection-start="957" selection-end="957" vertical-scroll-proportion="20.833334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bank_info.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/user/bank_info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="87.75">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="agent_list.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/user/agent_list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-12.76797">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Common.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/controller/Common.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="30" selection-start="1015" selection-end="1015" vertical-scroll-proportion="-16.25">
+              <folding>
+                <element signature="e#38#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adv_add.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/admin/view/admin/adv_add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="148" column="21" selection-start="5495" selection-end="5495" vertical-scroll-proportion="-3.9166667">
               <folding />
             </state>
           </provider>
@@ -133,22 +223,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/admin/controller/User.php" />
-        <option value="$PROJECT_DIR$/application/admin/view/log/admin_log.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/order/order_info.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/order/order_list.html" />
-        <option value="$PROJECT_DIR$/application/common.php" />
         <option value="$PROJECT_DIR$/application/admin/controller/Api.php" />
-        <option value="$PROJECT_DIR$/config/database.php" />
         <option value="$PROJECT_DIR$/application/admin/controller/index.php" />
         <option value="$PROJECT_DIR$/application/admin/controller/admin.php" />
         <option value="$PROJECT_DIR$/application/admin/controller/login.php" />
-        <option value="$PROJECT_DIR$/application/admin/controller/Index.php" />
         <option value="$PROJECT_DIR$/application/admin/controller/Admin.php" />
         <option value="$PROJECT_DIR$/../yule/application/admin/view/admin/adv_add.html" />
-        <option value="$PROJECT_DIR$/application/admin/view/admin/adv_add.html" />
         <option value="$PROJECT_DIR$/application/admin/controller/Login.php" />
+        <option value="$PROJECT_DIR$/config/database.php" />
+        <option value="$PROJECT_DIR$/application/admin/controller/Index.php" />
+        <option value="$PROJECT_DIR$/application/admin/controller/User.php" />
+        <option value="$PROJECT_DIR$/application/admin/view/admin/adv_list.html" />
+        <option value="$PROJECT_DIR$/application/agent/view/agent/money_list.html" />
+        <option value="$PROJECT_DIR$/application/admin/view/coin/apply_coin_give_log.html" />
+        <option value="$PROJECT_DIR$/application/admin/view/admin/adv_add.html" />
         <option value="$PROJECT_DIR$/application/admin/controller/Common.php" />
+        <option value="$PROJECT_DIR$/application/admin/view/index/index.html" />
       </list>
     </option>
   </component>
@@ -277,6 +367,98 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -308,6 +490,58 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="index" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="study" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -386,7 +620,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editor" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yule/application/admin/view" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yule" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -527,133 +761,116 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/thinkphp/library/think/cache/Driver.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/notice_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="16" selection-start="611" selection-end="611" vertical-scroll-proportion="0.099386506">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="76.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Admin.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/notice_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="21" selection-start="73" selection-end="73" vertical-scroll-proportion="-2.25">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="146.25">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Api.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/product_add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="44" selection-start="74" selection-end="74" vertical-scroll-proportion="-1.5">
-          <folding>
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1562689634616" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Coin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="45" selection-start="6042" selection-end="6061" vertical-scroll-proportion="-121.5">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="81.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Index.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/product_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="27" selection-start="79" selection-end="79" vertical-scroll-proportion="-2.25">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="76.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Log.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/product_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="130.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Money.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/coin/apply_coin_order_log.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="62" column="28" selection-start="3245" selection-end="3255" vertical-scroll-proportion="-13.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Order.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/coin/apply_coin_give_log.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="62" column="28" selection-start="3244" selection-end="3244" vertical-scroll-proportion="-4.3333335">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Payconfig.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/coin/coin_add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="110.25">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/System.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/coin/coin_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="114.75">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/User.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/coin/coin_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="154" column="21" selection-start="5964" selection-end="5974" vertical-scroll-proportion="-43.5">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../yule/application/admin/view/admin/adv_add.html">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/coin/user_apply_coin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="20" selection-start="5494" selection-end="5494" vertical-scroll-proportion="0.22944786">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="24.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/admin/adv_add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="50" selection-start="4118" selection-end="4118" vertical-scroll-proportion="-78.0">
+        <state line="148" column="21" selection-start="5495" selection-end="5495" vertical-scroll-proportion="-3.9166667">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/controller/Common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="63" selection-start="1045" selection-end="1045" vertical-scroll-proportion="1.0576687">
+        <state line="36" column="30" selection-start="1015" selection-end="1015" vertical-scroll-proportion="-16.25">
           <folding>
             <element signature="e#38#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/controller/Login.php">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/index/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="25" selection-start="2814" selection-end="2826" vertical-scroll-proportion="0.53006136">
-          <folding>
-            <element signature="e#38#59#0" expanded="true" />
-          </folding>
+        <state line="21" column="32" selection-start="957" selection-end="957" vertical-scroll-proportion="20.833334">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/adv_edit.html">
+    <entry file="file://$PROJECT_DIR$/application/admin/view/user/bank_info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="40" selection-start="4612" selection-end="4612" vertical-scroll-proportion="0.33128834">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="87.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/admin/view/user/agent_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-12.76797">
           <folding />
         </state>
       </provider>
