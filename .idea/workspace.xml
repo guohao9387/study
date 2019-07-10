@@ -8,8 +8,6 @@
     <file path="/a.dummy" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562751395997" ignored="false" />
     <file path="$PROJECT_DIR$/application/index/view/Index/agreement.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562329124805" ignored="false" />
     <file path="$PROJECT_DIR$/application/index/view/Login/login.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562329124805" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/850824784d7a4a0b4c952f9a70359cd5.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562329374077" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/36f7aea0043e5e5a9ec12b42399a1bf1.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562329124805" ignored="false" />
     <file path="/app.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562329272906" ignored="false" />
     <file path="/Login.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745823617" ignored="false" />
     <file path="/login.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562331871353" ignored="false" />
@@ -17,10 +15,7 @@
     <file path="/Admin.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745715597" ignored="false" />
     <file path="/product_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562563949003" ignored="false" />
     <file path="/news_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562336662823" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/4d3b2f8208d583706cfd3bd69b3971ad.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562336680182" ignored="false" />
     <file path="$PROJECT_DIR$/application/index/view/User/index.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562336680182" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/bc6848e34a743b0f81d42b09d1b82d0c.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562336680182" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/log/201907/05.log" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562336680182" ignored="false" />
     <file path="$PROJECT_DIR$/application/index/view/User/news_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562336680182" ignored="false" />
     <file path="$PROJECT_DIR$/../yule/application/croupier/view/Index/index_bjl.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562337826033" ignored="false" />
     <file path="/common.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562672051119" ignored="false" />
@@ -32,15 +27,11 @@
     <file path="/user_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562674171619" ignored="false" />
     <file path="/user_add.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562426843099" ignored="false" />
     <file path="/user_edit.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562679789471" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/b9d3d39d0b9a4a41f72237d4ab9e76d1.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562466333904" ignored="false" />
     <file path="/product_add.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562563816840" ignored="false" />
     <file path="/product_edit.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562563851468" ignored="false" />
     <file path="/coin_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562480534507" ignored="false" />
     <file path="/coin_add.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562557545761" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/9101022c720ed05ba70216ef7a87bc3d.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562557740038" ignored="false" />
     <file path="/coin_edit.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562560548776" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/log/201907/08.log" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562560736252" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/81bd6142ddfdce41d8c7802eb46745bd.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562560736252" ignored="false" />
     <file path="/Form.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562562124201" ignored="false" />
     <file path="/order_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562689570640" ignored="false" />
     <file path="/order_info.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562582476298" ignored="false" />
@@ -71,11 +62,7 @@
     <file path="/Withdraw.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562681807439" ignored="false" />
     <file path="/bank_add.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562678003195" ignored="false" />
     <file path="/withdraw.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562682442543" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/ac0ef44c6f4196cbd2667976737c7ef2.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562683437272" ignored="false" />
     <file path="/withdraw_list.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562682149197" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/f3e45addf5f1f1a2f2edfc8c1d94b544.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562683453720" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/0634d8bdd21def151fabdb58256c02c0.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562683470625" ignored="false" />
-    <file path="$PROJECT_DIR$/runtime/temp/6cd386c57870d6ccea19836572b37deb.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562683483232" ignored="false" />
     <file path="/main.html" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562683801562" ignored="false" />
     <file path="/index.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745279167" ignored="false" />
     <file path="/Common.php" changelist="5b70a0e2-3f7c-4205-94f9-d6d1b47c8e3a" time="1562745253817" ignored="false" />
@@ -121,24 +108,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="coin_list.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/view/coin/coin_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="21" selection-start="5964" selection-end="5974" vertical-scroll-proportion="-43.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_apply_coin.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/admin/view/coin/user_apply_coin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="24.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/admin/view/index/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -190,8 +159,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/extend/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/runtime/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vendor/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -563,20 +550,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/product_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="76.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/admin/view/admin/product_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="130.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/admin/view/coin/apply_coin_order_log.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="28" selection-start="3245" selection-end="3255" vertical-scroll-proportion="-13.5">
@@ -677,6 +650,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/extend/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runtime/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
