@@ -132,7 +132,7 @@
       <file leaf-file-name="session.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/session.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="32" selection-start="1000" selection-end="1000" vertical-scroll-proportion="-11.25">
+            <state line="22" column="25" selection-start="971" selection-end="971" vertical-scroll-proportion="-10.5">
               <folding />
             </state>
           </provider>
@@ -147,10 +147,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Redis.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Redis.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/thinkphp/library/think/cache/driver/Redis.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -194,10 +194,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cache.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="cache.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/cache.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="18" selection-start="885" selection-end="885" vertical-scroll-proportion="-10.5">
+            <state line="17" column="21" selection-start="794" selection-end="798" vertical-scroll-proportion="0.2981595">
               <folding />
             </state>
           </provider>
@@ -227,8 +227,8 @@
         <option value="$PROJECT_DIR$/extend/.gitignore" />
         <option value="$PROJECT_DIR$/vendor/.gitignore" />
         <option value="$PROJECT_DIR$/application/admin/controller/Common.php" />
-        <option value="$PROJECT_DIR$/config/cache.php" />
         <option value="$PROJECT_DIR$/config/session.php" />
+        <option value="$PROJECT_DIR$/config/cache.php" />
       </list>
     </option>
   </component>
@@ -763,23 +763,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/thinkphp/library/think/cache/driver/Redis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/session.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="32" selection-start="1000" selection-end="1000" vertical-scroll-proportion="-11.25">
+        <state line="22" column="25" selection-start="971" selection-end="971" vertical-scroll-proportion="-10.5">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/cache.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="18" selection-start="885" selection-end="885" vertical-scroll-proportion="-10.5">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thinkphp/library/think/cache/driver/Redis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="17" column="21" selection-start="794" selection-end="798" vertical-scroll-proportion="0.2981595">
           <folding />
         </state>
       </provider>
