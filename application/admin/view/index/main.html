@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{$GLOBALS['title']}</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/static/admin/css/font.css">
+        <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+        <script src="/static/index/js/jquery-2.1.1.min.js" charset="utf-8"></script>
+        <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+
+    </head>
+    <body>
+    <div class="x-body layui-anim layui-anim-up">
+        <blockquote class="layui-elem-quote">欢迎管理员：
+            <span class="x-red">{$nickname}</span>！当前时间:{:date('Y-m-d H:i:s',time())}</blockquote>
+        <fieldset class="layui-elem-field">
+            <legend>存量查询</legend>
+            <div class="layui-field-box">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body">
+                            <div class="layui-carousel x-admin-carousel x-admin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 90px;">
+                                <div carousel-item="">
+                                    <ul class="layui-row layui-col-space10 layui-this">
+                                        <li class="layui-col-xs2">
+                                            <a onclick="x_admin_show('会员列表','/admin/user/user_list')" class="x-admin-backlog-body">
+                                                <h3>会员数</h3>
+                                                <p>
+                                                    <cite>{$param['count_user']}</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a onclick="x_admin_show('代理列表','/admin/user/agent_list?param=1')"  class="x-admin-backlog-body">
+                                                <h3>代理数</h3>
+                                                <p>
+                                                    <cite>{$param['count_agent']}</cite></p>
+                                            </a>
+                                        </li>
+
+                                        <li class="layui-col-xs2">
+                                            <a onclick="x_admin_show('自动充值记录','/admin/money/recharge_list?start={$mytime}')" class="x-admin-backlog-body">
+                                                <h3>充值金额</h3>
+                                                <p>
+                                                    <cite>{$param['sum_recharge']|number_format=###,2,'.',''}</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a  onclick="x_admin_show('会员提现记录','/admin/money/user_withdraw_list?start={$mytime}')" class="x-admin-backlog-body">
+                                                <h3>会员提现</h3>
+                                                <p>
+                                                    <cite>{$param['sum_user_withdraw']|number_format=###,2,'.',''}</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a onclick="x_admin_show('代理提现记录','/admin/money/agent_withdraw_list?start={$mytime}')" class="x-admin-backlog-body">
+                                                <h3>代理提现</h3>
+                                                <p>
+                                                    <cite>{$param['sum_agent_withdraw']|number_format=###,2,'.',''}</cite></p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a onclick="x_admin_show('下注记录','/admin/order/order_list?start={$mytime}')"  class="x-admin-backlog-body">
+                                                <h3>平台抽水</h3>
+                                                <p>
+                                                    <cite>{$param['sum_order_fee']|number_format=###,2,'.',''}</cite></p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="layui-carousel x-admin-carousel x-admin-backlog" lay-anim="" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 90px;">
+                                <div carousel-item="">
+                                    <ul class="layui-row layui-col-space10 layui-this">
+                                        <li class="layui-col-xs2">
+                                            <a onclick="javascript:;" class="x-admin-backlog-body">
+                                                <h3>总输赢</h3>
+                                                <p>
+                                                    <cite>{$param['order_gain']|number_format=###,2,'.',''}</cite>
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="layui-col-xs2">
+                                            <a onclick="javascript:;" class="x-admin-backlog-body">
+                                                <h3>今输赢</h3>
+                                                <p>
+                                                    <cite>{$param['today_order_gain']|number_format=###,2,'.',''}</cite>
+                                                </p>
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="layui-elem-field">
+            <legend>增量查询</legend>
+            <div class="layui-field-box">
+                <table class="layui-table">
+                    <tbody>
+                        <tr>
+                            <th>名称</th>
+                            <td>昨天</td>
+                            <td>今天</td>
+                            <td>本月</td>
+                        </tr>
+                        <tr>
+                            <th>会员数</th>
+                            <td>{$param['yesterday_new_user']}</td>
+                            <td>{$param['today_new_user']}</td>
+                            <td>{$param['month_new_user']}</td>
+                        </tr>
+                        <tr>
+                            <th>代理数</th>
+                            <td>{$param['yesterday_new_agent']}</td>
+                            <td>{$param['today_new_agent']}</td>
+                            <td>{$param['month_new_agent']}</td>
+                        </tr>
+                        <tr>
+                            <th>自动充值</th>
+                            <td>{$param['yesterday_new_recharge']}</td>
+                            <td>{$param['today_new_recharge']}</td>
+                            <td>{$param['month_new_recharge']}</td>
+                        </tr>
+                        <tr>
+                            <th>会员提现</th>
+                            <td>{$param['yesterday_new_user_withdraw']}</td>
+                            <td>{$param['today_new_user_withdraw']}</td>
+                            <td>{$param['month_new_user_withdraw']}</td>
+                        </tr>
+                        <tr>
+                            <th>代理提现</th>
+                            <td>{$param['yesterday_new_agent_withdraw']}</td>
+                            <td>{$param['today_new_agent_withdraw']}</td>
+                            <td>{$param['month_new_agent_withdraw']}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <fieldset class="layui-elem-field">
+            <legend>系统公告</legend>
+            <div class="layui-field-box">
+                <table class="layui-table" lay-skin="line">
+                    <tbody>
+                    {volist name="param['notice']" id="val"}
+                    <tr>
+                        <td >
+                            <a class="x-a" href="/admin/index/notice?id={$val.id}" target="_blank">{$val['type']|str_notice_type}||{$val['title']}||{$val['add_time']}</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <fieldset class="layui-elem-field">
+            <legend>开发团队</legend>
+            <div class="layui-field-box">
+                <table class="layui-table">
+                    <tbody>
+                        <tr>
+                            <th>版权所有</th>
+                            <td>内部学习系统
+                                <!--<a href="" class='x-a' target="_blank">访问官网</a>-->
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>开发者</th>
+                            <td>内部学习系统技术部</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+        <blockquote class="layui-elem-quote layui-quote-nm">本系统由内部学习系统提供技术支持。</blockquote>
+    </div>
+    </body>
+</html>

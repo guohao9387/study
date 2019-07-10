@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <!-- 让360双核浏览器用webkit内核渲染页面 -->
+    <meta name="renderer" content="webkit">
+    <title>内部学习系统</title>
+
+    <!--[if lt IE 9]-->
+    <script src="__STATIC__/index/js/html5shiv.js"></script>
+    <script src="__STATIC__/index/js/respond.min.js"></script>
+    <!--[endif]-->
+    <script src="__STATIC__/index/js/my_rem.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/personCenter.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/iconfont.css">
+    <style type="text/css">
+        .iconfont{
+            font-size: 0.8rem;
+            color: #64676F;
+        }
+    </style>
+</head>
+<body>
+  <div id="personCenter">
+      <div class="container">
+          <div class="header">
+              <div>
+                  <img src="__STATIC__/index/images/logo3.png" alt=""/>
+              </div>
+              <div>
+                  <p>{$info.nickname}</p>
+                  <p>账 &nbsp;&nbsp号：{$info.username}</p>
+                  <p>余 &nbsp;&nbsp额：￥{$info.money|number_format=###,2,'.',''}元 </p>
+              </div>
+              <div style="width: 50%;"></div>
+              <div >
+                  <a href="/index/table/table_list" class="layui-btn" style="background-color: red;">游戏大厅</a>
+              </div>
+              <div style="width: 10%;"></div>
+              <div >
+                  <a href="javascript:history.go(-1);" class="layui-btn">返回</a>
+              </div>
+          </div>
+          {if ($info.recharge_type ==1)}
+
+          <ul class="content">
+              <li>
+                  <a href="/index/user/recharge">
+                      <i class="iconfont icon-jine"></i>
+                      <p>账户充值</p>
+                  </a>
+              </li>
+
+              <li>
+                  <a href="/index/user/withdraw">
+                      <i class="iconfont icon-shouchufuwu"></i>
+                      <p>我要提现</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="/index/user/money_list">
+                      <i class="iconfont icon-wentitaizhang"></i>
+                      <p>资金记录</p>
+                  </a>
+              </li>
+          </ul>
+          <ul class="content">
+              <li>
+                  <a href="/index/user/recharge_list">
+                      <i class="iconfont icon-jifeiguanli"></i>
+                      <p>充值记录</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="/index/user/withdraw_list">
+                      <i class="iconfont icon-gonggaoguanli"></i>
+                      <p>提现记录</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="/index/user/order_list">
+                      <i class="iconfont icon-hefaxingjiance"></i>
+                      <p>下注记录</p>
+                  </a>
+              </li>
+          </ul>
+       <ul class="content">
+               <li>
+                   <a href="/index/user/news_list">
+                       <i class="iconfont icon-xuanchuantuiguang"></i>
+                       <p>资讯资讯</p>
+                   </a>
+               </li>
+               <li>
+                   <a href="/index/user/app">
+                       <i class="iconfont icon-jibenxinxi"></i>
+                       <p>APP下载</p>
+                   </a>
+               </li>
+           <li>
+               <a href="/index/user/kefu">
+                   <i class="iconfont icon-hudongfankui"></i>
+                   <p>联系客服</p>
+               </a>
+           </li>
+          </ul>
+          <ul class="content">
+              <li>
+                  <a href="/index/user/repwd">
+                      <i class="iconfont icon-yonghuguanli"></i>
+                      <p>修改密码</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="/index/login/logout">
+                      <i class="iconfont icon-renzhengshibai"></i>
+                      <p>退出登录</p>
+                  </a>
+              </li>
+          </ul>
+          {else/}
+          <ul class="content">
+              <li>
+                  <a href="/index/user/money_list">
+                      <i class="iconfont icon-wentitaizhang"></i>
+                      <p>资金记录</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="/index/user/order_list">
+                      <i class="iconfont icon-hefaxingjiance"></i>
+                      <p>下注记录</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="/index/user/repwd">
+                      <i class="iconfont icon-yonghuguanli"></i>
+                      <p>修改密码</p>
+                  </a>
+              </li>
+          </ul>
+          <ul class="content">
+              <li>
+                  <a href="/index/user/news_list">
+                      <i class="iconfont icon-xuanchuantuiguang"></i>
+                      <p>资讯资讯</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="/index/user/app">
+                      <i class="iconfont icon-jibenxinxi"></i>
+                      <p>APP下载</p>
+                  </a>
+              </li>
+              <li>
+                  <a href="/index/user/kefu">
+                      <i class="iconfont icon-hudongfankui"></i>
+                      <p>联系客服</p>
+                  </a>
+              </li>
+          </ul>
+          <ul class="content">
+              <li>
+                  <a href="/index/login/logout">
+                      <i class="iconfont icon-renzhengshibai"></i>
+                      <p>退出登录</p>
+                  </a>
+              </li>
+          </ul>
+          {/if}
+      </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/static/admin/css/font.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+    <script src="/static/index/js/jquery-2.1.1.min.js" charset="utf-8"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .layui-form-item .layui-input-inline{width: 260px;}
+    </style>
+</head>
+
+<body>
+<div class="x-body">
+    <div class="layui-form-item">
+        <label class="layui-form-label">订单编号</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.oid}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">产品种类</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.product_name}" disabled>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.username}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">代理名称</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.agent_name}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">保证金</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.money}" disabled>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">会员</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.username}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">代理</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.agent_name}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手数</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.hand}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">合约比例</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.controct}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手续费</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.fee}" disabled>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">买入价</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.buy_price}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">卖出价</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.sell_price}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">止盈</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.target_profit}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">止损</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.stop_loss}" disabled>
+        </div>
+    </div>
+    {if $info.direction == 1}
+    <div class="layui-form-item">
+        <label class="layui-form-label">方向</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="买入" disabled style="color: red;">
+        </div>
+    </div>
+    {else/}
+    <div class="layui-form-item">
+        <label class="layui-form-label">方向</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="卖出" disabled style="color: #008000;">
+        </div>
+    </div>
+    {/if}
+    {if $info.profit < 0}
+    <div class="layui-form-item">
+        <label class="layui-form-label">盈利金额</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.profit}" disabled style="color: red;">
+        </div>
+    </div>
+    {else/}
+    <div class="layui-form-item">
+        <label class="layui-form-label">盈利金额</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.profit}" disabled style="color: #008000;">
+        </div>
+    </div>
+    {/if}
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">下注时间</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.add_time}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">结算时间</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input" value="{$info.update_time}" disabled>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

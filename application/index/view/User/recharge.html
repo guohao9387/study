@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <!-- 让360双核浏览器用webkit内核渲染页面 -->
+    <meta name="renderer" content="webkit">
+    <title>个人中心</title>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/index/js/html5shiv.js"></script>
+    <script src="__STATIC__/index/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script src="__STATIC__/index/js/my_rem.js"></script>
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/personCenter.css">
+    <script src="__STATIC__/index/js/iconfont.js"></script>
+    <script src="__STATIC__/index/js/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<div id="personCenter">
+    <div class="container">
+        <div class="header">
+            <div>
+                <img src="__STATIC__/index/images/logo.png" alt=""/>
+            </div>
+            <div>
+                <p>{$info.nickname}</p>
+                <p>账 &nbsp;&nbsp号：{$info.username}</p>
+                <p>余 &nbsp;&nbsp额：￥{$info.money|number_format=###,2,'.',''}元 </p>
+            </div>
+            <div style="width: 70%;"></div>
+            <div >
+                <a href="javascript:history.go(-1);" class="layui-btn">返回</a>
+            </div>
+        </div>
+
+        <div class="recharge-div">
+            <ul>
+                <li><span>100</span></li>
+                <li><span>200</span></li>
+                <li><span>300</span></li>
+                <li><span>500</span></li>
+                <li><span>800</span></li>
+                <li><span>1000</span></li>
+                <li><span>2000</span></li>
+                <li><span>5000</span></li>
+                <li><span>8000</span></li>
+                <li><span>9999</span></li>
+
+            </ul>
+            <form class="layui-form" method="post"  id="pay_form">
+                <div class="layui-form-item">
+                    <label for="recharge-val" class="layui-form-label">
+                        自定义金额
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="recharge-val" name="money" class="layui-input" value="" autocomplete="off" />
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        填写自定义金额后，以自定义金额为准
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">充值方式</label>
+                    <div class="layui-input-block">
+                        {foreach name='payment' id='pay'}
+
+                        <input type="radio" pay-channel="pay1" name="pay_type" value="{$pay.id}" data-max="{$pay.max_pay}" title="{$pay.name}" >
+
+                        {/foreach}
+                        <!---->
+                        <!--<input type="radio" pay-channel="pay1" name="pay_type" value="2" data-max="5000" title="微信扫码">-->
+                        <!--<input type="radio" pay-channel="pay1" name="pay_type" value="3" title="快捷支付">-->
+                        <!--&lt;!&ndash;<input type="radio" pay-channel="pay1" name="pay_type" value="5" data-max="1000" title="银联扫码">&ndash;&gt;-->
+                        <!--{if in_array($info['uid'],[144,146])}-->
+                        <!--<input type="radio" pay-channel="pay1" name="pay_type" value="71" title="支付宝测试">-->
+                        <!--<input type="radio" pay-channel="pay1" name="pay_type" value="72" title="微信测试">-->
+                        <!--{/if}-->
+                    </div>
+                </div>
+                {if in_array($info['uid'],[144,146])}
+                <!--<div class="layui-form-item">-->
+                <!--<label class="layui-form-label">充值方式2</label>-->
+                <!--<div class="layui-input-block">-->
+                <!--<input type="radio" pay-channel="pay2" name="pay_type" value="101" title="支付宝扫码" checked="">-->
+                <!--<input type="radio" pay-channel="pay2" name="pay_type" value="102" title="微信扫码">-->
+                <!--</div>-->
+                <!--</div>-->
+                {/if}
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                    </label>
+                    <button  class="layui-btn" lay-filter="add" lay-submit="">
+                        确认
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+</body>
+<script>
+    $(function(){
+        $('.recharge-div li span').click(function(){
+            $('#recharge-val').val('');
+            $(this).addClass('active').parent().siblings().find('span').removeClass('active');
+        })
+
+        $('#recharge-val').change(function(){
+            var val = parseFloat($(this).val());
+            if(val!=""){
+                var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+                if (!reg.test(val)) {
+                    //$('#recharge-val').val('');
+                    layer.msg("请输入合法金额");
+                }
+            }
+           
+            $('.recharge-div li span').removeClass('active');
+           
+        })
+
+        layui.use(['form','layer'], function(){
+            $ = layui.jquery;
+            var form = layui.form
+                ,layer = layui.layer;
+            //监听提交
+            form.on('submit(add)', function(data){
+
+                var pay_channel = $('input[name="pay_type"]:checked').attr('pay-channel');
+               
+                $('.layui-btn').attr("disabled",true);
+                var money;
+                money = $('.recharge-div li').find(".active").text();
+                var input_money = $('#recharge-val').val();
+                if(input_money!=""){
+                    money = input_money;
+                }
+                if(money<100){
+                    layer.msg("单笔充值最低100元");
+                     $('.layui-btn').attr("disabled",false);
+                    return false;
+                }
+				var check_type = $('input[name="pay_type"]:checked');
+                var pay_type = check_type.val();
+
+                if(money > check_type.attr('data-max')*1){
+                    layer.msg(check_type.attr('title')+"最高"+check_type.attr('data-max')+"元");
+                     $('.layui-btn').attr("disabled",false);
+                    return false;
+                }
+				
+                // var jump_url = "/index/pay/"+pay_channel+"?money="+money+"&pay_type="+pay_type;
+                var jump_url = "/index/pay/pay?money="+money+"&pay_type="+pay_type;
+                window.location.href=jump_url;
+                return false;
+            });
+        });
+
+     
+
+       
+    })
+</script>
+</html>

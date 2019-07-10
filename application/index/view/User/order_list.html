@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>内部学习系统</title>
+    <link rel="stylesheet" href="/static/admin/css/font.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+    <script src="/static/index/js/jquery-2.1.1.min.js" charset="utf-8"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/index/js/html5shiv.js"></script>
+    <script src="__STATIC__/index/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="__STATIC__/index/js/my_rem.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/personCenter.css">
+</head>
+<body>
+<div id="personCenter">
+    <div class="container">
+        <div class="header" >
+            <div>
+                <img src="__STATIC__/index/images/logo.png" alt=""/>
+            </div>
+            <div>
+                <p>{$info.nickname}</p>
+                <p>账 &nbsp;&nbsp号：{$info.username}</p>
+                <p>余 &nbsp;&nbsp额：￥{$info.money|number_format=###,2,'.',''}元 </p>
+            </div>
+            <div style="width: 70%;"></div>
+            <div >
+                <a href="/index/user/index" class="layui-btn layui-btn-warm">返回</a>
+            </div>
+        </div>
+
+        <div class="x-body">
+            <div class="layui-row">
+                <form class="layui-form layui-col-md12 x-so">
+                    <input class="layui-input" placeholder="开始日" name="start" id="start" value="{:input('get.start')}">
+                    <input class="layui-input" placeholder="截止日" name="end" id="end" value="{:input('get.end')}">
+                    <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
+                    <a href="{$_SERVER['REDIRECT_URL']}"  class="layui-btn layui-btn-normal">重置</a>
+                </form>
+            </div>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>游戏类型</th>
+                    <th>桌号</th>
+                    <th>靴</th>
+                    <th>口</th>
+                    <!--<th>庄</th>-->
+                    <!--<th>闲</th>-->
+                    <!--<th>和</th>-->
+                    <!--<th>庄对</th>-->
+                    <!--<th>闲对</th>-->
+                    <!--<th>龙</th>-->
+                    <!--<th>虎</th>-->
+                    <!--<th>和</th>-->
+                    <td>下注</td>
+                    <th>结果</th>
+                    <th>抽水</th>
+                    <th>收益</th>
+                    <th>时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="list" id="val"}
+                <tr>
+                    <td>{$val['oid']}</td>
+                    <td>{$val['game_id']|str_game_type}</td>
+                    <td>{$val['table_id']|select_table_name}</td>
+                    <td>{$val['trade_xue']}</td>
+                    <td>{$val['trade_kou']}</td>
+
+                    {if $val['game_id'] == 1}
+                    <td>庄：{$res[$key]['zhuang']} 闲：{$res[$key]['xian']} 和：{$res[$key]['bjl_he']} 庄对：{$res[$key]['zhuangdui']} 闲对：{$res[$key]['xiandui']}</td>
+                    {elseif $val['game_id']== 2 /}
+                    <td>龙：{$res[$key]['long']} 虎：{$res[$key]['hu']} 和：{$res[$key]['lh_he']}</td>
+                    {elseif $val['game_id'] == 3 /}
+                    <td>闲一：{$res[$key]['xian1'][0]}(平)，{$res[$key]['xian1'][1]}(翻) 闲二：{$res[$key]['xian2'][0]}(平)，{$res[$key]['xian2'][1]}(翻) 闲三：{$res[$key]['xian3'][0]}(平)，{$res[$key]['xian3'][1]}(翻) 闲五：{$res[$key]['xian4'][0]}(平)，{$res[$key]['xian4'][1]}(翻) 闲六：{$res[$key]['xian5'][0]}(平)，{$res[$key]['xian5'][1]}(翻)</td>
+                    {/if}
+
+                    <td>{$val['trade_result']|str_trade_result}{if ($val.original_trade_result)}
+                        <span style="color: red">(原结果{$res.original_trade_result|str_trade_result})</span>
+                        {/if}</td>
+                    <td>{$val['shui_fee']|number_format=###,2,'.',''}</td>
+                    <td>{$val['order_gain']|number_format=###,2,'.',''}</td>
+                    <td>{$val['add_time']}</td>
+                </tr>
+                {/volist}
+
+                </tbody>
+            </table>
+            <div class="page">
+                <div>
+                    {$list->render()|raw}
+                </div>
+            </div>
+
+        </div>
+        <script>
+            layui.use('laydate', function(){
+                var laydate = layui.laydate;
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#start' //指定元素
+                    ,type: 'datetime'
+
+                });
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#end' //指定元素
+                    ,type: 'datetime'
+
+                });
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>

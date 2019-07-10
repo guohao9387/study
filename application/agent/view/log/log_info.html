@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>订单详情</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/admin/css/font.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+    <script src="/static/index/js/jquery-2.1.1.min.js" charset="utf-8"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="x-body">
+    <div class="layui-form-item">
+        <label class="layui-form-label">编号</label>
+        <div class="layui-input-inline">
+            <input type="text"  class="layui-input" value="{$info.id}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">操作人类型</label>
+        <div class="layui-input-inline">
+            <input type="text"  class="layui-input" value="{$info.type|str_type_type}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">操作人</label>
+        <div class="layui-input-inline">
+            <input type="text"  class="layui-input" value="{$info.username}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">被操作人类型</label>
+        <div class="layui-input-inline">
+            <input type="text"  class="layui-input" value="{$info.operation_type|str_type_type}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">被操作人</label>
+        <div class="layui-input-inline">
+            {if ($info.operation_type eq 3)}
+            <input type="text"  class="layui-input" value="{$info.aid|select_admin_username}" disabled>
+            {elseif ($info.operation_type eq 2)}
+            <input type="text"  class="layui-input" value="{$info.aid|select_agent_username}" disabled>
+            {elseif ($info.operation_type eq 1)}
+            <input type="text"  class="layui-input" value="{$info.aid|select_user_username}" disabled>
+            {/if}
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">说明</label>
+        <div class="layui-input-inline">
+            <input type="text"  class="layui-input" value="{$info.note}" disabled>
+        </div>
+    </div>
+    {if ($info.before)}
+    <div class="layui-form-item">
+        <label class="layui-form-label">操作前信息</label>
+        <div class="layui-input-block">
+            <input type="text"  class="layui-input" value="{$info.before}" readonly>
+        </div>
+    </div>
+    {/if}
+    <div class="layui-form-item">
+        <label class="layui-form-label">地址</label>
+        <div class="layui-input-inline">
+            <input type="text"  class="layui-input" value="{$info.url}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">参数</label>
+        <div class="layui-input-block">
+            <input type="text"  class="layui-input" value="{$info.param}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">IP</label>
+        <div class="layui-input-inline">
+            <input type="text"  class="layui-input" value="{$info.add_ip|getCity}" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">时间</label>
+        <div class="layui-input-inline">
+            <input type="text"  class="layui-input" value="{$info.add_time}" disabled>
+        </div>
+    </div>
+</div>
+</body>
+</html>

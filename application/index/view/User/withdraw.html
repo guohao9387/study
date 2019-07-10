@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>内部学习系统</title>
+
+    <link rel="stylesheet" href="/static/admin/css/font.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+
+    <script src="/static/index/js/jquery-2.1.1.min.js" charset="utf-8"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/index/js/html5shiv.js"></script>
+    <script src="__STATIC__/index/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="__STATIC__/index/js/my_rem.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/personCenter.css">
+</head>
+<body>
+    <div id="personCenter">
+        <div class="container">
+            <div class="header" >
+                <div>
+                    <img src="__STATIC__/index/images/logo.png" alt=""/>
+                </div>
+                <div>
+                    <p>{$info.nickname}</p>
+                    <p>账 &nbsp;&nbsp号：{$info.username}</p>
+                    <p>余 &nbsp;&nbsp额：￥{$info.money|number_format=###,2,'.',''}元 </p>
+                </div>
+                <div style="width: 70%;"></div>
+                <div >
+                    <a href="{:url('user/index')}" class="layui-btn layui-btn-warm">返回</a>
+                </div>
+            </div>
+            <div class="x-body">
+                <form class="layui-form" method="post">
+                   <div class="layui-form-item">
+                        <label for="name" class="layui-form-label">
+                            真实姓名
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="name" name="bank_khm" readonly="readonly" autocomplete="off" class="layui-input" value="{$info['realname']}" >
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="bank_name" class="layui-form-label">
+                            银行名称
+                        </label>
+                        <div class="layui-input-block">
+                            <input type="text" id="bank_name"
+                                   autocomplete="off" name="bank_name" class="layui-input" lay-verify="bank_name" value="{$bank['bank_name']|default=''}" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="bank_id" class="layui-form-label">
+                            银行卡号
+                        </label>
+                        <div class="layui-input-block">
+                            <input type="number" id="bank_id" name="bank_id" lay-verify="bank_id" autocomplete="off" class="layui-input" value="{$bank['bank_id']|default=''}" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="money" class="layui-form-label">
+                            金额
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="number" id="money" name="money" required="" lay-verify="number|money" autocomplete="off" class="layui-input" placeholder="请输入提现金额">
+                        </div>
+                        <div id="money-info" class="layui-form-label"></div>
+                    </div>
+                    <!--<div class="layui-form-item">-->
+                        <!--<label for="remark" class="layui-form-label">-->
+                            <!--备注-->
+                        <!--</label>-->
+                        <!--<div class="layui-input-block">-->
+                            <!--<input type="text" id="remark" name="remark" autocomplete="off" class="layui-input" placeholder="选填,50字以内">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="layui-form-item">
+                        <label for="withdraw_pwd" class="layui-form-label">
+                            取款密码
+                        </label>
+                        <div class="layui-input-block">
+                            <input type="password" id="withdraw_pwd" name="withdraw_pwd" lay-verify="pwd" autocomplete="off" class="layui-input" placeholder="请输入取款密码">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">
+                        </label>
+                        <button  class="layui-btn" lay-filter="add" lay-submit="">
+                            确认
+                        </button>
+                    </div>
+                </form>
+
+                <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12">
+                            <div class="layui-card">
+                                <div class="layui-card-body">
+                                    <p>1.最低提现金额为500元，若是首次体验提现最低提现金额为100元</p>
+                                    <p>2.每日7:00-第二日7:00为1天。一天内第一笔提现免收手续费。第二笔起提现5000以下每笔收取手续费50元，5000以上含5000提现免收手续费</p>
+                                    <p>3. 全天24小时均可提现。提现到账时间为从审核通过至到帐半小时内，提现高峰期到账时间会有所延迟。望谅解。提现处理情况请查看提现记录。</p>
+                                    <p>4. 如有疑问请联系客服：17387516087，17387516103，17387516085，17387516030</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+  layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+                ,layer = layui.layer;
+
+        $('#money').blur(function(){
+            if($(this).val()*1 > 0){
+                $.post("/index/api/_withdraw_check_money",{money:$(this).val()},function(res){
+                    if(res.code==0){
+                        $('#money-info').html(res.msg);
+                    }else{
+                        layer.msg(res.msg);
+                    }
+                },'json');
+            }
+        })
+
+        //自定义验证规则
+        form.verify({
+            bank_khm: function(value){
+                if(value.length <= 0||value.length > 10){
+                    return '请输入正确的姓名';
+                }
+            }
+            ,bank_name: function(value){
+                if(value == ''||value== null){
+                    return '请输入银行名称';
+                }
+                if(value.length <= 1||value.length > 50){
+                    return '请输入正确的银行名称';
+                }
+            }
+//            ,bank_address: function(value){
+//                if(value == ''||value== null){
+//                    return '请输入开户支行名称';
+//                }
+//                if(value.length <= 1||value.length > 100){
+//                    return '请输入正确的开户支行名称';
+//                }
+//            }
+            ,bank_id: function(value){
+                if(value== ''||value== null){
+                    return '请输入银行卡号';
+                }
+                if(value.length <15 || value.length > 20){
+                    return '请输入正确的银行卡号';
+                }
+            }
+            ,money: function(value){
+                if(value== ''||value== null){
+                    return '请输入提现金额';
+                }
+                if(value<=0){
+                    return '请输入正确的提现金额';
+                }
+                if(value<{$min_tixian_money}){
+                    return '最低提现金额为{$min_tixian_money}元';
+                }
+                if(value % 10 != 0){
+                    return '提现金额必须是10的整数倍';
+                }
+            },
+            pwd:function (value) {
+                if(value== ''||value== null){
+                    return '请输入取款密码';
+                }
+                if(value.length <6||value.length > 16){
+                    return '请输入6-16位取款密码';
+                }
+            }
+        });
+
+        //监听提交
+        form.on('submit(add)', function(data){
+//            alert('功能暂未开放，请联系客服处理');
+//            return false;
+            $('.layui-btn').attr("disabled",true);
+            $.post("/index/api/_withdraw",data.field,function(res){
+                if(res.status==0){
+                    layer.msg(res.msg,{icon: 2,time:2000},function(){
+                        $('.layui-btn').removeAttr("disabled");
+                    });
+                }else{
+                    layer.msg(res.msg,{icon: 1,time:1000},function(){
+                        window.location.href='/index/user/index';
+                    });
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</html>

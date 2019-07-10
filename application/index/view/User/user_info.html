@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>内部学习系统</title>
+    <link rel="stylesheet" href="/static/admin/css/font.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+    <script src="/static/index/js/jquery-2.1.1.min.js" charset="utf-8"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/index/js/html5shiv.js"></script>
+    <script src="__STATIC__/index/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="__STATIC__/index/js/my_rem.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/personCenter.css">
+</head>
+<body>
+    <div id="personCenter">
+        <div class="container">
+            <div class="header" >
+                <div>
+                    <img src="__STATIC__/index/images/logo.png" alt=""/>
+                </div>
+                <div>
+                    <p>{$info.nickname}</p>
+                    <p>账 &nbsp;&nbsp号：{$info.username}</p>
+                    <p>余 &nbsp;&nbsp额：￥{$info.money|number_format=###,2,'.',''}元 </p>
+                </div>
+                <div style="width: 70%;"></div>
+                <div >
+                    <a href="javascript:history.go(-1);" class="layui-btn layui-btn-warm">返回</a>
+                </div>
+            </div>
+            <div class="x-body">
+                <form class="layui-form" method="post">
+                    <div class="layui-form-item">
+                        <label for="L_nickname" class="layui-form-label">
+                            旧密码
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="password" id="L_nickname" name="old_pwd" required="" lay-verify="password"
+                                   autocomplete="off" class="layui-input" placeholder="请输入旧密码" >
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            请输入旧密码
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="L_pass" class="layui-form-label">
+                            新密码
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="password" id="L_pass" name="pass" required="" lay-verify="password"
+                                   autocomplete="off" class="layui-input" placeholder="请输入新密码">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">
+                            请输入新密码，6到18个字符，不含空格
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="L_repass" class="layui-form-label">
+                            确认密码
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="password" id="L_repass" name="repass" required="" lay-verify="password"
+                                   autocomplete="off" class="layui-input" placeholder="请输入确认密码">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="L_repass" class="layui-form-label">
+                        </label>
+                        <button  class="layui-btn" lay-filter="add" lay-submit="">
+                            确认
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+                ,layer = layui.layer;
+        //自定义验证规则
+        form.verify({
+            password: [
+                /^[\S]{6,18}$/
+                ,'密码必须6到18位，且不能出现空格'
+            ]
+        });
+        //监听提交
+        form.on('submit(add)', function(data){
+            $('.layui-btn').attr("disabled",true);
+            $.post("/index/user/repwd",data.field,function(res){
+                if(res.status==0){
+                    layer.msg(res.msg,{icon: 2,time:2000},function(){
+                        $('.layui-btn').removeAttr("disabled");
+                    });
+                }else{
+                    layer.msg(res.msg,{icon: 1,time:1000},function(){
+                        window.location.href='/index/user/index';
+
+                    });
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</html>

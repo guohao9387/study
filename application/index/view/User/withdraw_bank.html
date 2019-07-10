@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <title>内部学习系统</title>
+
+    <link rel="stylesheet" href="/static/admin/css/font.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+
+    <script src="/static/index/js/jquery-2.1.1.min.js" charset="utf-8"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/index/js/html5shiv.js"></script>
+    <script src="__STATIC__/index/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="__STATIC__/index/js/my_rem.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/personCenter.css">
+</head>
+<body>
+    <div id="personCenter">
+        <div class="container">
+            <div class="header" >
+                <div>
+                    <img src="__STATIC__/index/images/logo.png" alt=""/>
+                </div>
+                <div>
+                    <p>{$info.nickname}</p>
+                    <p>账 &nbsp;&nbsp号：{$info.username}</p>
+                    <p>余 &nbsp;&nbsp额：￥{$info.money|number_format=###,2,'.',''}元 </p>
+                </div>
+                <div style="width: 70%;"></div>
+                <div >
+                    <a href="{:url('user/index')}" class="layui-btn layui-btn-warm">返回</a>
+                </div>
+            </div>
+            <div class="x-body">
+                <form class="layui-form" method="post">
+                   <div class="layui-form-item">
+                        <label for="realname" class="layui-form-label">
+                            真实姓名
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="realname" name="realname" lay-verify="realname" autocomplete="off" class="layui-input" value="" >
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label for="pwd" class="layui-form-label">
+                            取款密码
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="password" id="pwd" lay-verify="pwd" autocomplete="off" name="pwd" class="layui-input" value="" >
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="repwd" class="layui-form-label">
+                            确认密码
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="password" id="repwd" name="repwd" lay-verify="repwd" autocomplete="off" class="layui-input" value="" >
+                        </div>
+                    </div>
+                    <!--<div class="layui-form-item">-->
+                        <!--<label for="code" class="layui-form-label">-->
+                            <!--确认密码-->
+                        <!--</label>-->
+                        <!--<div class="layui-input-inline">-->
+                            <!--<input type="number" id="code" name="code" autocomplete="off" class="layui-input" value="" >-->
+                        <!--</div>-->
+                        <!--<div>-->
+                            <!--<button id="get_phone_code" type="button" class="layui-btn" >获取验证码</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <button  class="layui-btn" lay-filter="add" lay-submit="">
+                            确认
+                        </button>
+                    </div>
+                </form>
+
+                <div class="layui-row layui-col-space15">
+                        <div class="layui-col-md12">
+                            <div class="layui-card">
+                                <div class="layui-card-body">
+                                    <p>1.提现必须绑定真实姓名和取款密码</p>
+                                    <p>2.提现所用的银行卡对应的姓名必须是绑定的真实姓名</p>
+                                    <p>3.不支持农村信用社和农商银行转款</p>
+                                    <p>4.一但绑定若要修改请联系客服修改</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+  layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+                ,layer = layui.layer;
+        
+        $('#get_phone_code').click(function () {
+            $.post("/index/api/_withdraw_bank",data.field,function(res){
+                if(res.code==0){
+                    layer.msg(res.msg,{icon: 2,time:2000},function(){
+                        $('.layui-btn').removeAttr("disabled");
+                    });
+                }else{
+                    layer.msg(res.msg,{icon: 1,time:1000},function(){
+                        window.location.href='/index/user/withdraw';
+                    });
+                }
+            },'json');
+        })
+
+        //自定义验证规则
+        form.verify({
+            realname: function(value){
+                if(value == ''){
+                    return '请输入真实姓名'
+                }
+            }
+            ,pwd: function(value){
+                if(value == ''||value== null){
+                    return '请设置取款密码';
+                }
+                if(value.length < 6||value.length > 16){
+                    return '取款密码需在6-16位之间';
+                }
+            }
+            ,repwd: function(value){
+                if(value != $('#pwd').val()){
+                    return '两次密码不一致';
+                }
+            }
+        });
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            $('.layui-btn').attr("disabled",true);
+            $.post("/index/api/_withdraw_bank",data.field,function(res){
+                if(res.code==0){
+                    layer.msg(res.msg,{icon: 1,time:1000},function(){
+                        window.location.href='/index/user/withdraw';
+                    });
+
+                }else{
+                    layer.msg(res.msg,{icon: 2,time:2000},function(){
+                        $('.layui-btn').removeAttr("disabled");
+                    });
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <!-- 让360双核浏览器用webkit内核渲染页面 -->
+    <meta name="renderer" content="webkit">
+    <title>内部学习系统</title>
+
+    <link rel="stylesheet" href="/static/admin/css/font.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+    <script src="/static/index/js/jquery-2.1.1.min.js" charset="utf-8"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="__STATIC__/index/js/html5shiv.js"></script>
+    <script src="__STATIC__/index/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="__STATIC__/index/js/my_rem.js"></script>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/personCenter.css">
+</head>
+<body>
+<div id="personCenter">
+    <div class="container">
+        <div class="header" >
+            <div>
+                <img src="__STATIC__/index/images/logo.png" alt=""/>
+            </div>
+            <div>
+                <p>{$info.nickname}</p>
+                <p>账 &nbsp;&nbsp号：{$info.username}</p>
+                <p>余 &nbsp;&nbsp额：￥{$info.money|number_format=###,2,'.',''}元 </p>
+            </div>
+            <div style="width: 70%;"></div>
+            <div >
+                <a href="/index/user/index" class="layui-btn layui-btn-warm">返回</a>
+            </div>
+        </div>
+
+        <div class="x-body">
+            <div class="layui-row">
+                <form class="layui-form layui-col-md12 x-so">
+                    <input class="layui-input" placeholder="开始日" name="start" id="start" value="{:input('get.start')}">
+                    <input class="layui-input" placeholder="截止日" name="end" id="end" value="{:input('get.end')}">
+                    <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
+                    <a href="{$_SERVER['REDIRECT_URL']}"  class="layui-btn layui-btn-normal">重置</a>
+                </form>
+            </div>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>操作类型</th>
+                    <th>变化前金额</th>
+                    <th>金额</th>
+                    <th>变化后金额</th>
+                    <th>备注</th>
+                    <th>添加时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="list" id="vo"}
+                <tr>
+                    <td>{$vo.type_info}</td>
+                    <td>{$vo.before_money|number_format=###,2,'.',''}</td>
+                    <td>{$vo.amount|number_format=###,2,'.',''}</td>
+                    <td>{$vo.after_money|number_format=###,2,'.',''}</td>
+                    <td>{$vo.note}</td>
+                    <td>{$vo.add_time}</td>
+                </tr>
+                {/volist}
+
+                </tbody>
+            </table>
+            <div class="page">
+                <div>
+                    {$list->render()|raw}
+                </div>
+            </div>
+
+        </div>
+        <script>
+            layui.use('laydate', function(){
+                var laydate = layui.laydate;
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#start' //指定元素
+                    ,type: 'datetime'
+
+                });
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#end' //指定元素
+                    ,type: 'datetime'
+
+                });
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>
