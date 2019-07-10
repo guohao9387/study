@@ -48,7 +48,7 @@ class common extends Controller{
             $sys[$v['key']] = $v['value'];
         }
         $this->config = $sys;
-        $GLOBALS['title'] =$this->config['title'].'代理后台';
+        $GLOBALS['title'] =$this->config['title'].'后台';
         $this->page_number = db::name('page_number')->cache('page_number')->field('num')->select();
         $mytime=quick_time_select(2);
         $this->assign('mytime',$mytime);
