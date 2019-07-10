@@ -1,0 +1,15 @@
+.ms{
+    padding-top: 0.1rem!important;
+    padding-bottom: 0.5rem!important;
+}
+.layui-row .ms:nth-child(2n){
+    padding-right: 0!important;
+}
+.sou .layui-row{
+    margin-top: 0.1rem;
+}
+.sou button{
+    width: 96%;
+    height: 2.5rem;
+    line-height: 2.5rem;
+}

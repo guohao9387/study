@@ -1,5 +1,5 @@
 <?php
-namespace app\admin\controller;
+namespace app\admin\Controller;
 use think\Controller;
 use think\Db;
 class Login extends Controller{
@@ -74,7 +74,7 @@ class Login extends Controller{
         add_user_operation(1,'admin',3,3,'管理员退出登录', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
         session('admin',null);
         session('admin_name',null);
-        $this->redirect('/admin/login/login');
+        $this->redirect('/admin/Login/login');
     }
 }
 

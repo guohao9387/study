@@ -3,7 +3,7 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Db;
 use think\cache;
-class Common extends Controller{
+class common extends Controller{
     public  $admin;
     public  $admin_name;
     public  $config;
@@ -34,7 +34,7 @@ class Common extends Controller{
         $this->admin=session('admin');
         $this->admin_name=session('admin_name');
         if(empty($this->admin)){
-            $this->redirect('/admin/login/login');
+            $this->redirect('/admin/Login/login');
         }
 //        if($this->admin!=1){
 //            $where = [];

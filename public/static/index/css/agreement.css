@@ -1,0 +1,272 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
+a{
+    text-decoration: none;
+    color:#000;
+    font-size:16px;
+}
+ul, ol, dl {
+    list-style-type: none
+}
+*{margin:0;padding:0;list-style-type:none;}
+
+a,img{border:0;color:#fff}
+body ,html{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300;
+    width:100%;
+    height:100%;
+}
+body ::-webkit-input-placeholder {
+    /* WebKit browsers */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300;
+}
+body :-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    opacity: 1;
+    font-weight: 300;
+}
+body ::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    opacity: 1;
+    font-weight: 300;
+}
+body :-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300;
+}
+.container{
+    background: url('../images/backg.jpg') no-repeat;
+    background-size: 100% 100%;
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.Centerbox {
+    position:absolute;
+    width:600px;
+    height:50%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.Centerbox img{
+    width:30%;
+}
+.Centerbox .contBox{
+    border:2px solid #FEEA7C;
+    height:90%;
+    border-image: -webkit-linear-gradient(#C06E0C,#FBBC1B,#C06E0C) 1 1;
+    border-image: -moz-linear-gradient(#C06E0C,#FBBC1B,#C06E0C) 1 1;
+    border-image: linear-gradient(#C06E0C,#FBBC1B,#C06E0C) 1 1;
+    border-top:transparent;
+    position: relative;
+    top:-35px;
+    background:linear-gradient(left bottom,#1D327C,#0079BC);
+    background: -webkit-linear-gradient(left bottom,#1D327C,#0079BC);
+    background: -o-linear-gradient(left bottom,#1D327C,#0079BC);
+    background: -mos-linear-gradient(left bottom,#1D327C,#0079BC);
+    background: -moz-linear-gradient(left bottom,#1D327C,#0079BC);
+    box-shadow:0px 0px 2px 1px #e8e8e8;
+    padding:5px;
+}
+.Centerbox .arc{
+    height: 60px;
+    border-top:2px solid #B7B9E3;
+    background:linear-gradient(left bottom,#61669D,#1D327C);
+    background: -webkit-linear-gradient(left bottom,#61669D,#1D327C);
+    background: -o-linear-gradient(left bottom,#61669D,#1D327C);
+    background: -mos-linear-gradient(left bottom,#61669D,#1D327C);
+    background: -moz-linear-gradient(left bottom,#61669D,#1D327C);
+    border-radius: 90%;
+    position: relative;
+    top:-4px;
+    font-size:14px;
+    line-height: 25px;
+}
+.Centerbox .agreement{
+    border:1px solid #001331;
+    width: 100%;
+    height:92%;
+    border-radius: 4px;
+    background:linear-gradient(right bottom,#003E59,#002541,#001231);
+    background: -webkit-linear-gradient(right bottom,#003E59,#002541,#001231);
+    background: -o-linear-gradient(right bottom,#003E59,#002541,#001231);
+    background: -mos-linear-gradient(right bottom,#003E59,#002541,#001231);
+    background: -moz-linear-gradient(right bottom,#003E59,#002541,#001231);
+    overflow-y: scroll;
+    /*IE滚动条颜色设置*/
+    scrollbar-arrow-color:#f2f2f3;  /*上下箭头*/
+    scrollbar-track-color:#002944;  /*底层背景色*/
+    scrollbar-face-color:#ccc;   /*滚动条前景色*/
+    scrollbar-Shadow-color:#ccc; /*滚动条边线色*/
+}
+/*chrome滚动条颜色设置*/
+.Centerbox .agreement::-webkit-scrollbar {
+    width:6px;
+    height:6px;
+    background-color:transparent;
+} /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+.Centerbox .agreement::-webkit-scrollbar-track {
+    background-color:#002944;
+    border-radius:10px;
+    -webkit-box-shadow:inset 0 0 6px rgb(211,211,214);
+} /*定义滚动条轨道 内阴影+圆角*/
+.Centerbox .agreement::-webkit-scrollbar-thumb {
+    background-color:#CCCCCC;
+    border-radius:10px;
+    -webkit-box-shadow:inset 0 0 6px rgb(211,211,214);
+} /*定义滑块 内阴影+圆角*/
+.Centerbox .agreement div{
+    font-size:13px;
+    letter-spacing: 1px;
+    text-align: left;
+    padding:5px;
+}
+.end img{
+    width:200px;
+    height:20px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.end p{
+    border:1px solid #D31E16;
+    background:linear-gradient(left,#D31E16,#FC9000,#D31E16);
+    background: -webkit-linear-gradient(left,#D31E16,#FC9000,#D31E16);
+    background: -o-linear-gradient(left,#D31E16,#FC9000,#D31E16);
+    background: -mos-linear-gradient(left,#D31E16,#FC9000,#D31E16);
+    background: -moz-linear-gradient(left,#D31E16,#FC9000,#D31E16);
+    vertical-align: middle;
+    display: inline-block;
+    font-size:12px;
+    width:55px;
+    text-align: center;
+    height:20px;
+    letter-spacing: 2px;
+    border-radius:2px;
+    box-shadow: 1px 1px 2px 1px #555;
+    position: absolute;
+    right:12px;
+    bottom:8px;
+}
+.footer{
+    position: absolute;
+    bottom:5%;
+    left:50%;
+    transform: translateX(-50%);
+    width:850px;
+    height:35px;
+    line-height: 30px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content:space-between;
+    border:2px solid #D09253;
+    border-radius: 40px;
+    padding:0 0 0 15px;
+    box-shadow:0px 0px 4px 1px #444 inset;
+    /*边框渐变*/
+    background:linear-gradient(#0093D6,#005095,#005095);
+    background: -webkit-linear-gradient(#0093D6,#005095,#005095);
+    background: -o-linear-gradient(#0093D6,#005095,#005095);
+    background: -mos-linear-gradient(#0093D6,#005095,#005095);
+    background: -moz-linear-gradient(#0093D6,#005095,#005095);
+}
+.footer ul{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content:flex-start;
+}
+.footer ul.f_left li{
+    margin-left:10px;
+}
+.footer ul.f_left li img{
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.footer ul.f_left li:first-child span{
+    font-size:16px;
+    color:#E20001;
+    font-weight:600;
+}
+.footer ul.f_left li:nth-child(2),li:nth-child(3) span{
+    font-size:14px;
+}
+.footer ul.f_right li{
+    margin-right:10px;
+    position: relative;
+    width:70px;
+
+}
+.footer ul.f_right li img{
+    width: 60px;
+    height: 55px;
+    position: absolute;
+    top: -25px;
+    left:0;
+}
+.footer ul.f_right li:last-child img{
+    width:20px;
+    height:20px;
+    top:5px;
+}
+.footer ul.f_right li:last-child  p{
+    font-size:12px;
+    display: inline-block;
+    margin-left:20px;
+    color:#fff;
+}
+.nextPage{
+    position: absolute;
+    right:10%;
+    bottom:8%;
+}
+.nextPage span{
+    display: inline-block;
+    vertical-align: middle;
+    font-size:14px;
+    color:#fff;
+}
+.nextPage img{
+    display: inline-block;
+    vertical-align: middle;
+    width:15px;
+    height:15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

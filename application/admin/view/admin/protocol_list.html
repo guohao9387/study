@@ -115,7 +115,7 @@
                 status = 2;
             }
             $.ajax({
-                url:'/admin/api/status_change',
+                url:'/admin/Api/status_change',
                 data:{id:id,status:status,db:'agreement'},
                 type:'post',
                 dataType:'json',
@@ -142,7 +142,7 @@
         layer.confirm('确认要删除吗？',function(index){
             //发异步删除数据
             $.ajax({
-                url:'/admin/api/status_change',
+                url:'/admin/Api/status_change',
                 data:{id:id,status:3,db:'agreement'},
                 type:'post',
                 dataType:'json',
@@ -169,7 +169,7 @@
         layer.confirm('确认要删除编号为：'+data+'的协议吗？',function(index){
             //捉到所有被选中的，发异步进行删除
             $.ajax({
-                url:'/admin/api/status_change',
+                url:'/admin/Api/status_change',
                 data:{id:data,status:3,db:'agreement'},
                 type:'post',
                 dataType:'json',

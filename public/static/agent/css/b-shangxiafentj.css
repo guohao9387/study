@@ -1,0 +1,16 @@
+.heji>div{
+
+    display: inline-block;
+    font-size: 1.4rem;
+color: black;
+
+}
+.heji{
+    padding: 0.5rem;
+}
+.heji>div span{
+    color: #008000;
+}
+.heji .heji-r{
+    margin-left: 0.2rem;
+}

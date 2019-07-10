@@ -1,0 +1,1140 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
+a{
+    text-decoration: none;
+    color:#000;
+    font-size:0.16rem;
+}
+ul, ol, dl {
+    list-style-type: none
+}
+*{margin:0;padding:0;list-style-type:none;}
+
+a,img{border:0;}
+
+body ,html{
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    font-weight: 300;
+    width:100%;
+    height: 100%;
+    min-height:100%;
+}
+#my_bets{
+    width:100%;
+    min-height:100%;
+    background: url('../images/backg.jpg') no-repeat;
+    background-size: cover;
+    -moz-background-size:100% 100%;;
+    -webkit-background-size:100% 100%;;
+    -o-background-size:100% 100%;
+}
+#my_bets .container{
+    margin:0 auto;
+    padding:10px;
+    width:80%;
+    background: linear-gradient(#A290D6,#e8e8e8,#A290D6);
+    background: -webkit-linear-gradient(#A290D6,#e8e8e8,#A290D6);
+    background: -o-linear-gradient(#A290D6,#e8e8e8,#A290D6);
+    background: -mos-linear-gradient(#A290D6,#e8e8e8,#A290D6);
+    background: -moz-linear-gradient(#A290D6,#e8e8e8,#A290D6);
+}
+.betsList{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    background: #B1AFDC;
+    padding:4px;
+    border-radius:6px;
+    box-shadow: 0 0 5px 1px  #fff;
+}
+.mb_left{
+    width:66%;
+    /*height:645px;*/
+    overflow-x: hidden;
+    /*IE滚动条颜色设置*/
+    scrollbar-arrow-color:#f2f2f3;  /*上下箭头*/
+    scrollbar-track-color:#5D2734;  /*底层背景色*/
+    scrollbar-face-color:#ccc;   /*滚动条前景色*/
+    scrollbar-Shadow-color:#ccc; /*滚动条边线色*/
+}
+/*chrome滚动条颜色设置*/
+.mb_left::-webkit-scrollbar {
+    width:4px;
+    height:4px;
+    background-color:transparent;
+} /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+.mb_left::-webkit-scrollbar-track {
+    background-color:#5D2734;
+    border-radius:10px;
+    -webkit-box-shadow:inset 0 0 6px rgb(211,211,214);
+} /*定义滚动条轨道 内阴影+圆角*/
+.mb_left::-webkit-scrollbar-thumb {
+    background-color:#CCCCCC;
+    border-radius:10px;
+    -webkit-box-shadow:inset 0 0 6px rgb(211,211,214);
+} /*定义滑块 内阴影+圆角*/
+
+.tableList{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    border:3px solid #C48B47;
+    box-shadow: 0 0 5px 0px #fff;
+    margin-bottom:10px;
+}
+.tableList .bigCont{
+    background: #8D5873;
+    padding-top: 2px;
+    padding-left: 2px;
+}
+.tableList li table{
+    border: solid #731616;
+    border-width:0px 1px 0px 0px;
+    background: #fff;
+}
+.tableList > li:first-child{
+    padding:2px;
+    background: #8D5873;
+}
+.tableList > li:nth-child(2){
+    width: 30%;
+}
+.tableList > li:last-child{
+    flex: 1;
+}
+.tableList li td{
+    width:0.2rem;
+    height:0.2rem;
+    border:solid #9C6F88;
+    border-width:1px 0px 0px 1px;
+    font-size: 0;
+    display: block;
+    float: left;
+    box-sizing: border-box;
+}
+.mb_left .cont_middle{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: radial-gradient(#037979,#001E1E);
+    background: -webkit-radial-gradient(#037979,#001E1E);
+    background: -o-radial-gradient(#037979,#001E1E);
+    background: -mos-radial-gradient(#037979,#001E1E);
+    background: -moz-radial-gradient(#037979,#001E1E);
+}
+
+
+.mb_left .cont_middle p{
+    font-size:0.14rem;
+    margin:4px 0;
+    color:#C4C4C4;
+    font-weight: bold;
+}
+.mb_left .cont_middle>ul{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    /*width:300px;*/
+    border-top:2px solid #337C7C;
+}
+.mb_left .cont_middle .chip-in-area li{
+    /*position: relative;*/
+    cursor: pointer;
+    position: relative;
+}
+.mb_left .cont_middle .chip-in-area li .user-cathectic{
+    display: inline-block;
+    width: 60%;
+    position: absolute;
+    left:0; right:0; top:0; bottom:0;
+    margin:auto;
+    height: 100%;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    flex-direction: column;
+}
+.mb_left .cont_middle .chip-in-area .w100 .user-cathectic{
+    width: 25%;
+}
+.mb_left .cont_middle .chip-in-area .w50 .user-cathectic{
+    width: 40%;
+}
+.mb_left .cont_middle .chip-in-area .w33 .user-cathectic{
+    width: 60%;
+}
+.mb_left .cont_middle .chip-in-area li .user-cathectic .cathectic-money{
+    height: 0.2rem;
+    line-height: 0.2rem;
+    background-color: rgba(0,76,145,0.7);
+    border-radius: 5px;
+    border: 1px solid #eae6e6;
+    font-size: 0.16rem;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+}
+.mb_left .cont_middle .chip-in-area li .user-cathectic .cathectic-icon{
+    height: 0.36rem;
+}
+.mb_left .cont_middle .chip-in-area li .user-cathectic img{
+    max-width: 90%;
+    margin: 0 auto;
+}
+.mb_left .cont_middle .chip-in-area li .mask{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(255,255,255);
+    opacity: 0.2;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+}
+.mb_left .cont_middle .chip-in-area .focus_img{
+    position: absolute;
+    width: 0.7rem;
+    font-size: 0;
+}
+.mb_left .cont_middle .chip-in-area .focus_img img{
+    max-width: 100%;
+}
+.mb_left .cont_middle .chip-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    /*margin-top: 0.08rem;*/
+    flex: 1;
+}
+.mb_left .cont_middle .chip-div button{
+    width: 30%;
+    font-size: 20px;
+    font-weight: bold;
+    /*margin: 25px auto;*/
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    background: -webkit-linear-gradient(top, #ffffff,#757171,#fff5f5);
+    background: -o-linear-gradient(bottom,#ffffff,#757171,#fff5f5);
+    background: -moz-linear-gradient(bottom,#ffffff,#757171,#fff5f5);
+    background: linear-gradient(to bottom,#ffffff,#757171,#fff5f5);
+    -webkit-background-clip: text;
+    color: #787878;
+    -webkit-text-fill-color: transparent;
+    outline: none;
+    /* -webkit-text-stroke: 1px red; */
+    cursor: pointer;
+    padding: 3px 6px;
+}
+.tableList li:first-child .mask{
+    position: absolute;
+    top:0;
+    left: 0;
+    right:0;
+    bottom:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(2,2,2,0.75);
+    z-index: 99999;
+	text-align:center;
+}
+.tableList li:first-child .mask span{
+    font-size: 0.6rem;
+    color: #CC0000;
+    font-weight: bold;
+    font-weight: 800;
+    z-index: 99999999999;
+    text-shadow: 1px 1px 1px #c5c5c5;
+	position: relative;
+    top: 15%;
+}
+.mb_left  .cont_middle>ul>li{
+    width:33.3%;
+    text-align: center;
+    border-right:1px solid #337C7C;
+    border-bottom:1px solid #337C7C;
+    padding: 0.05rem 0;
+    position: relative;
+    box-shadow: 0 0 2px 0px #337B7B;
+}
+.mb_left  .cont_middle>ul li .mask{
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgb(255,255,255);
+    opacity: 0.2;
+    z-index: 10;
+    width:100%;
+    height:100%;
+    /*display: none;*/
+}
+
+.mb_left  .cont_middle>ul>li p{
+    font-size:22px;
+    text-shadow:1px 1px 2px #fff;
+    font-weight:bold;
+}
+.mb_left  .cont_middle>ul>li span{
+    font-size:12px;
+    display: block;
+    margin-top:3px;
+    color:#EBEAEF;
+}
+.mb_left  .cont_middle>ul li p.blueLi{
+    color:#0A4EFF;
+}
+.mb_left  .cont_middle>ul li p.peace{
+    color:#249113;
+}
+.mb_left  .cont_middle>ul li p.grave{
+    color:#F61500;
+}
+.mb_left  .cont_middle>ul li:nth-child(4),
+.mb_left  .cont_middle>ul li:nth-child(5){
+    width: 50%;
+}
+.mb_left .tableList > li:last-child{
+    /*width:150px;*/
+    background: #5D2734;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.mb_left .tableList > li:last-child .express{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mb_left .tableList > li:last-child >p{
+    font-size:0.14rem;
+    margin:4px 0;
+    color:#C4C4C4;
+    font-weight: bold;
+}
+.mb_left .tableList > li:last-child .timer{
+    padding:0.2rem 0;
+    border-top:2px solid #6F2C24;
+    border-bottom:2px solid #6F2C24;
+    font-size: 0;
+}
+.mb_left .tableList > li:last-child .timer p{
+    font-size:44px;
+    color:#e8e8e8;
+    text-shadow:  1px 1px 5px #BDBDBD;
+    font-weight: bold;
+}
+.mb_left .tableList > li:last-child .timer span{
+    font-size:15px;
+    color:#BDBDBD;
+    font-weight: 600;
+}
+.mb_left .tableList > li:last-child  .express > div{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: flex-start;
+     margin-top:5px;
+    align-items: center;
+}
+.mb_left .tableList > li:last-child  .express > div span{
+    font-size:14px;
+    color:#BDBDBD;
+    display: inline-block;
+    margin-left:8px;
+    vertical-align: middle;
+}
+.mb_left .tableList > li:last-child  .express > div p{
+    margin-left:0.1rem;
+    /*margin-top:3px;*/
+    width: 0.15rem;
+    height: 0.15rem;
+}
+
+.lh .chip-in-area li{
+    width: 50% !important;
+}
+.lh .chip-in-area li:first-child{
+    width: 100% !important;
+}
+
+/*显示说明的斜线*/
+.mb_left .tableList > li:last-child .showSlantLineBlue{
+    float:left;
+    width:0 !important;
+    height:0.13rem !important;
+    border:2px solid #0066CC;
+    border-radius: 2px;
+    transform:rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);/*Safari 4+,Google Chrome 1+  */
+    -moz-transform: rotateZ(45deg);/*Firefox 3.5+*/
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    /*margin-top:8px !important;*/
+}
+.mb_left .tableList > li:last-child .showSlantLineRed{
+    float:left;
+    width:0 !important;
+    height:0.13rem !important;
+    border:2px solid #BB0000;
+    border-radius: 2px;
+    transform:rotateZ(45deg);
+    -webkit-transform: rotateZ(45deg);/*Safari 4+,Google Chrome 1+  */
+    -moz-transform: rotateZ(45deg);/*Firefox 3.5+*/
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    /*margin-top:8px !important;*/
+}
+/*遮罩层*/
+.mb_left .tableList >li:first-child{
+    position: relative;
+}
+.tableList  li{
+    overflow: hidden;
+}
+.bigCont{
+    position: absolute;
+    top:0;
+    left:0;
+    background:#fff;
+    width:100%;
+    height:100%;
+    z-index: 1000;
+    transform: translatex(100%);
+    transition: all linear 1s;
+}
+.tableList  li .bigCont td{
+    width:0.4rem;
+    height:0.4rem;
+    border:solid #9C6F88;
+    border-width:1px 0px 0px 1px;
+}
+
+/*大的红红红红红红圈圈*/
+.tableList .bigCont .bigRedColor {
+    border: 3px solid #BB0000;
+    /*width: 30px;*/
+    border-radius: 50%;
+    /*height: 30px;*/
+    color: #BB0000;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.18rem;
+    position:relative;
+}
+.tableList .bigCont .bigRedColor:before{
+    /*content:"龙"*/
+}
+/*大的蓝蓝蓝蓝蓝蓝蓝蓝圈圈*/
+.tableList .bigCont .bigBlueColor {
+    border: 3px solid #0066CC;
+    /*width: 30px;*/
+    border-radius: 50%;
+    /*height: 30px;*/
+    color: #0066CC;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.18rem;
+    position: relative;
+}
+.tableList .bigCont .bigBlueColor:before{
+    /*content:"虎"*/
+}
+/*和字 的绿色大圈圈*/
+.tableList .bigCont .bigGreenColor {
+    border: 3px solid #3B8C00;
+    /*width: 30px;*/
+    border-radius: 50%;
+    /*height: 30px;*/
+    color: #3B8C00;
+    font-weight: bold;
+    text-align: center;
+    font-size:0.18rem;
+    position:relative;
+}
+.tableList .bigCont .bigGreenColor:before{
+    /*content:"和"*/
+}
+/*圈圈上有红红红红红点的*/
+.tableList .bigCont .dotRed{
+    display: inline-block;
+    position:absolute;
+    top:-1.5px;
+    left: -1.5px                    ;
+    border:3px solid #BB0000;
+    background-color: #BB0000;
+    border-radius:50%;
+}
+/*圈圈上有蓝蓝蓝蓝蓝蓝点的*/
+.tableList .bigCont .dotBlue{
+    display: inline-block;
+    position: absolute;
+    bottom: -1.5px;
+    right: -1.5px;
+    border: 3px solid #0066CC;
+    background-color: #0066CC;
+    border-radius: 50%;
+}
+
+.mb_right{
+    width: 34%;
+    overflow: hidden;
+}
+.mb_right .videoScreen{
+    width: 100%;
+    height: 3.6rem;
+    /*margin-left: 5px;*/
+    margin-bottom: 14px;
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 0 5px 0px #fff
+}
+.mb_right .videoScreen img,.mb_right .videoScreen img video{
+    width:100%;
+    height:2.92rem;
+}
+.mb_right .rightEnd{
+    width:100%;
+    border:2px solid #C27E33;
+    margin-top: -4px;
+    background: radial-gradient(#0096DA,#082673);
+    background: -webkit-radial-gradient(#0096DA,#082673);
+    background: -o-radial-gradient(#0096DA,#082673);
+    background: -mos-radial-gradient(#0096DA,#082673);
+    background: -moz-radial-gradient(#0096DA,#082673);
+}
+.mb_right .rightEnd .endList{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding:4px;
+    font-size: 0;
+}
+
+.mb_right .rightEnd .endList li{
+    display: inline-block;
+    width: 12.5%;
+    min-width: 1.0rem;
+    height:0.22rem;
+    line-height: 0.22rem;
+    text-align: center;
+    margin:8px 0;
+}
+.mb_right .rightEnd .endList li a{
+    width: 80%;
+    margin: 0 auto;
+    font-size:0.12rem;
+    color:#fff;
+    display: block;
+    background: linear-gradient(#FFD087,#FFBD3F,#FFD087);
+    background: -webkit-linear-gradient(#FFD087,#FFBD3F,#FFD087);
+    background: -o-linear-gradient(#FFD087,#FFBD3F,#FFD087);
+    background: -mos-linear-gradient(#FFD087,#FFBD3F,#FFD087);
+    background: -moz-linear-gradient(#FFD087,#FFBD3F,#FFD087);
+    border-radius: 3px;
+}
+.endList  .active{
+
+    background: linear-gradient(#DE3600,#FFBD3F,#DE3600) !important;
+    background: -webkit-linear-gradient(#DE3600,#FFBD3F,#DE3600) !important;
+    background: -o-linear-gradient(#DE3600,#FFBD3F,#DE3600) !important;
+    background: -mos-linear-gradient(#DE3600,#FFBD3F,#DE3600) !important;
+    background: -moz-linear-gradient(#DE3600,#FFBD3F,#DE3600) !important;
+}
+.mb_right .pileUp{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: space-around;
+}
+.mb_right .pileUp li{
+    width:15%;
+    height: 15%;
+    text-align:center ;
+    border-radius: 50%;
+}
+.mb_right .pileUp li.active img{
+    box-shadow: 1px 1px 10px 0 #fff;
+    border-radius: 50%;
+}
+.mb_right .pileUp li a{
+    display: block;
+}
+.mb_right .pileUp li img{
+    width:100%;
+    height:90%;
+}
+.mb_right .selectTable{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: space-around;
+    border-top:1px solid #1989B9;
+    border-bottom:1px solid #1989B9;
+    box-shadow: 0 0 1px 0px #39AADF;
+    text-align: center;
+    font-weight: 100;
+}
+.mb_right .selectTable > div{
+    padding:15px;
+    font-size: 0;
+}
+.mb_right .selectTable div span{
+    display: inline-block;
+    vertical-align: middle;
+    font-size:18px;
+    font-weight: 600;
+    color:#D3D3D3;
+    padding: 0 5px;
+}
+.mb_right .selectTable div img{
+    display: inline-block;
+    vertical-align: middle;
+    width:20px;
+    height:20px;
+}
+.mb_right .selectTable div:last-child{
+    text-align: left;
+    border-left:2px solid #1989B9;
+    padding-left:10px;
+}
+.mb_right .selectTable div:last-child p{
+    color:#D3D3D3;
+    font-size:12px;
+    font-weight:bold;
+}
+.mb_right .Proportion{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.mb_right .Proportion li{
+    margin-left:18px;
+    margin-top:10px;
+}
+.mb_right .Proportion li a{
+   font-size:0.12rem;
+    color:#D3D3D3;
+    display: block;
+}
+.mb_right .logoEnd{
+    padding:15px 10px;
+    text-align: center;
+    font-size: 0;
+}
+.mb_right .logoEnd img{
+    display: inline-block;
+    vertical-align: middle;
+    width:0.4rem;
+    height:0.4rem;
+}
+.mb_right .logoEnd span{
+    font-size:0.3rem;
+    color:#F50100;
+    font-weight:bold;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left:5px;
+}
+ .BottomFooter{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: space-between;
+    padding:4px 6px;
+}
+ .BottomFooter > p{
+    font-size:14px;
+    color:#fff;
+    line-height: 30px;
+}
+
+ .BottomFooter .scrollleft {
+    width: 50%;
+ position: relative;
+ overflow: hidden;
+
+}
+.bottom-left{
+position: absolute;
+top: 0;
+left: 0;
+    width: 3600px;
+     height: 30px;
+  overflow: hidden;
+}
+ .BottomFooter .bottom-left p{
+ font-size:14px;
+    color:#fff;
+    line-height: 30px;
+    width: 1200px;
+    float: left;
+    margin-right: 10px;
+    }
+.bottom-left:after{
+    content: "";
+    clear: both;
+    display: block;
+}
+ .BottomFooter .bottom-right{
+         display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+      justify-content: flex-start;
+    align-items: center;
+    }
+ .BottomFooter .bottom-right p{
+     padding-top:-2px;
+     background: linear-gradient(#FFD087,#FFBD3F,#FFD087);
+     background: -webkit-linear-gradient(#FFD087,#FFBD3F,#FFD087);
+     background: -o-linear-gradient(#FFD087,#FFBD3F,#FFD087);
+     background: -mos-linear-gradient(#FFD087,#FFBD3F,#FFD087);
+     background: -moz-linear-gradient(#FFD087,#FFBD3F,#FFD087);
+     border:1px solid #FFAC2E;
+     margin-left:10px;
+     border-radius: 0.04rem;
+     height:0.25rem;
+     width:0.8rem;
+     text-align: center;
+     position: relative;
+    }
+
+
+
+ .BottomFooter .bottom-right p  a{
+    font-size:0.15rem;
+     height: 0.25rem;
+     line-height: 0.25rem;
+    color:#fff;
+    margin-top:-2px;
+    display: block;
+}
+    /*表格里面的标识/!**!/*/
+.tableList td > p,.tableList td > div{
+    width: 0.18rem !important;
+    height:0.18rem !important;
+    margin: 0.005rem;
+}
+.tableList td > div{
+    width: 100% !important;
+    height: 100% !important;
+}
+.tableList td > div > p{
+    width: 0.06rem !important;
+    height: 0.06rem !important;
+    box-sizing: border-box;
+    display: inline-block;
+    float: inherit !important;
+    margin: 0.018rem 0.015rem !important;
+}
+.tableList .bigCont td > div{
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.tableList .bigCont td > div > p{
+    /*border: 2px solid #fff;*/
+    width: 0 !important;
+    height: 0 !important;
+}
+.tableList td > div .he{
+    width: 100%;
+    height:100%;
+}
+.tableList td > div .he .he_count{
+    width: 100%;
+    height: 100%;
+    line-height: 85%;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+.tableList td > div .he .slantLineBlue{
+    width: 13px;
+    height: 0;
+    border: 1px solid #666666;
+    transform: rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);
+    -moz-transform: rotateZ(-45deg);
+    -o-transform: rotate(-125deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    position: absolute;
+    bottom: 4px;
+    right: -3px;
+}
+/*td里的红圈圈*/
+.tableList   .redColor,.tableList td .red-circle{
+    border:2px solid #BB0000;
+    border-radius: 50%;
+    position:relative;
+}
+/*td里的蓝圈圈*/
+.tableList   .blueColor,.tableList td .blue-circle {
+    border:2px solid #0066CC;
+    width:14px;
+    border-radius: 50%;
+    height:15px;
+    position:relative;
+}
+/*td里的圈圈字体*/
+.tableList  .blueColorText{
+    border:2px solid #0066CC;
+    width:14px;
+    border-radius: 50%;
+    height:15px;
+    color:#111;
+    text-align: center ;
+    font-size:10px;
+    line-height: 11px;
+}
+
+/*td里实心红色大圈圈*/
+.tableList   .redColorCircle{
+    border:2px solid #BB0000;
+    width:14px;
+    border-radius: 50%;
+    height:15px;
+    background: #BB0000;
+}
+/*td里的实心蓝色大圈圈*/
+.tableList  .blueColorCircle {
+    border:2px solid #0066CC;
+    width:14px;
+    border-radius: 50%;
+    height:15px;
+    background: #0066CC;
+}
+/*实心蓝色小圈*/
+.tableList .smallBlueHollowSolid{
+    border:1px solid #0066CC;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:0.2px;
+    float:left;
+    background:#0066CC ;
+}
+/*实心红色小圈*/
+.tableList .smallRedHollowSolid{
+    border:1px solid #BB0000;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:0.2px;
+    float:left;
+    background: #BA0000;
+}
+
+/*占位置的透明框*/
+.tableList .opacityBorder{
+    border:1px solid transparent;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:0.2px;
+    float:left;
+    background: transparent;
+}
+
+/*圈圈上有红红红红红点的*/
+.tableList  .dotRed,.tableList td >div .dt-lt-red{
+    display: inline-block;
+    position:absolute;
+    top: -2px;
+    left: 0px;
+    border:3px solid #BB0000;
+    border-radius:50%;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+}
+/*圈圈上有蓝蓝蓝蓝蓝蓝点的*/
+.tableList  .dotBlue,.tableList td >div .dt-rb-blue{
+    display: inline-block;
+    position:absolute;
+    bottom: -2px;
+    right: 0px;
+    border:3px solid #0066CC;
+    border-radius:50%;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+}
+/*大一点表格里的东西*/
+/*大的红红红红红红圈圈*/
+.tableList   p.bigRedColor {
+    border: 3px solid #BB0000;
+    width: 31px;
+    border-radius: 50%;
+    height: 31px;
+    color: #BB0000;
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
+    line-height: 23px;
+    position:relative;
+}
+/*大的蓝蓝蓝蓝蓝蓝蓝蓝圈圈*/
+.tableList p.bigBlueColor {
+    border: 3px solid #0066CC;
+    width: 31px;
+    border-radius: 50%;
+    height: 31px;
+    color: #0066CC;
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
+    line-height: 23px;
+    position:relative;
+}
+/*和字 的绿色大圈圈*/
+.tableList p.bigGreenColor {
+    border: 3px solid #3B8C00;
+    width: 31px;
+    border-radius: 50%;
+    height: 31px;
+    color: #3B8C00;
+    font-weight: bold;
+    text-align: center;
+    font-size: 17px;
+    line-height: 23px;
+    position:relative;
+}
+
+/*圈圈上有蓝蓝蓝蓝蓝蓝点的*/
+.tableList  .BigDotBlue{
+    display: inline-block;
+    position:absolute;
+    bottom: -1px;
+    right: 1px;
+    border:3px solid #0066CC;
+    border-radius:50%;
+    box-shadow: 0 0 2px 1px #fff;
+}
+.tableList  .BigDotRed{
+    display: inline-block;
+    position:absolute;
+    top: -1px;
+    left:0;
+    border:3px solid #BB0000;
+    border-radius:50%;
+    box-shadow: 0 0 2px 1px #fff;
+}
+
+/*一个 td 里面 ④个小圆圆*/
+/*空心蓝色小圈*/
+.tableList .smallBlueHollow{
+    border:1px solid #0066CC;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:0.2px;
+    float:left;
+}
+.tableList .smallRedHollow{
+    border:1px solid #BB0000;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:0.2px;
+    float:left;
+}
+/*斜线*/
+.tableList .slantLineBlue{
+    float:left;
+    width:6px;
+    height:0;
+    border:1px solid #0066CC;
+    transform:rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);/*Safari 4+,Google Chrome 1+  */
+    -moz-transform: rotateZ(-45deg);/*Firefox 3.5+*/
+    -o-transform:rotate(-45deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+}
+
+.tableList .slantLineRed{
+    float:left;
+    width:6px;
+    height:0;
+    border:1px solid #BB0000;
+    transform:rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);/*Safari 4+,Google Chrome 1+  */
+    -moz-transform: rotateZ(-45deg);/*Firefox 3.5+*/
+    -o-transform:rotate(-45deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    margin-top:6px;
+}
+.tableList .table_2 td > div{
+    /*display: flex;*/
+    width: 50% !important;
+    height: 100% !important;
+    margin: 0;
+    position: relative !important;
+    padding-top: 0 !important;
+}
+.tableList .table_2 td > div.left{
+    float: left;
+}
+.tableList .table_2 td > div.right{
+    float: right;
+}
+.tableList .table_2 .red_k{
+    width: 100% !important;
+    height: 50% !important;
+    border-radius: 50%;
+    border: 1px solid #BB0000;
+    display: inherit;
+    margin: 0 !important;
+}
+.tableList .table_2 .blue_k{
+    width: 100% !important;
+    height: 50% !important;
+    border-radius: 50%;
+    border:1px solid #0066CC;
+    display: inherit;
+    margin: 0 !important;
+}
+.tableList .table_2 .red_s{
+    width: 100% !important;
+    height: 50% !important;
+    border-radius: 50%;
+    border: 1px solid #BB0000;
+    background-color: #BB0000;
+    display: inherit;
+    margin: 0 !important;
+}
+.tableList .table_2 .blue_s{
+    width: 100% !important;
+    height: 50% !important;
+    border-radius: 50%;
+    border:1px solid #0066CC;
+    background-color: #0066cc;
+    display: inherit;
+    margin: 0 !important;
+}
+.tableList .table_2 .red_l{
+    width: 35% !important;
+    height: 50% !important;
+    border-radius: 50%;
+    border: 1px solid #BB0000;
+    background-color: #BB0000;
+    margin-left: 30% !important;
+    transform:rotate(45deg);
+    display: inherit;
+    float: none !important;
+}
+.tableList .table_2 .blue_l{
+    width: 35% !important;
+    height: 50% !important;
+    border-radius: 50%;
+    border:1px solid #0066CC;
+    background-color: #0066cc;
+    margin-left: 30% !important;
+    transform:rotate(45deg);
+    display: inherit;
+    float: none !important;
+}
+.tableList .table_2 p.bottom{
+    bottom: 0;
+    position: absolute;
+}
+.tableList .table_2 td > div.red-circle,.tableList .table_2 td > div.blue-circle{
+    width: 100% !important;
+}
+@media screen and (max-width: 1600px){
+    #my_bets{
+        width: 100%;
+    }
+    #my_bets .container {
+        width: 1200px;
+    }
+
+    .tableList li td{
+        width: 16px;
+        height: 16px;
+    }
+    .tableList td > p{
+        width: 14px !important;
+        height: 14px !important;
+    }
+    .tableList td > div > p{
+        width: 6px !important;
+        height: 6px !important;
+        margin: 0.4px !important;
+    }
+    .tableList td > div{
+        padding-top: 0.4px !important;
+    }
+
+    .tableList li .bigCont td{
+        width: 32px;
+        height: 32px;
+    }
+    .tableList .bigCont .bigRedColor{
+        font-size: 16px;
+    }
+
+    .mb_left .tableList > li:last-child .express > div p{
+        width: 13px;
+        height: 13px;
+    }
+    .mb_left .tableList > li:last-child .showSlantLineBlue,.mb_left .tableList > li:last-child .showSlantLineRed{
+        width: 9px !important;
+        height: 9px !important;
+    }
+
+    .mb_right .rightEnd .endList li{
+        height: 20px;
+        line-height: 20px;
+    }
+    .BottomFooter >div p{
+        width: 70px;
+        height: 22px;
+    }
+    .BottomFooter >div p a{
+        height: 22px;
+        line-height: 22px;
+    }
+}

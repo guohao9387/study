@@ -1,0 +1,1180 @@
+body,html{
+    width:100%;
+    height:100%;
+    font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+    color: #000;
+    position: relative;
+    margin:0;
+    padding:0;
+}
+a{
+    text-decoration: none;
+    color:#000;
+    font-size:16px;
+}
+ul, ol, dl {
+    list-style-type: none
+}
+*{margin:0;padding:0;list-style-type:none;}
+
+a,img{border:0;}
+
+html.body{
+    width:100%;
+    height:100%;
+}
+body > .layui-anim{
+    /*height: 100vh;*/
+    height: 100%;
+    background: #272d3c;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+}
+#codeDetail{
+    /*width:100%;*/
+    height:100%;
+    /*background: url('../images/backg.jpg') no-repeat;*/
+    /*background-size: cover;*/
+    /*-moz-background-size:100% 100%;;*/
+    /*-webkit-background-size:100% 100%;;*/
+    /*-o-background-size:100% 100%;*/
+    border:5px solid #262D3D;
+    /*border:5px solid #00b800;*/
+}
+.container{
+    width:1300px;
+    margin:0 auto;
+    border:2px solid #000;
+
+}
+.container .title{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    background: #000;
+}
+.container .title p{
+    font-size:14px;
+    color:#fff;
+    line-height: 25px;
+}
+.container .title .close{
+    width:10px;
+    height:10px;
+    position: absolute;
+    top:7px;
+    right:5px;
+}
+th.width50{  width: 50%;}
+td.width33{width: 33.333333%;}
+td.width25{width: 25%;}
+td.width20{width: 20%}
+td.width16{width: 16.66666667%}
+td.color1{color: #fff !important;}
+td.color2{color: #E6FA02 !important;}
+td.bg-th{background: #102738 !important;font-size: 0.28rem !important;}
+.code{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 4px solid #2E3B57;
+}
+.code table{
+    width: 100%;
+}
+.code .cleft{
+    width:64%;
+}
+.code .cright{
+    width: 36%;
+    border-left: 4px solid #2E3B57;
+    display: -moz-box;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+
+    -moz-box-orient: vertical;
+    -webkit-flex-direction:column;
+    -ms-flex-direction:column;
+}
+.code .cright tr th{
+    background: #022B3F;
+    border:1px solid #10365D;
+    color: #F4FE9B;
+    font-size: 0.28rem;
+    padding: 0.1rem 0;
+}
+.code .cright tr th:first-child{
+    padding-left: 15px;
+}
+.code .cright tr th:last-child{font-weight: normal;font-size: 0.20rem;}
+.code .cright tr th{
+    border: none;
+}
+.code .cright tr td,.code .cright tr:last-child td{
+    background: #044160;
+    font-size: 0.2rem;
+    border:1px solid #10365D;
+    text-align: center;
+    color: #fff;
+    padding: 0.06rem 0;
+}
+.code .cright tr:last-child td{color:#fff; }
+.tableList{
+    background: #D1CFCF;
+}
+.code .cleft table{
+    border: solid #BDBCBC;
+    border-width:0px 1px 1px 0px;
+}
+.code .cleft table td{
+    width:6.25%;
+    height:auto;
+    border:solid #BDBCBC;
+    border-width:1px 0px 0px 1px;
+    box-sizing: border-box;
+    display: inline-block;
+    float: left;
+}
+.code .cright .btm-btn{
+    -moz-box-flex: 1;
+    -webkit-flex:1;
+    -ms-flex:1;
+}
+.code .cright .pre-result{
+    background: #044160;
+    font-size: 0.16rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #fff;
+}
+.code .cright .btm-btn ul{
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    background: #B6BFC4;
+    display: flex;
+    align-items: center;
+    margin-right: -2px;
+}
+.code .cright .btm-btn li{
+    display: flex;
+    font-size: 0.18rem;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+    line-height: 100%;
+    text-align: center;
+    border-right: 2px solid #074060;
+}
+.code .cright .btm-btn li.long,.code .cright .btm-btn li.hu{
+    justify-content: left;
+    padding-left: 0.1rem;
+}
+.code .cright .btm-btn li p{
+    width: 0.18rem;
+    height: 0.18rem;
+    border:1px solid #eee;
+    margin-left: 0.08rem;
+
+}
+.code .cright .btm-btn li p.ic1,.code .cright .btm-btn li p.ic2,.code .cright .btm-btn li p.ic3,.code .cright .btm-btn li p.ic4,.code .cright .btm-btn li p.ic5{
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+}
+.code .cright .btm-btn li p.ic3,.code .cright .btm-btn li p.ic6{
+    width: 0.20rem;
+    transform: rotate(-45deg);
+    height: 0.01rem;
+    border:none;
+    background: #fff;
+}
+.code .cright .btm-btn li .ic4{
+     border-color: #0066CC !important;
+ }
+.code .cright .btm-btn li .ic5{
+    background: #0066CC;
+    border-color: #0066CC !important;
+}
+.code .cright .btm-btn li .ic6{
+    background:#0066CC !important;
+}
+.code .cright .btm-btn li .ic1{
+    border-color: #BB0000 !important;
+}
+.code .cright .btm-btn li .ic2{
+    background: #BB0000;
+    border-color: #BB0000 !important;
+}
+.code .cright .btm-btn li .ic3{
+    background:#BB0000 !important;
+}
+.code .cRight .header_right{
+    width:400px;
+    background: #032B40;
+    height: 35px;
+    line-height: 35px;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-around;
+}
+.code .cRight .header_right p:first-child{
+    font-size:0.18px;
+    color:#F2FB9B;
+}
+.code .cRight .header_right p:last-child{
+    font-size:0.12px;
+    color:#F2FB9B;
+}
+.middleCon{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-around;
+    background: #05527C;
+}
+.middleCon li{
+    width:33.2%;
+    text-align: center;
+}
+.middleCon li.firstLis p{
+    border-bottom:1px solid #0A3B5C;
+    color:#fff;
+    font-size:12px;
+    line-height: 26px;
+    height:26px;
+}
+
+.middleCon li.firstLis p:nth-child(3){
+    color:#FFFF00;
+}
+.middleCon li.secondLis p{
+    border-bottom:1px solid #0A3B5C;
+    color:#FFFF00;
+    font-size:12px;
+    line-height: 26px;
+    border-left:1px solid #0A3B5C;
+    border-right:1px solid #0A3B5C;
+    height:26px;
+}
+.middleCon li.secondLis p:first-child{
+    font-size:16px;
+}
+.middleCon li.secondLis p:nth-child(2){
+    font-size:20px;
+    height:52.6px;
+    line-height: 50px;
+    background: #0A3B5C;
+}
+.middleCon li.thirdLis >div{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-around;
+}
+.middleCon li.thirdLis p{
+    color:#fff;
+    font-size:12px;
+    line-height: 26px;
+    height:26px;
+    border-bottom:1px solid #0A3B5C;
+}
+.middleCon li.thirdLis >div>p{
+    width:50%;
+    text-align: center;
+}
+.middleCon li.thirdLis >div:first-child > p{
+    color:#FFFF00;
+}
+.middleCon li.thirdLis >div>p:first-child{
+    border-right:1px solid #0A3B5C;
+}
+.middleCon li.thirdLis p:nth-child(3){
+    color:#FFFF00;
+}
+.end_middle > li{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+    width:400px;
+}
+.end_middle > li:first-child{
+    background: #3E5A67;
+    height:26px;
+    line-height: 26px;
+}
+.end_middle > li:first-child p{
+    color:#FFFF00;
+}
+.end_middle > li p:nth-child(2n-1){
+    border-left:1px solid #0C395C;
+    border-right:1px solid #0C395C;
+}
+.end_middle > li p{
+    width:33.1%;
+    text-align: center;
+    font-size:12px;
+    color:#fff;
+}
+.end_middle > li{
+    background: #05527C;
+    height:26px;
+    line-height: 26px;
+}
+.express{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+    background: #B6BFC4;
+}
+.express > div{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+    height:45px;
+    line-height: 45px;
+    width:29.7%;
+    text-align: center;
+    align-items: center;
+}
+.express > div span{
+    font-size:12px;
+}
+.express > div:last-child{
+    width: 40%;
+    text-align: center;
+}
+.express > div:last-child>p{
+    font-size:12px;
+    /*width:50%;*/
+    padding:0 3px;
+}
+.express > div:last-child>p:last-child{
+    border-left:1px solid #0C395C;
+}
+.express > div:nth-child(2){
+    border-left:1px solid #0C395C;
+    border-right:1px solid #0C395C;
+}
+.tableBox{
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+}
+.tableBox{
+    position: relative;
+}
+.time-out{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top:0%
+}
+.time-out span{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #044160;
+}
+.time-out .color-red{
+    color: #f0262f;
+}
+.tableBox .Box_left{
+    width:100%;
+    background: #D1CFCF;
+}
+.tableBox .Box_left table{
+    width: 100%;
+    border: solid #BDBCBC;
+    border-width:0px 1px 1px 0px;
+    border:1px solid #000;
+}
+.tableBox .Box_left table:first-child{
+    border-bottom: 4px solid #2E3B57;
+}
+.tableBox .Box_left table td{
+    width: 2.5%;
+    border:solid #BDBCBC;
+    border-width:1px 0px 0px 1px;
+    box-sizing: border-box;
+    display: block;
+    float: left;
+}
+.tableBox .Box_left table:first-child td > p,.tableBox .Box_left table td > div{
+    border: 4px solid #3B8C00;
+    display: block;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    line-height: 100%;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.42rem;
+}
+.tableBox .Box_left table td > div{
+    position: relative;
+}
+.tableBox .Box_left table td > div.red-circle{
+    border-color: #BB0100;
+}
+.tableBox .Box_left table td > div.blue-circle{
+    border-color: #0066CC;
+}
+.tableBox .Box_left table td > div .dt-lt-red{
+    display: inline-block;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    border: 6px solid #BB0000;
+    border-radius: 50%;
+}
+.tableBox .Box_left table td > div .dt-rb-blue{
+    display: inline-block;
+    position: absolute;
+    bottom: -2px;
+    right: 0px;
+    border: 6px solid #0066CC;
+    border-radius: 50%;
+}
+.tableBox .Box_left table td > div .he_count{
+    display: block;
+    font-size: 0.32rem;
+    vertical-align: middle;
+}
+.tableBox .Box_left table td > div .slantLineBlue{
+    float: left;
+    width: 0.32rem;
+    height: 0;
+    border: 1px solid #666666;
+    transform: rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);
+    -moz-transform: rotateZ(-45deg);
+    -o-transform: rotate(-125deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    position: absolute;
+    bottom: 0.11rem;
+    right: -0.05rem;
+}
+
+.Box_right{
+    background: #5F5D5D;
+    position: relative;
+}
+.Box_right li{
+    color:#fff;
+    writing-mode:tb-rl;
+    padding:7px;
+    text-align: center;
+    height:111px;
+    position: relative;
+}
+.Box_right li:nth-child(2){
+    border-top:2px solid #484B59;
+    border-bottom:2px solid #484B59;
+}
+.Box_right li:hover{cursor:pointer;}
+
+.Box_right li.active{
+    background: #ED4008;
+}
+.Box_right .openBox{
+    position: absolute;
+    bottom: 10%;
+    right: 70px;
+    z-index: 10;
+    width: 110px;
+    text-align: center;
+    display:none;
+}
+.Box_right .openBox .close{
+    background: #6E6E6D;
+    height:30px;
+    border:1px solid #fff;
+    line-height: 30px;
+}
+.Box_right .openBox .close p{
+    color:#fff;
+    font-size:12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.Box_right .openBox .close p:last-child{
+    margin-left:10px;
+}
+.Box_right .openBox .showCont{
+    font-size:30px;
+    font-weight: bold;
+    color:#fff;
+    height:100px;
+    background: #437391;
+    line-height: 100px;
+    border:1px solid #fff;
+}
+/*===*/
+.Box_right .openArea{
+    position: absolute;
+    top: 15%;
+    right: 90px;
+    z-index: 10;
+    width: 110px;
+    text-align: center;
+    display:none;
+    background: #fff;
+}
+.Box_right .openArea .closeA{
+    background: #6E6E6D;
+    height:30px;
+    border:1px solid #fff;
+    line-height: 30px;
+}
+.Box_right .openArea .closeA p{
+    color:#fff;
+    font-size:12px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.Box_right .openArea .closeA p:last-child{
+    margin-left:10px;
+}
+.Box_right .openArea .showContA{
+    font-size:30px;
+    font-weight: bold;
+    color:#F6E31D;
+    height:100px;
+    background: rgba(0,0,0,0.4);
+    line-height: 100px;
+    border:1px solid #fff;
+    margin:2px 3px;
+}
+.CountDown{
+    font-size:80px;
+    color:#fff;
+    font-weight:bold;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    z-index: 100;
+    display: none;
+}
+.code .cleft table td > div{
+    border: 5px solid #3B8C00;
+    display: block;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    line-height: 100%;
+    box-sizing: border-box;
+    border-radius: 50%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.42rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.code .cleft table td > div .dt-lt-red{
+    border:7px solid #BB0000;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.code .cleft table td > div .dt-rb-blue{
+    border:7px solid #0066CC;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+/*大的红红红红红红圈圈*/
+.tableList .bigRedColor {
+    color: #BB0000;
+    border-color: #BB0000 !important;
+}
+/*大的蓝蓝蓝蓝蓝蓝蓝蓝圈圈*/
+.tableList .bigBlueColor {
+    color: #0066CC;
+    border-color: #0066cc !important;
+}
+/*和字 的绿色大圈圈*/
+.tableList .bigGreenColor {
+    color: #3B8C00;
+    border-color: #3B8C00 !important;
+}
+/*td里的红圈圈*/
+.Box_left   .redColor{
+    border-color:#BB0000 !important;
+    width:22px;
+    border-radius: 50%;
+    height:22px;
+    position:relative;
+}
+/*td里的蓝圈圈*/
+.Box_left   .blueColor {
+    border-color:#0066CC !important;
+    width:22px;
+    border-radius: 50%;
+    height:22px;
+    position:relative;
+}
+/*td里的蓝蓝蓝蓝圈圈和字体*/
+.Box_left .blueColorText{
+    border-color:#0066CC !important;
+    width:22px;
+    border-radius: 50%;
+    height:22px;
+    color:#111;
+    text-align: center ;
+    font-size:0.32rem !important;
+    position: relative;
+}
+.Box_left .blueColorText:before{
+    content:"1"
+}
+/*td里的红红红红红圈圈和字体*/
+.Box_left .RedColorText{
+    border-color: #BB0000 !important;
+    border-radius: 50%;
+    color:#111;
+    text-align: center ;
+    font-size:0.32rem !important;
+    position: relative;
+}
+.Box_left .RedColorText:before{
+    content:"1"
+}
+/*字体圈圈里面的斜线*/
+.Box_left .roundSlantLine{
+    float: left;
+    width: 0.32rem;
+    height: 0;
+    border: 1px solid #666666;
+    transform: rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);
+    -moz-transform: rotateZ(-45deg);
+    -o-transform: rotate(-125deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    position: absolute;
+    bottom: 0.11rem;
+    right: -0.05rem;
+}
+
+/*td里实心红圈圈*/
+.Box_left .redColorCircle{
+    border-color:#BB0000 !important;
+    background: #BB0000;
+}
+/*td里的实心蓝圈圈*/
+.Box_left   .blueColorCircle {
+    border-color:#0066CC !important;
+    width:22px;
+    border-radius: 50%;
+    height:22px;
+    background: #0066CC;
+}
+/*圈圈上有红红红红红点的*/
+.Box_left  .dotRed{
+    display: inline-block;
+    position:absolute;
+    top:0.07rem;
+    left: 0;
+    border:0.03rem solid #BB0000;
+    border-radius:50%;
+}
+/*圈圈上有蓝蓝蓝蓝蓝蓝点的*/
+.Box_left  .dotBlue{
+    display: inline-block;
+    position:absolute;
+    bottom: 0.07rem;
+    right: 0px;
+    border:0.03rem solid #0066CC;
+    border-radius:50%;
+}
+.Box_left table:last-child td{
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+.Box_left table:last-child td.four-item p{
+    width: 30%;
+    height: 0;
+    padding-top: 30%;
+    margin: 7%;
+}
+.Box_left table:last-child td.aquare p{
+    width: 24%;
+    height: 0;
+    padding-top: 24%;
+    margin: 9.4%;
+}
+.Box_left table:last-child td.one-item p{
+    width: 90%;
+    padding-top: 90%;
+    margin: 5%;
+    border-radius: 50%;
+}
+/*一个 td 里面 ④个小圆圆*/
+/*空心蓝色小圈*/
+.Box_left .smallBlueHollow{
+    border:1px solid #0066CC;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:1px;
+    float:left;
+}
+/*空心红色小圈*/
+.Box_left .smallRedHollow{
+    border:1px solid #BB0000;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:1px;
+    float:left;
+}
+/*占位置的透明框*/
+.Box_left .opacityBorder{
+    border:1px solid transparent;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:1px;
+    float:left;
+    background: transparent;
+}
+
+/*斜线*/
+.Box_left .slantLineBlue{
+    float:left;
+    width:7px;
+    height:0;
+    border:1px solid #0066CC;
+    transform:rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);/*Safari 4+,Google Chrome 1+  */
+    -moz-transform: rotateZ(-45deg);/*Firefox 3.5+*/
+    -o-transform:rotate(-45deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+}
+
+.Box_left .slantLineRed{
+    float:left;
+    width:7px;
+    height:0;
+    border:1px solid #BB0000;
+    transform:rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);/*Safari 4+,Google Chrome 1+  */
+    -moz-transform: rotateZ(-45deg);/*Firefox 3.5+*/
+    -o-transform:rotate(-45deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    margin-top:6px;
+}
+
+/*小的实心圆*/
+.Box_left .smallBlueSolid{
+    border:1px solid #0066CC;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:1px;
+    float:left;
+    background: #0066CC;
+}
+/*空心红色小圈*/
+.Box_left .smallRedSolid{
+    border:1px solid #BB0000;
+    width:6px;
+    border-radius: 50%;
+    height:6px;
+    margin:1px;
+    float:left;
+    background: #BB0000;
+}
+
+
+/*显示说明的斜线*/
+.express .showSlantLineBlue{
+    float:left;
+    width:18px;
+    height:0;
+    border:1px solid #0066CC;
+    transform:rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);/*Safari 4+,Google Chrome 1+  */
+    -moz-transform: rotateZ(-45deg);/*Firefox 3.5+*/
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    margin-left:2px;
+}
+.express .showSlantLineRed{
+    float:left;
+    width:18px;
+    height:0;
+    border:1px solid #BB0000;
+    transform:rotateZ(-45deg);
+    -webkit-transform: rotateZ(-45deg);/*Safari 4+,Google Chrome 1+  */
+    -moz-transform: rotateZ(-45deg);/*Firefox 3.5+*/
+    filter: progid:DXImageTransform.Microsoft.BasicImage(Rotation=0.45);
+    margin-left:2px;
+}
+
+
+.express .ShowRedColorCircle{
+    border:2px solid #BB0000;
+    width:16px;
+    border-radius: 50%;
+    height:16px;
+    background: #BB0000;
+    margin-left:5px;
+}
+/*td里的实心蓝圈圈*/
+.express .ShowBlueColorCircle {
+    border:2px solid #0066CC;
+    width:16px;
+    border-radius: 50%;
+    height:16px;
+    background: #0066CC;
+    margin-left:5px;
+}
+/*td里的红圈圈*/
+.express   .ShowRredColor{
+    border:2px solid #BB0000;
+    width:16px;
+    border-radius: 50%;
+    height:16px;
+    margin-left:5px;
+}
+/*td里的蓝圈圈*/
+.express .ShowBlueColor {
+    border:2px solid #0066CC;
+    width:16px;
+    border-radius: 50%;
+    height:16px;
+    margin-left:5px;
+}
+
+/*操作*/
+.layui-layer-title{
+    font-size: 0.20rem !important;
+}
+.opeate{
+    position: fixed;
+    bottom: 0.05rem;
+    right:0.05rem
+}
+.opeate .f-div{
+    position: relative;
+}
+.opeate ul{
+
+}
+.opeate li.r-btn{
+    width: 0.20rem;
+    font-size: 0.22rem;
+    border: 1px solid #4A94FB;
+    padding: 0.16rem 0.08rem;
+    background: -webkit-linear-gradient(top, rgba(1,132,253,1), rgba(5,198,253,0.9), rgba(1,132,253,1)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom,rgba(1,132,253,1), rgba(5,198,253,0.9), rgba(1,132,253,1)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(top,rgba(1,132,253,1), rgba(5,198,253,0.9), rgba(1,132,253,1)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom,rgba(1,132,253,1), rgba(5,198,253,0.9), rgba(1,132,253,1)); /* 标准的语法 */
+    -webkit-border-radius:0.05rem;
+    -moz-border-radius:0.05rem;
+    border-radius:0.05rem;
+    color: #fff;
+    cursor: pointer;
+}
+.opeate li.logout{
+    background: -webkit-linear-gradient(top,rgba(116, 112, 113, 0.9), rgb(225, 251, 253),rgba(116, 112, 113, 0.9)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom,rgba(116, 112, 113, 0.9), rgb(225, 251, 253),rgba(116, 112, 113, 0.9)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(top,rgba(116, 112, 113, 0.9), rgb(225, 251, 253),rgba(116, 112, 113, 0.9)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom,rgba(116, 112, 113, 0.9), rgb(225, 251, 253),rgba(116, 112, 113, 0.9)); /* 标准的语法 */
+}
+.opeate .s-div{
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*right: 0.29rem;*/
+    /*width: 1.2rem;*/
+    /*height: 97%;*/
+
+    /*border: 1px solid #908c89;*/
+    /*background: #6f6d6d;*/
+    min-height: 1.6rem;
+    color: #666;
+    border-radius: 0.05rem;
+}
+.opeate .s-div ul{
+    overflow: hidden;
+}
+.opeate .s-div li{
+    width: 50%;
+    font-size: 0.16rem;
+    text-align: center;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0.28rem 0;
+}
+.opeate .s-div li._tj{
+    width: 100%;
+    margin: 0;
+}
+.opeate .s-div li button{
+    width: 58%;
+    margin: 0 auto;
+    height: 0.42rem;
+    line-height: 0.42rem;
+    background: none;
+    border:1px solid #bbb;
+    -webkit-border-radius: 0.06rem;
+    -moz-border-radius: 0.06rem;
+    border-radius: 0.06rem;
+    cursor: pointer;
+    color: #fff;
+    background: #0A6D84;
+    border: none;
+}
+.opeate .s-div li#kaixue button{
+    background: #ff0021;
+}
+.opeate .s-div li .change_trade_status{
+    /*background-color: #fff;*/
+    /*border: 1px solid #eee;*/
+    /*color: #666;*/
+}
+.opeate .s-div li._tj button{
+    width: 30%;
+    color: #fff;
+    background: #FC170F;
+}
+.opeate .layui-layer-title{
+    padding: 0;
+    text-align: center;
+}
+.layui-layer-page .title-back{
+    left: 0;
+    width: 18px;
+}
+.layui-layer-setwin .layui-layer-back{
+    background: url("../images/left.png") no-repeat 100% 100%;
+    background-size: 100%;
+}
+
+.opeate-t-btn{
+    /*padding-top: 0.1rem;*/
+    height: 1.6rem;
+    line-height: 1.6rem;
+    font-size: 0;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+.opeate-t-btn button{
+    font-size: 0.22rem;
+    color: #fff;
+    padding: 0.06rem 0.12rem;
+    border:1px solid #BB0000;
+    background-color: #BB0000;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    -webkit-border-radius:0.08rem;
+    -moz-border-radius:0.08rem;
+    border-radius:0.08rem;
+    cursor: pointer;
+}
+#_submit{
+    padding-bottom: 15px;
+}
+#_submit ul{
+    font-size: 0;
+}
+#_submit .tj-btn li{
+    padding: 0.08rem 0;
+    font-size: 0.5rem;
+    display: inline-block;
+    border:1px solid #b1c11e;
+    width: 27.33%;
+    margin: 20px 2.6%;
+    text-align: center;
+    color: #666;
+    -webkit-border-radius:6px;
+    -moz-border-radius:6px;
+    border-radius:6px;
+    cursor: pointer;
+    background: #b1c11e;
+    color: #fff;
+}
+#_submit .tj-btn li.active{
+    box-shadow: 1px 1px 2px 2px #BB0000;
+    background:red;
+    border: 1px solid red;
+}
+#_submit .lh-more{
+    padding: 12px 0;
+}
+#_submit .lh-more .row{
+    width: 49%;
+    display: inline-block;
+    text-align: center;
+}
+#_submit .lh-more .row label{
+    padding: 0.1rem 0.15rem;
+    font-size: 0.5rem;
+    background: #f60;
+    color: #fff;
+    -webkit-border-radius:0.06rem;
+    -moz-border-radius:0.06rem;
+    border-radius:0.06rem;
+    cursor: pointer;
+}
+#_submit .lh-more .row label.active{
+    box-shadow: 1px 1px 2px 2px red;
+    background:red;
+    border: 1px solid red;
+}
+#_submit .lh-more .row input{
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+#_submit .show-ret{
+    text-align: center;
+}
+#_submit .show-ret span{
+    display: inline-block;
+    margin: 0.1rem auto;
+    width: 70%;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    text-align: center;
+    font-size: 0.5rem;
+    color: red;
+    font-weight: bold;
+}
+#_submit .btn-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#_submit .btn-div button{
+    display: block;
+    width: 36%;
+    margin: 0 auto;
+    padding: 8px 0;
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px;
+    background: #DD5145;
+    border:none;
+    font-size: 20px;
+    color: #fff;
+    box-shadow: 2px 2px 2px #666;
+    cursor: pointer;
+}
+#_submit .btn-div .clear_btn{
+    background: #FFC11C;
+}
+
+
+.tableBox .Box_left #table_2 td > div{
+    /*display: flex;*/
+    width: 45%;
+    min-width: 45%;
+    max-width: 45%;
+    height: 100%;
+    margin: 0;
+    position: relative !important;
+    border: none;
+    border-radius: 0;
+}
+.tableBox .Box_left #table_2 td > div.left{
+    float: left;
+}
+.tableBox .Box_left #table_2 td > div.right{
+    float: right;
+}
+.tableBox .Box_left #table_2 .red_k{
+    width: 100%;
+    height: 45%;
+    border-radius: 50%;
+    border: 1px solid #BB0000;
+}
+.tableBox .Box_left #table_2 .blue_k{
+    width: 100%;
+    height: 45%;
+    border-radius: 50%;
+    border:1px solid #0066CC;
+}
+.tableBox .Box_left #table_2 .red_s{
+    width: 100%;
+    height: 45%;
+    border-radius: 50%;
+    border: 1px solid #BB0000;
+    background-color: #BB0000;
+}
+.tableBox .Box_left #table_2 .blue_s{
+    width: 100%;
+    height: 45%;
+    border-radius: 50%;
+    border:1px solid #0066CC;
+    background-color: #0066cc;
+}
+.tableBox .Box_left #table_2 .red_l{
+    width: 35%;
+    height: 45%;
+    border-radius: 50%;
+    border: 1px solid #BB0000;
+    background-color: #BB0000;
+    margin-left: 30%;
+    transform:rotate(45deg);
+}
+.tableBox .Box_left #table_2 .blue_l{
+    width: 35%;
+    height: 45%;
+    border-radius: 50%;
+    border:1px solid #0066CC;
+    background-color: #0066cc;
+    margin-left: 30%;
+    transform:rotate(45deg);
+}
+.tableBox .Box_left #table_2 p.bottom {
+    bottom: 0;
+    position: absolute;
+}
+.tableBox .Box_left #table_2 td > div.red-circle{
+    border: 2px solid #BB0000;
+    width: 100% !important;
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+}
+.tableBox .Box_left #table_2 td > div.blue-circle{
+    border:2px solid #0066CC;
+    width: 100% !important;
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 50%;
+}
+

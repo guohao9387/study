@@ -1,0 +1,208 @@
+.zhuxiao {
+    text-align: left;
+}
+
+.zhux-l, .zhux-r {
+    width: 25%;
+    float: left;
+}
+
+.zhux-l img {
+    width: 2rem;
+
+}
+
+.zhux-ce {
+    width: 50%;
+    text-align: center;
+    float: left;
+    font-size: 1.7rem;
+}
+
+.zhux-r {
+    text-align: right;
+}
+
+.sou {
+    padding: 0.5rem;
+}
+
+.sou button {
+    width: 85%;
+    background: #4581b5;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    color: white;
+    padding: 0.1rem 0;
+    border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+}
+
+.sou .layui-row .layui-col-xs4:last-child button {
+    margin-left: 15%;
+}
+
+.sou input {
+    margin-left: -10%;
+    width: 120%;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    border: none;
+    background: #FFFFFF;
+    text-align: center;
+}
+
+.table {
+    padding: 0.5rem;
+}
+
+table thead th,
+table tbody tr {
+    text-align: center;
+}
+
+.mki, .muc,.mct {
+    background: #FFFFFF;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd
+}
+
+.mci {
+    background: #bbbbbb;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.mki td,
+.mci th,
+.mki tr th,
+.muc td,
+.muc tr th,
+.mct tr th,
+.mct td{
+    padding: 0.2rem 0;
+    text-align: center;
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    font-size: 1.4rem;
+    white-space: nowrap;
+}
+
+.mci th {
+    color: #5f5f5f;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+}
+
+.mki tr td, .mci tr th, .mki tr th, .muc tr td, .muc tr th {
+    width: 20%;
+}
+.mct tr td:first-child{
+    width: 33.5%;
+}
+.mct tr td:last-child{
+    width: 76.5%;
+}
+.mci tr th:last-child,
+.mki tr td:last-child,
+.mki tr th:last-child {
+    width: 40%;
+}
+
+.layui-form-item {
+    margin-bottom: 0 !important;
+    text-align: center;
+}
+
+.layui-input-block {
+    margin-left: 0 !important;
+    min-height: 2rem;
+}
+
+.mki .layui-input-block .layui-form-switch,
+.muc .layui-input-block .layui-form-switch,
+.mct .layui-input-block .layui-form-switch{
+    height: 2rem;
+    margin: 0;
+}
+
+.mki td button, .muc td button,.mct td button {
+    width: 28%;
+    margin: 0 auto;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.4rem;
+    padding: 0;
+    border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+}
+
+.mki tbody,.mct{
+    display: none;
+}
+
+.nonedata {
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.wh {
+    color: white;
+}
+
+.muc tr td .so,.mct tr td .so{
+    width: 50%;
+
+    padding: 0.3rem 0;
+    margin-bottom: -0.65rem;
+    padding-top: 0.4rem;
+    float: left;
+    text-align: center;
+
+}
+
+.ok-r img {
+    width: 1.5rem;
+}
+
+.rong img{
+    width: 1.2rem;
+}
+
+.ok-r {
+    background: #4480b4;
+}
+
+.rong {
+    background: #b36161;
+}
+.muc tr td .input,.mct tr td .input{
+    width: 38%;
+    float: left;
+
+}
+.input input{
+    width: 100%;
+    color: black;
+    text-align: center;
+    border: 1px solid #ddd;
+    background: #FFFFFF;
+    border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+}
+.sc{
+    float: left;
+    width: 30%;
+    margin-left: 0.1rem;
+    clear: initial!important;
+}
+.layui-form-onswitch em{
+    margin-right: 0;
+    margin-left: -0.5rem;
+}

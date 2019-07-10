@@ -1,0 +1,242 @@
+td {
+    color: #000;
+}
+
+.nn-text {
+    position: relative;
+    margin-top: 10px;
+    width: 45%;
+    padding: 1%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid white;
+    padding: 10px 0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+
+}
+
+.lists .nn-text:nth-child(2n+1) {
+    margin-right: 10%;
+}
+
+.l-hang1 {
+
+    padding: 0 10px;
+    line-height: 40px;
+    height: 40px;
+}
+
+.l-hang1 .nn-hao {
+
+    background: #1D2027;
+    color: white;
+
+    border-top: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+
+    padding: 0 10px;
+    line-height: 40px;
+    height: 40px;
+    box-shadow: 0px 3px 10px #707370;
+    -webkit-box-shadow: 0px 3px 10px #707370;
+
+}
+
+.l-hang1 > div {
+    float: left;
+}
+
+.nn-hao p:first-child {
+    font-size: 17px;
+    float: left;
+    line-height: 40px;
+    height: 40px;
+}
+
+.nn-hao p:last-child {
+    font-size: 15px;
+    float: right;
+    margin-left: 15px;
+    line-height: 40px;
+    height: 40px;
+}
+
+.l-hang1 .nn-loading {
+    width: auto;
+    padding: 0 10px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #30A0A0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+
+    margin-left: 5%;
+    margin-right: 10%;
+}
+
+.nn-xian {
+    width: auto;
+    font-size: 16px;
+}
+
+.nn-xian span {
+    font-size: 17;
+    margin-left: 15px;
+}
+
+.clearify:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.l-hang2 {
+    padding: 0 10px;
+    margin-top: 15px;
+    position: relative;
+}
+
+.l-hang2 .first-t {
+    width: 110px;
+    float: left;
+    background: #1D2027;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+}
+
+.first-t tr td {
+    width: 95%;
+    margin-left: 2.5%;
+    border-bottom: 1px solid black;
+    height: 36px;
+}
+
+table tr td {
+    float: left;
+}
+
+.first-t tr td div:first-child {
+    font-size: 17px;
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    margin-left: 10px;
+}
+
+.first-t tr:first-child td div:first-child {
+    color: red;
+}
+
+.first-t tr td div:last-child {
+    font-size: 12px;
+    color: white;
+    float: right;
+    margin-right: 20px;
+    border: 2px solid white;
+    border-radius: 50%;
+
+    width: 30px;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.first-t tr:nth-child(n+2) td div:first-child {
+    color: blue;
+}
+
+.second-t {
+    width: calc(100% - 110px);
+    background: #ffffff;
+    z-index: 2;
+    position: relative;
+}
+
+.second-t tr td {
+    border: solid #a4a1a1;
+
+    border-width: 1px 0px 0px 1px;
+
+    width: 10%;
+    display: block;
+    text-align: center;
+    float: left;
+    height: 37px;
+}
+
+.second-t tr td:first-child {
+    border-left: none;
+}
+.second-t tr td > div{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.second-t tr td > div p{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.second-t tr td div.red {
+    color: red;
+    position: relative;
+    height: 37px;
+}
+
+.second-t tr td div div:nth-child(1) {
+    font-size: 13px;
+}
+
+.win {
+    color: white;
+    /*position: absolute;*/
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.second-t tr td div div:nth-child(2) {
+    font-size: 11px;
+}
+
+.second-t tr td div.red .win {
+    background: red;
+}
+
+.second-t tr td div.blue {
+    color: blue;
+    position: relative;
+    height: 37px;
+}
+
+.second-t tr td div.blue .win {
+    background: blue;
+}
+
+.letter-time {
+    position: absolute;
+    width: 12%;
+    text-align: center;
+    left: 51%;
+    top: 15%;
+    font-size: 74px;
+    color: #9A9089;
+    z-index: 2;
+    display: none;
+}
+
+.first-t tr:last-child td {
+    border-bottom: none;
+}
