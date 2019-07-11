@@ -468,6 +468,7 @@ class User extends Common{
         $param = input('get.');
         $where = array();
         $where[]=['status','=',1];
+        $where[]=['p_agent_id','=',0];
         if(request()->isGet()){
             if(!empty($param['agent_name'])){
                 $where[]=['agent_name','=',$param['agent_name']];
@@ -475,23 +476,54 @@ class User extends Common{
             if(!empty($param['nickname'])){
                 $where[]=['nickname','=',$param['nickname']];
             }
-            if(!empty($param['phone'])){
-                $where[]=['phone','=',$param['phone']];
-            }
-            if(!empty($param['p_agent_id'])){
-                $map = [];
-                $map[]=['status','=',1];
-                $map[] = ['agent_name','=',$param['p_agent_id']];
-                $id = db::name('agent')->where($map)->value('agent_id');
-                if($id){
-                    $where[]=['p_agent_id','=',$id];
-                }else{
-                    $where[]=['agent_id','=',0];
-                }
-            }
-
             if(!empty($param['status'])){
                 $where[]=['status','=',$param['status']];
+            }
+            if(!empty($param['start'])){
+                $where[]=['add_time','>=',$param['start']];
+            }
+            if(!empty($param['end'])){
+                $where[]=['add_time','<=',$param['end']];
+            }
+        }
+        $page = isset($param['page_number'])?$param['page_number']:20;
+        //dump($where);die;
+        $list = db::name('agent')->where($where)->order(['money'=>'desc','agent_id'=>'desc'])->paginate($page,false,['query'=>$param]);
+        //dump($list);die;
+        $this->assign('list',$list);
+        $count = db::name('agent')
+            ->where($where)
+            ->field('count(agent_id) count,sum(money) sum_money')
+            ->find();
+        $this->assign('count',$count);
+        $this->assign('page_number',$this->page_number);
+
+        return $this->fetch();
+    }
+    public function under_agent_list(){
+        $param = input('get.');
+        $where = array();
+        $where[]=['status','=',1];
+        if(request()->isGet()){
+            if(!empty($param['agent_name'])){
+                $where[]=['agent_name','=',$param['agent_name']];
+            }
+            if(!empty($param['nickname'])){
+                $where[]=['nickname','=',$param['nickname']];
+            }
+            if(!empty($param['status'])){
+                $where[]=['status','=',$param['status']];
+            }
+            if(!empty($param['p_agent_id'])){
+                $map=[];
+                $map[]=['status','=',1];
+                $map[]=['agent_name','=',$param['p_agent_id']];
+                $agent_id=db::name('agent')->where($map)->value('agent_id');
+                if($agent_id){
+                    $where[]=['p_agent_id','=',$agent_id];
+                }else{
+                    $where[]=['p_agent_id','=',''];
+                }
             }
             if(!empty($param['start'])){
                 $where[]=['add_time','>=',$param['start']];

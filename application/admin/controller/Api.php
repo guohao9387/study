@@ -555,6 +555,80 @@ class Api extends Common{
         $param = input('get.');
         $where = array();
         $where[]=['status','=',1];
+        $where[]=['p_agent_id','=',0];
+        if(request()->isGet()){
+            if(!empty($param['agent_name'])){
+                $where[]=['agent_name','=',$param['agent_name']];
+            }
+            if(!empty($param['nickname'])){
+                $where[]=['nickname','=',$param['nickname']];
+            }
+            if(!empty($param['phone'])){
+                $where[]=['phone','=',$param['phone']];
+            }
+            if(!empty($param['p_agent_id'])){
+                $map = [];
+                $map[]=['status','=',1];
+                $map[] = ['agent_name','=',$param['p_agent_id']];
+                $id = db::name('agent')->where($map)->value('agent_id');
+                if($id){
+                    $where[]=['p_agent_id','=',$id];
+                }else{
+                    $where[]=['agent_id','=',0];
+                }
+            }
+
+            if(!empty($param['status'])){
+                $where[]=['status','=',$param['status']];
+            }
+            if(!empty($param['start'])){
+                $where[]=['add_time','>=',$param['start']];
+            }
+            if(!empty($param['end'])){
+                $where[]=['add_time','<=',$param['end']];
+            }
+        }
+        $list = db::name('agent')
+            ->where($where)
+            ->order(['money'=>'desc','agent_id'=>'desc'])
+            ->field('agent_id,agent_name,pwd,nickname,money,last_login_ip,last_login_time,add_ip,add_time,invite_status,login_status')
+            ->select();
+        $new = [];
+        foreach($list as $key=>&$v){
+            $new[$key][] = $v['agent_id'];
+            $new[$key][] = $v['agent_name'];
+            $new[$key][] = $v['nickname'];
+            $new[$key][] = $v['pwd'];
+            $new[$key][] = $v['money'];
+            $new[$key][] = $v['last_login_ip'];
+            $new[$key][] = $v['last_login_time'];
+            $new[$key][] = $v['add_ip'];
+            $new[$key][] = $v['add_time'];
+            $new[$key][] = str_type($v['invite_status']);
+            $new[$key][] = str_type($v['login_status']);
+        }
+        $name ='一级代理_'.date('Y-m-d H:i:s');
+        $title = "<tr>
+                <th>ID</th>
+                <th>账号</th>
+                <th>昵称</th>
+                <th>密码</th>
+                <th>余额</th>
+                <th>最后登陆IP</th>
+                <th>最后登陆时间</th>
+                <th>注册IP</th>
+                <th>注册时间</th>
+                <th>邀请状态</th>
+                <th>登陆状态</th>
+                </tr>";
+        excelData($new,$title,$name);
+    }
+    public function excel_under_agent_list(){
+        ini_set('memory_limit','30720M');    // 临时设置最大内存占用为3G
+        set_time_limit(0);   // 设置脚本最大执行时间 为0 永不过期
+        $param = input('get.');
+        $where = array();
+        $where[]=['status','=',1];
         if(request()->isGet()){
             if(!empty($param['agent_name'])){
                 $where[]=['agent_name','=',$param['agent_name']];
@@ -607,8 +681,8 @@ class Api extends Common{
             $new[$key][] = str_type($v['invite_status']);
             $new[$key][] = str_type($v['login_status']);
         }
-        $name ='代理_'.date('Y-m-d H:i:s');
-        $title = "<tr>
+        $name ='二级代理_'.date('Y-m-d H:i:s');
+        $title ="<tr>
                 <th>ID</th>
                 <th>账号</th>
                 <th>昵称</th>
