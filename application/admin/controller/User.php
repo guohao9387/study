@@ -523,7 +523,7 @@ class User extends Common{
                 if($agent_id){
                     $where[]=['p_agent_id','=',$agent_id];
                 }else{
-                    $where[]=['p_agent_id','=',''];
+                    $where[]=['agent_id','=',0];
                 }
             }
             if(!empty($param['start'])){
