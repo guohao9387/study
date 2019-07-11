@@ -504,6 +504,7 @@ class User extends Common{
         $param = input('get.');
         $where = array();
         $where[]=['status','=',1];
+        $where[]=['p_agent_id','<>',0];
         if(request()->isGet()){
             if(!empty($param['agent_name'])){
                 $where[]=['agent_name','=',$param['agent_name']];
