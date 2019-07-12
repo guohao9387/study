@@ -92,6 +92,10 @@ class Login extends Controller{
                 return json($data);
             }
         }else{
+            if(!cache('config')){
+                reset_cache();
+            }
+            $GLOBALS['title'] =cache('config').'代理后台管理系统';
             return $this->fetch();
         }
     }

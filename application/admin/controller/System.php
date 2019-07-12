@@ -7,10 +7,6 @@ class System extends Common{
     }
     /*系统设置*/
     public function  index(){
-        // // echo 4.5-3671-200-1598.5+33567.4-50-11296.5+10218-992-697+221.5+66.1+58.2;die;
-        // $a=29687.10-3715.60-100.00-11296.50+8850.50-69.00-1489.50+221.50+66.10+114.70;
-        // echo $a;
-        // die;
         if(request()->isPost()){
             $data=input('post.');//接收所有参数信息
             //foreach中逐条做数据修改
@@ -24,7 +20,7 @@ class System extends Common{
                 $info['id'] = $k;
                 $info['value'] = $v;
                 $info['update_time'] = date('Y-m-d H:i:s');
-                $result = db::name('config')->cache('config')->update($info);
+                $result = db::name('config')->update($info);
                 if(!$result){
                     $x ++;
                 }
@@ -35,6 +31,7 @@ class System extends Common{
                 $data['status'] = 0;
                 $data['msg'] = '配置失败';
             }else{
+                reset_cache();
                 db::commit();
                 $data = array();
                 $data['status'] = 1;
@@ -42,7 +39,7 @@ class System extends Common{
             }
             return json($data);
         }else{
-            $list  = db::name('config')->cache('config')->order('id asc')->select();
+            $list  = db::name('config')->order('id asc')->select();
             $this->assign('list',$list);
             return $this->fetch();
         }

@@ -1,7 +1,14 @@
 <?php
 use think\Db;
 use ip\IpLocation;
-
+function reset_cache(){
+    $system = db::name('config')->select();
+    $sys = [];
+    foreach($system as $v){
+        $sys[$v['key']] = $v['value'];
+    }
+    cache('config',$sys);
+}
 function is_weixin(){
     if ( strpos($_SERVER['HTTP_USER_AGENT'],
         'MicroMessenger') !== false ) {

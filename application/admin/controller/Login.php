@@ -66,11 +66,10 @@ class Login extends Controller{
                 return json($data);
             }
         }else{
-            $config=cache('config');
-            if(!$config['title']){
-                $config['title']=db::name('config')->where('key','=','title')->value('value');
+            if(!cache('config')){
+                reset_cache();
             }
-            $GLOBALS['title'] =$config['title'].'后台管理系统';
+            $GLOBALS['title'] =cache('config').'后台管理系统';
             return $this->fetch();
         }
     }
