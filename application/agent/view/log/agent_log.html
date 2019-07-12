@@ -48,17 +48,15 @@
             </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
             <a href="{$_SERVER['REQUEST_URI']}?start={$mytime}"  class="layui-btn layui-btn-normal">重置</a>
-            <!--<a href="{:url('agent/api/excel_log',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>-->
-
         </form>
       </div>
         <div class="layui-row">
-            <a href="{:url('agent/log/log',input('get.'))}&start={:quick_time_select(1)}&end={:quick_time_select(2)}" class="layui-btn layui-btn-sm layui-btn-normal">昨天</a>
-            <a href="{:url('agent/log/log',input('get.'))}&start={:quick_time_select(2)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">今天</a>
-            <a href="{:url('agent/log/log',input('get.'))}&start={:quick_time_select(3)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本周</a>
-            <a href="{:url('agent/log/log',input('get.'))}&start={:quick_time_select(4)}&end={:quick_time_select(5)}" class="layui-btn layui-btn-sm layui-btn-normal">上周</a>
-            <a href="{:url('agent/log/log',input('get.'))}&start={:quick_time_select(6)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本月</a>
-            <a href="{:url('agent/log/log',input('get.'))}&start={:quick_time_select(7)}&end={:quick_time_select(8)}" class="layui-btn layui-btn-sm layui-btn-normal">上月</a>
+            <a href="{:url('agent/Log/log',input('get.'))}&start={:quick_time_select(1)}&end={:quick_time_select(2)}" class="layui-btn layui-btn-sm layui-btn-normal">昨天</a>
+            <a href="{:url('agent/Log/log',input('get.'))}&start={:quick_time_select(2)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">今天</a>
+            <a href="{:url('agent/Log/log',input('get.'))}&start={:quick_time_select(3)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本周</a>
+            <a href="{:url('agent/Log/log',input('get.'))}&start={:quick_time_select(4)}&end={:quick_time_select(5)}" class="layui-btn layui-btn-sm layui-btn-normal">上周</a>
+            <a href="{:url('agent/Log/log',input('get.'))}&start={:quick_time_select(6)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本月</a>
+            <a href="{:url('agent/Log/log',input('get.'))}&start={:quick_time_select(7)}&end={:quick_time_select(8)}" class="layui-btn layui-btn-sm layui-btn-normal">上月</a>
         </div>
       <xblock>
           <span class="x-right" style="line-height:40px">数量：{$count} 条</span>
@@ -81,7 +79,7 @@
                 <td>{$val['add_ip']|getCity}</td>
                 <td>{$val['add_time']}</td>
                 <td class="td-manage">
-                    <button class="layui-btn layui-btn-sm " onclick="x_admin_show('查看','/agent/log/log_info?id={$val.id}')">查看</button>
+                    <button class="layui-btn layui-btn-sm " onclick="x_admin_show('查看','/agent/Log/log_info?id={$val.id}')">查看</button>
                 </td>
             </tr>
             {/volist}

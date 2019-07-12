@@ -36,18 +36,15 @@ class common extends Controller{
         if(empty($this->admin)){
             $this->redirect('/admin/Login/login');
         }
-//        if($this->admin!=1){
-//            $where = [];
-//            $where[] = ['aid','=',$this->admin];
-//            $where[] = ['status','=',1];
-//            $info = db::name('admin')->where($where)->field('action,control')->find();
-//        }
-        $system = db::name('config')->select();
-        $sys = [];
-        foreach($system as $v){
-            $sys[$v['key']] = $v['value'];
+        $this->config = cache('config');
+        if(!$this->config){
+            $system = db::name('config')->cache('config')->select();
+            $sys = [];
+            foreach($system as $v){
+                $sys[$v['key']] = $v['value'];
+            }
+            $this->config = $sys;
         }
-        $this->config = $sys;
         $GLOBALS['title'] =$this->config['title'].'后台';
         $this->page_number = db::name('page_number')->cache('page_number')->field('num')->select();
         $mytime=quick_time_select(2);

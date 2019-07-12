@@ -1,7 +1,6 @@
 <?php
 namespace app\agent\controller;
 use think\Db;
-use app\admin\model\userForm;
 class Api extends Common{
     public function initialize(){
         parent::initialize();

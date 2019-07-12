@@ -24,7 +24,7 @@
         <i title="展开左侧栏" class="iconfont">&#xe699;</i>
     </div>
     <ul class="layui-nav right" lay-filter="">
-        <li class="layui-nav-item to-index"><a href="/agent/login/logout">安全退出</a></li>
+        <li class="layui-nav-item to-index"><a href="/agent/Login/logout">安全退出</a></li>
     </ul>
 
 </div>
@@ -43,32 +43,32 @@
     <ul class="sub-menu">
         {if $p_agent_id==0}
         <li>
-            <a _href="/agent/user/agent_list">
+            <a _href="/agent/User/agent_list">
                 <i class="iconfont">&#xe6a7;</i>
                 <cite>代理列表</cite>
             </a>
         </li >
         {/if}
         <li>
-            <a _href="/agent/user/user_list">
+            <a _href="/agent/User/user_list">
                 <i class="iconfont">&#xe6a7;</i>
                 <cite>会员列表</cite>
             </a>
         </li >
         <li>
-            <a _href="/agent/agent/code">
+            <a _href="/agent/Agent/code">
                 <i class="iconfont">&#xe6a7;</i>
                 <cite>长效二维码</cite>
             </a>
         </li >
         <li>
-            <a _href="/agent/agent/money_list?start={$mytime}">
+            <a _href="/agent/Agent/money_list?start={$mytime}">
                 <i class="iconfont">&#xe6a7;</i>
                 <cite>资金记录</cite>
             </a>
         </li >
         <li>
-            <a _href="/agent/agent/personal">
+            <a _href="/agent/Agent/personal">
                 <i class="iconfont">&#xe6a7;</i>
                 <cite>修改密码</cite>
             </a>
@@ -84,19 +84,19 @@
         </a>
         <ul class="sub-menu">
             <li>
-                <a _href="/agent/withdraw/bank_list">
+                <a _href="/agent/Withdraw/bank_list">
                     <i class="iconfont">&#xe6a7;</i>
                     <cite>我的银行卡</cite>
                 </a>
             </li >
             <li>
-                <a _href="/agent/withdraw/withdraw">
+                <a _href="/agent/Withdraw/withdraw">
                     <i class="iconfont">&#xe6a7;</i>
                     <cite>我要提现</cite>
                 </a>
             </li >
             <li>
-                <a _href="/agent/withdraw/withdraw_list?start={$mytime}">
+                <a _href="/agent/Withdraw/withdraw_list?start={$mytime}">
                     <i class="iconfont">&#xe6a7;</i>
                     <cite>我的提现记录</cite>
                 </a>
@@ -111,13 +111,13 @@
         </a>
         <ul class="sub-menu">
             <li>
-                <a  _href="/agent/order/order_list?start={$mytime}">
+                <a  _href="/agent/Order/order_list?start={$mytime}">
                     <i class="iconfont">&#xe6a7;</i>
                     <cite>平仓记录</cite>
                 </a>
             </li >
             <li>
-                <a  _href="/agent/order/keep_order_list">
+                <a  _href="/agent/Order/keep_order_list">
                     <i class="iconfont">&#xe6a7;</i>
                     <cite>持仓记录</cite>
                 </a>
@@ -132,7 +132,7 @@
         </a>
         <ul class="sub-menu">
             <li>
-                <a _href="/agent/log/log?start={$mytime}">
+                <a _href="/agent/Log/log?start={$mytime}">
                     <i class="iconfont">&#xe6a7;</i>
                     <cite>操作日志</cite>
                 </a>

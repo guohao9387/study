@@ -95,14 +95,14 @@
         //监听提交
         form.on('submit(add)', function(data){
             $('.layui-btn').attr("disabled",true);
-            $.post("/agent/agent/personal",data.field,function(res){
+            $.post("/agent/Agent/personal",data.field,function(res){
                 if(res.status==0){
                     layer.msg(res.msg,{icon: 2,time:2000},function(){
                         $('.layui-btn').removeAttr("disabled");
                     });
                 }else{
                     layer.msg(res.msg,{icon: 1,time:1000},function(){
-                        window.location.href="/agent/login/logout";
+                        window.location.href="/agent/Login/logout";
                     });
                 }
             },'json');

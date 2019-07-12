@@ -66,7 +66,11 @@ class Login extends Controller{
                 return json($data);
             }
         }else{
-            $GLOBALS['title'] ='内部学习系统后台管理系统';
+            $config=cache('config');
+            if(!$config['title']){
+                $config['title']=db::name('config')->where('key','=','title')->value('value');
+            }
+            $GLOBALS['title'] =$config['title'].'后台管理系统';
             return $this->fetch();
         }
     }

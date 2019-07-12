@@ -42,7 +42,7 @@ class System extends Common{
             }
             return json($data);
         }else{
-            $list  = db::name('config')->order('id asc')->select();
+            $list  = db::name('config')->cache('config')->order('id asc')->select();
             $this->assign('list',$list);
             return $this->fetch();
         }

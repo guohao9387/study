@@ -104,7 +104,7 @@
         //监听提交
         form.on('submit(add)', function(data){
             $('.layui-btn').attr("disabled",true);
-            $.post("/agent/withdraw/withdraw",data.field,function(res){
+            $.post("/agent/Withdraw/withdraw",data.field,function(res){
                 if(res.status==0){
                     layer.msg(res.msg,{icon: 2,time:2000},function(){
                         $('.layui-btn').removeAttr("disabled");
@@ -112,7 +112,7 @@
                 }else{
                     layer.msg(res.msg,{icon: 1,time:1000},function(){
                         window.location.reload();
-                        //window.location.href='/agent/withdraw/withdraw_list';
+                        //window.location.href='/agent/Withdraw/withdraw_list';
                     });
                 }
             },'json');

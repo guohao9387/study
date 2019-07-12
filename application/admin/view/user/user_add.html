@@ -124,14 +124,7 @@
                 ,layer = layui.layer;
         //自定义验证规则
         form.verify({
-            normal:function(value){
-                if(value.length < 8||value.length > 11){
-                    return '长度8-11位';
-                }
-                if(!new RegExp("^[a-zA-Z0-9]+$").test(value)){
-                    return '必须数字或字母';
-                }
-            },nickname:function(value){
+            nickname:function(value){
                 if(value.length < 1||value.length > 6){
                     return '长度1-6位';
                 }

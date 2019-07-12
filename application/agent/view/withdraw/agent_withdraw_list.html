@@ -37,8 +37,6 @@
             <input class="layui-input" placeholder="开始日" name="start" id="start" value="{:input('get.start')}">
             <input class="layui-input" placeholder="截止日" name="end" id="end" value="{:input('get.end')}">
             <input type="text" name="pay_sn"  placeholder="单号" autocomplete="off" class="layui-input" value="{:input('get.pay_sn')}">
-            <input type="text" name="agent_name"  placeholder="代理账号/昵称" autocomplete="off" class="layui-input" value="{:input('get.agent_name')}">
-            <!--<input type="text" name="username"  placeholder="上级代理账号/昵称" autocomplete="off" class="layui-input" value="{:input('get.p_agent_id')}">-->
             <div class="layui-input-inline">
                 <select name="status">
                     <option value="">状态</option>
@@ -57,8 +55,6 @@
             </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
             <a href="{$_SERVER['REQUEST_URI']}"  class="layui-btn layui-btn-normal">重置</a>
-            <a href="{:url('agent/api/excel_agent_withdraw_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>
-
         </form>
     </div>
     <xblock>
@@ -160,7 +156,7 @@
                     }
                     var load = layer.load();
                     $.ajax({
-                        url:'/agent/api/agent_withdraw_handle',
+                        url:'/agent/Api/agent_withdraw_handle',
                         data:{id:id,status:status,remark:remark},
                         type:'post',
                         dataType:'json',
@@ -180,7 +176,7 @@
             }else{
                 var load = layer.load();
                 $.ajax({
-                    url:'/agent/api/agent_withdraw_handle',
+                    url:'/agent/Api/agent_withdraw_handle',
                     data:{id:id,status:status,remark:remark},
                     type:'post',
                     dataType:'json',

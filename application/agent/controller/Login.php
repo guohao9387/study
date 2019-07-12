@@ -99,7 +99,7 @@ class Login extends Controller{
         add_user_operation(session('agent'),session('agent_name'), 2,2,'退出登录', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
         session('agent',null);
         session('agent_name',null);
-        $this->redirect(url('/agent/login/login'));
+        $this->redirect(url('/agent/Login/login'));
     }
 }
 

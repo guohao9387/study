@@ -49,12 +49,11 @@
                 </select>
             </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
-            <a href="/agent/user/agent_list"  class="layui-btn layui-btn-normal">重置</a>
-            <!--<a href="{:url('agent/api/excel_agent_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>-->
+            <a href="/agent/User/agent_list"  class="layui-btn layui-btn-normal">重置</a>
         </form>
     </div>
     <xblock>
-        <button class="layui-btn" onclick="x_admin_show('添加代理','/agent/user/agent_add')"><i class="layui-icon"></i>添加代理</button>
+        <button class="layui-btn" onclick="x_admin_show('添加代理','/agent/User/agent_add')"><i class="layui-icon"></i>添加代理</button>
         <span class="x-right" style="line-height:40px">合计余额：{$count.sum_money|number_format=###,2,'.',''};数量：{$count.count} 条</span>
     </xblock>
     <table class="layui-table">
@@ -98,7 +97,7 @@
                     {/if}
                 </td>
                 <td class="td-status">
-                    <a onclick="x_admin_show('代理邀请码','/agent/user/agent_code?id={$vo.agent_id}')" href="javascript:;"  title="查看">
+                    <a onclick="x_admin_show('代理邀请码','/agent/User/agent_code?id={$vo.agent_id}')" href="javascript:;"  title="查看">
                         <span class="layui-btn layui-btn-mini " style="background-color: #C57979">查看</span>
                     </a>
                 </td>
@@ -112,7 +111,7 @@
                         <!-- 上分点击事件-->
                         <!--<button class="layui-btn layui-btn-warm layui-btn-sm" onclick="myshow('up',{$vo['agent_id']},'{$vo['agent_name']}')">上分</button>-->
                         <!--<button class="layui-btn layui-btn-sm " style="background-color: #5BB75B;" onclick="myshow('down',{$vo['agent_id']},'{$vo['agent_name']}')">下分</button>-->
-                        <button class="layui-btn layui-btn-sm " onclick="x_admin_show('查看详情','/agent/user/agent_edit?agent_id={$vo.agent_id}')">查看详情</button>
+                        <button class="layui-btn layui-btn-sm " onclick="x_admin_show('查看详情','/agent/User/agent_edit?agent_id={$vo.agent_id}')">查看详情</button>
                         <!--<button class="layui-btn layui-btn-danger layui-btn-sm" onclick="member_del(this,{$vo['agent_id']})">删除</button>-->
                     </div>
                 </td>
