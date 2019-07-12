@@ -9,7 +9,6 @@ class User extends Common
     }
     public function index()
     {
-        $this->assign('info',$this->user);
         return $this->fetch();
     }
     public function news_list()
@@ -17,7 +16,6 @@ class User extends Common
         $where = [];
         $where[] = ['status','=',1];
         $list = db::name('news')->where($where)->order('sort desc')->field('id,title,add_time')->select();
-        $this->assign('info',$this->user);
         $this->assign('list',$list);
         return $this->fetch();
     }
@@ -27,7 +25,6 @@ class User extends Common
         $where[] = ['status','=',1];
         $where[] = ['id','=',input('get.id')];
         $news = db::name('news')->where($where)->field('title,content')->find();
-        $this->assign('info',$this->user);
         $this->assign('news',$news);
         return $this->fetch();
     }
@@ -41,9 +38,8 @@ class User extends Common
         return $this->fetch();
     }
 
-    public function withdraw_bank(){
-
-        $this->assign('info',$this->user);
+    public function withdraw_bank()
+    {
         return $this->fetch();
     }
 
@@ -63,7 +59,6 @@ class User extends Common
         }
         $list = db::name('user_money_log')->where($where)->order('id desc')->paginate(20,false,['query'=>$post]);
         $this->assign('list',$list);
-        $this->assign('info',$this->user);
         return $this->fetch();
     }
     public function recharge_list()
@@ -195,7 +190,6 @@ class User extends Common
         $where[] =['status','=',1];
         $list = db::name('kefu')->where($where)->order(['sort'=>'desc','id'=>'desc'])->select();
         $this->assign('list',$list);
-        $this->assign('info',$this->user);
         return $this->fetch();
     }
 }

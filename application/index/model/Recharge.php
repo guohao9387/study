@@ -63,70 +63,6 @@ class Recharge extends Model
         }
     }
 
-    /**
-     * 创建订单测试
-     * @param $uid
-     * @param $money
-     * @param $post_param
-     * @return array
-     * @throws \think\exception\DbException
-     * @throws db\exception\DataNotFoundException
-     * @throws db\exception\ModelNotFoundException
-     */
-    public function creat_recharge_test($uid, $money, $post_param)
-    {
-
-        $return = [];
-//        if (!is_numeric($money) || strpos($money, ".") !== false) {
-//            $return['status'] = 0;
-//            $return['info']   = "转入金额必须为整数";
-//            return $return;
-//        }
-//        if ($money < 100) {
-//            $return['status'] = 0;
-//            $return['info']   = "单笔转入不能小于100元";
-//            return $return;
-//        }
-//        $min_recharge = get_system_config('min_recharge');
-//        if ($money < $min_recharge) {
-//            $return['status'] = 0;
-//            $return['info']   = "单笔转入最小" . $min_recharge . "元";
-//            return $return;
-//        }
-
-        $user_info = db::name('user')->find($uid);
-        if($user_info['recharge_type']==2){
-            $return['status'] = 0;
-            $return['info']   = "参数错误";
-            return $return;
-        }
-        //添加充值记录
-        $data                 = [];
-        $data['pay_sn']       = creat_recharge_sn('SN');
-        $data['uid']          = $uid;
-        $data['agent_id']     = $user_info['agent_id'];
-        $data['amount']       = $money;
-        $data['amount']       = $money;
-        $data['type']         = 1;
-        $data['pay_time']     = '';
-        $data['post_param']   = json_encode($post_param);
-        $data['return_param'] = '';
-        $data['add_time']     = date('Y-m-d H:i:s');
-        $data['update_time']  = date('Y-m-d H:i:s');
-        $data['status']       = 1;
-        $reslut               = db::name('recharge_copy')->insert($data);
-        if ($reslut) {
-            session('trade_time',time()+1200);
-            $return['status'] = 1;
-            $return['info']   = $data;
-            return $return;
-        } else {
-            $return['status'] = 0;
-            $return['info']   = "创建订单失败".$this->getError();
-            return $return;
-        }
-    }
-
     //支付回调付款
     public function notify_recharge($pay_sn, $return_param)
     {
@@ -173,14 +109,11 @@ class Recharge extends Model
                 $user_log_data['update_time']  = date('Y-m-d H:i:s');
       
                 db::name('user_bill')->insert($user_log_data);
-//                db::name('company')->where('id',1)->setInc('recharge',$pay_order_info['amount']);
-                company_money_log(['recharge'=>$pay_order_info['amount']], 5);
+
 
                 // 提交事务
                 Db::commit();
-                $form_data=[];
-                $form_data['recharge']=$pay_order_info['amount'];
-                update_user_form($pay_order_info['uid'],$form_data);
+
                 $return['status'] = 1;
                 $return['info']   = "付款成功";
                 //更新支付方式收入统计金额
