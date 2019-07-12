@@ -78,7 +78,10 @@ class Login extends Controller
                 return json($data);
             }
         }else{
-            $GLOBALS['title'] ='内部学习系统后台管理系统';
+            if(!cache('config')){
+                reset_cache();
+            }
+            $GLOBALS['title'] =cache('config')['title'];
             return $this->fetch();
         }
     }

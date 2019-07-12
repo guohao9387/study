@@ -69,7 +69,7 @@ class Login extends Controller{
             if(!cache('config')){
                 reset_cache();
             }
-            $GLOBALS['title'] =cache('config').'后台管理系统';
+            $GLOBALS['title'] =cache('config')['title'].'后台管理系统';
             return $this->fetch();
         }
     }

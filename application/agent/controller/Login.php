@@ -95,7 +95,7 @@ class Login extends Controller{
             if(!cache('config')){
                 reset_cache();
             }
-            $GLOBALS['title'] =cache('config').'代理后台管理系统';
+            $GLOBALS['title'] =cache('config')['title'].'代理后台管理系统';
             return $this->fetch();
         }
     }
