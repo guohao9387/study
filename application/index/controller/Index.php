@@ -1,12 +1,9 @@
 <?php
 namespace app\index\controller;
+use think\Controller;
 use think\Db;
-class Index extends Common
+class Index extends Controller
 {
-    public function initialize()
-    {
-        parent::initialize();
-    }
     public function index()
     {
         return $this->fetch();

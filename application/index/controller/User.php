@@ -3,16 +3,9 @@ namespace app\index\controller;
 use think\Db;
 class User extends Common
 {
-    private $user;
     public function initialize()
     {
         parent::initialize();
-        $where = [];
-        $where[] = ['uid','=',$this->uinfo['uid']];
-        $this->user = db::name('user')->where($where)->field('uid,username,nickname,money,agent_id,status,login_status,type,recharge_type')->find();
-        if($this->user['status']!=1||$this->user['login_status']!=1||$this->user['type']!=1){
-            $this->error('账户状态异常','/index/login/logout');
-        }
     }
     public function index()
     {
@@ -41,70 +34,11 @@ class User extends Common
 
     public function recharge()
     {
-        if($this->user['recharge_type']==2){
-            $this->error('参数错误');
-        }
-        $this->assign('info',$this->user);
-
-        if($this->uinfo['uid'] == 146){
-            $where = [
-                ['status','in', '1,3'],
-                ['is_weixin','=', 0],
-            ];
-        }else{
-            $where = [
-                ['status','=', 1],
-                ['is_weixin','=', 0],
-            ];
-        }
-
-        $pay_config_row = Db::name('pay')->where($where)->order('sort ASC')->select();
-        $this->assign('payment',$pay_config_row);
-
         return $this->fetch();
     }
     public function withdraw()
     {
-        if($this->user['recharge_type']==2){
-            $this->error('参数错误');
-        }
-        //判断真实姓名和取款密码
-        $user = Db::name('user')->where(['uid'=>$this->user['uid']])->find();
-
-        $map=[];
-        $map[]=['key','=','min_tixian_money'];
-        $min_tixian_money = db::name('config')->where($map)->value('value');
-
-        $where = [];
-        $where[] = ['uid','=',$this->user['uid']];
-        $where[] = ['status','<>',3];
-        $bank = db::name('user_withdraw_log')->where($where)->order('id desc')->find();
-        //若没有提现过
-        if(empty($bank)){
-            $min_tixian_money = 100;
-        }
-        $this->assign('bank',$bank);
-        $this->assign('min_tixian_money',$min_tixian_money);
-        $this->assign('info',$user);
-        //查找提现规则
-        $protocol = Db::name('agreement')->where(['title'=>'提现规则'])->value('content');
-        $this->assign('protocol',$protocol);
-
-        //查看代理
-        $user_agent_type = db::name('agent')->where(['agent_id'=>$this->user['agent_id']])->value('match_type');
-        if($user_agent_type == 2){
-            return $this->fetch('withdraw2');
-        }else{
-            if($this->user['uid']){
-                if(empty($user['realname']) || empty($user['withdraw_pwd'])){
-                    $this->redirect('withdraw_bank');
-                    exit();
-                }
-                return $this->fetch();
-            }else{
-                return $this->fetch('withdraw2');
-            }
-        }
+        return $this->fetch();
     }
 
     public function withdraw_bank(){
@@ -117,7 +51,7 @@ class User extends Common
     {
         $post = input('post.');
         $where = [];
-        $where[] = ['uid','=',$this->user['uid']];
+        $where[] = ['uid','=',$this->user];
 
         if(request()->isGet()){
             if(!empty($post['start'])){
@@ -127,19 +61,17 @@ class User extends Common
                 $where[] = ['add_time','<=',$post['end']];
             }
         }
-        $list = db::name('user_bill')->where($where)->order('id desc')->paginate(20,false,['query'=>$post]);
+        $list = db::name('user_money_log')->where($where)->order('id desc')->paginate(20,false,['query'=>$post]);
         $this->assign('list',$list);
         $this->assign('info',$this->user);
         return $this->fetch();
     }
     public function recharge_list()
     {
-        if($this->user['recharge_type']==2){
-            $this->error('参数错误');
-        }
+
         $post = input('post.');
         $where = [];
-        $where[] = ['uid','=',$this->user['uid']];
+        $where[] = ['uid','=',$this->user];
 
         if(request()->isGet()){
             if(!empty($post['start'])){
@@ -149,19 +81,15 @@ class User extends Common
                 $where[] = ['add_time','<=',$post['end']];
             }
         }
-        $list = db::name('recharge')->where($where)->order('pay_id desc')->paginate(20,false,['query'=>$post]);
+        $list = db::name('recharge')->where($where)->order('id desc')->paginate(20,false,['query'=>$post]);
         $this->assign('list',$list);
-        $this->assign('info',$this->user);
         return $this->fetch();
     }
     public function withdraw_list()
     {
-        if($this->user['recharge_type']==2){
-            $this->error('参数错误');
-        }
         $post = input('post.');
         $where = [];
-        $where[] = ['uid','=',$this->user['uid']];
+        $where[] = ['uid','=',$this->user];
 
         if(request()->isGet()){
             if(!empty($post['start'])){
@@ -173,14 +101,13 @@ class User extends Common
         }
         $list = db::name('user_withdraw_log')->where($where)->order('id desc')->paginate(20,false,['query'=>$post]);
         $this->assign('list',$list);
-        $this->assign('info',$this->user);
         return $this->fetch();
     }
     public function order_list()
     {
         $post = input('post.');
         $where = [];
-        $where[] = ['uid','=',$this->user['uid']];
+        $where[] = ['uid','=',$this->user];
          $where[] = ['order_status','=',2];
         if(request()->isGet()){
             if(!empty($post['start'])){
@@ -197,7 +124,6 @@ class User extends Common
         }
         $this->assign('list',$list);
         $this->assign('res',$res);
-        $this->assign('info',$this->user);
         return $this->fetch();
     }
     public function repwd()
@@ -235,7 +161,7 @@ class User extends Common
                 return json($data);
             }
             $where = [];
-            $where[] = ['uid','=',$this->user['uid']];
+            $where[] = ['uid','=',$this->user];
             $where[] = ['status','=',1];
             $password = db::name('user')->where($where)->value('password');
             if(md5($post['old_pwd'])!=$password){
@@ -257,11 +183,9 @@ class User extends Common
                 $data['status'] = 0;
                 $data['msg'] = '修改失败';
             }
-            add_user_operation($this->user['uid'],$this->user['username'], 1,1,'修改密码', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$this->user['uid'],json_encode($post));
+            add_user_operation($this->user,$this->user_name, 1,1,'修改密码', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$this->user['uid'],json_encode($post));
             return json($data);
         }else{
-            $this->assign('info',$this->user);
-
             return $this->fetch();
         }
     }
@@ -274,11 +198,4 @@ class User extends Common
         $this->assign('info',$this->user);
         return $this->fetch();
     }
-    public function app()
-    {
-        $this->assign('info',$this->user);
-        return $this->fetch();
-    }
-
-
 }
