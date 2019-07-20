@@ -302,7 +302,7 @@
 <script type="text/javascript">
     $(".buy").click(function () {
         var user='{$username}';
-        if(!user){
+        if(user!='0'){
             layer.msg('请先登陆');
             return false;
         }

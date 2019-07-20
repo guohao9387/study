@@ -1,0 +1,5 @@
+---------------------------------------------------------------
+[2019-07-20T13:26:52+08:00] 127.0.0.1 GET local.test.com/admin/Index/index
+[运行时间：0.029567s] [吞吐率：33.82req/s] [内存消耗：1,656.77kb] [文件加载：62]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\study\thinkphp\lang\zh-cn.php
+[ error ] [0]不支持: redis[D:\phpStudy\PHPTutorial\WWW\study\thinkphp\library\think\cache\driver\Redis.php:81]
