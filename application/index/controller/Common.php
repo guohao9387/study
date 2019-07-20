@@ -1,16 +1,23 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
+use think\Db;
 class Common extends Controller
 {
-    public $user;
-    public $user_name;
+    public $config;
     public function initialize()
     {
-        $this->user = session('user');
-        $this->user_name = session('user_name');
-        if (empty($this->user)) {
-            $this->redirect('/index/Index/index');
+
+        if(session('user')){
+            $this->assign('username',session('user_name'));
+        }else{
+            $this->assign('username',0);
         }
+        if(!cache('config')){
+            reset_cache();
+        }
+        $this->config = cache('config');
+        $GLOBALS['title'] =$this->config['title'];
+
     }
 }

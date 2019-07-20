@@ -11,5 +11,9 @@ class Order extends Common
     {
         return $this->fetch();
     }
+    public function create_order(){
+        if(request()->isAjax()){
 
+        }
+    }
 }

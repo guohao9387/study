@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-07-10 12:44:49
+Date: 2019-07-20 12:57:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,7 +34,34 @@ CREATE TABLE `st_admin` (
 -- ----------------------------
 -- Records of st_admin
 -- ----------------------------
-INSERT INTO `st_admin` VALUES ('1', 'admin1', 'admin', '4297f44b13955235245b2497399d7a93', '123123', '2019-07-08 12:54:14', '127.0.0.1', '2019-01-21 00:21:06');
+INSERT INTO `st_admin` VALUES ('1', 'admin1', 'admin', '4297f44b13955235245b2497399d7a93', '123123', '2019-07-19 14:15:20', '127.0.0.1', '2019-01-21 00:21:06');
+
+-- ----------------------------
+-- Table structure for st_adv
+-- ----------------------------
+DROP TABLE IF EXISTS `st_adv`;
+CREATE TABLE `st_adv` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL DEFAULT '' COMMENT '名称',
+  `image` varchar(100) NOT NULL DEFAULT '' COMMENT '图片地址',
+  `url` varchar(50) NOT NULL DEFAULT '' COMMENT '转跳链接',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1首页2申购币',
+  `sort` smallint(5) NOT NULL DEFAULT '1' COMMENT '排序越大越靠前，最大99999',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1正常2禁用3删除',
+  `add_time` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='广告表';
+
+-- ----------------------------
+-- Records of st_adv
+-- ----------------------------
+INSERT INTO `st_adv` VALUES ('1', '123', '/uploads/adv/20190720\\928378f286654e4752350ad02ec823fd.png', '', '1', '1', '3', '2019-07-20 10:51:58');
+INSERT INTO `st_adv` VALUES ('2', '1', '/uploads/adv/20190720\\904845d843b54318a9d82b3333db96e9.jpg', '', '1', '10', '1', '2019-07-20 10:56:00');
+INSERT INTO `st_adv` VALUES ('3', '2', '/uploads/adv/20190720\\dbc868ceb0da4cc341c13871a5ebd5d4.jpg', '', '1', '9', '1', '2019-07-20 10:56:13');
+INSERT INTO `st_adv` VALUES ('4', '3', '/uploads/adv/20190720\\ed8f4558da0d031d24c7ef1437190165.png', '', '1', '8', '1', '2019-07-20 10:56:24');
+INSERT INTO `st_adv` VALUES ('5', '4', '/uploads/adv/20190720\\77087f60948f7f8295910af8f51a2e8e.png', '', '2', '10', '1', '2019-07-20 10:57:04');
+INSERT INTO `st_adv` VALUES ('6', '5', '/uploads/adv/20190720\\73de558c8b008095167ad0a50d76ac75.png', '', '2', '9', '1', '2019-07-20 10:57:14');
+INSERT INTO `st_adv` VALUES ('7', '6', '/uploads/adv/20190720\\ae613b9d5a68f39ec36287714ab447d5.png', '', '2', '8', '1', '2019-07-20 10:57:27');
 
 -- ----------------------------
 -- Table structure for st_agent
@@ -68,7 +95,7 @@ INSERT INTO `st_agent` VALUES ('2', 'ertert', 'werwer11', '0', 'e10adc3949ba59ab
 INSERT INTO `st_agent` VALUES ('3', 'rtrtrtrtyr', '123', '0', '8b38d8cdd602df02fa34172fc246ad49', '4545454', '0.000000', '', '932781', '1', '1', '2', null, null, '2019-07-06 13:13:18', '127.0.0.1', '2019-07-06 13:13:18');
 INSERT INTO `st_agent` VALUES ('4', 'fgfgfgfgf', 'ertert', '2', 'd3a17e3b704b2991a8e150808441d4c8', 'sdsdfrtr', '0.000000', '', '564469', '1', '1', '2', null, null, '2019-07-06 13:13:28', '127.0.0.1', '2019-07-06 13:13:28');
 INSERT INTO `st_agent` VALUES ('5', 'dfgdghgh', 'rerer1', '2', '3af2be585b9264b63e037962063a712f', 'rtrtrtyhty', '0.000000', '', '167504', '1', '1', '1', null, null, '2019-07-06 13:19:28', '127.0.0.1', '2019-07-07 10:18:10');
-INSERT INTO `st_agent` VALUES ('6', '123456', '123123', '0', '4297f44b13955235245b2497399d7a93', '123123', '121.000000', '', '4222', '1', '1', '1', '2019-07-09 20:41:13', '127.0.0.1', '2019-07-09 18:57:08', '127.0.0.1', '2019-07-09 18:57:08');
+INSERT INTO `st_agent` VALUES ('6', '123456', '123123', '0', '4297f44b13955235245b2497399d7a93', '123123', '121.000000', '/uploads/code/156335577914470.png', '4222', '1', '1', '1', '2019-07-17 17:29:36', '127.0.0.1', '2019-07-09 18:57:08', '127.0.0.1', '2019-07-09 18:57:08');
 INSERT INTO `st_agent` VALUES ('7', '123123444', '123123', '0', '4297f44b13955235245b2497399d7a93', '123123', '0.000000', '', '5813', '1', '1', '1', null, null, '2019-07-09 19:23:39', '127.0.0.1', '2019-07-09 19:23:39');
 INSERT INTO `st_agent` VALUES ('8', 'ertertertrgh', '123123', '0', '4297f44b13955235245b2497399d7a93', '123123', '0.000000', '', '2755', '1', '1', '1', null, null, '2019-07-09 19:24:14', '127.0.0.1', '2019-07-09 19:24:14');
 INSERT INTO `st_agent` VALUES ('9', 'werwert4', '234234', '6', '0e9212587d373ca58e9bada0c15e6fe4', '234234', '0.000000', '', '3279', '1', '1', '1', null, null, '2019-07-09 19:24:37', '127.0.0.1', '2019-07-09 19:24:37');
@@ -92,7 +119,7 @@ CREATE TABLE `st_agent_money_log` (
   `add_time` datetime DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='代理资金记录';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='代理资金记录';
 
 -- ----------------------------
 -- Records of st_agent_money_log
@@ -106,6 +133,8 @@ INSERT INTO `st_agent_money_log` VALUES ('6', '6', '123456', '123123', '79', '79
 INSERT INTO `st_agent_money_log` VALUES ('7', '6', '123456', '123123', '2', '82', '1', '代理提现', '123.000000', '1.000000', '122.000000', '2019-07-09 22:17:25', '代理发起提现');
 INSERT INTO `st_agent_money_log` VALUES ('8', '6', '123456', '123123', '3', '83', '1', '代理提现', '122.000000', '2.000000', '120.000000', '2019-07-09 22:25:53', '代理发起提现');
 INSERT INTO `st_agent_money_log` VALUES ('9', '6', '123456', '123123', '2', '85', '1', '代理提现', '120.000000', '1.000000', '121.000000', '2019-07-09 22:26:15', '代理提现失败');
+INSERT INTO `st_agent_money_log` VALUES ('10', '6', '123456', '123123', '4', '95', '1', '代理提现', '121.000000', '23.000000', '98.000000', '2019-07-18 12:50:51', '代理发起提现');
+INSERT INTO `st_agent_money_log` VALUES ('11', '6', '123456', '123123', '4', '96', '1', '代理提现', '98.000000', '23.000000', '121.000000', '2019-07-18 12:51:01', '代理提现失败');
 
 -- ----------------------------
 -- Table structure for st_agent_withdraw_log
@@ -128,7 +157,7 @@ CREATE TABLE `st_agent_withdraw_log` (
   `update_time` datetime DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='代理提现表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='代理提现表';
 
 -- ----------------------------
 -- Records of st_agent_withdraw_log
@@ -136,6 +165,7 @@ CREATE TABLE `st_agent_withdraw_log` (
 INSERT INTO `st_agent_withdraw_log` VALUES ('1', '2', 'ertert', 'werwer11', '111.000000', '1', 'qwed', null, '1', '123', '123', '3', '2019-07-08 23:25:22', '2019-07-08 23:28:11', '1');
 INSERT INTO `st_agent_withdraw_log` VALUES ('2', '6', '123456', '123123', '1.000000', '2', '网二', '13138602015', '招商银行', null, '4102512365112356', '3', '2019-07-09 22:17:25', '2019-07-09 22:26:15', '123');
 INSERT INTO `st_agent_withdraw_log` VALUES ('3', '6', '123456', '123123', '2.000000', '2', '网二', '13138602015', '招商银行', '1313', '4102512365112356', '2', '2019-07-09 22:25:53', '2019-07-09 22:26:12', '审核通过');
+INSERT INTO `st_agent_withdraw_log` VALUES ('4', '6', '123456', '123123', '23.000000', '2', '网二', '13138602015', '招商银行', '1313', '4102512365112356', '3', '2019-07-18 12:50:51', '2019-07-18 12:51:01', '123123123');
 
 -- ----------------------------
 -- Table structure for st_apply_coin
@@ -162,8 +192,8 @@ CREATE TABLE `st_apply_coin` (
 -- ----------------------------
 -- Records of st_apply_coin
 -- ----------------------------
-INSERT INTO `st_apply_coin` VALUES ('1', '2311', '123', '/uploads/adv/20190708\\17631d6451e3b5c1da951c1302cce9b1.png', '234', '234.000000', '234.000000', '1.000000', '0.000000', '0.000000', '2019-07-08 11:49:36', '2019-07-08 12:38:31', '1', '1');
-INSERT INTO `st_apply_coin` VALUES ('2', '45', '234', '/uploads/adv/20190708\\3b587709b8ed64e3e7fffeb809dee537.png', 'dt', '3.000000', '3.000000', '1.000000', '0.000000', '0.000000', '2019-07-08 18:54:27', '2019-07-08 18:54:27', '2', '1');
+INSERT INTO `st_apply_coin` VALUES ('1', '2311', '123', '/uploads/adv/20190720\\f5ac2ee09604845a7d2188d3f156f36d.png', '234', '234.000000', '234.000000', '1.000000', '0.000000', '0.000000', '2019-07-08 11:49:36', '2019-07-20 10:47:47', '1', '1');
+INSERT INTO `st_apply_coin` VALUES ('2', '45', '234', '/uploads/adv/20190720\\9107c42f795c409df221397fcf190945.png', 'dt', '3.000000', '3.000000', '1.000000', '0.000000', '0.000000', '2019-07-08 18:54:27', '2019-07-20 10:47:41', '1', '1');
 
 -- ----------------------------
 -- Table structure for st_apply_coin_give_log
@@ -182,12 +212,14 @@ CREATE TABLE `st_apply_coin_give_log` (
   `from_oid` int(11) DEFAULT NULL,
   `add_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='申购币赠送记录';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='申购币赠送记录';
 
 -- ----------------------------
 -- Records of st_apply_coin_give_log
 -- ----------------------------
-INSERT INTO `st_apply_coin_give_log` VALUES ('1', null, null, null, null, null, '0.000000', '0', null, null, null);
+INSERT INTO `st_apply_coin_give_log` VALUES ('2', '1', '13138602014', 'asdasd', '2', '45', '0.100000', '2', '18237837598', '2', '2019-07-20 12:48:49');
+INSERT INTO `st_apply_coin_give_log` VALUES ('3', '1', '13138602014', 'asdasd', '2', '45', '0.500000', '2', '18237837598', '3', '2019-07-20 12:49:54');
+INSERT INTO `st_apply_coin_give_log` VALUES ('4', '1', '13138602014', 'asdasd', '2', '45', '0.050000', '2', '18237837598', '4', '2019-07-20 12:53:40');
 
 -- ----------------------------
 -- Table structure for st_apply_coin_order_log
@@ -205,11 +237,15 @@ CREATE TABLE `st_apply_coin_order_log` (
   `amount` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '消费金额',
   `add_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='申购币获取记录';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='申购币获取记录';
 
 -- ----------------------------
 -- Records of st_apply_coin_order_log
 -- ----------------------------
+INSERT INTO `st_apply_coin_order_log` VALUES ('1', '2', '18237837598', '34234', '2', '45', '1.000000', '3.000000', '9.000000', '2019-07-20 12:43:17');
+INSERT INTO `st_apply_coin_order_log` VALUES ('2', '2', '18237837598', '34234', '2', '45', '2.000000', '3.000000', '18.000000', '2019-07-20 12:48:49');
+INSERT INTO `st_apply_coin_order_log` VALUES ('3', '2', '18237837598', '34234', '2', '45', '10.000000', '3.000000', '90.000000', '2019-07-20 12:49:54');
+INSERT INTO `st_apply_coin_order_log` VALUES ('4', '2', '18237837598', '34234', '2', '45', '1.000000', '3.000000', '9.000000', '2019-07-20 12:53:40');
 
 -- ----------------------------
 -- Table structure for st_bank
@@ -348,13 +384,15 @@ CREATE TABLE `st_bank_info` (
   `update_time` datetime DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1' COMMENT '1正常2删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='银行信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='银行信息表';
 
 -- ----------------------------
 -- Records of st_bank_info
 -- ----------------------------
-INSERT INTO `st_bank_info` VALUES ('1', '1', '1', '131', '张三丰', '13138602014', '123', '123', '123', '2019-07-09 13:21:17', '2019-07-09 14:03:03', '1');
-INSERT INTO `st_bank_info` VALUES ('2', '6', '2', '123456', '网二', '13138602015', '招商银行', '1313', '4102512365112356', '2019-07-09 21:32:47', null, '1');
+INSERT INTO `st_bank_info` VALUES ('1', '1', '1', '131', '张三丰', '13138602014', '123', '123', '123', '2019-07-09 13:21:17', '2019-07-18 12:49:26', '1');
+INSERT INTO `st_bank_info` VALUES ('2', '6', '2', '123456', '网二', '13138602015', '招商银行', '1313', '4102512365112356', '2019-07-09 21:32:47', '2019-07-18 12:49:30', '1');
+INSERT INTO `st_bank_info` VALUES ('3', '2', '1', '34234', '123', '34234', '建设银行', '1', '6217002362215120123', '2019-07-20 09:49:08', null, '1');
+INSERT INTO `st_bank_info` VALUES ('4', '2', '1', '34234', '123', '34234', '交通银行', '13', '6217002362215120123', '2019-07-20 09:49:20', null, '1');
 
 -- ----------------------------
 -- Table structure for st_config
@@ -367,13 +405,15 @@ CREATE TABLE `st_config` (
   `value` varchar(255) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='系统设置表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='系统设置表';
 
 -- ----------------------------
 -- Records of st_config
 -- ----------------------------
-INSERT INTO `st_config` VALUES ('1', '网站名称', 'title', '内部学习系统1', '2019-07-09 20:13:30');
-INSERT INTO `st_config` VALUES ('2', '网站地址', 'address', 'www.baidu.com', '2019-07-09 20:13:30');
+INSERT INTO `st_config` VALUES ('1', '网站名称', 'title', '内部学习系统1', '2019-07-19 17:16:37');
+INSERT INTO `st_config` VALUES ('2', '网站地址', 'address', 'www.baidu.com', '2019-07-19 17:16:37');
+INSERT INTO `st_config` VALUES ('3', '默认注册代理账号', 'point_agent', '123456', '2019-07-19 17:16:37');
+INSERT INTO `st_config` VALUES ('4', '邀请赠送申购币比例%', 'coin_give', '5', null);
 
 -- ----------------------------
 -- Table structure for st_kefu
@@ -388,12 +428,15 @@ CREATE TABLE `st_kefu` (
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1正常2删除',
   `sort` smallint(5) NOT NULL DEFAULT '1' COMMENT '默认1，越大越靠前',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of st_kefu
 -- ----------------------------
 INSERT INTO `st_kefu` VALUES ('1', '电话客服', '123365555', '', '2019-07-05 21:57:01', '1', '2');
+INSERT INTO `st_kefu` VALUES ('2', 'qq客服', '123123', '', '2019-07-19 22:02:37', '1', '1');
+INSERT INTO `st_kefu` VALUES ('3', '微信客服', '123', '/uploads/kefu/20190719\\dd520c352e58bceadea5f17cd62cb0d6.png', '2019-07-19 22:02:49', '1', '1');
+INSERT INTO `st_kefu` VALUES ('4', '手机版下载', '123', '/uploads/kefu/20190719\\bc870cb979c0cb2f0e91a75fdcd437f4.png', '2019-07-19 22:03:04', '1', '1');
 
 -- ----------------------------
 -- Table structure for st_news
@@ -405,15 +448,21 @@ CREATE TABLE `st_news` (
   `title` varchar(255) DEFAULT NULL,
   `content` text,
   `sort` smallint(5) DEFAULT '1',
+  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1新闻资讯2关于我们3帮助中心4下载中心',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `add_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='新闻表';
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='新闻表';
 
 -- ----------------------------
 -- Records of st_news
 -- ----------------------------
-INSERT INTO `st_news` VALUES ('1', '<i>serwer</i>', '234234', '<i>serwer</i>', '123', '1', '2019-07-05 21:55:05');
+INSERT INTO `st_news` VALUES ('1', '<i>serwer</i>', '234234', '<i>serwer</i>', '123', '1', '1', '2019-07-05 21:55:05');
+INSERT INTO `st_news` VALUES ('2', '<p><b>我是简介</b></p><p><b><img src=\"http://local.test.com/static/admin/lib/layui/images/face/1', '公司简介', '<p><b>我是简介</b></p><p><b><img src=\"http://local.test.com/static/admin/lib/layui/images/face/1.gif\" alt=\"[嘻嘻]\"><br></b></p>', '10', '2', '1', '2019-07-19 22:14:47');
+INSERT INTO `st_news` VALUES ('3', '123', '联系我们', '123', '9', '2', '1', '2019-07-19 22:15:09');
+INSERT INTO `st_news` VALUES ('4', '<p><img src=\"/uploads/notice/20190719/1ba69a98bd63d832e45bd70096458d27.png\" alt=\"undefined\"></p><p>', '注册指南', '<p><img src=\"/uploads/notice/20190719/1ba69a98bd63d832e45bd70096458d27.png\" alt=\"undefined\"></p><p>我是注册指南</p>', '10', '3', '1', '2019-07-19 22:15:32');
+INSERT INTO `st_news` VALUES ('5', '我是交易指南', '交易指南', '我是交易指南', '9', '3', '1', '2019-07-19 22:15:49');
+INSERT INTO `st_news` VALUES ('6', '123123', 'APP下载', '123123', '10', '4', '1', '2019-07-19 22:16:01');
 
 -- ----------------------------
 -- Table structure for st_notice
@@ -429,12 +478,13 @@ CREATE TABLE `st_notice` (
   `sort` smallint(5) DEFAULT '1' COMMENT '排序越大越靠前，最大99999',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1正常2禁用3删除',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='公告表';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='公告表';
 
 -- ----------------------------
 -- Records of st_notice
 -- ----------------------------
 INSERT INTO `st_notice` VALUES ('1', '1', '435345', '345345', '2019-07-05 21:56:08', null, '123', '1');
+INSERT INTO `st_notice` VALUES ('2', '1', '123', '123123', '2019-07-19 21:33:01', null, '1', '1');
 
 -- ----------------------------
 -- Table structure for st_operation_log
@@ -454,7 +504,7 @@ CREATE TABLE `st_operation_log` (
   `add_ip` varchar(50) NOT NULL,
   `add_time` datetime NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8 COMMENT='操作表';
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COMMENT='操作表';
 
 -- ----------------------------
 -- Records of st_operation_log
@@ -536,6 +586,84 @@ INSERT INTO `st_operation_log` VALUES ('82', '2', '6', '123456', '2', '0', '', '
 INSERT INTO `st_operation_log` VALUES ('83', '2', '6', '123456', '2', '0', '', '代理提现', '/agent/withdraw/withdraw', 'a:3:{s:24:\"/agent/withdraw/withdraw\";s:0:\"\";s:5:\"money\";s:1:\"2\";s:12:\"bank_info_id\";s:1:\"2\";}', '127.0.0.1', '2019-07-09 22:25:53');
 INSERT INTO `st_operation_log` VALUES ('84', '3', '1', 'admin1', '2', '6', '', '审核代理提现', '/admin/api/agent_withdraw_handle', 'a:4:{s:32:\"/admin/api/agent_withdraw_handle\";s:0:\"\";s:2:\"id\";s:1:\"3\";s:6:\"status\";s:1:\"2\";s:6:\"remark\";s:0:\"\";}', '127.0.0.1', '2019-07-09 22:26:12');
 INSERT INTO `st_operation_log` VALUES ('85', '3', '1', 'admin1', '2', '6', '', '拒绝代理提现', '/admin/api/agent_withdraw_handle', 'a:4:{s:32:\"/admin/api/agent_withdraw_handle\";s:0:\"\";s:2:\"id\";s:1:\"2\";s:6:\"status\";s:1:\"3\";s:6:\"remark\";s:3:\"123\";}', '127.0.0.1', '2019-07-09 22:26:15');
+INSERT INTO `st_operation_log` VALUES ('86', '3', '1', 'admin1', '3', '0', '', '管理员登录', '/admin/login/login', 'a:3:{s:18:\"/admin/login/login\";s:0:\"\";s:8:\"username\";s:6:\"admin1\";s:8:\"password\";s:6:\"123123\";}', '127.0.0.1', '2019-07-10 16:03:54');
+INSERT INTO `st_operation_log` VALUES ('87', '3', '1', 'admin1', '3', '0', '', '管理员登录', '/admin/Login/login', 'a:3:{s:18:\"/admin/Login/login\";s:0:\"\";s:8:\"username\";s:6:\"admin1\";s:8:\"password\";s:6:\"123123\";}', '127.0.0.1', '2019-07-15 11:22:00');
+INSERT INTO `st_operation_log` VALUES ('88', '3', '1', 'admin1', '4', '0', '', '添加产品', '/admin/Admin/product_add', 'a:7:{s:24:\"/admin/Admin/product_add\";s:0:\"\";s:4:\"name\";s:3:\"BTC\";s:12:\"abbreviation\";s:3:\"BTC\";s:8:\"contract\";s:1:\"1\";s:8:\"min_hand\";s:3:\"0.1\";s:8:\"max_hand\";s:3:\"100\";s:3:\"fee\";s:1:\"5\";}', '127.0.0.1', '2019-07-15 11:29:08');
+INSERT INTO `st_operation_log` VALUES ('89', '3', '1', 'admin1', '4', '0', '', '添加产品', '/admin/Admin/product_add', 'a:7:{s:24:\"/admin/Admin/product_add\";s:0:\"\";s:4:\"name\";s:3:\"ETH\";s:12:\"abbreviation\";s:3:\"ETH\";s:8:\"contract\";s:1:\"1\";s:8:\"min_hand\";s:2:\"10\";s:8:\"max_hand\";s:3:\"100\";s:3:\"fee\";s:1:\"5\";}', '127.0.0.1', '2019-07-15 11:29:32');
+INSERT INTO `st_operation_log` VALUES ('90', '3', '1', 'admin1', '4', '0', '', '添加产品', '/admin/Admin/product_add', 'a:7:{s:24:\"/admin/Admin/product_add\";s:0:\"\";s:4:\"name\";s:3:\"EOS\";s:12:\"abbreviation\";s:3:\"EOS\";s:8:\"contract\";s:1:\"1\";s:8:\"min_hand\";s:1:\"1\";s:8:\"max_hand\";s:1:\"1\";s:3:\"fee\";s:1:\"1\";}', '127.0.0.1', '2019-07-15 11:29:43');
+INSERT INTO `st_operation_log` VALUES ('91', '3', '1', 'admin1', '3', '0', '', '管理员登录', '/admin/Login/login', 'a:3:{s:18:\"/admin/Login/login\";s:0:\"\";s:8:\"username\";s:6:\"admin1\";s:8:\"password\";s:6:\"123123\";}', '127.0.0.1', '2019-07-17 12:52:12');
+INSERT INTO `st_operation_log` VALUES ('92', '2', '6', '123456', '2', '0', '', '登录', '/agent/Login/login', 'a:4:{s:18:\"/agent/Login/login\";s:0:\"\";s:10:\"agent_name\";s:6:\"123456\";s:8:\"password\";s:6:\"123123\";s:4:\"code\";s:4:\"7558\";}', '127.0.0.1', '2019-07-17 17:29:36');
+INSERT INTO `st_operation_log` VALUES ('93', '3', '1', 'admin1', '1', '0', '', '修改用户银行卡', '/admin/User/bank_info', 'a:7:{s:21:\"/admin/User/bank_info\";s:0:\"\";s:2:\"id\";s:1:\"1\";s:4:\"name\";s:9:\"张三丰\";s:5:\"phone\";s:11:\"13138602014\";s:9:\"bank_name\";s:3:\"123\";s:11:\"branch_name\";s:3:\"123\";s:9:\"bank_card\";s:3:\"123\";}', '127.0.0.1', '2019-07-18 12:49:26');
+INSERT INTO `st_operation_log` VALUES ('94', '3', '1', 'admin1', '2', '0', '', '修改代理银行卡', '/admin/User/bank_info', 'a:7:{s:21:\"/admin/User/bank_info\";s:0:\"\";s:2:\"id\";s:1:\"2\";s:4:\"name\";s:6:\"网二\";s:5:\"phone\";s:11:\"13138602015\";s:9:\"bank_name\";s:12:\"招商银行\";s:11:\"branch_name\";s:4:\"1313\";s:9:\"bank_card\";s:16:\"4102512365112356\";}', '127.0.0.1', '2019-07-18 12:49:30');
+INSERT INTO `st_operation_log` VALUES ('95', '2', '6', '123456', '2', '0', '', '代理提现', '/agent/Withdraw/withdraw', 'a:3:{s:24:\"/agent/Withdraw/withdraw\";s:0:\"\";s:5:\"money\";s:2:\"23\";s:12:\"bank_info_id\";s:1:\"2\";}', '127.0.0.1', '2019-07-18 12:50:51');
+INSERT INTO `st_operation_log` VALUES ('96', '3', '1', 'admin1', '2', '6', '', '拒绝代理提现', '/admin/Api/agent_withdraw_handle', 'a:4:{s:32:\"/admin/Api/agent_withdraw_handle\";s:0:\"\";s:2:\"id\";s:1:\"4\";s:6:\"status\";s:1:\"3\";s:6:\"remark\";s:9:\"123123123\";}', '127.0.0.1', '2019-07-18 12:51:01');
+INSERT INTO `st_operation_log` VALUES ('97', '3', '1', 'admin1', '3', '0', '', '管理员登录', '/admin/Login/login', 'a:3:{s:18:\"/admin/Login/login\";s:0:\"\";s:8:\"username\";s:6:\"admin1\";s:8:\"password\";s:6:\"123123\";}', '127.0.0.1', '2019-07-19 14:15:20');
+INSERT INTO `st_operation_log` VALUES ('98', '3', '1', 'admin1', '4', '0', '', '添加产品', '/admin/Admin/product_add', 'a:10:{s:24:\"/admin/Admin/product_add\";s:0:\"\";s:4:\"name\";s:3:\"123\";s:12:\"abbreviation\";s:3:\"123\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:62:\"/uploads/product/20190719\\ce512f917b80d74387cb2c582070266c.png\";s:8:\"contract\";s:3:\"123\";s:8:\"min_hand\";s:3:\"123\";s:8:\"max_hand\";s:3:\"123\";s:4:\"wave\";s:3:\"123\";s:3:\"fee\";s:3:\"123\";}', '127.0.0.1', '2019-07-19 14:18:38');
+INSERT INTO `st_operation_log` VALUES ('99', '3', '1', 'admin1', '4', '0', '', '修改产品', '/admin/Admin/product_edit', 'a:11:{s:25:\"/admin/Admin/product_edit\";s:0:\"\";s:2:\"id\";s:1:\"5\";s:4:\"name\";s:3:\"EOS\";s:12:\"abbreviation\";s:3:\"EOS\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:62:\"/uploads/product/20190719\\a853b5703e5becb59afca0fe246f7e70.png\";s:8:\"contract\";s:8:\"1.000000\";s:8:\"min_hand\";s:8:\"1.000000\";s:8:\"max_hand\";s:8:\"1.000000\";s:4:\"wave\";s:3:\"123\";s:3:\"fee\";s:8:\"1.000000\";}', '127.0.0.1', '2019-07-19 14:18:45');
+INSERT INTO `st_operation_log` VALUES ('100', '3', '1', 'admin1', '4', '0', '', '修改产品', '/admin/Admin/product_edit', 'a:11:{s:25:\"/admin/Admin/product_edit\";s:0:\"\";s:2:\"id\";s:1:\"4\";s:4:\"name\";s:3:\"ETH\";s:12:\"abbreviation\";s:3:\"ETH\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:62:\"/uploads/product/20190719\\d78f57cf01f19ebc8fedf2d18e968110.png\";s:8:\"contract\";s:8:\"1.000000\";s:8:\"min_hand\";s:9:\"10.000000\";s:8:\"max_hand\";s:10:\"100.000000\";s:4:\"wave\";s:3:\"123\";s:3:\"fee\";s:8:\"5.000000\";}', '127.0.0.1', '2019-07-19 14:18:52');
+INSERT INTO `st_operation_log` VALUES ('101', '3', '1', 'admin1', '4', '0', '', '修改产品', '/admin/Admin/product_edit', 'a:11:{s:25:\"/admin/Admin/product_edit\";s:0:\"\";s:2:\"id\";s:1:\"3\";s:4:\"name\";s:3:\"BTC\";s:12:\"abbreviation\";s:3:\"BTC\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:62:\"/uploads/product/20190719\\ad194c7b4958445f898daef96bcfb9a7.png\";s:8:\"contract\";s:8:\"1.000000\";s:8:\"min_hand\";s:8:\"0.100000\";s:8:\"max_hand\";s:10:\"100.000000\";s:4:\"wave\";s:2:\"12\";s:3:\"fee\";s:8:\"5.000000\";}', '127.0.0.1', '2019-07-19 14:18:58');
+INSERT INTO `st_operation_log` VALUES ('102', '3', '1', 'admin1', '4', '0', '', '修改产品', '/admin/Admin/product_edit', 'a:11:{s:25:\"/admin/Admin/product_edit\";s:0:\"\";s:2:\"id\";s:1:\"1\";s:4:\"name\";s:1:\"1\";s:12:\"abbreviation\";s:1:\"1\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:62:\"/uploads/product/20190719\\c4994bca1340d8c7d171fbb2fba125e8.png\";s:8:\"contract\";s:8:\"1.000000\";s:8:\"min_hand\";s:8:\"1.000000\";s:8:\"max_hand\";s:8:\"1.000000\";s:4:\"wave\";s:3:\"1.2\";s:3:\"fee\";s:8:\"0.050000\";}', '127.0.0.1', '2019-07-19 14:19:04');
+INSERT INTO `st_operation_log` VALUES ('103', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:24:59');
+INSERT INTO `st_operation_log` VALUES ('104', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:6:\"status\";s:1:\"2\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:25:00');
+INSERT INTO `st_operation_log` VALUES ('105', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"5\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:25:03');
+INSERT INTO `st_operation_log` VALUES ('106', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"4\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:25:05');
+INSERT INTO `st_operation_log` VALUES ('107', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"3\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:25:06');
+INSERT INTO `st_operation_log` VALUES ('108', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:25:41');
+INSERT INTO `st_operation_log` VALUES ('109', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:6:\"status\";s:1:\"2\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:25:42');
+INSERT INTO `st_operation_log` VALUES ('110', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:28:25');
+INSERT INTO `st_operation_log` VALUES ('111', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:11:\"show_status\";}', '127.0.0.1', '2019-07-19 14:28:30');
+INSERT INTO `st_operation_log` VALUES ('112', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"5\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:11:\"show_status\";}', '127.0.0.1', '2019-07-19 14:33:59');
+INSERT INTO `st_operation_log` VALUES ('113', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"5\";s:6:\"status\";s:1:\"2\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:11:\"show_status\";}', '127.0.0.1', '2019-07-19 14:34:01');
+INSERT INTO `st_operation_log` VALUES ('114', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:6:\"status\";s:1:\"2\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:12:\"trade_status\";}', '127.0.0.1', '2019-07-19 14:34:03');
+INSERT INTO `st_operation_log` VALUES ('115', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"5\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:11:\"show_status\";}', '127.0.0.1', '2019-07-19 14:34:20');
+INSERT INTO `st_operation_log` VALUES ('116', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"4\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:11:\"show_status\";}', '127.0.0.1', '2019-07-19 14:34:23');
+INSERT INTO `st_operation_log` VALUES ('117', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"3\";s:6:\"status\";s:1:\"1\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:11:\"show_status\";}', '127.0.0.1', '2019-07-19 14:34:24');
+INSERT INTO `st_operation_log` VALUES ('118', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:5:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:6:\"status\";s:1:\"2\";s:2:\"db\";s:7:\"product\";s:5:\"field\";s:11:\"show_status\";}', '127.0.0.1', '2019-07-19 14:34:25');
+INSERT INTO `st_operation_log` VALUES ('119', '3', '1', 'admin1', '1', '2', '', '修改登录状态', '/admin/User/user_status_change', 'a:3:{s:30:\"/admin/User/user_status_change\";s:0:\"\";s:3:\"uid\";s:1:\"2\";s:6:\"status\";s:1:\"1\";}', '127.0.0.1', '2019-07-19 15:09:27');
+INSERT INTO `st_operation_log` VALUES ('120', '1', '2', '18237837598', '1', '0', '', '会员登录', '/index/Login/login', 'a:4:{s:18:\"/index/Login/login\";s:0:\"\";s:8:\"username\";s:11:\"18237837598\";s:8:\"password\";s:6:\"123456\";s:5:\"vcode\";s:4:\"8930\";}', '127.0.0.1', '2019-07-19 15:09:34');
+INSERT INTO `st_operation_log` VALUES ('121', '1', '2', '18237837598', '1', '0', '', '会员退出登陆', '/index/Login/logout', 'a:1:{s:19:\"/index/Login/logout\";s:0:\"\";}', '127.0.0.1', '2019-07-19 15:09:44');
+INSERT INTO `st_operation_log` VALUES ('122', '1', '2', '18237837598', '1', '0', '', '会员登录', '/index/Login/login', 'a:4:{s:18:\"/index/Login/login\";s:0:\"\";s:8:\"username\";s:11:\"18237837598\";s:8:\"password\";s:6:\"123456\";s:5:\"vcode\";s:4:\"0928\";}', '127.0.0.1', '2019-07-19 15:09:52');
+INSERT INTO `st_operation_log` VALUES ('123', '1', '2', '18237837598', '1', '0', '', '会员退出登陆', '/index/Login/logout', 'a:1:{s:19:\"/index/Login/logout\";s:0:\"\";}', '127.0.0.1', '2019-07-19 16:06:49');
+INSERT INTO `st_operation_log` VALUES ('124', '1', '4', '18237837511', '1', '4', '', '用户注册', '/index/Login/register', 'a:8:{s:21:\"/index/Login/register\";s:0:\"\";s:8:\"username\";s:11:\"18237837511\";s:5:\"vcode\";s:4:\"0638\";s:4:\"code\";s:6:\"111111\";s:8:\"nickname\";s:3:\"123\";s:8:\"password\";s:6:\"123123\";s:11:\"re_password\";s:6:\"123123\";s:13:\"invite_number\";s:0:\"\";}', '127.0.0.1', '2019-07-19 17:31:14');
+INSERT INTO `st_operation_log` VALUES ('125', '3', '1', 'admin1', '4', '0', '', '添加公告', '/admin/Admin/notice_add', 'a:5:{s:23:\"/admin/Admin/notice_add\";s:0:\"\";s:5:\"title\";s:3:\"123\";s:7:\"content\";s:6:\"123123\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:3:\"123\";}', '127.0.0.1', '2019-07-19 21:33:01');
+INSERT INTO `st_operation_log` VALUES ('126', '3', '1', 'admin1', '4', '0', '', '编辑公告', '/admin/Admin/notice_edit', 'a:6:{s:24:\"/admin/Admin/notice_edit\";s:0:\"\";s:2:\"id\";s:1:\"2\";s:5:\"title\";s:3:\"123\";s:7:\"content\";s:6:\"123123\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:1:\"1\";}', '127.0.0.1', '2019-07-19 21:33:13');
+INSERT INTO `st_operation_log` VALUES ('127', '3', '1', 'admin1', '4', '0', '', '添加客服', '/admin/Admin/kefu_add', 'a:6:{s:21:\"/admin/Admin/kefu_add\";s:0:\"\";s:4:\"name\";s:8:\"qq客服\";s:5:\"value\";s:6:\"123123\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:0:\"\";s:4:\"sort\";s:1:\"1\";}', '127.0.0.1', '2019-07-19 22:02:37');
+INSERT INTO `st_operation_log` VALUES ('128', '3', '1', 'admin1', '4', '0', '', '添加客服', '/admin/Admin/kefu_add', 'a:6:{s:21:\"/admin/Admin/kefu_add\";s:0:\"\";s:4:\"name\";s:12:\"微信客服\";s:5:\"value\";s:3:\"123\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:59:\"/uploads/kefu/20190719\\dd520c352e58bceadea5f17cd62cb0d6.png\";s:4:\"sort\";s:0:\"\";}', '127.0.0.1', '2019-07-19 22:02:49');
+INSERT INTO `st_operation_log` VALUES ('129', '3', '1', 'admin1', '4', '0', '', '添加客服', '/admin/Admin/kefu_add', 'a:6:{s:21:\"/admin/Admin/kefu_add\";s:0:\"\";s:4:\"name\";s:15:\"手机版下载\";s:5:\"value\";s:3:\"123\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:59:\"/uploads/kefu/20190719\\bc870cb979c0cb2f0e91a75fdcd437f4.png\";s:4:\"sort\";s:0:\"\";}', '127.0.0.1', '2019-07-19 22:03:04');
+INSERT INTO `st_operation_log` VALUES ('130', '1', '4', '18237837511', '1', '0', '', '会员退出登陆', '/index/Login/logout', 'a:1:{s:19:\"/index/Login/logout\";s:0:\"\";}', '127.0.0.1', '2019-07-19 22:06:03');
+INSERT INTO `st_operation_log` VALUES ('131', '3', '1', 'admin1', '4', '0', '', '添加资讯', '/admin/Admin/news_add', 'a:6:{s:21:\"/admin/Admin/news_add\";s:0:\"\";s:5:\"title\";s:12:\"公司简介\";s:7:\"content\";s:133:\"<p><b>我是简介</b></p><p><b><img src=\"http://local.test.com/static/admin/lib/layui/images/face/1.gif\" alt=\"[嘻嘻]\"><br></b></p>\";s:4:\"file\";s:0:\"\";s:4:\"type\";s:1:\"2\";s:4:\"sort\";s:2:\"10\";}', '127.0.0.1', '2019-07-19 22:14:47');
+INSERT INTO `st_operation_log` VALUES ('132', '3', '1', 'admin1', '4', '0', '', '添加资讯', '/admin/Admin/news_add', 'a:6:{s:21:\"/admin/Admin/news_add\";s:0:\"\";s:5:\"title\";s:12:\"联系我们\";s:7:\"content\";s:3:\"123\";s:4:\"file\";s:0:\"\";s:4:\"type\";s:1:\"2\";s:4:\"sort\";s:1:\"9\";}', '127.0.0.1', '2019-07-19 22:15:09');
+INSERT INTO `st_operation_log` VALUES ('133', '3', '1', 'admin1', '4', '0', '', '添加资讯', '/admin/Admin/news_add', 'a:6:{s:21:\"/admin/Admin/news_add\";s:0:\"\";s:5:\"title\";s:12:\"注册指南\";s:7:\"content\";s:121:\"<p><img src=\"/uploads/notice/20190719/1ba69a98bd63d832e45bd70096458d27.png\" alt=\"undefined\"></p><p>我是注册指南</p>\";s:4:\"file\";s:0:\"\";s:4:\"type\";s:1:\"3\";s:4:\"sort\";s:2:\"10\";}', '127.0.0.1', '2019-07-19 22:15:32');
+INSERT INTO `st_operation_log` VALUES ('134', '3', '1', 'admin1', '4', '0', '', '添加资讯', '/admin/Admin/news_add', 'a:6:{s:21:\"/admin/Admin/news_add\";s:0:\"\";s:5:\"title\";s:12:\"交易指南\";s:7:\"content\";s:18:\"我是交易指南\";s:4:\"file\";s:0:\"\";s:4:\"type\";s:1:\"3\";s:4:\"sort\";s:1:\"9\";}', '127.0.0.1', '2019-07-19 22:15:49');
+INSERT INTO `st_operation_log` VALUES ('135', '3', '1', 'admin1', '4', '0', '', '添加资讯', '/admin/Admin/news_add', 'a:6:{s:21:\"/admin/Admin/news_add\";s:0:\"\";s:5:\"title\";s:9:\"APP下载\";s:7:\"content\";s:6:\"123123\";s:4:\"file\";s:0:\"\";s:4:\"type\";s:1:\"4\";s:4:\"sort\";s:2:\"10\";}', '127.0.0.1', '2019-07-19 22:16:01');
+INSERT INTO `st_operation_log` VALUES ('136', '3', '1', 'admin1', '1', '2', '{\"uid\":2,\"username\":\"18237837598\",\"nickname\":\"34234\",\"password\":\"e10adc3949ba59abbe56e057f20f883e\",\"pwd\":\"123456\",\"pid\":1,\"agent_id\":5,\"agent_name\":\"dfgdghgh\",\"agent_nickname\":\"rerer1\",\"code\":\"\\/uploads\\/code\\/156342697440497.png\",\"invite_number\":\"2345\",\"', '编辑会员,修改密码', '/admin/User/user_edit', 'a:13:{s:21:\"/admin/User/user_edit\";s:0:\"\";s:3:\"uid\";s:1:\"2\";s:8:\"username\";s:11:\"18237837598\";s:8:\"password\";s:6:\"123123\";s:8:\"nickname\";s:5:\"34234\";s:13:\"invite_number\";s:6:\"234512\";s:5:\"money\";s:4:\"0.00\";s:6:\"xm_fee\";s:4:\"0.00\";s:12:\"login_status\";s:1:\"1\";s:12:\"trade_status\";s:1:\"2\";s:13:\"invite_status\";s:1:\"2\";s:8:\"agent_id\";s:8:\"dfgdghgh\";s:3:\"pid\";s:11:\"13138602014\";}', '127.0.0.1', '2019-07-19 22:34:35');
+INSERT INTO `st_operation_log` VALUES ('137', '1', '2', '18237837598', '1', '0', '', '会员登录', '/index/Login/login', 'a:4:{s:18:\"/index/Login/login\";s:0:\"\";s:8:\"username\";s:11:\"18237837598\";s:8:\"password\";s:6:\"123123\";s:5:\"vcode\";s:4:\"4753\";}', '127.0.0.1', '2019-07-19 22:34:43');
+INSERT INTO `st_operation_log` VALUES ('138', '1', '2', '18237837598', '1', '1', '', '会员发起实名认证', '/index/User/real_auth', 'a:3:{s:21:\"/index/User/real_auth\";s:0:\"\";s:4:\"name\";s:3:\"123\";s:4:\"card\";s:18:\"410725199309220013\";}', '127.0.0.1', '2019-07-20 00:33:08');
+INSERT INTO `st_operation_log` VALUES ('139', '3', '1', 'admin1', '1', '2', '', '审核通过会员实名', '/admin/Api/user_real_handle', 'a:4:{s:27:\"/admin/Api/user_real_handle\";s:0:\"\";s:2:\"id\";s:1:\"1\";s:6:\"status\";s:1:\"2\";s:6:\"remark\";s:0:\"\";}', '127.0.0.1', '2019-07-20 00:33:31');
+INSERT INTO `st_operation_log` VALUES ('140', '3', '1', 'admin1', '1', '2', '', '审核拒绝会员实名', '/admin/Api/user_real_handle', 'a:4:{s:27:\"/admin/Api/user_real_handle\";s:0:\"\";s:2:\"id\";s:1:\"1\";s:6:\"status\";s:1:\"3\";s:6:\"remark\";s:3:\"123\";}', '127.0.0.1', '2019-07-20 00:34:18');
+INSERT INTO `st_operation_log` VALUES ('141', '1', '2', '18237837598', '1', '2', '', '会员发起实名认证', '/index/User/real_auth', 'a:3:{s:21:\"/index/User/real_auth\";s:0:\"\";s:4:\"name\";s:3:\"123\";s:4:\"card\";s:18:\"410725199309220013\";}', '127.0.0.1', '2019-07-20 00:38:25');
+INSERT INTO `st_operation_log` VALUES ('142', '3', '1', 'admin1', '1', '2', '', '审核通过会员实名', '/admin/Api/user_real_handle', 'a:4:{s:27:\"/admin/Api/user_real_handle\";s:0:\"\";s:2:\"id\";s:1:\"2\";s:6:\"status\";s:1:\"2\";s:6:\"remark\";s:0:\"\";}', '127.0.0.1', '2019-07-20 00:42:50');
+INSERT INTO `st_operation_log` VALUES ('143', '3', '1', 'admin1', '1', '2', '', '审核通过会员实名', '/admin/Api/user_real_handle', 'a:4:{s:27:\"/admin/Api/user_real_handle\";s:0:\"\";s:2:\"id\";s:1:\"2\";s:6:\"status\";s:1:\"2\";s:6:\"remark\";s:0:\"\";}', '127.0.0.1', '2019-07-20 00:45:00');
+INSERT INTO `st_operation_log` VALUES ('144', '3', '1', 'admin1', '1', '2', '', '上分', '/admin/Api/new_user_money_change', 'a:4:{s:32:\"/admin/Api/new_user_money_change\";s:0:\"\";s:3:\"uid\";s:1:\"2\";s:5:\"money\";s:4:\"1000\";s:5:\"param\";s:2:\"up\";}', '127.0.0.1', '2019-07-20 10:01:39');
+INSERT INTO `st_operation_log` VALUES ('145', '1', '2', '34234', '1', '0', '', '用户提现', '/index/User/withdraw', 'a:3:{s:20:\"/index/User/withdraw\";s:0:\"\";s:5:\"money\";s:1:\"1\";s:12:\"bank_info_id\";s:1:\"3\";}', '127.0.0.1', '2019-07-20 10:05:34');
+INSERT INTO `st_operation_log` VALUES ('146', '1', '2', '34234', '1', '0', '', '用户提现', '/index/User/withdraw', 'a:3:{s:20:\"/index/User/withdraw\";s:0:\"\";s:5:\"money\";s:1:\"2\";s:12:\"bank_info_id\";s:1:\"3\";}', '127.0.0.1', '2019-07-20 10:05:40');
+INSERT INTO `st_operation_log` VALUES ('147', '1', '2', '34234', '1', '2', '{\"old_password\":\"123456\",\"password\":\"123123\",\"repass\":\"123123\"}', '修改密码', '/index/User/re_pwd', 'a:4:{s:18:\"/index/User/re_pwd\";s:0:\"\";s:12:\"old_password\";s:6:\"123456\";s:8:\"password\";s:6:\"123123\";s:6:\"repass\";s:6:\"123123\";}', '127.0.0.1', '2019-07-20 10:24:32');
+INSERT INTO `st_operation_log` VALUES ('148', '3', '1', 'admin1', '4', '0', '', '修改申购币', '/admin/Coin/coin_edit', 'a:10:{s:21:\"/admin/Coin/coin_edit\";s:0:\"\";s:4:\"name\";s:2:\"45\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\9107c42f795c409df221397fcf190945.png\";s:12:\"abbreviation\";s:3:\"234\";s:8:\"describe\";s:2:\"dt\";s:5:\"price\";s:8:\"3.000000\";s:8:\"min_hand\";s:8:\"3.000000\";s:8:\"max_hand\";s:8:\"1.000000\";s:2:\"id\";s:1:\"2\";}', '127.0.0.1', '2019-07-20 10:47:41');
+INSERT INTO `st_operation_log` VALUES ('149', '3', '1', 'admin1', '4', '0', '', '修改申购币', '/admin/Coin/coin_edit', 'a:10:{s:21:\"/admin/Coin/coin_edit\";s:0:\"\";s:4:\"name\";s:4:\"2311\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\f5ac2ee09604845a7d2188d3f156f36d.png\";s:12:\"abbreviation\";s:3:\"123\";s:8:\"describe\";s:3:\"234\";s:5:\"price\";s:10:\"234.000000\";s:8:\"min_hand\";s:10:\"234.000000\";s:8:\"max_hand\";s:8:\"1.000000\";s:2:\"id\";s:1:\"1\";}', '127.0.0.1', '2019-07-20 10:47:47');
+INSERT INTO `st_operation_log` VALUES ('150', '3', '1', 'admin1', '4', '0', '', '添加广告', '/admin/Admin/adv_add', 'a:7:{s:20:\"/admin/Admin/adv_add\";s:0:\"\";s:4:\"name\";s:3:\"123\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\928378f286654e4752350ad02ec823fd.png\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:0:\"\";}', '127.0.0.1', '2019-07-20 10:51:58');
+INSERT INTO `st_operation_log` VALUES ('151', '3', '1', 'admin1', '4', '0', '', '添加广告', '/admin/Admin/adv_add', 'a:7:{s:20:\"/admin/Admin/adv_add\";s:0:\"\";s:4:\"name\";s:1:\"1\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\904845d843b54318a9d82b3333db96e9.jpg\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:2:\"10\";}', '127.0.0.1', '2019-07-20 10:56:00');
+INSERT INTO `st_operation_log` VALUES ('152', '3', '1', 'admin1', '4', '0', '', '修改状态', '/admin/Api/status_change', 'a:4:{s:24:\"/admin/Api/status_change\";s:0:\"\";s:2:\"id\";s:1:\"1\";s:6:\"status\";s:1:\"3\";s:2:\"db\";s:3:\"adv\";}', '127.0.0.1', '2019-07-20 10:56:05');
+INSERT INTO `st_operation_log` VALUES ('153', '3', '1', 'admin1', '4', '0', '', '添加广告', '/admin/Admin/adv_add', 'a:7:{s:20:\"/admin/Admin/adv_add\";s:0:\"\";s:4:\"name\";s:1:\"2\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\dbc868ceb0da4cc341c13871a5ebd5d4.jpg\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:1:\"9\";}', '127.0.0.1', '2019-07-20 10:56:13');
+INSERT INTO `st_operation_log` VALUES ('154', '3', '1', 'admin1', '4', '0', '', '添加广告', '/admin/Admin/adv_add', 'a:7:{s:20:\"/admin/Admin/adv_add\";s:0:\"\";s:4:\"name\";s:1:\"3\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\ed8f4558da0d031d24c7ef1437190165.png\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:1:\"8\";}', '127.0.0.1', '2019-07-20 10:56:24');
+INSERT INTO `st_operation_log` VALUES ('155', '3', '1', 'admin1', '4', '0', '', '添加广告', '/admin/Admin/adv_add', 'a:7:{s:20:\"/admin/Admin/adv_add\";s:0:\"\";s:4:\"name\";s:1:\"4\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\77087f60948f7f8295910af8f51a2e8e.png\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:2:\"10\";}', '127.0.0.1', '2019-07-20 10:57:04');
+INSERT INTO `st_operation_log` VALUES ('156', '3', '1', 'admin1', '4', '0', '', '添加广告', '/admin/Admin/adv_add', 'a:7:{s:20:\"/admin/Admin/adv_add\";s:0:\"\";s:4:\"name\";s:1:\"5\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\73de558c8b008095167ad0a50d76ac75.png\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"1\";s:4:\"sort\";s:1:\"9\";}', '127.0.0.1', '2019-07-20 10:57:14');
+INSERT INTO `st_operation_log` VALUES ('157', '3', '1', 'admin1', '4', '0', '', '添加广告', '/admin/Admin/adv_add', 'a:7:{s:20:\"/admin/Admin/adv_add\";s:0:\"\";s:4:\"name\";s:1:\"6\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\ae613b9d5a68f39ec36287714ab447d5.png\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"2\";s:4:\"sort\";s:1:\"8\";}', '127.0.0.1', '2019-07-20 10:57:27');
+INSERT INTO `st_operation_log` VALUES ('158', '3', '1', 'admin1', '4', '0', '', '编辑广告', '/admin/Admin/adv_edit', 'a:8:{s:21:\"/admin/Admin/adv_edit\";s:0:\"\";s:2:\"id\";s:1:\"6\";s:4:\"name\";s:1:\"5\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\73de558c8b008095167ad0a50d76ac75.png\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"2\";s:4:\"sort\";s:1:\"9\";}', '127.0.0.1', '2019-07-20 10:57:43');
+INSERT INTO `st_operation_log` VALUES ('159', '3', '1', 'admin1', '4', '0', '', '编辑广告', '/admin/Admin/adv_edit', 'a:8:{s:21:\"/admin/Admin/adv_edit\";s:0:\"\";s:2:\"id\";s:1:\"5\";s:4:\"name\";s:1:\"4\";s:4:\"file\";s:0:\"\";s:5:\"image\";s:58:\"/uploads/adv/20190720\\77087f60948f7f8295910af8f51a2e8e.png\";s:3:\"url\";s:0:\"\";s:4:\"type\";s:1:\"2\";s:4:\"sort\";s:2:\"10\";}', '127.0.0.1', '2019-07-20 10:57:47');
+INSERT INTO `st_operation_log` VALUES ('160', '1', '2', '18237837598', '1', '2', '', '申购币购买', '/index/Coin/buy', 'a:3:{s:15:\"/index/Coin/buy\";s:0:\"\";s:6:\"number\";s:1:\"1\";s:2:\"id\";s:1:\"2\";}', '127.0.0.1', '2019-07-20 12:43:17');
+INSERT INTO `st_operation_log` VALUES ('161', '1', '2', '18237837598', '1', '2', '', '申购币购买', '/index/Coin/buy', 'a:3:{s:15:\"/index/Coin/buy\";s:0:\"\";s:6:\"number\";s:1:\"2\";s:2:\"id\";s:1:\"2\";}', '127.0.0.1', '2019-07-20 12:48:49');
+INSERT INTO `st_operation_log` VALUES ('162', '1', '2', '18237837598', '1', '2', '', '申购币购买', '/index/Coin/buy', 'a:3:{s:15:\"/index/Coin/buy\";s:0:\"\";s:6:\"number\";s:2:\"10\";s:2:\"id\";s:1:\"2\";}', '127.0.0.1', '2019-07-20 12:49:54');
+INSERT INTO `st_operation_log` VALUES ('163', '1', '2', '18237837598', '1', '2', '', '申购币购买', '/index/Coin/buy', 'a:3:{s:15:\"/index/Coin/buy\";s:0:\"\";s:6:\"number\";s:1:\"1\";s:2:\"id\";s:1:\"2\";}', '127.0.0.1', '2019-07-20 12:53:40');
 
 -- ----------------------------
 -- Table structure for st_order
@@ -601,9 +729,11 @@ CREATE TABLE `st_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `abbreviation` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `contract` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '合约比例',
   `min_hand` decimal(20,6) NOT NULL DEFAULT '0.000000',
   `max_hand` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `wave` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '止盈止损波动比例',
   `trade_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1可以交易2禁止交易',
   `show_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1启用2停用',
   `fee` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '手续费/1手',
@@ -611,13 +741,40 @@ CREATE TABLE `st_product` (
   `add_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='产品表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='产品表';
 
 -- ----------------------------
 -- Records of st_product
 -- ----------------------------
-INSERT INTO `st_product` VALUES ('1', '1', '1', '1.000000', '1.000000', '1.000000', '2', '2', '0.050000', '1', null, null);
-INSERT INTO `st_product` VALUES ('2', '2', '1', '2.000000', '12.000000', '12.000000', '2', '2', '0.000000', '2', null, null);
+INSERT INTO `st_product` VALUES ('1', '1', '1', '/uploads/product/20190719\\c4994bca1340d8c7d171fbb2fba125e8.png', '1.000000', '1.000000', '1.000000', '1.200000', '2', '2', '0.050000', '1', null, null);
+INSERT INTO `st_product` VALUES ('2', '2', '1', null, '2.000000', '12.000000', '12.000000', '0.000000', '2', '2', '0.000000', '2', null, null);
+INSERT INTO `st_product` VALUES ('3', 'BTC', 'BTC', '/uploads/product/20190719\\ad194c7b4958445f898daef96bcfb9a7.png', '1.000000', '0.100000', '100.000000', '12.000000', '1', '1', '5.000000', '1', '2019-07-15 11:29:08', '2019-07-15 11:29:08');
+INSERT INTO `st_product` VALUES ('4', 'ETH', 'ETH', '/uploads/product/20190719\\d78f57cf01f19ebc8fedf2d18e968110.png', '1.000000', '10.000000', '100.000000', '123.000000', '1', '1', '5.000000', '1', '2019-07-15 11:29:32', '2019-07-15 11:29:32');
+INSERT INTO `st_product` VALUES ('5', 'EOS', 'EOS', '/uploads/product/20190719\\a853b5703e5becb59afca0fe246f7e70.png', '1.000000', '1.000000', '1.000000', '123.000000', '1', '1', '1.000000', '1', '2019-07-15 11:29:43', '2019-07-15 11:29:43');
+INSERT INTO `st_product` VALUES ('6', '123', '123', '/uploads/product/20190719\\ce512f917b80d74387cb2c582070266c.png', '123.000000', '123.000000', '123.000000', '123.000000', '2', '2', '123.000000', '1', '2019-07-19 14:18:38', '2019-07-19 14:18:38');
+
+-- ----------------------------
+-- Table structure for st_real_auth
+-- ----------------------------
+DROP TABLE IF EXISTS `st_real_auth`;
+CREATE TABLE `st_real_auth` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `card` varchar(255) DEFAULT NULL,
+  `add_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1' COMMENT '1未审核2已审核3已拒绝',
+  `remark` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='实名认证表';
+
+-- ----------------------------
+-- Records of st_real_auth
+-- ----------------------------
+INSERT INTO `st_real_auth` VALUES ('1', '2', '18237837598', '123', '410712312312312311', '2019-07-20 00:33:08', '2019-07-20 00:34:18', '3', '123');
+INSERT INTO `st_real_auth` VALUES ('2', '2', '18237837598', '123', '410723232323232323', '2019-07-20 00:38:25', '2019-07-20 00:45:00', '2', '审核通过');
 
 -- ----------------------------
 -- Table structure for st_recharge
@@ -653,8 +810,8 @@ CREATE TABLE `st_user` (
   `nickname` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `pwd` varchar(255) DEFAULT NULL,
-  `pid` int(11) DEFAULT '0' COMMENT '邀请人ID',
-  `agent_id` int(11) DEFAULT NULL,
+  `pid` int(11) NOT NULL DEFAULT '0' COMMENT '邀请人ID',
+  `agent_id` int(11) NOT NULL DEFAULT '0',
   `agent_name` varchar(255) DEFAULT NULL,
   `agent_nickname` varchar(255) DEFAULT NULL,
   `code` varchar(255) DEFAULT NULL,
@@ -664,6 +821,7 @@ CREATE TABLE `st_user` (
   `trade_status` tinyint(1) NOT NULL DEFAULT '1',
   `lever` decimal(5,2) NOT NULL DEFAULT '100.00' COMMENT '杠杆比例/100',
   `status` tinyint(1) NOT NULL DEFAULT '1',
+  `real` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0未实名，1已实名',
   `money` decimal(20,6) NOT NULL DEFAULT '0.000000',
   `promise_money` decimal(20,6) NOT NULL DEFAULT '0.000000',
   `last_login_time` datetime DEFAULT NULL,
@@ -672,14 +830,25 @@ CREATE TABLE `st_user` (
   `add_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of st_user
 -- ----------------------------
-INSERT INTO `st_user` VALUES ('1', '13138602014', 'asdasd', 'e10adc3949ba59abbe56e057f20f883e', '123456', '0', '5', 'dfgdghgh', 'rerer', '', '1234', '1', '1', '1', '1.00', '1', '1.000000', '0.000000', null, null, '127.0.0.1', '2019-07-06 23:23:50', '2019-07-06 23:23:50');
-INSERT INTO `st_user` VALUES ('2', '18237837598', '34234', 'e10adc3949ba59abbe56e057f20f883e', '123456', '1', '5', 'dfgdghgh', 'rerer1', '', '2345', '2', '2', '2', '99.99', '1', '0.000000', '0.000000', null, null, '127.0.0.1', '2019-07-06 23:27:41', '2019-07-07 10:24:20');
-INSERT INTO `st_user` VALUES ('3', '18237837599', '123', '4297f44b13955235245b2497399d7a93', '123123', '0', '6', '123456', '123123', '', '4561', '1', '1', '1', '100.00', '1', '0.000000', '0.000000', null, null, '127.0.0.1', '2019-07-09 20:08:52', '2019-07-09 20:08:52');
+INSERT INTO `st_user` VALUES ('1', '13138602014', 'asdasd', 'e10adc3949ba59abbe56e057f20f883e', '123456', '0', '5', 'dfgdghgh', 'rerer', '/uploads/code/156342697637800.png', '1234', '1', '1', '1', '1.00', '1', '0', '1.000000', '0.000000', null, null, '127.0.0.1', '2019-07-06 23:23:50', '2019-07-06 23:23:50');
+INSERT INTO `st_user` VALUES ('2', '18237837598', '34234', '4297f44b13955235245b2497399d7a93', '123123', '1', '5', 'dfgdghgh', 'rerer1', '/uploads/code/156342697440497.png', '2345', '1', '2', '2', '99.99', '1', '1', '871.000000', '0.000000', '2019-07-19 22:34:43', '127.0.0.1', '127.0.0.1', '2019-07-06 23:27:41', '2019-07-20 10:24:32');
+INSERT INTO `st_user` VALUES ('3', '18237837599', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '/uploads/code/156342688269339.png', '4561', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', null, null, '127.0.0.1', '2019-07-09 20:08:52', '2019-07-09 20:08:52');
+INSERT INTO `st_user` VALUES ('4', '18237837512', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', null, '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', null, null, '127.0.0.1', '2019-07-19 17:31:14', null);
+INSERT INTO `st_user` VALUES ('5', '18237837513', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('6', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('7', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('8', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('9', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('10', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('11', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('12', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('13', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
+INSERT INTO `st_user` VALUES ('14', '18237837511', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for st_user_apply_coin
@@ -693,11 +862,13 @@ CREATE TABLE `st_user_apply_coin` (
   `apply_coin_name` varchar(255) DEFAULT NULL,
   `amount` decimal(20,6) NOT NULL DEFAULT '0.000000',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户申购币表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户申购币表';
 
 -- ----------------------------
 -- Records of st_user_apply_coin
 -- ----------------------------
+INSERT INTO `st_user_apply_coin` VALUES ('1', '2', '18237837598', '2', '45', '14.000000');
+INSERT INTO `st_user_apply_coin` VALUES ('2', '1', '13138602014', '2', '45', '0.050000');
 
 -- ----------------------------
 -- Table structure for st_user_money_log
@@ -718,7 +889,7 @@ CREATE TABLE `st_user_money_log` (
   `type_info` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户资金记录';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='用户资金记录';
 
 -- ----------------------------
 -- Records of st_user_money_log
@@ -726,6 +897,13 @@ CREATE TABLE `st_user_money_log` (
 INSERT INTO `st_user_money_log` VALUES ('1', '2', '18237837598', null, '40', '40', '0.000000', '1.000000', '1.000000', '2019-07-07 10:41:45', '1', '上分', '平台操作会员18237837598上分');
 INSERT INTO `st_user_money_log` VALUES ('2', '2', '18237837598', null, '41', '41', '1.000000', '-1.000000', '0.000000', '2019-07-07 10:41:49', '1', '下分', '平台操作会员18237837598下分');
 INSERT INTO `st_user_money_log` VALUES ('3', '1', '13138602014', 'asdasd', '1', '63', '0.000000', '1.000000', '1.000000', '2019-07-09 00:28:47', '2', '用户提现', '用户提现失败');
+INSERT INTO `st_user_money_log` VALUES ('4', '2', '18237837598', '34234', '144', '144', '0.000000', '1000.000000', '1000.000000', '2019-07-20 10:01:39', '3', '上分', '平台操作会员18237837598上分');
+INSERT INTO `st_user_money_log` VALUES ('5', '2', '34234', '34234', '2', '145', '1000.000000', '1.000000', '999.000000', '2019-07-20 10:05:34', '2', '代理提现', '用户发起提现');
+INSERT INTO `st_user_money_log` VALUES ('6', '2', '34234', '34234', '3', '146', '999.000000', '2.000000', '997.000000', '2019-07-20 10:05:40', '2', '代理提现', '用户发起提现');
+INSERT INTO `st_user_money_log` VALUES ('7', '2', '18237837598', '34234', '1', '160', '997.000000', '9.000000', '988.000000', '2019-07-20 12:43:17', '5', '申购币', '申购币购买');
+INSERT INTO `st_user_money_log` VALUES ('8', '2', '18237837598', '34234', '2', '161', '988.000000', '18.000000', '970.000000', '2019-07-20 12:48:49', '5', '申购币', '申购币购买');
+INSERT INTO `st_user_money_log` VALUES ('9', '2', '18237837598', '34234', '3', '162', '970.000000', '90.000000', '880.000000', '2019-07-20 12:49:54', '5', '申购币', '申购币购买');
+INSERT INTO `st_user_money_log` VALUES ('10', '2', '18237837598', '34234', '4', '163', '880.000000', '9.000000', '871.000000', '2019-07-20 12:53:40', '5', '申购币', '申购币购买');
 
 -- ----------------------------
 -- Table structure for st_user_withdraw_log
@@ -751,9 +929,11 @@ CREATE TABLE `st_user_withdraw_log` (
   `remark` varchar(255) DEFAULT NULL,
   `admin_remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户提现';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户提现';
 
 -- ----------------------------
 -- Records of st_user_withdraw_log
 -- ----------------------------
 INSERT INTO `st_user_withdraw_log` VALUES ('1', '1', '13138602014', 'asdasd', '5', '123', '1.000000', '1', '123', '123', '123', '123', '123', '3', '2019-07-08 23:50:52', '2019-07-09 00:28:47', '1', null);
+INSERT INTO `st_user_withdraw_log` VALUES ('2', '2', '34234', '34234', null, null, '1.000000', '3', '123', '34234', '建设银行', '1', '6217002362215120123', '1', '2019-07-20 10:05:34', null, null, null);
+INSERT INTO `st_user_withdraw_log` VALUES ('3', '2', '34234', '34234', null, null, '2.000000', '3', '123', '34234', '建设银行', '1', '6217002362215120123', '1', '2019-07-20 10:05:40', null, null, null);

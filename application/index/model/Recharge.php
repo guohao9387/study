@@ -1,9 +1,7 @@
 <?php
-
 namespace app\index\model;
-use think\db;
+use think\Db;
 use think\Model;
-
 class Recharge extends Model
 {
     protected $pk = 'pay_id';
@@ -52,7 +50,6 @@ class Recharge extends Model
         $data['status']       = 1;
         $reslut               = db::name('recharge')->insert($data);
         if ($reslut) {
-            session('trade_time',time()+1200);
             $return['status'] = 1;
             $return['info']   = $data;
             return $return;
@@ -108,17 +105,12 @@ class Recharge extends Model
                 $user_log_data['add_time']     = date('Y-m-d H:i:s');
                 $user_log_data['update_time']  = date('Y-m-d H:i:s');
       
-                db::name('user_bill')->insert($user_log_data);
-
+                db::name('user_money_log')->insert($user_log_data);
 
                 // 提交事务
                 Db::commit();
-
                 $return['status'] = 1;
                 $return['info']   = "付款成功";
-                //更新支付方式收入统计金额
-                Db::name('pay')->where(['id'=>$pay_order_info['type']])->setInc('total',$pay_order_info['amount']);
-
                 return $return;
             } catch (\Exception $e) {
                 // 回滚事务
