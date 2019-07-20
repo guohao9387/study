@@ -44,7 +44,19 @@
                 <textarea id="content" style="display: none;" name="content" lay-verify="content" class="layui-textarea">{$info['content']}</textarea>
             </div>
         </div>
-
+        <div class="layui-form-item" >
+            <label for="type" class="layui-form-label">
+                资讯类型
+            </label>
+            <div class="layui-input-inline">
+                <select id="type" name="type" class="valid" >
+                    <option  value="1" {if condition="$info['type'] eq 1"}selected="selected"{/if}>新闻资讯</option>
+                    <option  value="2" {if condition="$info['type'] eq 2"}selected="selected"{/if}>关于我们</option>
+                    <option  value="3" {if condition="$info['type'] eq 3"}selected="selected"{/if}>帮助中心</option>
+                    <option  value="4" {if condition="$info['type'] eq 4"}selected="selected"{/if}>下载中心</option>
+                </select>
+            </div>
+        </div>
         <div class="layui-form-item">
             <label for="sort" class="layui-form-label">
                 排序

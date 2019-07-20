@@ -192,6 +192,15 @@ function str_notice_type($type){
     }
     return $str;
 }
+function str_adv_type($type){
+    $str = '';
+    if($type == 1){
+        $str = '首页';
+    }elseif($type ==2){
+        $str = '申购币';
+    }
+    return $str;
+}
 function str_type_type($type){
     $str = '';
     if($type == 1){
@@ -202,6 +211,19 @@ function str_type_type($type){
         $str = '管理员';
     }elseif($type ==4){
         $str = '平台信息';
+    }
+    return $str;
+}
+function str_news_type($type){
+    $str = '';
+    if($type == 1){
+        $str = '新闻资讯';
+    }elseif($type ==2){
+        $str = '关于我们';
+    }elseif($type ==3){
+        $str = '帮助中心';
+    }elseif($type ==4){
+        $str = '下载中心';
     }
     return $str;
 }
@@ -235,6 +257,24 @@ function str_type($type){
         $str = '是';
     }elseif($type ==2){
         $str = '否';
+    }
+    return $str;
+}
+function str_direction($type){
+    $str = '';
+    if($type == 1){
+        $str = '买入';
+    }elseif($type ==2){
+        $str = '卖出';
+    }
+    return $str;
+}
+function user_real_status($type){
+    $str = '';
+    if($type == 0){
+        $str = '未实名';
+    }elseif($type ==1){
+        $str = '已实名';
     }
     return $str;
 }

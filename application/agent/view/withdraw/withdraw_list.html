@@ -80,7 +80,8 @@
             <th>银行卡号</th>
             <th>状态</th>
             <th>发起时间</th>
-            <th>管理备注</th>
+            <th>审核时间</th>
+            <th>审核备注</th>
         </tr>
         </thead>
         <tbody>
@@ -95,6 +96,7 @@
             <td>{$vo.bank_card|dataDesensitization=###,4,8}</td>
             <td>{$vo.status|str_withdraw_status}</td>
             <td>{$vo.add_time}</td>
+            <td>{$vo.update_time}</td>
             <td>{$vo.remark}</td>
         </tr>
         {/volist}

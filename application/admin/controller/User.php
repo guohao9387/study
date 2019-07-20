@@ -11,7 +11,6 @@ use think\Db;
 class User extends Common{
     public function initialize(){
         parent::initialize();
-
     }
 
     public function user_status_change(){
@@ -964,6 +963,38 @@ class User extends Common{
             return $this->fetch();
         }
     }
+    public function real_auth(){
+        $param = input('get.');
+        $where = array();
+        if(request()->isGet()){
+            if(!empty($param['utype'])){
+                $where[] = ['utype','=',$param['utype']];
+            }
+            if(!empty($param['username'])){
+                $where[] = ['username','=',$param['username']];
+            }
+            if(!empty($param['name'])){
+                $where[] = ['name','=',$param['name']];
+            }
+            if(!empty($param['phone'])){
+                $where[] = ['phone','=',$param['phone']];
+            }
+            if(!empty($param['status'])){
+                $where[] = ['status','=',$param['status']];
+            }
+            if(!empty($param['start'])){
+                $where[] = ['add_time','>=',$param['start']];
+            }
+            if(!empty($param['end'])){
+                $where[] = ['add_time','<=',$param['end']];
+            }
+        }
+        $list = db::name('real_auth')->where($where)->order(['id'=>'desc'])->paginate(20,false,['query'=>$param]);
+        $this->assign('list',$list);
+        $count = db::name('real_auth')->where($where)->count();
+        $this->assign('count',$count);
+        $this->assign('page_number',$this->page_number);
 
-
+        return $this->fetch();
+    }
 }

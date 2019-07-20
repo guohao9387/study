@@ -8,9 +8,9 @@ class Msg {
 	//查询余额的接口地址
 	const API_BALANCE_QUERY_URL='http://sms.253.com/msg/balance?';
 
-	const API_ACCOUNT='N265314_N1732612';//短信账号从 https://zz.253.com/site/login.html 里面获取。
+	const API_ACCOUNT='N562042_N9473023';//短信账号从 https://zz.253.com/site/login.html 里面获取。
 
-	const API_PASSWORD='eyqL81JUNo06ad';//短信密码从 from https://zz.253.com/site/login.html 里面获取。
+	const API_PASSWORD='rIxu4nEX3z7c9a';//短信密码从 from https://zz.253.com/site/login.html 里面获取。
 
 	/**
 	 * 发送短信需要的接口参数
@@ -20,7 +20,7 @@ class Msg {
 	 * @param string $needstatus 	是否需要状态报告 '1'为需要 '0'位不需要。
 	 */
 	public function sendSMS( $mobile, $msg, $needstatus = 1) {
-		
+
 		//发送短信的接口参数
 		$postArr = array (
 				          'un' => self::API_ACCOUNT,
@@ -29,20 +29,20 @@ class Msg {
 				          'phone' => $mobile,
 				          'rd' => $needstatus
                      );
-		
+
 		$result = $this->curlPost( self::API_SEND_URL , $postArr);
 		return $result;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 *
 	 *  查询余额
 	 */
 	public function queryBalance() {
-		
+
 		// 查询接口参数
-		$postArr = array ( 
+		$postArr = array (
 		          'un' => self::API_ACCOUNT,
 		          'pw' => self::API_PASSWORD,
 		);
@@ -52,7 +52,7 @@ class Msg {
 
 	/**
 	 * 处理接口返回值
-	 * 
+	 *
 	 */
 	public function execResult($result){
 		$result=preg_split("/[,\r\n]/",$result);
@@ -60,12 +60,12 @@ class Msg {
 	}
 
 	/**
-	 * @param string $url  
-	 * @param array $postFields 
+	 * @param string $url
+	 * @param array $postFields
 	 * @return mixed
 	 */
 	private function curlPost($url,$postFields){
-		$postFields = http_build_query($postFields); 
+		$postFields = http_build_query($postFields);
 		if(function_exists('curl_init')){
 
 			$ch = curl_init ();
@@ -81,18 +81,18 @@ class Msg {
 			}
 			curl_close ( $ch );
 		}elseif(function_exists('file_get_contents')){
-			
+
 			$result=file_get_contents($url.$postFields);
 
 		}
 		return $result;
 	}
-	
+
 	//魔术获取
 	public function __get($name){
 		return $this->$name;
 	}
-	
+
 	//魔术设置
 	public function __set($name,$value){
 		$this->$name=$value;

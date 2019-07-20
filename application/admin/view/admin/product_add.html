@@ -42,6 +42,21 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label for="image" class="layui-form-label">
+                LOGO
+            </label>
+            <div class="layui-input-inline">
+                <button type="button" class="layui-btn" id="image">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <input type="hidden" name="image" id="path" lay-verify="image"/>
+                <img src="" alt="" id="img" />
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                选填，单张
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label for="contract" class="layui-form-label">
                     合约比例
             </label>
@@ -69,6 +84,18 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label for="wave" class="layui-form-label">
+                       点位差
+            </label>
+            <div class="layui-input-inline"  >
+                <input type="number" id="wave" name="wave" required="" lay-verify="number"
+                       autocomplete="off" class="layui-input" >
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                止盈止损点位差
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label for="fee" class="layui-form-label">
                         手续费
             </label>
@@ -90,7 +117,35 @@
     </form>
 </div>
 <script>
+    layui.use('upload', function(){
+        var upload = layui.upload;
 
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#image' //绑定元素
+            ,accept: 'images' //绑定元素
+            ,url: '/admin/Api/upload' //上传接口
+            ,data:{path:'product'}
+            ,done: function(res){
+//                console.log(res);
+                if(res['status'] == 1){
+                    $('#path').attr('value',res['info']);
+                }else{
+                    layer.msg(res.info,{icon: 2,time:2000});
+                }
+                //上传完毕回调
+            }
+            , choose: function (obj) {
+                obj.preview(function (index, file, result) {
+                    $('#img').attr('src',result);
+                });
+            }
+            ,error: function(){
+                layer.msg('上传失败，请重试',{icon: 2,time:2000});
+                //请求异常回调
+            }
+        });
+    });
     layui.use(['form','layer'], function(){
         $ = layui.jquery;
         var form = layui.form
@@ -104,6 +159,10 @@
             ,abbreviation: function(value){
                 if(value.length <= 0||value.length > 50){
                     return '请输入正确的缩写';
+                }
+            } ,image: function(value){
+                if($('#path').val() == ''||$('#path').val() == null){
+                    return '请选择LOGO图片';
                 }
             }
         });

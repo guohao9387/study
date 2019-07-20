@@ -113,6 +113,87 @@ class Api extends Common{
             return json($data);
         }
     }
+    public function user_real_handle()
+    {
+        if(request()->isAjax()){
+            $param = input('post.');
+            $where = [];
+            $where[] = ['status','=','1'];
+            $where[] = ['id','=',$param['id']];
+            db::startTrans();
+            $real_info = db::name('real_auth')->lock(true)->where($where)->find();
+            if($real_info){
+                $data = [];
+                $data['id'] = $param['id'];
+                $data['status'] = $param['status'];
+                if($param['status']==2 && $real_info['status'] == 1) {
+                    //审核操作
+                    $data['update_time'] = date('Y-m-d H:i:s');
+                    $data['remark'] = '审核通过';
+                    $res = db::name('real_auth')->where($where)->update($data);
+                    if($res){
+                        $data=[];
+                        $data['real']=1;
+                        $res=db::name('user')->where('uid',$real_info['uid'])->update($data);
+                        if($res){
+                            add_user_operation($this->admin,$this->admin_name,3,1,'审核通过会员实名', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$real_info['uid']);
+                            db::commit();
+                            $data = [];
+                            $data['status'] = 1;
+                            $data['msg'] = '操作成功';
+                        }else{
+                            db::rollback();
+                            $data = [];
+                            $data['status'] = 0;
+                            $data['msg'] = '操作失败';
+                        }
+                    }else{
+                        db::rollback();
+                        $data = [];
+                        $data['status'] = 0;
+                        $data['msg'] = '操作失败';
+                    }
+                } elseif ($param['status']==3 && $real_info['status'] == 1){
+                    //拒绝操作
+                    if(!$param['remark']){
+                        db::rollback();
+                        $data = [];
+                        $data['status'] = 0;
+                        $data['msg'] = '请输入拒绝原因';
+                        return json($data);
+                    }
+                    if(strlen($param['remark'])>50){
+                        db::rollback();
+                        $data = [];
+                        $data['status'] = 0;
+                        $data['msg'] = '请输入1-50字拒绝原因';
+                        return json($data);
+                    }
+                    $data['update_time'] = date('Y-m-d H:i:s');
+                    $data['remark'] = $param['remark'];
+                    $res = db::name('real_auth')->where($where)->update($data);
+                    if($res){
+                        add_user_operation($this->admin,$this->admin_name,3,1,'审核拒绝会员实名', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$real_info['id']);
+                        db::commit();
+                        $data = [];
+                        $data['status'] = 1;
+                        $data['msg'] = '操作成功';
+                    }else{
+                        db::rollback();
+                        $data = [];
+                        $data['status'] = 0;
+                        $data['msg'] = '操作失败';
+                    }
+                }
+            }else{
+                db::rollback();
+                $data = [];
+                $data['status'] = 0;
+                $data['msg'] = '操作失败';
+            }
+            return json($data);
+        }
+    }
     //代理提现处理
     public function agent_withdraw_handle()
     {

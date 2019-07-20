@@ -44,6 +44,15 @@
                     <option {if condition="input('get.status') eq 2"} selected="selected"{/if} value="2">禁用</option>
                 </select>
             </div>
+            <div class="layui-input-inline">
+                <select name="type">
+                    <option value="">资讯类型</option>
+                    <option {if condition="input('get.type') eq 1"} selected="selected"{/if} value="1">新闻资讯</option>
+                    <option {if condition="input('get.type') eq 2"} selected="selected"{/if} value="2">关于我们</option>
+                    <option {if condition="input('get.type') eq 3"} selected="selected"{/if} value="3">帮助中心</option>
+                    <option {if condition="input('get.type') eq 4"} selected="selected"{/if} value="4">下载中心</option>
+                </select>
+            </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
             <a href="{$_SERVER['REQUEST_URI']}"  class="layui-btn layui-btn-normal">重置</a>
 
@@ -64,6 +73,7 @@
             <th>标题</th>
             <th>排序</th>
             <th>添加时间</th>
+            <th>类型</th>
             <th>状态</th>
             <th>操作</th></tr>
         </thead>
@@ -77,6 +87,7 @@
                 <td>{$vo.title}</td>
                 <td>{$vo.sort}</td>
                 <td>{$vo.add_time}</td>
+                <td>{$vo.type|str_news_type}</td>
                 <td class="td-status">
                     {if condition="$vo.status eq 1"}
                         <a onclick="member_stop(this,{$vo['id']})" href="javascript:;"  title="禁用">

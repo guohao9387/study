@@ -192,6 +192,7 @@
             <!--<th>限小</th>-->
             <!--<th>限大</th>-->
             <th>注册时间</th>
+            <th>实名状态</th>
             <th>交易状态</th>
             <th>登录状态</th>
             <th>邀请码</th>
@@ -213,6 +214,7 @@
                 <td>{$vo.money|number_format=###,2,".",""}</td>
                 <td>{$vo.promise_money|number_format=###,2,".",""}</td>
                 <td>{$vo.add_time}</td>
+                <td>{$vo.real|user_real_status}</td>
                 <td class="td-status">
                     {if condition="$vo.trade_status eq 1"}
                     <a onclick="trade_status(this,{$vo['uid']})" href="javascript:;"  title="设置会员禁止交易">

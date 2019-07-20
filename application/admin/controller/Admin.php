@@ -191,6 +191,9 @@ class Admin extends Common{
             if(!empty($param['status'])){
                 $where[] = ['status','=',$param['status']];
             }
+            if(!empty($param['type'])){
+                $where[] = ['type','=',$param['type']];
+            }
             if(!empty($param['start'])){
                 $where[] = ['add_time','>=',$param['start']];
             }
@@ -421,6 +424,8 @@ class Admin extends Common{
             $data['trade_status']=2;
             $data['add_time'] = date('Y-m-d H:i:s',time());
             $data['update_time'] = date('Y-m-d H:i:s',time());
+            unset($data['file']);
+
             $res = db::name('product')->insert($data);
             if($res){
                 add_user_operation($this->admin,$this->admin_name, 3,4,'添加产品', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
@@ -441,6 +446,8 @@ class Admin extends Common{
     public function product_edit(){
         if(request()->isAjax()){
             $data = input('post.');
+            unset($data['file']);
+
             $res = db::name('product')->update($data);
             if($res){
                 add_user_operation($this->admin,$this->admin_name, 3,4,'修改产品', $_SERVER['REQUEST_URI'], serialize($_REQUEST));

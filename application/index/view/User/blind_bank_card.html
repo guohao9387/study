@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>aioq.cn艾比特数字资产价值兑换交易平台_区块链服务平台【艾比特】</title>
+    <meta name="Keywords" content="aioq.cn艾比特数字资产价值兑换交易平台_区块链服务平台">
+    <meta name="Description" content="aioq.cn艾比特交易平台是数字资产价值兑换交易平台，坚持为数字资产交易者提供，专业、安全、快捷的交易服务。">
+    <meta name="author" content="aioq.cn">
+    <meta name="coprright" content="aioq.cn">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+
+    <link rel="stylesheet" href="/static/index/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/index/css/style.css" id="theme"/>
+    <link rel="stylesheet" href="/static/index/css/common.css"/>
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+
+    <script type="text/javascript" src="/static/index/js/jquery-2.1.1.min.js"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+</head>
+
+<body lang="zh-CN">
+<!--[if lt IE 10]>
+<div id="kie-bar" class="kie-bar ">
+    您现在使用的浏览器版本过低，可能会导致浏览效果和信息的缺失。 建议立即升级到
+    <a href="http://rj.baidu.com/soft/detail/14917.html" target="_blank" title="免费升级至IE8浏览器">IE 10+</a> 或
+    <a href="http://rj.baidu.com/soft/detail/14744.html" target="_blank" title="免费升级至360安全浏览器">谷歌浏览器</a> 或
+    <a href="http://rj.baidu.com/soft/detail/17451.html" target="_blank" title="免费升级至360安全浏览器">360安全浏览器</a> ，安全更放心！
+</div><![endif]-->
+<div id="mollymobi_header" style="z-index: 999;min-width: 1200px;width:100%;">
+    <div class="header">
+        <div class="header-content">
+            <ul class="trade-status">
+
+                <li style="padding: 0px 10px 0px 0px;">
+                    <i class="fa fa-home fa-lg left move mr5"></i>
+                    <span>欢迎来到aioq.cn艾比特数字资产价值兑换交易平台-区块链服务平台</span>
+                </li>
+            </ul>
+            <ul class="user-status">
+
+                <li>
+                    <i class="fa fa-user left move fz_16"></i>
+                    <a href="/index/User/index" class="ma-l move"> {$username}</a>
+                </li>
+
+                <li>
+                    <a href="/index/Login/logout" class="darker" style="color:#4f94e7">安全退出</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="common-nav">
+    <div class="nav-bar">
+        <div class="logo" style="margin-top: 12px;">
+            <a href="/index/Index/index" class="xiaozhu-logo">
+                <img src="/static/index/images/ABT.png" alt="" style="width: 50%;"/>
+            </a>
+        </div>
+        <div class="nav-content">
+            <ul class="common-nav-list">
+                <li>
+                    <a href="/index/Index/index">首页</a>
+                </li>
+                <li>
+                    <a href="/index/Trade/index">交易中心
+                    </a>
+                </li>
+                <li>
+                    <a href="/index/Coin/index">申购币</a>
+                </li>
+                <li>
+                    <a href="/index/Notice/index">公告中心</a>
+                </li>
+                <li>
+                    <a href="/index/Notice/help">帮助中心</a>
+                </li>
+                <li>
+                    <a href="/index/Notice/about_us">关于我们</a>
+                </li>
+                <li>
+                    <a href="/index/User/index">个人中心</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="autobox">
+    <div class="now">
+        <i class="fa fa-home fa-lg move mr5"></i>
+        <a href="/index/Index/index" class="">首页</a> &gt;
+        <a href="/index/User/bank_list" class="">我的银行卡 </a>
+    </div>
+    <div class="assets_center clear po_re ">
+        <div class="left-nav-bar" id="left-nav-bar">
+            <div class="left-nav-slider">
+                <dl class="nav-tab-list">
+
+                    <dt>
+                        <a href="/index/User/index"><i class="fa fa-support mr10"></i>个人中心</a>
+                    </dt>
+                    <dt class="nav-tab-hover hover1"></dt>
+                    <dd >
+                        <a href="/index/User/real_auth">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>实名认证
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd >
+                        <a href="/index/User/bank_list">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>我的银行卡
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+
+                    <dd >
+                        <a href="/index/User/recharge">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>账户充值
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="/index/User/withdraw">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>我要提现
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd>
+                        <a href="/index/User/withdraw_list">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>提现记录
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd >
+                        <a href="/index/User/money_list">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>资金记录
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+
+                    <dd >
+                        <a href="/index/User/order_list">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>平仓记录
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd >
+                        <a href="/index/User/invite">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>邀请好友
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd >
+                        <a href="/index/User/friends">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>我的好友
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd >
+                        <a href="/index/User/coin">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>我的申购币
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd >
+                        <a href="/index/User/coin_order_list">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>申购币购买记录
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd >
+                        <a href="/index/User/coin_give_list">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>申购币获赠记录
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+                    <dd >
+                        <a href="/index/User/re_pwd">
+                            <i class="fa fa-tasks fa-lg fa-fw mr5"></i>修改密码
+                            <i class="fa fa-angle-right fa-lg right mr10 mt17"></i>
+                        </a>
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+        <style>
+            .new_list ul li {
+                width: 100%;
+                padding: 10px 0;
+                border-bottom: 1px solid #d9d9d9;
+            }
+
+            .new_list ul li label {
+                font-size: 16px;
+                margin-right: 15px;
+            }
+
+            .new_list ul li input {
+                border: none;
+                outline: none;
+                background: none;
+                font-size: 16px;
+                color: black;
+                width: 60%;
+            }
+
+            .rows {
+                margin-top: 15px;
+                border-bottom: 1px solid #d9d9d9;
+                padding: 10px 0;
+            }
+
+            .rows button {
+                text-align: center;
+                font-size: 16px;
+                padding: 10px 0;
+                width: 80%;
+                margin-left: 10%;
+                color: white;
+                background: #4f94e7;
+                border-radius: 10px;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                -ms-border-radius: 10px;
+                -o-border-radius: 10px;
+                outline: none;
+                border: none;
+            }
+            .rows select {
+                padding: 5px 0;
+                outline: none;
+                display: block;
+                background: #FFFFFF;
+                border: none;
+                width: 100%;
+            }
+            .config {
+                margin-top: 25px;
+            }
+
+            .config p {
+                font-size: 14px;
+                color: black;
+                padding: 4px 0;
+            }
+        </style>
+        <div class="assets_content w900 right bg_w mh1500">
+            <h1>绑定银行卡</h1>
+            <form method="post" class="layui-form" >
+                <div class="new_list">
+                    <ul>
+                        <li>
+                            <label>手机号码</label>
+                            <input type="number" value="{$real.phone}"  readonly/>
+                        </li>
+                        <li>
+                            <label>真实姓名</label>
+                            <input type="text" value="{$real.name}" readonly />
+                        </li>
+                        <li>
+                            <select name="bank_name" lay-verify="bank_name" class="valid">
+                                <option value="0">请选择开户行   </option>
+                                {volist name="bank" id="val"}
+                                <option value="{$val.bank_name}">{$val.bank_name}</option>
+                                {/volist}
+                            </select>
+                        </li>
+                        <li>
+                            <label>开&nbsp;户&nbsp;支&nbsp;行</label>
+                            <input type="text" name="branch_name" placeholder="请输入开户支行" lay-verify="branch_name" />
+                        </li>
+                        <li>
+                            <label>银行卡号</label>
+                            <input type="text" name="bank_card" placeholder="请输入银行卡号" lay-verify="bank_card"/>
+                        </li>
+                    </ul>
+                    <div class="rows">
+                        <button type="button" class="btn" lay-filter="add" lay-submit="">确定</button>
+                    </div>
+                    <div class="config">
+                        <p>1.绑定银行卡前必须进行实名认证</p>
+                        <p>2.每人最多绑定3张银行卡</p>
+                        <p>3.提现时只能提现到已绑定的银行卡</p>
+                        <p>4.一但绑定若要修改请联系客服修改</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+                ,layer = layui.layer;
+        //自定义验证规则
+        form.verify({
+            bank_name:function(value){
+                if(value==0){
+                    return '请选择开户行';
+                }
+            },
+            branch_name:function(value){
+                if(value.length <= 0||value.length >50){
+                    return '请输入正确的开户支行名称';
+                }
+            },
+            bank_card: [
+                /^[\S]{16,20}$/
+                ,'银行卡号格式有误'
+            ]
+        });
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            $('.btn').attr("disabled",true);
+            $.post("/index/User/blind_bank_card",data.field,function(res){
+                if(res.status==0){
+                    layer.msg(res.msg,{icon: 2,time:2000},function(){
+                        $('.btn').removeAttr("disabled");
+                    });
+                }else{
+                    layer.msg(res.msg,{icon: 1,time:1000},function(){
+                        window.location.href="/index/User/bank_list";
+                    });
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>

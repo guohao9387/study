@@ -50,12 +50,13 @@
             <th>ID</th>
             <th>名称</th>
             <th>缩写</th>
+            <th>当前价格</th>
             <th>合约比例</th>
             <th>最小手数</th>
             <th>最大手数</th>
             <th>手续费</th>
-            <th>交易状态</th>
             <th>显示状态</th>
+            <th>交易状态</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -65,10 +66,12 @@
                 <td>{$vo.id}</td>
                 <td>{$vo.name}</td>
                 <td>{$vo.abbreviation}</td>
+                <td id="{$vo.abbreviation}">0.00</td>
                 <td>{$vo.contract}</td>
                 <td>{$vo.min_hand}</td>
                 <td>{$vo.max_hand}</td>
                 <td>{$vo.fee}</td>
+
                 <td class="td-status">
                     {if condition="$vo.show_status eq 1"}
                     <a onclick="member_stop(this,{$vo['id']})" href="javascript:;"  title="禁用">
@@ -112,6 +115,31 @@
 
 </div>
 <script>
+    var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=1");
+
+    ws.onopen = function()
+    {
+        // Web Socket 已连接上，使用 send() 方法发送数据
+        //ws.send("发送数据");
+    };
+
+    ws.onmessage = function (evt)
+    {
+        console.log(evt.data);
+        var data=JSON.parse(evt.data);
+        $.each(data,function(k,v){
+            var id='#'+k;
+            var last_price=$(id).html();
+            var now_price=v['USD'];
+            if(now_price>=last_price){
+                $(id).attr("style","color:red;");
+            }else{
+                $(id).attr("style","color:green;");
+            }
+            $(id).html(v['USD']);
+        })
+    };
+
     layui.use('laydate', function(){
         var laydate = layui.laydate;
 
@@ -174,10 +202,10 @@
                     if(res['status']==1){
                         if(status==2){
                             //发异步把会员状态进行更改
-                            $(obj).attr('title','正常交易').children('span').removeClass('layui-btn-normal').addClass('layui-btn-danger').html('已禁用');
+                            $(obj).attr('title','正常交易').children('span').removeClass('layui-btn-normal').addClass('layui-btn-danger').html('禁止交易');
                             layer.msg('已禁止交易!',{icon: 1,time:1000});
                         }else{
-                            $(obj).attr('title','禁止交易').children('span').removeClass('layui-btn-danger').addClass('layui-btn-normal').html('已启用');
+                            $(obj).attr('title','禁止交易').children('span').removeClass('layui-btn-danger').addClass('layui-btn-normal').html('正常交易');
                             layer.msg('已恢复交易!',{icon: 1,time:1000});
                         }
                     }else{
