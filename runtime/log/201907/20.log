@@ -1,0 +1,724 @@
+---------------------------------------------------------------
+[2019-07-20T03:26:15+08:00] 185.6.8.2 GET aioq.cn/
+[运行时间：0.020322s] [吞吐率：49.21req/s] [内存消耗：2,109.37kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'host' => 'aioq.cn',
+  'user-agent' => '(info@domaincrawler.com; http://www.domaincrawler.com/aioq.cn)',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T10:44:06+08:00] 101.132.69.5 GET aioq.cn/
+[运行时间：0.020532s] [吞吐率：48.70req/s] [内存消耗：2,109.70kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'Keep-Alive',
+  'host' => 'aioq.cn',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T13:07:56+08:00] 123.55.59.55 GET aioq.cn/
+[运行时间：0.020348s] [吞吐率：49.14req/s] [内存消耗：2,111.11kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'purpose' => 'prefetch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T13:07:56+08:00] 123.55.59.55 GET aioq.cn/
+[运行时间：0.021517s] [吞吐率：46.47req/s] [内存消耗：2,111.08kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T13:10:08+08:00] 123.55.59.55 GET aioq.cn/
+[运行时间：0.019777s] [吞吐率：50.56req/s] [内存消耗：2,111.12kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T13:17:13+08:00] 123.55.59.55 GET aioq.cn/
+[运行时间：0.032578s] [吞吐率：30.70req/s] [内存消耗：3,073.47kb] [文件加载：77]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000366s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_kefu` [ RunTime:0.000765s ]
+[ sql ] [ SQL ] SELECT `value` FROM `st_kefu` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SELECT `image` FROM `st_kefu` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000244s ]
+[ sql ] [ SQL ] SELECT `image` FROM `st_kefu` WHERE  `id` = 4 LIMIT 1 [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000574s ]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'type' in 'where clause'[/home/wwwroot/study/thinkphp/library/think/db/Connection.php:687]
+---------------------------------------------------------------
+[2019-07-20T13:28:37+08:00] 123.55.59.55 GET aioq.cn/
+[运行时间：0.037264s] [吞吐率：26.84req/s] [内存消耗：3,256.30kb] [文件加载：74]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/index/index.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'product',
+  6 => 'notice_list',
+  7 => 'news_list',
+  8 => 'adv',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000372s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_kefu` [ RunTime:0.000810s ]
+[ sql ] [ SQL ] SELECT `value` FROM `st_kefu` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000293s ]
+[ sql ] [ SQL ] SELECT `image` FROM `st_kefu` WHERE  `id` = 3 LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SELECT `image` FROM `st_kefu` WHERE  `id` = 4 LIMIT 1 [ RunTime:0.000215s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000576s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000338s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_product` [ RunTime:0.000593s ]
+[ sql ] [ SQL ] SELECT `name`,`abbreviation`,`contract`,`image` FROM `st_product` WHERE  `status` = 1  AND `show_status` = 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_notice` [ RunTime:0.000615s ]
+[ sql ] [ SQL ] SELECT * FROM `st_notice` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000280s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_adv` [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT * FROM `st_adv` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC [ RunTime:0.000281s ]
+---------------------------------------------------------------
+[2019-07-20T13:28:43+08:00] 123.55.59.55 GET aioq.cn/index/Login/register
+[运行时间：0.021341s] [吞吐率：46.86req/s] [内存消耗：2,196.51kb] [文件加载：69]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/login/register.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T13:28:49+08:00] 123.55.59.55 GET aioq.cn/index/Login/login
+[运行时间：0.021440s] [吞吐率：46.64req/s] [内存消耗：2,196.45kb] [文件加载：69]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/login/login.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T13:37:47+08:00] 123.55.59.55 GET aioq.cn/
+[运行时间：0.032709s] [吞吐率：30.57req/s] [内存消耗：3,056.37kb] [文件加载：72]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/index/index.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'product',
+  6 => 'notice_list',
+  7 => 'news_list',
+  8 => 'adv',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000316s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000768s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000373s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_product` [ RunTime:0.000631s ]
+[ sql ] [ SQL ] SELECT `name`,`abbreviation`,`contract`,`image` FROM `st_product` WHERE  `status` = 1  AND `show_status` = 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_notice` [ RunTime:0.000542s ]
+[ sql ] [ SQL ] SELECT * FROM `st_notice` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_adv` [ RunTime:0.000538s ]
+[ sql ] [ SQL ] SELECT * FROM `st_adv` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC [ RunTime:0.000273s ]
+---------------------------------------------------------------
+[2019-07-20T13:37:48+08:00] 123.55.59.55 GET aioq.cn/index/Trade/index
+[运行时间：0.019683s] [吞吐率：50.81req/s] [内存消耗：2,098.24kb] [文件加载：68]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[2019-07-20T13:37:48+08:00] 123.55.59.55 GET aioq.cn/index/Login/login
+[运行时间：0.021656s] [吞吐率：46.18req/s] [内存消耗：2,196.45kb] [文件加载：69]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/login/login.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T13:37:50+08:00] 123.55.59.55 GET aioq.cn/
+[运行时间：0.033334s] [吞吐率：30.00req/s] [内存消耗：3,056.37kb] [文件加载：72]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/index/index.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'product',
+  6 => 'notice_list',
+  7 => 'news_list',
+  8 => 'adv',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000313s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000789s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000300s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_product` [ RunTime:0.000621s ]
+[ sql ] [ SQL ] SELECT `name`,`abbreviation`,`contract`,`image` FROM `st_product` WHERE  `status` = 1  AND `show_status` = 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_notice` [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SELECT * FROM `st_notice` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_adv` [ RunTime:0.000559s ]
+[ sql ] [ SQL ] SELECT * FROM `st_adv` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC [ RunTime:0.000255s ]
+---------------------------------------------------------------
+[2019-07-20T13:37:51+08:00] 123.55.59.55 GET aioq.cn/index/Coin/index
+[运行时间：0.035020s] [吞吐率：28.56req/s] [内存消耗：3,227.52kb] [文件加载：74]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/coin/index.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'list',
+  6 => 'adv',
+  7 => 'money',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000321s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000733s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_apply_coin` [ RunTime:0.000597s ]
+[ sql ] [ SQL ] SELECT * FROM `st_apply_coin` WHERE  `status` = 1  AND `show_status` = 1 [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_adv` [ RunTime:0.000555s ]
+[ sql ] [ SQL ] SELECT * FROM `st_adv` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_user` [ RunTime:0.000610s ]
+[ sql ] [ SQL ] SELECT `money` FROM `st_user` WHERE  `uid` IS NULL LIMIT 1 [ RunTime:0.000224s ]
+---------------------------------------------------------------
+[2019-07-20T13:37:57+08:00] 123.55.59.55 POST aioq.cn/index/Coin/buy
+[运行时间：0.031331s] [吞吐率：31.92req/s] [内存消耗：3,051.18kb] [文件加载：72]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Coin/index',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://aioq.cn',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '13',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+)
+[ info ] [ PARAM ] array (
+  'number' => '1',
+  'id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000336s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000773s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000370s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000313s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000281s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_apply_coin` [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SELECT * FROM `st_apply_coin` WHERE  `status` = 1  AND `show_status` = 1  AND `id` = 1 LIMIT 1 [ RunTime:0.000306s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_user` [ RunTime:0.000619s ]
+[ sql ] [ SQL ] SELECT * FROM `st_user` WHERE  `uid` IS NULL LIMIT 1   FOR UPDATE [ RunTime:0.000258s ]
+---------------------------------------------------------------
+[2019-07-20T13:38:00+08:00] 123.55.59.55 POST aioq.cn/index/Coin/index
+[运行时间：0.034131s] [吞吐率：29.30req/s] [内存消耗：3,058.74kb] [文件加载：72]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Coin/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'upgrade-insecure-requests' => '1',
+  'origin' => 'http://aioq.cn',
+  'cache-control' => 'max-age=0',
+  'content-length' => '13',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+)
+[ info ] [ PARAM ] array (
+  'number' => '1',
+  'id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/coin/index.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'list',
+  6 => 'adv',
+  7 => 'money',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000311s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.002291s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000359s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000299s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_apply_coin` [ RunTime:0.000612s ]
+[ sql ] [ SQL ] SELECT * FROM `st_apply_coin` WHERE  `status` = 1  AND `show_status` = 1 [ RunTime:0.000288s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_adv` [ RunTime:0.000554s ]
+[ sql ] [ SQL ] SELECT * FROM `st_adv` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_user` [ RunTime:0.000641s ]
+[ sql ] [ SQL ] SELECT `money` FROM `st_user` WHERE  `uid` IS NULL LIMIT 1 [ RunTime:0.000172s ]
+---------------------------------------------------------------
+[2019-07-20T13:38:02+08:00] 123.55.59.55 GET aioq.cn/index/Notice/help
+[运行时间：0.032577s] [吞吐率：30.70req/s] [内存消耗：3,350.13kb] [文件加载：77]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Coin/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/notice/help.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'list',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000310s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000744s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `st_news` WHERE  `status` = 1  AND `type` = 3 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 0,20 [ RunTime:0.000269s ]
+---------------------------------------------------------------
+[2019-07-20T13:38:03+08:00] 123.55.59.55 GET aioq.cn/index/Notice/help_info?id=4
+[运行时间：0.029911s] [吞吐率：33.43req/s] [内存消耗：3,185.13kb] [文件加载：74]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Notice/help',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/notice/help_info.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'info',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000319s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000724s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000286s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `id` = 4  AND `status` = 1  AND `type` = 3 LIMIT 1 [ RunTime:0.000260s ]
+---------------------------------------------------------------
+[2019-07-20T13:38:04+08:00] 123.55.59.55 GET aioq.cn/index/Index/index
+[运行时间：0.033561s] [吞吐率：29.80req/s] [内存消耗：3,057.47kb] [文件加载：72]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Notice/help_info?id=4',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/index/index.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'product',
+  6 => 'notice_list',
+  7 => 'news_list',
+  8 => 'adv',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000302s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000739s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000357s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000282s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_product` [ RunTime:0.000605s ]
+[ sql ] [ SQL ] SELECT `name`,`abbreviation`,`contract`,`image` FROM `st_product` WHERE  `status` = 1  AND `show_status` = 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_notice` [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SELECT * FROM `st_notice` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_adv` [ RunTime:0.000548s ]
+[ sql ] [ SQL ] SELECT * FROM `st_adv` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC [ RunTime:0.000257s ]
+---------------------------------------------------------------
+[2019-07-20T13:38:55+08:00] 123.55.59.55 GET aioq.cn/index/Trade/index
+[运行时间：0.020643s] [吞吐率：48.44req/s] [内存消耗：2,098.62kb] [文件加载：68]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[2019-07-20T13:38:55+08:00] 123.55.59.55 GET aioq.cn/index/Login/login
+[运行时间：0.021969s] [吞吐率：45.52req/s] [内存消耗：2,196.83kb] [文件加载：69]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/login/login.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-20T13:38:57+08:00] 123.55.59.55 GET aioq.cn/index/Index/index
+[运行时间：0.034374s] [吞吐率：29.09req/s] [内存消耗：3,057.47kb] [文件加载：72]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Notice/help_info?id=4',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/index/index.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'product',
+  6 => 'notice_list',
+  7 => 'news_list',
+  8 => 'adv',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000306s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.001680s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000286s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_product` [ RunTime:0.000607s ]
+[ sql ] [ SQL ] SELECT `name`,`abbreviation`,`contract`,`image` FROM `st_product` WHERE  `status` = 1  AND `show_status` = 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_notice` [ RunTime:0.000579s ]
+[ sql ] [ SQL ] SELECT * FROM `st_notice` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_adv` [ RunTime:0.000531s ]
+[ sql ] [ SQL ] SELECT * FROM `st_adv` WHERE  `status` = 1  AND `type` = 1 ORDER BY `sort` DESC [ RunTime:0.000266s ]
+---------------------------------------------------------------
+[2019-07-20T13:38:58+08:00] 123.55.59.55 GET aioq.cn/index/Coin/index
+[运行时间：0.032534s] [吞吐率：30.74req/s] [内存消耗：3,059.84kb] [文件加载：72]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=rc73tltsdbeotncddjulad1lui',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://aioq.cn/index/Index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /home/wwwroot/study/application/index/view/coin/index.html [ array (
+  0 => 'username',
+  1 => 'kefu',
+  2 => 'about_us_list',
+  3 => 'help_list',
+  4 => 'download_list',
+  5 => 'list',
+  6 => 'adv',
+  7 => 'money',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000314s ] mysql:host=127.0.0.1;dbname=study;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_news` [ RunTime:0.000751s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000356s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 3 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000288s ]
+[ sql ] [ SQL ] SELECT * FROM `st_news` WHERE  `status` = 1  AND `type` = 4 ORDER BY `sort` DESC LIMIT 6 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_apply_coin` [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SELECT * FROM `st_apply_coin` WHERE  `status` = 1  AND `show_status` = 1 [ RunTime:0.000287s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_adv` [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SELECT * FROM `st_adv` WHERE  `status` = 1  AND `type` = 2 ORDER BY `sort` DESC [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `st_user` [ RunTime:0.000608s ]
+[ sql ] [ SQL ] SELECT `money` FROM `st_user` WHERE  `uid` IS NULL LIMIT 1 [ RunTime:0.000172s ]
+---------------------------------------------------------------
+[2019-07-20T13:38:59+08:00] 123.55.59.55 GET aioq.cn/static/index/js/jquery.min.map
+[运行时间：0.015194s] [吞吐率：65.82req/s] [内存消耗：1,653.71kb] [文件加载：53]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php

@@ -1,0 +1,355 @@
+<?php /*a:1:{s:58:"/home/wwwroot/study/application/index/view/coin/index.html";i:1563599450;}*/ ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>aioq.cn艾比特数字资产价值兑换交易平台_区块链服务平台【艾比特】</title>
+    <meta name="Keywords" content="aioq.cn艾比特数字资产价值兑换交易平台_区块链服务平台">
+    <meta name="Description" content="aioq.cn艾比特交易平台是数字资产价值兑换交易平台，坚持为数字资产交易者提供，专业、安全、快捷的交易服务。">
+    <meta name="author" content="aioq.cn">
+    <meta name="coprright" content="aioq.cn">
+    <link rel="shortcut icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="/static/index/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/index/css/style.css" id="theme"/>
+    <link rel="stylesheet" href="/static/index/css/common.css"/>
+    <script type="text/javascript" src="/static/index/js/jquery-2.1.1.min.js"></script>
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+    <link rel="stylesheet" href="/static/index/css/slider.css">
+    <script type="text/javascript" src="/static/index/js/slider.js"></script>
+</head>
+
+<body lang="zh-CN">
+<!--[if lt IE 10]>
+<div id="kie-bar" class="kie-bar ">
+    您现在使用的浏览器版本过低，可能会导致浏览效果和信息的缺失。 建议立即升级到
+    <a href="http://rj.baidu.com/soft/detail/14917.html" target="_blank" title="免费升级至IE8浏览器">IE 10+</a> 或
+    <a href="http://rj.baidu.com/soft/detail/14744.html" target="_blank" title="免费升级至360安全浏览器">谷歌浏览器</a> 或
+    <a href="http://rj.baidu.com/soft/detail/17451.html" target="_blank" title="免费升级至360安全浏览器">360安全浏览器</a> ，安全更放心！
+</div><![endif]-->
+<div id="mollymobi_header" style="z-index: 999;min-width: 1200px;width:100%;">
+    <div class="header">
+        <div class="header-content">
+            <ul class="trade-status">
+
+                <li style="padding: 0px 10px 0px 0px;">
+                    <i class="fa fa-home fa-lg left move mr5"></i>
+                    <span>欢迎来到aioq.cn艾比特数字资产价值兑换交易平台-区块链服务平台</span>
+                </li>
+            </ul>
+            <ul class="user-status">
+
+                <?php if($username==0): ?>
+                <li>
+                    <i class="fa fa-user left move fz_16"></i>
+                    <a href="/index/Login/register" class="ma-l move"> 注册</a>
+                </li>
+                <li>
+                    <a href="/index/Login/login" class="darker" style="color:#4f94e7">登录</a>
+                </li>
+                <?php else: ?>
+                <li>
+                    <i class="fa fa-user left move fz_16"></i>
+                    <a href="/index/User/index" class="ma-l move"> <?php echo htmlentities($username); ?></a>
+                </li>
+
+                <li>
+                    <a href="/index/Login/logout" class="darker" style="color:#4f94e7">安全退出</a>
+                </li>
+                <?php endif; ?>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="common-nav">
+    <div class="nav-bar">
+        <div class="logo" style="margin-top: 12px;">
+            <a href="/index/Index/index" class="xiaozhu-logo">
+                <img src="/static/index/images/ABT.png" alt="" style="width: 50%;"/>
+            </a>
+        </div>
+        <div class="nav-content">
+            <ul class="common-nav-list">
+                <li>
+                    <a href="/index/Index/index">首页</a>
+                </li>
+                <li>
+                    <a href="/index/Trade/index">交易中心
+                    </a>
+                </li>
+                <li>
+                    <a href="/index/Coin/index">申购币</a>
+                </li>
+                <li>
+                    <a href="/index/Notice/index">公告中心</a>
+                </li>
+                <li>
+                    <a href="/index/Notice/help">帮助中心</a>
+                </li>
+                <li>
+                    <a href="/index/Notice/about_us">关于我们</a>
+                </li>
+                <li>
+                    <a href="/index/User/index">个人中心</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .f_table td {
+        border-bottom: 5px solid #EDEDED;
+        font-size: 14px;
+    }
+
+    .f_table th {
+        border-bottom: 3px solid #DEDBDB;
+        font-size: 14px;
+    }
+</style>
+<div class="autobox">
+    <div class="now">
+        <i class="fa fa-home fa-lg move mr5"></i>
+        <a href="../index.htm" class="">首页</a> &gt; 申购币
+    </div>
+    <div class="assets_content bg_w">
+        <div class="safe_center clear">
+            <h1>申购币
+            </h1>
+        </div>
+
+        <div id="slider_vote" class="slider" style="height:200px;">
+
+            <!-- Loading Screen -->
+            <div class="slider-loading" data-u="loading">
+                <div class="slider-loading-a"></div>
+                <div class="slider-loading-b"></div>
+            </div>
+            <div class="slider-body" data-u="slides">
+                <?php if(is_array($adv) || $adv instanceof \think\Collection || $adv instanceof \think\Paginator): $i = 0; $__LIST__ = $adv;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?>
+                <div onclick="window.location.href='<?php echo htmlentities($val['url']); ?>'">
+                    <a><img data-u="image" title="" alt="" src="<?php echo htmlentities($val['image']); ?>"/>
+                    </a>
+                </div>
+                <?php endforeach; endif; else: echo "" ;endif; ?>
+            </div>
+            <div id="slider-body-navigator_vote" class="sbn-3" data-u="navigator" style="position: absolute;
+        bottom: 16px;" data-autocenter="1">
+                <div data-u="prototype" style=""></div>
+            </div>
+
+            <span id="slider-body-arrow-l_vote" data-u="arrowleft" class="slider-body-arrowleft-1"
+                  data-autocenter="2"></span>
+            <span id="slider-body-arrow-r_vote" data-u="arrowright" class="slider-body-arrowright-1"
+                  data-autocenter="2"></span>
+        </div>
+        <script>
+            slider_run("slider_vote", [{
+                "$Duration": 1200,
+                "x": 0.3,
+                "$SlideOut": true,
+                "$Easing": {},
+                "$Opacity": 2
+            }]);
+        </script>
+        <textarea class="mv-hide" style="display: none;"></textarea>
+<style>
+    .f_table td{
+        height: 65px;
+        line-height: 65px;
+
+    }
+    .f_table tr td button{
+        outline: none;
+        border: none;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        background: #4f94e7;
+        color: white;
+        width: 70px;
+        padding: 4px 0;
+    }
+</style>
+        <!--轮播图 end-->
+        <table class="f_table" id="investLog_content">
+            <thead>
+            <tr>
+                <th>LOGO</th>
+                <th>名称</th>
+                <th>描述</th>
+                <th>单价</th>
+                <th>规格</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$val): $mod = ($i % 2 );++$i;?>
+            <tr>
+                <td><img src="<?php echo htmlentities($val['image']); ?>" style=""/>
+                </td>
+                <td class="name"><?php echo htmlentities($val['name']); ?></td>
+                <td><?php echo htmlentities($val['describe']); ?></td>
+                <td class="price"><?php echo htmlentities($val['price']); ?></td>
+                <td class="min_hand"><?php echo htmlentities($val['min_hand']); ?>/手</td>
+                <td><button class="buy" data-id="<?php echo htmlentities($val['id']); ?>">购买</button></td>
+            </tr>
+            <?php endforeach; endif; else: echo "" ;endif; ?>
+            </tbody>
+        </table>
+    </div>
+    <style type="text/css">
+        .models{
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        .models-content{
+            position:fixed;
+            width:400px;
+            height:400px;
+            background:#FFFFFF;
+            left:50%;
+            top:50%;
+            margin-left:-200px;
+            margin-top:-150px;
+            padding: 15px 20px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .models-content p{
+            font-size: 16px;
+            color: black;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .models-content button{
+            outline: none;
+            border:none;
+            background: #4f94e7;
+            width: 80px;
+            padding: 5px 0;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
+
+    <div class="models">
+        <div class="models-content">
+            <p>申购币购买</p>
+            <form method="post" class="layui-form" >
+                <div class="layui-form-item">
+                    <label for="name" class="layui-form-label">
+                                申购币名称
+                    </label>
+                    <div class="layui-input-inline" >
+                        <input type="text" id="name" class="layui-input" value="" readonly style="border: none">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="price" class="layui-form-label">
+                             单价
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="price" class="layui-input" value="" readonly style="border: none">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="price" class="layui-form-label">
+                                  规格
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="min_hand" class="layui-input" value="" readonly style="border: none">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label  class="layui-form-label">
+                                       账户余额
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text"  class="layui-input" value="<?php echo htmlentities($money); ?>" readonly style="border: none">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="number" class="layui-form-label">
+                             购买数量
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="number" id="number" name="number" required="" lay-verify="number|buy"
+                               autocomplete="off" class="layui-input" value="" placeholder="请输入购买数量">
+                    </div>
+                </div>
+                <input type="hidden" id="id" name="id" value=""/>
+                <button class="btn" lay-filter="add" lay-submit="" style="color: white">确定</button>
+                <button class="lay-btn" style="background-color: #008000;color: white">取消</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $(".buy").click(function () {
+        var user='<?php echo htmlentities($username); ?>';
+        if(!user){
+            layer.msg('请先登陆');
+            return false;
+        }
+        var name=$(this).parent('td').prevAll('.name').html();
+        var price=$(this).parent('td').prevAll('.price').html();
+        var min_hand=$(this).parent('td').prevAll('.min_hand').html();
+        var id=$(this).attr('data-id');
+        $('#name').val(name);
+        $('#price').val(price);
+        $('#min_hand').val(min_hand);
+        $('#id').val(id);
+        $(".models").show();
+    });
+    $(".lay-btn").click(function (){
+        $(".models").hide();
+    });
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+                ,layer = layui.layer;
+        //自定义验证规则
+
+        form.verify({
+            buy:function(value){
+                if(value<= 0){
+                    return '请输入正确的购买数量';
+                }
+            }
+        });
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            $('.btn').attr("disabled",true);
+            $.post("/index/Coin/buy",data.field,function(res){
+                if(res.status==0){
+                    layer.msg(res.msg,{icon: 2,time:2000},function(){
+                        $('.btn').removeAttr("disabled");
+                    });
+                }else{
+                    layer.msg(res.msg,{icon: 1,time:1000},function(){
+                        $('.btn').removeAttr("disabled");
+                        $(".models").hide();
+                    });
+                }
+            },'json');
+            return false;
+        });
+    });
+</script>

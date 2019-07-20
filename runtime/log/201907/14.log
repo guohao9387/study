@@ -1,0 +1,69 @@
+---------------------------------------------------------------
+[2019-07-14T01:55:22+08:00] 178.62.82.141 GET aioq.cn/
+[运行时间：0.020303s] [吞吐率：49.25req/s] [内存消耗：2,110.27kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'accept-encoding' => 'gzip,deflate',
+  'accept-language' => 'en-US,en;q=0.8',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-14T05:51:45+08:00] 47.98.96.116 GET aioq.cn/
+[运行时间：0.020543s] [吞吐率：48.68req/s] [内存消耗：2,109.70kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'Keep-Alive',
+  'host' => 'aioq.cn',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-14T11:10:16+08:00] 101.132.156.172 GET aioq.cn/
+[运行时间：0.020418s] [吞吐率：48.98req/s] [内存消耗：2,109.70kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'connection' => 'Keep-Alive',
+  'host' => 'aioq.cn',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
+---------------------------------------------------------------
+[2019-07-14T12:04:37+08:00] 52.10.208.145 GET aioq.cn/
+[运行时间：0.020626s] [吞吐率：48.48req/s] [内存消耗：2,109.38kb] [文件加载：66]
+[ info ] [ LANG ] /home/wwwroot/study/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Go-http-client/1.1',
+  'host' => 'aioq.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ error ] [0]模板文件不存在:/home/wwwroot/study/application/index/view/index/index.html[/home/wwwroot/study/thinkphp/library/think/view/driver/Think.php:86]
