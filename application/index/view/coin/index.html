@@ -301,8 +301,8 @@
 </html>
 <script type="text/javascript">
     $(".buy").click(function () {
-        var user='{$username}';
-        if(user!='0'){
+        var user=$('.darker').html();
+        if(user=='登陆'){
             layer.msg('请先登陆');
             return false;
         }
