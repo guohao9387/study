@@ -65,7 +65,7 @@
                 </select>
             </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
-            <a href="{$_SERVER['REQUEST_URI']}?start={$mytime}"  class="layui-btn layui-btn-normal">重置</a>
+            <a href="/admin/Money/user_money_list?start={$mytime}"  class="layui-btn layui-btn-normal">重置</a>
             <a href="{:url('admin/Api/excel_user_money_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>
 
         </form>
