@@ -39,14 +39,18 @@ class Trade extends Common
         return $this->fetch();
     }
     public function create_order(){
-//        if(request()->isAjax()){
-        if(1){
+        if(request()->isAjax()){
+//        if(1){
             $param=input('post.');
-            $param['id']=3;
-            $param['hand']=1;
-            $param['win']=0;
-            $param['loss']=0;
-            $param['direction']=2;
+//            $param['id']=3;
+//            $param['hand']=1;
+//            $param['win']=0;
+//            $param['loss']=0;
+//            $param['direction']=2;
+            if($param['direction']!=1&&$param['direction']!=2){
+                return json_return(0,'方向有误');
+            }
+
             $where=[];
             $where[]=['status','=',1];
             $where[]=['show_status','=',1];
@@ -55,24 +59,28 @@ class Trade extends Common
             //产品信息
             $product_info=db::name('product')->where($where)->find();
             if($product_info){
+                $now_price=get_now_price($product_info['abbreviation']);
+                //当前价格
+                if(!$now_price){
+                    return json_return(0,'网络错误，请重试');
+                }
+                //判断止盈止损
+                if(isset($param['target_profit_check'])&&$param['target_profit_check']==1){
+                    if($param['target_profit']<($now_price+$product_info['wave'])){
+                        return json_return(0,'止盈应大于等于最大止盈值');
+                    }
+                }
+                if(isset($param['stop_loss_check'])&&$param['stop_loss_check']==1){
+                    if($param['stop_loss']>($now_price-$product_info['wave'])){
+                        return json_return(0,'止损应小于等于最小止损值');
+                    }
+                }
                 //判断手数范围
                 if($param['hand']<$product_info['min_hand']){
                     return json_return(0,'小于最小手数');
                 }
                 if($param['hand']>$product_info['max_hand']){
                     return json_return(0,'大于最大手数');
-                }
-                //当前价格
-                $now_price=get_now_price($product_info['abbreviation']);
-                if(!$now_price){
-                    return json_return(0,'网络错误，请重试');
-                }
-                //判断止盈止损范围
-                if($param['win']==1&&$param['target_profit']>$now_price+$product_info['wave']){
-                    return json_return(0,'止盈大于最高止盈范围');
-                }
-                if($param['loss']==1&&$param['stop_loss']<$now_price-$product_info['wave']){
-                    return json_return(0,'止损小于最小止损范围');
                 }
                 //总价
                 $amount=$now_price*$product_info['contract']*$param['hand'];
@@ -114,14 +122,18 @@ class Trade extends Common
                 $data['fee']=$fee;
                 $data['direction']=$param['direction'];
                 $data['buy_price']=$now_price;
-                if($param['win']==1){
+                if(isset($param['target_profit_check'])){
+                    $data['target_profit_check']=2;
                     $data['target_profit']=$param['target_profit'];
                 }else{
+                    $data['target_profit_check']=1;
                     $data['target_profit']=0;
                 }
-                if($param['loss']==1){
+                if(isset($param['stop_loss_check'])){
+                    $data['stop_loss_check']=2;
                     $data['stop_loss']=$param['stop_loss'];
                 }else{
+                    $data['stop_loss_check']=1;
                     $data['stop_loss']=0;
                 }
                 $data['add_time']=date('Y-m-d H:i:s');

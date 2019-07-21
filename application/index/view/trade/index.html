@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/static/index/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/index/css/style.css" id="theme"/>
     <link rel="stylesheet" href="/static/index/css/common.css"/>
+    <link rel="stylesheet" href="/static/admin/lib/layui/css/layui.css"/>
     <script type="text/javascript" src="/static/index/js/jquery-2.1.1.min.js"></script>
     <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
@@ -36,7 +37,7 @@
         .models-content {
             position: fixed;
             width: 400px;
-            height: 520px;
+            height: 47rem;
             background: #FFFFFF;
             left: 50%;
             top: 50%;
@@ -483,16 +484,14 @@
                             <!--</div>-->
                             <div data-v-c4371006="" class="bb clearfix">
                                 <label data-v-c4371006="" id="buy" class="buy">
-                                    <input data-v-c4371006="" type="radio" name="buy" value="1" for="buy"
-                                           class="check">买入 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span> </label>
+                                    <input data-v-c4371006="" type="radio" name="buy" value="1" for="buy" checked class="check" onclick="set_direction('买入',1)">买入 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span> </label>
                                 <label data-v-c4371006="" id="sell" class="sell">
-                                    <input data-v-c4371006="" type="radio" name="buy" value="2" for="sell"
-                                           class="check">卖出 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span></label>
+                                    <input data-v-c4371006="" type="radio" name="buy" value="2" for="sell"  class="check" onclick="set_direction('卖出',2)">卖出 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span></label>
                             </div>
                             <div data-v-c4371006="" class="itemnote" style="margin-top: 18px;">最小下单单位 <span class="min_hand">{$product_list[0]['min_hand']}</span>/手</div>
 
                             <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">预付款 ：0/手</div>-->
-                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ：{$product_list[0]['fee']} USDT</div>
+                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ： <span class="fee">{$product_list[0]['fee']} </span> USDT</div>
                             <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需保证金：0.00USDT</div>-->
                         </div>
 
@@ -507,9 +506,12 @@
                             style="width: 1422px; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, 0px) scale(1) translateZ(0px);">
                             {volist name="product_list" id="val"}
                             <li data-product-abbreviation-name="{$val.abbreviation}" data-v-c4371006="" {if $key==0}class="active"{/if}>
-                            <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract}"/>
-                            <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand}"/>
-                            <p data-v-c4371006="" class="title">{$val.desc_name}</p>
+                                <input type="hidden" id="{$val.abbreviation}_id" value="{$val.id}"/>
+                                <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract}"/>
+                                <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand}"/>
+                                <input type="hidden" id="{$val.abbreviation}_fee" value="{$val.fee}"/>
+                                <input type="hidden" id="{$val.abbreviation}_wave" value="{$val.wave}"/>
+                                <p data-v-c4371006="" class="title">{$val.desc_name}</p>
                                 <p data-v-c4371006="" class="price clearfix">
                                     <span data-v-c4371006="" class="l {$val.abbreviation}">0.00</span>
                                     <span data-v-c4371006="" class="a"><span data-product-up-down="{$val['abbreviation']}">0.00</span> %</span>
@@ -612,8 +614,9 @@
 
                 </div>
             </div>
-            <div class="models">
 
+            <div class="models">
+                <form class="layui-form" action="">
                 <div class="models-content">
                     <div data-v-c4371006="" class="leftbtm" style="width: 100%;box-sizing: border-box;padding-bottom: 20px;border: 1px solid #353a59;margin-top: 10px;color: black;">
                         <div data-v-c4371006="" class="tit" style="width: 100%;height: 42px;line-height: 42px;box-sizing: border-box;padding-left: 20px;font-size: 14px;color: black;">新建订单
@@ -622,88 +625,80 @@
                             <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
                                     data-v-c4371006="">品种</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con">BTC/USDT</div>
-                                    <i data-v-c4371006="" class="iconfont icon-jiantou32 btm"></i>
-                                    <i data-v-c4371006="" class="iconfont icon-jiantou31 btm"
-                                       style="display: none;"></i>
+                                    <div data-v-c4371006="" class="con product_name">{$product_list[0]['desc_name']}</div>
                                 </div>
                             </div>
                             <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
                                     data-v-c4371006="">当前价格</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con">100000</div>
+                                    <div data-v-c4371006="" class="con product_price_change" data-product-abbreviation="{$product_list[0]['abbreviation']}" >0.00</div>
                                 </div>
                             </div>
                             <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
                                     data-v-c4371006="">合约比例</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con eaffer contract">0.00</div>
+                                    <div data-v-c4371006="" class="con eaffer contract">{$product_list[0]['contract']}</div>
+                                </div>
+                            </div>
+                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
+                                    data-v-c4371006="">方向</span>
+                                <div data-v-c4371006="" class="chosecontype">
+                                    <div data-v-c4371006="" class="con  order_direction">买入</div>
                                 </div>
                             </div>
                             <div data-v-c4371006="" class="itemcon clearfix" style="overflow: hidden;width: 100%;">
                                 <span data-v-c4371006="">手数</span>
                                 <div data-v-c4371006="" class="chosecon">
                                     <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                    <input data-v-c4371006="" type="text" class="shosu"  >
+                                    <input data-v-c4371006="" type="text" value=""  autocomplete="off" placeholder="0" class="shosu" name="hand" style="text-align: center"  lay-verify="number">
                                     <i data-v-c4371006=""  lass="iconfont icon-jiahaob jia"></i>
                                 </div>
                             </div>
-                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span data-v-c4371006="">保证金</span>
+                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;">
+                                <span data-v-c4371006="">保证金</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con">100000</div>
-                                    <i data-v-c4371006="" class="iconfont icon-jiantou32 btm"></i>
-                                    <i data-v-c4371006="" class="iconfont icon-jiantou31 btm"
-                                       style="display: none;"></i>
+                                    <div data-v-c4371006="" class="con promise_money">0.00</div>
                                 </div>
                             </div>
-                            <div data-v-c4371006="" class="itemcon clearfix"
-                                 style="overflow: hidden;    width: 100%;">
+                            <div data-v-c4371006="" class="itemcon clearfix" style="overflow: hidden;width: 100%;">
                                 <span data-v-c4371006="">手续费</span>
-                                <div data-v-c4371006="" class="chosecon">
-                                    <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                    <input data-v-c4371006="" type="number"> <i data-v-c4371006=""
-                                                                                class="iconfont icon-jiahaob jia"></i>
+                                <div data-v-c4371006="" class="chosecontype">
+                                    <div data-v-c4371006="" class="con fee">{$product_list[0]['fee']}</div>
                                 </div>
                             </div>
                         </div>
                         <div data-v-c4371006="" class="more" style="display: block;">
-                            <form class="layui-form" action="">
+                            <input type="hidden" id="point_wave" value="{$product_list[0]['wave']}"/>
                                 <div data-v-c4371006="">
-                                    <div data-v-c4371006="" class="moresize">设置止盈应大于11379.70</div>
-                                    <div data-v-c4371006="" class="moresize">设置止损应小于11379.70</div>
-                                    <div data-v-c4371006="" class="itemcon clearfix switchone"
-                                         style="overflow: hidden;width: 100%;padding: 0 20px;">
+                                    <div data-v-c4371006="" class="moresize">设置止盈应大于等于<span class="target_profit">0.00</span></div>
+                                    <div data-v-c4371006="" class="moresize">设置止损应小于等于<span class="stop_loss">0.00</span></div>
+                                    <div data-v-c4371006="" class="itemcon clearfix switchone"  style="overflow: hidden;width: 100%;padding: 0 20px;">
                                         <span data-v-c4371006="">止盈</span>
                                         <div class="layui-input-block">
-                                            <input type="checkbox"  lay-filter="checks" lay-skin="switch" lay-text="开启|关闭">
+                                            <input type="checkbox" name="target_profit_check" value="1" lay-filter="checks" lay-skin="switch" lay-text="开启|不设">
                                         </div>
                                         <div data-v-c4371006="" class="chosecon" style="width: 50%;display: none">
-                                            <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                            <input data-v-c4371006="" type="number"> <i data-v-c4371006=""
-                                                                                        class="iconfont icon-jiahaob jia"></i>
+                                            <input data-v-c4371006="" type="number" name="target_profit" autocomplete="off" >
                                         </div>
                                     </div>
-                                    <div data-v-c4371006="" class="itemcon clearfix switchtwo"
-                                         style="overflow: hidden;width: 100%;padding: 0 20px;">
+                                    <div data-v-c4371006="" class="itemcon clearfix switchtwo" style="overflow: hidden;width: 100%;padding: 0 20px;">
                                         <span data-v-c4371006="">止损</span>
                                         <div class="layui-input-block">
-                                            <input type="checkbox"  lay-filter="checks-t" lay-skin="switch" lay-text="开启|关闭">
+                                            <input type="checkbox" name="stop_loss_check" value="1" lay-filter="checks-t" lay-skin="switch" lay-text="开启|不设">
                                         </div>
                                         <div data-v-c4371006="" class="chosecon" style="width: 50%;display: none">
-                                            <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                            <input data-v-c4371006="" type="number"> <i data-v-c4371006=""
-                                                                                        class="iconfont icon-jiahaob jia"></i>
+                                            <input data-v-c4371006="" type="number" name="stop_loss" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
-                    <button>确定</button>
-                    <button class="m-cancel" style="margin-left: 20px">取消</button>
+                    <input type="hidden" name="id" class="form_id" value="{$product_list[0]['id']}"/>
+                    <input type="hidden" class="form_direction" name="direction" value="1"/>
+                    <button style="background-color: orange;color: white" type="submit" class="create_order" lay-submit lay-filter="create_order">确定</button>
+                    <button class="m-cancel" type="button" style="margin-left: 20px; orange;color: white">取消</button>
                 </div>
-
-
+                </form>
             </div>
         </div>
     </div>
@@ -713,285 +708,303 @@
 
 	function setCandlestick(coinType,gap,count){
 
-	function setOnUi(dataFromApi){
-    var myChart = echarts.init(document.getElementById('main'));
+        function setOnUi(dataFromApi){
+        var myChart = echarts.init(document.getElementById('main'));
 
-	Date.prototype.format = function(fmt) { 
-     var o = { 
-        "M+" : this.getMonth()+1,                 //月份 
-        "d+" : this.getDate(),                    //日 
-        "h+" : this.getHours(),                   //小时 
-        "m+" : this.getMinutes(),                 //分 
-        "s+" : this.getSeconds(),                 //秒 
-        "q+" : Math.floor((this.getMonth()+3)/3), //季度 
-        "S"  : this.getMilliseconds()             //毫秒 
-    }; 
-    if(/(y+)/.test(fmt)) {
-            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
-    }
-     for(var k in o) {
-        if(new RegExp("("+ k +")").test(fmt)){
-             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-         }
-     }
-    return fmt; 
-	}  
-
-    function calculateMA(dayCount, data) {
-        var result = [];
-        for (var i = 0, len = data.length; i < len; i++) {
-            if (i < dayCount) {
-                result.push('-');
-                continue;
-            }
-            var sum = 0;
-            for (var j = 0; j < dayCount; j++) {
-                sum += data[i - j][1];
-            }
-            result.push(sum / dayCount);
+        Date.prototype.format = function(fmt) {
+         var o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt)) {
+                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
         }
-        return result;
-    }
+         for(var k in o) {
+            if(new RegExp("("+ k +")").test(fmt)){
+                 fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+             }
+         }
+        return fmt;
+        }
 
-	var datefmt = "yyyy-MM-dd";
-	if(gap == "hour"){
-		datefmt = "yyyy-MM-dd mm时";
-	}
-	if(gap == "minute"){
-		datefmt = "yyyy-MM-dd mm:hh";
-	}
-
-	var dates = dataFromApi.Data.map(function (item) {
-        return new Date(item.time*1000).format(datefmt);
-    });
-
-	var data = dataFromApi.Data.map(function (item) {
-        return [item.open,item.close,item.low,item.high];
-    });
-	
-	var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1]
-	$.each(valueToday,function(k,v){
-		$("#price-k-" +k).text(v);
-	});
-
-    var option = {
-        backgroundColor: '#21202D',
-        legend: {
-            data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
-            inactiveColor: '#777',
-            textStyle: {
-                color: '#fff'
-            }
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                animation: false,
-                type: 'cross',
-                lineStyle: {
-                    color: '#376df4',
-                    width: 2,
-                    opacity: 1
+        function calculateMA(dayCount, data) {
+            var result = [];
+            for (var i = 0, len = data.length; i < len; i++) {
+                if (i < dayCount) {
+                    result.push('-');
+                    continue;
                 }
-            }
-        },
-        xAxis: {
-            type: 'category',
-            data: dates,
-            axisLine: {
-                lineStyle: {
-                    color: '#8392A5'
+                var sum = 0;
+                for (var j = 0; j < dayCount; j++) {
+                    sum += data[i - j][1];
                 }
+                result.push(sum / dayCount);
             }
-        },
-        yAxis: {
-            scale: true,
-            axisLine: {
-                lineStyle: {
-                    color: '#8392A5'
+            return result;
+        }
+
+        var datefmt = "yyyy-MM-dd";
+        if(gap == "hour"){
+            datefmt = "yyyy-MM-dd mm时";
+        }
+        if(gap == "minute"){
+            datefmt = "yyyy-MM-dd mm:hh";
+        }
+
+        var dates = dataFromApi.Data.map(function (item) {
+            return new Date(item.time*1000).format(datefmt);
+        });
+
+        var data = dataFromApi.Data.map(function (item) {
+            return [item.open,item.close,item.low,item.high];
+        });
+
+        var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1]
+        $.each(valueToday,function(k,v){
+            $("#price-k-" +k).text(v);
+        });
+
+        var option = {
+            backgroundColor: '#21202D',
+            legend: {
+                data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
+                inactiveColor: '#777',
+                textStyle: {
+                    color: '#fff'
                 }
             },
-            splitLine: {
-                show: false
-            }
-        },
-        grid: {
-            bottom: 80
-        },
-        dataZoom: [{
-            textStyle: {
-                color: '#8392A5'
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    animation: false,
+                    type: 'cross',
+                    lineStyle: {
+                        color: '#376df4',
+                        width: 2,
+                        opacity: 1
+                    }
+                }
             },
-            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
-            handleSize: '80%',
-            dataBackground: {
-                areaStyle: {
+            xAxis: {
+                type: 'category',
+                data: dates,
+                axisLine: {
+                    lineStyle: {
+                        color: '#8392A5'
+                    }
+                }
+            },
+            yAxis: {
+                scale: true,
+                axisLine: {
+                    lineStyle: {
+                        color: '#8392A5'
+                    }
+                },
+                splitLine: {
+                    show: false
+                }
+            },
+            grid: {
+                bottom: 80
+            },
+            dataZoom: [{
+                textStyle: {
                     color: '#8392A5'
                 },
-                lineStyle: {
-                    opacity: 0.8,
-                    color: '#8392A5'
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%',
+                dataBackground: {
+                    areaStyle: {
+                        color: '#8392A5'
+                    },
+                    lineStyle: {
+                        opacity: 0.8,
+                        color: '#8392A5'
+                    }
+                },
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                }
+            }, {
+                type: 'inside'
+            }],
+            animation: false,
+            series: [{
+                type: 'candlestick',
+                name: '日K',
+                data: data,
+                itemStyle: {
+                    normal: {
+                        color: '#FD1050',
+                        color0: '#0CF49B',
+                        borderColor: '#FD1050',
+                        borderColor0: '#0CF49B'
+                    }
                 }
             },
-            handleStyle: {
-                color: '#fff',
-                shadowBlur: 3,
-                shadowColor: 'rgba(0, 0, 0, 0.6)',
-                shadowOffsetX: 2,
-                shadowOffsetY: 2
+                {
+                    name: 'MA5',
+                    type: 'line',
+                    data: calculateMA(5, data),
+                    smooth: true,
+                    showSymbol: false,
+                    lineStyle: {
+                        normal: {
+                            width: 1
+                        }
+                    }
+                },
+                {
+                    name: 'MA10',
+                    type: 'line',
+                    data: calculateMA(10, data),
+                    smooth: true,
+                    showSymbol: false,
+                    lineStyle: {
+                        normal: {
+                            width: 1
+                        }
+                    }
+                },
+                {
+                    name: 'MA20',
+                    type: 'line',
+                    data: calculateMA(20, data),
+                    smooth: true,
+                    showSymbol: false,
+                    lineStyle: {
+                        normal: {
+                            width: 1
+                        }
+                    }
+                },
+                {
+                    name: 'MA30',
+                    type: 'line',
+                    data: calculateMA(30, data),
+                    smooth: true,
+                    showSymbol: false,
+                    lineStyle: {
+                        normal: {
+                            width: 1
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+
+        myChart.on('mouseover', function(param){
+            if(param.seriesType == "candlestick"){
+                var valuePointTo = dataFromApi.Data[param.dataIndex];
+                $.each(valuePointTo,function(k,v){
+                    $("#price-k-" +k).text(v);
+                });
             }
-        }, {
-            type: 'inside'
-        }],
-        animation: false,
-        series: [{
-            type: 'candlestick',
-            name: '日K',
-            data: data,
-            itemStyle: {
-                normal: {
-                    color: '#FD1050',
-                    color0: '#0CF49B',
-                    borderColor: '#FD1050',
-                    borderColor0: '#0CF49B'
-                }
+        })
+
+        myChart.on('mouseout', function(param){
+            if(param.seriesType == "candlestick"){
+                var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1]
+                $.each(valueToday,function(k,v){
+                    $("#price-k-" +k).text(v);
+                });
+
             }
-        },
-            {
-                name: 'MA5',
-                type: 'line',
-                data: calculateMA(5, data),
-                smooth: true,
-                showSymbol: false,
-                lineStyle: {
-                    normal: {
-                        width: 1
-                    }
-                }
-            },
-            {
-                name: 'MA10',
-                type: 'line',
-                data: calculateMA(10, data),
-                smooth: true,
-                showSymbol: false,
-                lineStyle: {
-                    normal: {
-                        width: 1
-                    }
-                }
-            },
-            {
-                name: 'MA20',
-                type: 'line',
-                data: calculateMA(20, data),
-                smooth: true,
-                showSymbol: false,
-                lineStyle: {
-                    normal: {
-                        width: 1
-                    }
-                }
-            },
-            {
-                name: 'MA30',
-                type: 'line',
-                data: calculateMA(30, data),
-                smooth: true,
-                showSymbol: false,
-                lineStyle: {
-                    normal: {
-                        width: 1
-                    }
-                }
-            }
-        ]
-    };
-    myChart.setOption(option);
-
-	myChart.on('mouseover', function(param){
-		if(param.seriesType == "candlestick"){
-			var valuePointTo = dataFromApi.Data[param.dataIndex];
-			$.each(valuePointTo,function(k,v){
-				$("#price-k-" +k).text(v);
-			});
-		}
-	})
-
-	myChart.on('mouseout', function(param){
-		if(param.seriesType == "candlestick"){
-			var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1]
-			$.each(valueToday,function(k,v){
-				$("#price-k-" +k).text(v);
-			});
-
-		}           
-	})
-
-	
-	}
-
-		var url = "http://47.90.122.200:8080/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
-	    $.ajax({
-        type: 'get',
-        url: url,
-        //async: false,//同步
-        success : function(msg) {
-            //alert(JSON.strinify(msg));
-			setOnUi(msg);
-        },
-        error : function(errMsg) {
-            //不知道该干啥
+        })
         }
-    });
+
+            var url = "http://47.90.122.200:8080/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
+            $.ajax({
+            type: 'get',
+            url: url,
+            //async: false,//同步
+            success : function(msg) {
+                //alert(JSON.strinify(msg));
+                setOnUi(msg);
+            },
+            error : function(errMsg) {
+                //不知道该干啥
+            }
+        });
 	}
 
     $(".list ul li").click(function () {
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
+        //产品名称
         var name= $(this).attr('data-product-abbreviation-name');
+        var now_price=$(this).find('.l').text();
         $('.product_name').text($(this).children('.title').text());
-        $('.product_price_change').attr('data-product-abbreviation',name).text($(this).find('.l').text());
+        $('.product_price_change').attr('data-product-abbreviation',name).text(now_price);
         $('.up_down_val').attr('data-product-up-down-val',name);
         $('.up_down').attr('data-product-up-down',name);
+        var form_id='#'+name+'_id';
         var contract_id='#'+name+'_contract';
         var min_hand_id='#'+name+'_min_hand';
+        var fee_id='#'+name+'_fee';
+        var wave_id='#'+name+'_wave';
+
+        var form_id_val=$(form_id).val();
         var contract_val=$(contract_id).val();
         var min_hand_val=$(min_hand_id).val();
+        var fee_val=$(fee_id).val();
+        var wave_val=$(wave_id).val();
         $('.contract').text(contract_val);
         $('.min_hand').text(min_hand_val);
-		setCandlestick(name,"day",30);
+        $('.fee').text(fee_val);
+        $('.point_wave').val(wave_val);
+        $('.form_id').val(form_id_val);
+
+        $('.target_profit').text(now_price-(-wave_val));
+        $('.stop_loss').text(now_price-wave_val);
+        setCandlestick(name,"day",30);
     });
+
     $(".navs  li").click(function () {
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
     });
     $(".btn .btnsure").click(function () {
+        $('.promise_money').text(0.00);
         $(".models").show();
+        $('.shosu').val('').focus();
+
     });
     $(".models .m-cancel").click(function () {
-        $(".models").hide()
-    })
+        $(".models").hide();
+    });
+    function set_direction(val,number){
+        $('.order_direction').text(val);
+        $('.form_direction').val(number);
+    }
     $(".models .shosu").blur(function () {
         var vals=$(this).val();
-        console.log(vals)
-        var low="0";
         if(isNotANumber(vals)==true){
             if(vals<0){
-                $(".shosu").val(low)
+                $(".shosu").val(0);
+            }else if(vals>0){
+                var now_price=$('.product_price_change').first().text();
+                var contract= $('.contract').first().text();
+                var money=now_price*contract*vals;
+//                console.log(now_price);
+//                console.log(contract);
+                $('.promise_money').text(math_floor(money));
             }
         }else{
-            var index=layer.open({
-                title:"提示",
-                content:"请输入数字",
-                yes: function(index, layero){
-
-                    layer.close(index);
-                    $(".shosu").val(low);
-                }
-            })
+            $(".shosu").val(0);
         }
-    })
+    });
     function isNotANumber(inputData) {
         //isNaN(inputData)不能判断空串或一个空格
         //如果是一个空串或是一个空格，而isNaN是做为数字0进行处理的，而parseInt与parseFloat是返回一个错误消息，这个isNaN检查不严密而导致的。
@@ -1026,14 +1039,10 @@
 
 
     function math_floor(number){
-        return Math.floor(number * 100) / 100;
+        return Math.floor(number * 1000) / 1000;
     }
-    //计算涨跌幅度
-    function count_up_down(){
-        $('.product_list li').each(function(){
-            var old_price=$(this).find('.l').text();
-        })
-    }
+
+
     //计算pin持仓单盈亏
     function count_profit(){
         $('tbody tr').each(function(){
@@ -1069,6 +1078,23 @@
             $(this).children('.profit').text(profit).attr("style","color:"+color+";");
             $(this).children('.now_price').attr("style","color:"+color+";");
         });
+    }
+    //计算止盈止损
+    function count_wave(price){
+        var point_wave=$('#point_wave').val();
+        $('.target_profit').text(price-(-point_wave));
+        $('.stop_loss').text(price-point_wave);
+        var hand=$(".models .shosu").val();
+        if(isNotANumber(hand)==true){
+            if(hand<0){
+                $(".shosu").val(0);
+            }else if(hand>0){
+                var now_price=$('.product_price_change').first().text();
+                var contract= $('.contract').first().text();
+                var money=now_price*contract*hand;
+                $('.promise_money').text(math_floor(money));
+            }
+        }
     }
     $(function  () {
         var layer;
@@ -1118,21 +1144,24 @@
             {
                 layer.close(loadingSecond);
     //            console.log(evt);
-    //        console.log(evt.data);
+//            console.log(evt.data);
                 var data=JSON.parse(evt.data);
+                var active_name = $('.list ul li.active').attr('data-product-abbreviation-name');
                 $.each(data,function(k,v){
                     var abbreviation='.'+k;//固定产品位置
-                    var abbreviation_up_down='.'+k+'_up_down';
-                    var abbreviation_up_down_val='.'+k+'_up_down_val';
+//                    var abbreviation_up_down='.'+k+'_up_down';
+//                    var abbreviation_up_down_val='.'+k+'_up_down_val';
                     var up_down_name=  "[data-product-up-down="+k+"]";
                     var up_down_val_name=  "[data-product-up-down-val="+k+"]";
-
                     var new_price=v['USD'];
+                    if(k==active_name){
+                        count_wave(new_price);
+                    }
                     //var old_price=$(abbreviation).html();
-                    var old_price= openPrice[k].USD;
+                    var old_price= openPrice[k]['USD'];
                     if(old_price!=0){
-                        var range=(new_price-old_price)/old_price;
-                        var range_per=range*100;
+                        var range=new_price-old_price;
+                        var range_per=range/old_price*100;
                         var color;
                         if(new_price>old_price){
                             color='red';
@@ -1140,7 +1169,7 @@
                             color='green';
                         }
                         $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
-                        $(up_down_name).text(math_floor(range_per)).attr("style","color:"+color+";");
+                        $(up_down_name).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
                     }
 
                     $(abbreviation).text(new_price);
@@ -1171,7 +1200,7 @@
             });
             // layer.msg('Hello World');
             form.on('switch(checks)', function(data){
-                console.log(data.elem.checked); //开关是否开启，true或者false
+//                console.log(data.elem.checked); //开关是否开启，true或者false
                 if(data.elem.checked==true){
                     $(".switchone .chosecon").show();
                 }else{
@@ -1179,13 +1208,41 @@
                 }
             });
             form.on('switch(checks-t)', function(data){
-                console.log(data.elem.checked); //开关是否开启，true或者false
+//                console.log(data.elem.checked); //开关是否开启，true或者false
                 if(data.elem.checked==true){
                     $(".switchtwo .chosecon").show();
                 }else{
                     $(".switchtwo .chosecon").hide();
                 }
             });
+            form.verify({
+                vcode: function(value){
+                    if(value.length !=4){
+                        return '请输入图形验证码';
+                    }
+                }
+            });
+
+            form.on('submit(create_order)', function(data){
+//                console.log(data.field);
+//                return false;
+                var load = layer.load();
+                $('input[type="submit"]').attr("disabled",true);
+                $.post("/index/Trade/create_order",data.field,function(res){
+                    layer.close(load);
+                    if(res.status==0){
+                        layer.msg(res.msg,{icon: 2,time:1000},function(){
+                            $('input[type="submit"]').removeAttr("disabled");
+                        });
+                    }else{
+                        layer.msg(res.msg,{icon: 1,time:1000},function(){
+                           // window.location.href="/index/User/index"
+                        });
+                    }
+                },'json');
+                return false;
+            });
+
         });
 		setCandlestick("BTC","day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
     });
