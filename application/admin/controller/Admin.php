@@ -7,7 +7,8 @@ class Admin extends Common{
     }
 
     /*广告列表*/
-    public function adv_list(){
+	public function adv_list(){
+			//dump($_SERVER);die;
         $param = input('get.');
         $where = array();
         $where[] = ['status','<>',3];
