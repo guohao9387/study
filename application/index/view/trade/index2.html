@@ -16,312 +16,6 @@
     <script type="text/javascript" src="/static/index/js/jquery-2.1.1.min.js"></script>
     <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
-    <link href="/static/index/css/app.css" rel="stylesheet">
-    <script src="/static/index/js/echarts.min.js"></script>
-    <style>
-        .index .indexCon .indexright .itemcon .itemleft[data-v-c4371006] {
-            /*top: 30px;*/
-        }
-        .models {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 9999;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .models-content {
-            position: fixed;
-            width: 400px;
-            height: 520px;
-            background: #FFFFFF;
-            left: 50%;
-            top: 50%;
-            margin-left: -200px;
-            margin-top: -260px;
-            padding: 15px 20px;
-            text-align: center;
-            border-radius: 8px;
-
-        }
-
-        .models-content p {
-            font-size: 16px;
-            color: black;
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .models-content button {
-            outline: none;
-            border: none;
-            background: #4f94e7;
-            width: 80px;
-            padding: 5px 0;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-        .table-list {
-            border-right: 1px solid #353a59;
-            border-bottom: 1px solid #353a59;
-            width: 100%;
-            height: 215px;
-            overflow-y: scroll;
-            /*margin-top: 150px*/
-        }
-
-        .table-list table {
-            width: 100%;
-
-        }
-
-        .table-list td {
-            border-left: 1px solid #353a59;
-            border-top: 1px solid #353a59;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .models      .itemcon span {
-            float: left;
-            width: 18%;
-            text-align: center;
-            height: 30px;
-            line-height: 30px;
-            font-size: 14px;
-            margin-top: 8px;
-            color: black;
-        }
-
-        .models    .item .chosecontype {
-            float: right;
-            margin-top: 8px;
-            width: 80%;
-            height: 30px;
-            line-height: 30px;
-            box-sizing: border-box;
-            border: 1px solid #353a59;
-            border-radius: 2px;
-            text-align: center;
-            position: relative;
-            font-size: 14px;
-            color: black;
-        }
-
-        .models   .chosecontype .con {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            bottom: 0;
-            color: black;
-        }
-        .models .itemcon .chosecontype{
-            float: right;
-            margin-top: 8px;
-            width: 80%;
-            height: 30px;
-            line-height: 30px;
-            box-sizing: border-box;
-            border: 1px solid #353a59;
-            border-radius: 2px;
-            text-align: center;
-            position: relative;
-            font-size: 14px;
-        }
-        .models .itemcon .chosecon{
-            float: right;
-            margin-top: 8px;
-            width: 80%;
-            height: 30px;
-            line-height: 30px;
-            box-sizing: border-box;
-            border: 1px solid #353a59;
-            border-radius: 2px;
-            text-align: center;
-            position: relative;
-            font-size: 14px;
-        }
-        .models   .chosecontype .btm {
-            position: absolute;
-            right: 10px;
-            color: #b5b5b5;
-            font-size: 20px;
-            z-index: 200;
-            cursor: pointer;
-            color: black;
-        }
-        .models .more{
-            width: 100%;
-            box-sizing: border-box;
-            padding: 15px 0;
-            color: black;
-            position: inherit;
-            top: 0;
-
-            left: 0;                }
-        .models   .moretit{
-            position: relative;
-            font-size: 14px;
-            box-sizing: border-box;
-            padding-left: 10px;
-            color: black;
-        }
-        .models   .more .moretit i {
-            position: absolute;
-            right: 10px;
-            font-size: 16px;
-            color: #b5b5b5;
-            cursor: pointer;
-            color: black;
-        }
-        .models   .moresize{
-            width: 100%;
-            font-size: 14px;
-            text-align: center;
-            margin-top: 15px;
-            line-height: 20px;
-            /*color: #999;*/
-            color: black;
-        }
-        .models .more .moreitemcon{
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0 10px;
-            color: black;
-        }
-        .models  .moreitemcon span{
-            float: left;
-            margin-top: 15px;
-            width: 10%;
-            text-align: center;
-            height: 35px;
-            line-height: 35px;
-            font-size: 14px;
-            margin-left: 10px;
-            color: black;
-        }
-        .models    .moreitemcon .one[data-v-c4371006] {
-            float: right;
-            width: 80%;
-            margin: 0 auto;
-            color: black;
-        }
-        .models  .more .moreitemcon .morechosecon[data-v-c4371006] {
-            float: left;
-            margin-right: 20px;
-            margin-top: 15px;
-            width: 170px;
-            height: 30px;
-            line-height: 30px;
-            box-sizing: border-box;
-            border: 1px solid #353a59;
-            border-radius: 2px;
-            text-align: center;
-            position: relative;
-            color: black;
-        }
-        .models   .morechosecon .jian[data-v-c4371006] {
-            position: absolute;
-            left: 5px;
-            color: #b5b5b5;
-            font-size: 20px;
-            color: black;
-            cursor: pointer;
-        }
-        .models .more .moreitemcon .morechosecon input[data-v-c4371006] {
-            background: transparent;
-            margin-top: -4px;
-            color: #fff;
-            text-align: center;
-            font-size: 14px;
-            width: 130px;
-            color: black;
-        }
-        .models  .morechosecon .jia[data-v-c4371006] {
-            position: absolute;
-            right: 5px;
-            color: #b5b5b5;
-            font-size: 20px;
-            cursor: pointer;
-            color: black;
-        }
-        .models .more .moreitemcon .a[data-v-c4371006] {
-            width: 60px;
-            float: left;
-            margin-top: 15px;
-            height: 30px;
-            line-height: 26px;
-            font-size: 14px;
-            box-sizing: border-box;
-            border: 1px solid #353a59;
-            border-radius: 4px;
-            background: #bd0000;
-            text-align: center;
-            margin-right: 5px;
-            cursor: pointer;
-            color: black;
-        }
-        input[type=radio]{
-            /*去除浏览器默认样式*/
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            /*自定义样式*/
-            position: relative;
-            display: inline-block;
-            vertical-align: top;
-            width: 20px;
-            height: 20px;
-            border: 1px solid #00bfff;
-            outline: none;
-            cursor: pointer;
-            /*设置为圆形，看起来是个单选框*/
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
-            margin-right: 8px;
-        }
-        .moreitemcon label:first-child{
-            margin-right: 30px;
-
-        }
-            /**
-            * 单选框 选中之后的样式
-            **/
-        input[type=radio]:after{
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            display: block;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            margin: auto;
-            background: #00bfff;
-            -webkit-border-radius: 12px;
-            -moz-border-radius: 12px;
-            border-radius: 12px;
-            -webkit-transform: scale(0);
-            -moz-transform: scale(0);
-            transform: scale(0);
-            /*增加一些动画*/
-            -webkit-transition : all ease-in-out 300ms;
-            -moz-transition : all ease-in-out 300ms;
-            transition : all ease-in-out 300ms;
-        }
-        input[type=radio]:checked:after{
-            -webkit-transform: scale(1);
-            -moz-transform: scale(1);
-            transform: scale(1);
-        }
-    </style>
 </head>
 <body lang="zh-CN">
 <!--[if lt IE 10]>
@@ -342,7 +36,6 @@
                 </li>
             </ul>
             <ul class="user-status">
-                {if $username==0}
                 <li>
                     <i class="fa fa-user left move fz_16"></i>
                     <a href="/index/Login/register" class="ma-l move"> 注册</a>
@@ -350,16 +43,7 @@
                 <li>
                     <a href="/index/Login/login" class="darker" style="color:#4f94e7">登录</a>
                 </li>
-                {else/}
-                <li>
-                    <i class="fa fa-user left move fz_16"></i>
-                    <a href="/index/User/index" class="ma-l move"> {$username}</a>
-                </li>
 
-                <li>
-                    <a href="/index/Login/logout" class="darker" style="color:#4f94e7">安全退出</a>
-                </li>
-                {/if}
 
             </ul>
         </div>
@@ -398,6 +82,78 @@
     </div>
 </div>
 
+<link href="/static/index/css/app.css" rel="stylesheet">
+<script src="/static/index/js/echarts.min.js"></script>
+<style>
+    .index .indexCon .indexright .itemcon .itemleft[data-v-c4371006] {
+        /*top: 30px;*/
+    }
+
+    .models {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    .models-content {
+        position: fixed;
+        width: 400px;
+        height: 520px;
+        background: #FFFFFF;
+        left: 50%;
+        top: 50%;
+        margin-left: -200px;
+        margin-top: -260px;
+        padding: 15px 20px;
+        text-align: center;
+        border-radius: 8px;
+       
+    }
+
+    .models-content p {
+        font-size: 16px;
+        color: black;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .models-content button {
+        outline: none;
+        border: none;
+        background: #4f94e7;
+        width: 80px;
+        padding: 5px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    .table-list {
+        border-right: 1px solid #353a59;
+        border-bottom: 1px solid #353a59;
+        width: 100%;
+        height: 215px;
+        overflow-y: scroll;
+        /*margin-top: 150px*/
+    }
+
+    .table-list table {
+        width: 100%;
+
+    }
+
+    .table-list td {
+        border-left: 1px solid #353a59;
+        border-top: 1px solid #353a59;
+        padding: 10px 0;
+        text-align: center;
+    }
+</style>
 
 <div id="app">
     <div>
@@ -406,21 +162,27 @@
             <div data-v-c4371006="" class="indexCon clearfix">
                 <div data-v-c4371006="" class="indexleft" style="margin-top: 30px;">
                     <div data-v-c4371006="" class="lefttop">
-                        <p data-v-c4371006="">账户余额 :{$user.money}USDT</p>
-                        <p data-v-c4371006="">可用余额 :{$user.real_money}USDT</p>
+                        <p data-v-c4371006="">账户余额 :0.00USDT</p>
+                        <p data-v-c4371006="">可用余额 :0.00USDT</p>
                     </div>
                     <div data-v-c4371006="" class="leftbtm">
                         <div data-v-c4371006="" class="tit">新建订单</div>
                         <div data-v-c4371006="" class="chose">
                             <div data-v-c4371006="" class="itemcon clearfix"><span data-v-c4371006="">品种</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con product_name">{$product_list[0]['desc_name']}</div>
+                                    <div data-v-c4371006="" class="con">BTC/USDT</div>
+                                    <i data-v-c4371006="" class="iconfont icon-jiantou32 btm"></i>
+                                    <i data-v-c4371006="" class="iconfont icon-jiantou31 btm"
+                                       style="display: none;"></i>
                                 </div>
                             </div>
 
-                            <div data-v-c4371006="" class="itemcon clearfix"><span data-v-c4371006="">合约比例</span>
+                            <div data-v-c4371006="" class="itemcon clearfix"><span data-v-c4371006="">规格</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con">{$product_list[0]['contract']} /手</div>
+                                    <div data-v-c4371006="" class="con">0 /手</div>
+                                    <i data-v-c4371006="" class="iconfont icon-jiantou32 btm"></i>
+                                    <i data-v-c4371006="" class="iconfont icon-jiantou31 btm"
+                                       style="display: none;"></i>
                                 </div>
                             </div>
 
@@ -428,27 +190,61 @@
                                 <span data-v-c4371006="">手数</span>
                                 <div data-v-c4371006="" class="chosecon">
                                     <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                    <input data-v-c4371006="" type="number" value="{$product_list[0]['min_hand']} ">
-
+                                    <input data-v-c4371006="" type="number"> <i data-v-c4371006=""
+                                                                                class="iconfont icon-jiahaob jia"></i>
                                 </div>
                             </div>
                             <div data-v-c4371006="" class="bb clearfix">
                                 <label data-v-c4371006="" id="buy" class="buy">
                                     <input data-v-c4371006="" type="radio" name="buy" value="true" for="buy"
-                                           class="check">买入 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span> </label>
+                                           class="check">看涨11384.70</label>
                                 <label data-v-c4371006="" id="sell" class="sell">
                                     <input data-v-c4371006="" type="radio" name="buy" value="false" for="sell"
-                                           class="check">卖出 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span></label>
+                                           class="check">看跌11374.70</label>
                             </div>
-                            <div data-v-c4371006="" class="itemnote" style="margin-top: 18px;">最小下单单位{$product_list[0]['min_hand']}手</div>
+                            <div data-v-c4371006="" class="itemnote" style="margin-top: 18px;">最小下单单位 0手</div>
                             <div data-v-c4371006="" class="itemnote" style="line-height: 26px; display: none;">预付款比例
                                 ：0%
                             </div>
                             <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">预付款 ：0/手</div>
-                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ：{$product_list[0]['fee']} USDT</div>
+                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ：0.00USDT</div>
                             <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需保证金：0.00USDT</div>
+                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">可用金额 ：0.00USDT</div>
                         </div>
-
+                        <div data-v-c4371006="" class="more">
+                            <p data-v-c4371006="" class="moretit"><span data-v-c4371006="">更多设置</span> <i
+                                    data-v-c4371006="" class="iconfont icon-shuangxiajiantou-"></i> <i
+                                    data-v-c4371006="" class="iconfont icon-shangshuangjiantou"
+                                    style="display: none;"></i></p>
+                            <div data-v-c4371006="" style="display: none;">
+                                <div data-v-c4371006="" class="moresize">设置止盈应大于11379.70</div>
+                                <div data-v-c4371006="" class="moresize">设置止损应小于11379.70</div>
+                                <!---->
+                                <!---->
+                                <div data-v-c4371006="" class="moreitemcon clearfix" style="overflow: hidden;"><span
+                                        data-v-c4371006="">止盈</span>
+                                    <div data-v-c4371006="" class="one">
+                                        <div data-v-c4371006="" class="morechosecon">
+                                            <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
+                                            <input data-v-c4371006="" type="text"> <i data-v-c4371006=""
+                                                                                      class="iconfont icon-jiahaob jia"></i>
+                                        </div>
+                                        <div data-v-c4371006="" class="a">不设</div>
+                                    </div>
+                                </div>
+                                <div data-v-c4371006="" class="moreitemcon clearfix" style="overflow: hidden;"><span
+                                        data-v-c4371006="">止损</span>
+                                    <div data-v-c4371006="" class="one">
+                                        <div data-v-c4371006="" class="morechosecon"><i data-v-c4371006=""
+                                                                                        class="iconfont icon-jianhaob jian"></i>
+                                            <input data-v-c4371006="" type="text"> <i data-v-c4371006=""
+                                                                                      class="iconfont icon-jiahaob jia"></i>
+                                        </div>
+                                        <div data-v-c4371006="" class="a">不设</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div data-v-c4371006="" class="btn">
                             <button data-v-c4371006="" class="btnsure">确定</button>
                         </div>
@@ -456,17 +252,52 @@
                 </div>
                 <div data-v-c4371006="" class="indexright clearfix" style="margin-top: -570px;">
                     <div data-v-c4371006="" class="list">
-                        <ul data-v-c4371006="" class="clearfix product_list"
+                        <ul data-v-c4371006="" class="clearfix"
                             style="width: 1422px; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, 0px) scale(1) translateZ(0px);">
-                            {volist name="product_list" id="val"}
-                            <li data-product-abbreviation-name="{$val.abbreviation}" data-v-c4371006="" {if $key==0}class="active"{/if}>
-                                <p data-v-c4371006="" class="title">{$val.desc_name}</p>
-                                <p data-v-c4371006="" class="price clearfix">
-                                    <span data-v-c4371006="" class="l {$val.abbreviation}">0.00</span>
-                                    <span data-v-c4371006="" class="a"><span data-product-up-down="{$val['abbreviation']}">0.00</span> %</span>
+                            <li data-v-c4371006="" class="active">
+                                <p data-v-c4371006="" class="title">BTC/USDT</p>
+                                <p data-v-c4371006="" class="price clearfix"><span data-v-c4371006=""
+                                                                                   class="l">11379.70</span><span
+                                        data-v-c4371006="" class="a"><span data-v-c4371006="">+</span>7.05%</span>
                                 </p>
                             </li>
-                            {/volist}
+                            <li data-v-c4371006="" class="">
+                                <p data-v-c4371006="" class="title">ETH/USDT</p>
+                                <p data-v-c4371006="" class="price clearfix"><span data-v-c4371006=""
+                                                                                   class="l">295.80</span><span
+                                        data-v-c4371006="" class="a"><span data-v-c4371006="">+</span>1.92%</span>
+                                </p>
+                            </li>
+                            <li data-v-c4371006="" class="">
+                                <p data-v-c4371006="" class="title">BCH/USDT</p>
+                                <p data-v-c4371006="" class="price clearfix"><span data-v-c4371006=""
+                                                                                   class="l">411.83</span><span
+                                        data-v-c4371006="" class="a"><span data-v-c4371006="">+</span>1.52%</span>
+                                </p>
+                            </li>
+                            <li data-v-c4371006="" class="">
+                                <p data-v-c4371006="" class="title">LTC/USDT</p>
+                                <p data-v-c4371006="" class="price clearfix"><span data-v-c4371006=""
+                                                                                   class="l">120.81</span><span
+                                        data-v-c4371006="" class="a"><span data-v-c4371006="">+</span>1.27%</span>
+                                </p>
+                            </li>
+                            <li data-v-c4371006="" class="">
+                                <p data-v-c4371006="" class="title">EOS/USDT</p>
+                                <p data-v-c4371006="" class="price clearfix"><span data-v-c4371006=""
+                                                                                   class="l">5.9440</span><span
+                                        data-v-c4371006="" class="b"><span data-v-c4371006=""
+                                                                           style="display: none;">+</span>-0.18%</span>
+                                </p>
+                            </li>
+                            <li data-v-c4371006="" class="">
+                                <p data-v-c4371006="" class="title">XRP/USDT</p>
+                                <p data-v-c4371006="" class="price clearfix"><span data-v-c4371006=""
+                                                                                   class="l">0.4014</span><span
+                                        data-v-c4371006="" class="b"><span data-v-c4371006=""
+                                                                           style="display: none;">+</span>-0.02%</span>
+                                </p>
+                            </li>
                         </ul>
                     </div>
 
@@ -477,30 +308,26 @@
                                     <div data-v-c4371006="" class="center"
                                          style="width: 1050px; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, 0px) scale(1) translateZ(0px);">
                                         <div data-v-c4371006="" class="new  clearfix">
-                                            <span data-v-c4371006="" class="name product_name">{$product_list[0]['desc_name']}</span>
+                                            <span data-v-c4371006="" class="name">BTC/USDT</span>
                                             <span data-v-c4371006="" class="newprice a">
-                                                <span data-v-c4371006=""  style="color: rgb(255, 255, 255);">最新成交价：</span>
-                                                <span class="product_price_change"  data-product-abbreviation="{$product_list[0]['abbreviation']}">0.00</span>
-                                            </span>
+                                                <span data-v-c4371006=""
+                                                      style="color: rgb(255, 255, 255);">最新成交价：</span>
+                                                11379.70
+                                                <i data-v-c4371006="" class="iconfont icon-jiantou_xiangshang"
+                                                   style="">
+
+                                                    </i>
+                                                <i data-v-c4371006="" class="iconfont icon-jiantou_xiangxia"
+                                                   style="display: none;"></i></span>
                                             <span data-v-c4371006="" class="a" style="margin-right: 5px;">
-                                                <span data-v-c4371006="" style="color: rgb(255, 255, 255);">
-                                                    涨跌 :
-                                                </span >
-                                                <span data-product-up-down-val="{$product_list[0]['abbreviation']}" class="up_down_val">0.00</span>
-                                            </span>
-                                            <span data-v-c4371006="" class="a" style="margin-right: 5px;">
-                                                <span data-v-c4371006="" style="color: rgb(255, 255, 255);">
-                                                    涨幅:
-                                                </span >
-                                                <span data-product-up-down="{$product_list[0]['abbreviation']}" class="up_down">0.00</span>%
-                                            </span>
+                                                <span data-v-c4371006="" style="color: rgb(255, 255, 255);">涨跌 : </span>749.00</span>
+                                            <span data-v-c4371006="" class="a">
+                                                <span data-v-c4371006="" style="color: rgb(255, 255, 255);">涨幅 : </span>
+                                                <span data-v-c4371006="" style="">+</span>7.05%</span>
                                         </div>
-                                        <div data-v-c4371006="" class="price">
-                                            <span data-v-c4371006="">高：<span> 0.00</span></span>
-                                            <span data-v-c4371006="">开：<span> 0.00</span></span>
-                                            <span data-v-c4371006="">低：<span> 0.00</span></span>
-                                            <span data-v-c4371006="">收：<span> 0.00</span></span>
-                                        </div>
+                                        <div data-v-c4371006="" class="price clearfix"><span data-v-c4371006="">高：11497.40</span>
+                                            <span data-v-c4371006="">开：10630.70</span> <span data-v-c4371006="">低：10421.00</span>
+                                            <span data-v-c4371006="">收：11379.70</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -511,45 +338,72 @@
         top: 538px;border-bottom: 0px;left: 0;padding-bottom: 0px;">
                                         <ul data-v-c4371006="" class="navs clearfix" style="border-bottom: 0px;">
                                             <li data-v-c4371006="" class="ordertit active">持仓订单</li>
-                                            <!--<li data-v-c4371006="" class="ordertit">平仓订单</li>-->
+                                            <li data-v-c4371006="" class="ordertit">平仓订单</li>
                                         </ul>
                                         <div class="table-list">
                                             <table border="0" cellpadding="0" cellspacing="0">
-                                                <thead>
-                                                <tr>
-                                                    <th>单号</th>
-                                                    <th>产品</th>
-                                                    <th>保证金</th>
-                                                    <th>买入价</th>
-                                                    <th>当前价格</th>
-                                                    <th>方向</th>
-                                                    <th>合约比例</th>
-                                                    <th>手数</th>
-                                                    <th>盈利金额</th>
-                                                    <th>下单时间</th>
-                                                    <th >操作</th>
-                                                </tr>
-                                                </thead>
+
                                                 <tbody>
-                                                {volist name="keep_order_list" id="val"}
-                                                <tr class="{$val.oid}">
-                                                    <td>{$val['order_sn']}</td>
-                                                    <td>{$val['product_name']}</td>
-                                                    <td class="money">{$val['money']}</td>
-                                                    <td class="buy_price">{$val['buy_price']}</td>
-                                                    <td class="{$val.product_abbreviation} now_price">0.00</td>
-                                                    {if ($val['direction'] eq 1)}
-                                                    <td style="color: red;" class="direction">买入</td>
-                                                    {else/}
-                                                    <td style="color: #008000;" class="direction">卖出</td>
-                                                    {/if}
-                                                    <td class="contract">{$val['contract']}</td>
-                                                    <td class="hand">{$val['hand']}</td>
-                                                    <td class="profit">0.00</td>
-                                                    <td>{$val['add_time']}</td>
-                                                    <td><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order({$val.oid})">平仓</button></td>
+                                                <tr>
+                                                    <td>姓名</td>
+                                                    <td>数量</td>
+                                                    <td>手机</td>
+                                                    <td>性别</td>
+                                                    <td>金额</td>
+                                                    <td>标准</td>
+                                                    <td>余额</td>
+                                                    <td>操作</td>
                                                 </tr>
-                                                {/volist}
+                                                <tr>
+                                                    <td>小明</td>
+                                                    <td>50</td>
+                                                    <td>13215651365</td>
+                                                    <td>女</td>
+                                                    <td>1500</td>
+                                                    <td>上</td>
+                                                    <td>500</td>
+                                                    <td>持仓</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>小明</td>
+                                                    <td>50</td>
+                                                    <td>13215651365</td>
+                                                    <td>女</td>
+                                                    <td>1500</td>
+                                                    <td>上</td>
+                                                    <td>500</td>
+                                                    <td>持仓</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>小明</td>
+                                                    <td>50</td>
+                                                    <td>13215651365</td>
+                                                    <td>女</td>
+                                                    <td>1500</td>
+                                                    <td>上</td>
+                                                    <td>500</td>
+                                                    <td>持仓</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>小明</td>
+                                                    <td>50</td>
+                                                    <td>13215651365</td>
+                                                    <td>女</td>
+                                                    <td>1500</td>
+                                                    <td>上</td>
+                                                    <td>500</td>
+                                                    <td>持仓</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>小明</td>
+                                                    <td>50</td>
+                                                    <td>13215651365</td>
+                                                    <td>女</td>
+                                                    <td>1500</td>
+                                                    <td>上</td>
+                                                    <td>500</td>
+                                                    <td>持仓</td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -563,29 +417,278 @@
 
                 </div>
             </div>
+            <style>
+                .models      .itemcon span {
+                    float: left;
+                    width: 18%;
+                    text-align: center;
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 14px;
+                    margin-top: 8px;
+                    color: black;
+                }
 
+                .models    .item .chosecontype {
+                    float: right;
+                    margin-top: 8px;
+                    width: 80%;
+                    height: 30px;
+                    line-height: 30px;
+                    box-sizing: border-box;
+                    border: 1px solid #353a59;
+                    border-radius: 2px;
+                    text-align: center;
+                    position: relative;
+                    font-size: 14px;
+                    color: black;
+                }
+
+                .models   .chosecontype .con {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    bottom: 0;
+                    color: black;
+                }
+.models .itemcon .chosecontype{
+    float: right;
+    margin-top: 8px;
+    width: 80%;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border: 1px solid #353a59;
+    border-radius: 2px;
+    text-align: center;
+    position: relative;
+    font-size: 14px;
+}
+.models .itemcon .chosecon{
+    float: right;
+    margin-top: 8px;
+    width: 80%;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border: 1px solid #353a59;
+    border-radius: 2px;
+    text-align: center;
+    position: relative;
+    font-size: 14px;
+}
+             .models   .chosecontype .btm {
+                    position: absolute;
+                    right: 10px;
+                    color: #b5b5b5;
+                    font-size: 20px;
+                    z-index: 200;
+                    cursor: pointer;
+                    color: black;
+                }
+                .models .more{
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 15px 0;
+                    color: black;
+                    position: inherit;
+                    top: 0;
+
+left: 0;                }
+                .models   .moretit{
+                    position: relative;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                    padding-left: 10px;
+                    color: black;
+                }
+                .models   .more .moretit i {
+                    position: absolute;
+                    right: 10px;
+                    font-size: 16px;
+                    color: #b5b5b5;
+                    cursor: pointer;
+                    color: black;
+                }
+                .models   .moresize{
+                    width: 100%;
+                    font-size: 14px;
+                    text-align: center;
+                    margin-top: 15px;
+                    line-height: 20px;
+                    /*color: #999;*/
+                    color: black;
+                }
+                .models .more .moreitemcon{
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 0 10px;
+                    color: black;
+                }
+                .models  .moreitemcon span{
+                    float: left;
+                    margin-top: 15px;
+                    width: 10%;
+                    text-align: center;
+                    height: 35px;
+                    line-height: 35px;
+                    font-size: 14px;
+                    margin-left: 10px;
+                    color: black;
+                }
+                .models    .moreitemcon .one[data-v-c4371006] {
+                    float: right;
+                    width: 80%;
+                    margin: 0 auto;
+                    color: black;
+                }
+                .models  .more .moreitemcon .morechosecon[data-v-c4371006] {
+                    float: left;
+                    margin-right: 20px;
+                    margin-top: 15px;
+                    width: 170px;
+                    height: 30px;
+                    line-height: 30px;
+                    box-sizing: border-box;
+                    border: 1px solid #353a59;
+                    border-radius: 2px;
+                    text-align: center;
+                    position: relative;
+                    color: black;
+                }
+                .models   .morechosecon .jian[data-v-c4371006] {
+                    position: absolute;
+                    left: 5px;
+                    color: #b5b5b5;
+                    font-size: 20px;
+                    color: black;
+                    cursor: pointer;
+                }
+                .models .more .moreitemcon .morechosecon input[data-v-c4371006] {
+                    background: transparent;
+                    margin-top: -4px;
+                    color: #fff;
+                    text-align: center;
+                    font-size: 14px;
+                    width: 130px;
+                    color: black;
+                }
+                .models  .morechosecon .jia[data-v-c4371006] {
+                    position: absolute;
+                    right: 5px;
+                    color: #b5b5b5;
+                    font-size: 20px;
+                    cursor: pointer;
+                    color: black;
+                }
+                .models .more .moreitemcon .a[data-v-c4371006] {
+                    width: 60px;
+                    float: left;
+                    margin-top: 15px;
+                    height: 30px;
+                    line-height: 26px;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                    border: 1px solid #353a59;
+                    border-radius: 4px;
+                    background: #bd0000;
+                    text-align: center;
+                    margin-right: 5px;
+                    cursor: pointer;
+                    color: black;
+                }
+                input[type=radio]{
+                    /*去除浏览器默认样式*/
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    /*自定义样式*/
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid #00bfff;
+                    outline: none;
+                    cursor: pointer;
+                    /*设置为圆形，看起来是个单选框*/
+                    -webkit-border-radius: 20px;
+                    -moz-border-radius: 20px;
+                    border-radius: 20px;
+                    margin-right: 8px;
+                }
+.moreitemcon label:first-child{
+    margin-right: 30px;
+
+}
+                /**
+                * 单选框 选中之后的样式
+                **/
+                input[type=radio]:after{
+                    content: '';
+                    position: absolute;
+                    width: 12px;
+                    height: 12px;
+                    display: block;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    margin: auto;
+                    background: #00bfff;
+                    -webkit-border-radius: 12px;
+                    -moz-border-radius: 12px;
+                    border-radius: 12px;
+                    -webkit-transform: scale(0);
+                    -moz-transform: scale(0);
+                    transform: scale(0);
+                    /*增加一些动画*/
+                    -webkit-transition : all ease-in-out 300ms;
+                    -moz-transition : all ease-in-out 300ms;
+                    transition : all ease-in-out 300ms;
+                }
+                input[type=radio]:checked:after{
+                    -webkit-transform: scale(1);
+                    -moz-transform: scale(1);
+                    transform: scale(1);
+                }
+            </style>
             <div class="models">
                 <div class="models-content">
-                    <div data-v-c4371006="" class="leftbtm" style="width: 100%;box-sizing: border-box;padding-bottom: 20px;border: 1px solid #353a59;margin-top: 10px;color: black;">
-                        <div data-v-c4371006="" class="tit" style="width: 100%;height: 42px;line-height: 42px;box-sizing: border-box;padding-left: 20px;font-size: 14px;color: black;">
-                            新建订单
+                    <div data-v-c4371006="" class="leftbtm" style="width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+    border: 1px solid #353a59;
+    margin-top: 10px;
+color: black;">
+                        <div data-v-c4371006="" class="tit" style="    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    font-size: 14px;
+color: black;">新建订单
                         </div>
-                        <div data-v-c4371006="" class="chose" style="width: 100%;padding: 0 20px;padding-bottom: 12px;box-sizing: border-box;border-top: 1px solid #353a59;border-bottom: 1px dashed #353a59;color: black;">
-                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
+                        <div data-v-c4371006="" class="chose" style="width: 100%;
+    padding: 0 20px;
+    padding-bottom: 12px;
+    box-sizing: border-box;
+    border-top: 1px solid #353a59;
+    border-bottom: 1px dashed #353a59;
+color: black;">
+                            <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
                                     data-v-c4371006="">品种</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con">{$product_list[0]['desc_name']}</div>
-                                </div>
-                            </div>
-                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
-                                    data-v-c4371006="">当前价格</span>
-                                <div data-v-c4371006="" class="chosecontype">
                                     <div data-v-c4371006="" class="con">BTC/USDT</div>
-
+                                    <i data-v-c4371006="" class="iconfont icon-jiantou32 btm"></i>
+                                    <i data-v-c4371006="" class="iconfont icon-jiantou31 btm"
+                                       style="display: none;"></i>
                                 </div>
                             </div>
+
                             <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
-                                    data-v-c4371006="">合约比例</span>
+                                    data-v-c4371006="">规格</span>
                                 <div data-v-c4371006="" class="chosecontype">
                                     <div data-v-c4371006="" class="con">0 /手</div>
                                     <i data-v-c4371006="" class="iconfont icon-jiantou32 btm"></i>
@@ -598,15 +701,21 @@
                                 <span data-v-c4371006="">手数</span>
                                 <div data-v-c4371006="" class="chosecon">
                                     <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                    <input data-v-c4371006="" type="number"> <i data-v-c4371006="" class="iconfont icon-jiahaob jia"></i>
+                                    <input data-v-c4371006="" type="number"> <i data-v-c4371006=""
+                                                                                class="iconfont icon-jiahaob jia"></i>
                                 </div>
                             </div>
-
                         </div>
                         <div data-v-c4371006="" class="more" style="display: block;">
+                            <p data-v-c4371006="" class="moretit"><span data-v-c4371006="">更多设置</span> <i
+                                    data-v-c4371006="" class="iconfont icon-shuangxiajiantou-"></i> <i
+                                    data-v-c4371006="" class="iconfont icon-shangshuangjiantou"
+                                    style="display: none;"></i></p>
                             <div data-v-c4371006="" >
                                 <div data-v-c4371006="" class="moresize">设置止盈应大于11379.70</div>
                                 <div data-v-c4371006="" class="moresize">设置止损应小于11379.70</div>
+                                <!---->
+                                <!---->
                                 <div data-v-c4371006="" class="moreitemcon clearfix" style="overflow: hidden;"><span
                                         data-v-c4371006="">止盈</span>
                                     <div data-v-c4371006="" class="one">
@@ -615,7 +724,7 @@
                                             <input data-v-c4371006="" type="text"> <i data-v-c4371006=""
                                                                                       class="iconfont icon-jiahaob jia"></i>
                                         </div>
-                                        <!--<div data-v-c4371006="" class="a" style="color: white">不设</div>-->
+                                        <div data-v-c4371006="" class="a">不设</div>
                                     </div>
                                 </div>
                                 <div data-v-c4371006="" class="moreitemcon clearfix" style="overflow: hidden;"><span
@@ -626,13 +735,13 @@
                                             <input data-v-c4371006="" type="text"> <i data-v-c4371006=""
                                                                                       class="iconfont icon-jiahaob jia"></i>
                                         </div>
-                                        <!--<div data-v-c4371006="" class="a">不设</div>-->
+                                        <div data-v-c4371006="" class="a">不设</div>
                                     </div>
                                 </div>
-                                <!--<div class="moreitemcon clearfix" style="margin-top: 10px">-->
-                                    <!--<label><input name="Fruit" type="radio" value="" />止盈 </label>-->
-                                    <!--<label><input name="Fruit" type="radio" value="" />止损 </label>-->
-                                <!--</div>-->
+                                <div class="moreitemcon clearfix" style="margin-top: 10px">
+                                    <label><input name="Fruit" type="radio" value="" />止盈 </label>
+                                    <label><input name="Fruit" type="radio" value="" />止损 </label>
+                                </div>
                             </div>
                         </div>
                         
@@ -644,7 +753,6 @@
     </div>
 </div>
 <script>
-
     var myChart = echarts.init(document.getElementById('main'));
     //		app.title = '2015 年上证指数';
 
@@ -1054,175 +1162,28 @@
         ]
     };
     myChart.setOption(option);
+</script>
 
-
+<!-- top 结束  -->
+<script>
     $(".list ul li").click(function () {
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
-        var name= $(this).attr('data-product-abbreviation-name');
-        $('.product_name').text($(this).children('.title').text());
-        $('.product_price_change').attr('data-product-abbreviation',name).text($(this).find('.l').text());
-        $('.up_down_val').attr('data-product-up-down-val',name);
-        $('.up_down').attr('data-product-up-down',name);
-    });
+    })
     $(".navs  li").click(function () {
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
-    });
+    })
     $(".btn .btnsure").click(function () {
+
         $(".models").show();
-    });
+    })
     $(".models button").click(function () {
         $(".models").hide()
-    });
-    function close_order(oid){
-        layer.confirm('确认要平仓吗？',function(index){
-            //发异步删除数据
-            var load = layer.load();
-            $.ajax({
-                url:'/index/Trade/close_order',
-                data:{oid:oid},
-                type:'post',
-                dataType:'json',
-                success:function(res){
-                    layer.close(load);
-                    if(res['status']==1){
-                        var tr='.'+oid;
-                        $(tr).remove();
-                        layer.msg(res['msg'],{icon:1,time:1000});
-                    }else{
-                        layer.msg(res['msg'],{icon: 2,time:1000});
-                    }
-                }
-            });
-        });
-    }
-
-
-    function math_floor(number){
-        return Math.floor(number * 100) / 100;
-    }
-    //计算涨跌幅度
-    function count_up_down(){
-        $('.product_list li').each(function(){
-            var old_price=$(this).find('.l').text();
-        })
-    }
-    //计算pin持仓单盈亏
-    function count_profit(){
-        $('tbody tr').each(function(){
-            var buy_price=$(this).children('.buy_price').text();
-            var now_price=$(this).children('.now_price').text();
-            if(buy_price==now_price){
-                return;
-            }
-            var direction=$(this).children('.direction').text();
-            var contract=$(this).children('.contract').text();
-            var hand=$(this).children('.hand').text();
-            var amount=(now_price-buy_price)*contract*hand;
-            var profit;
-            var color;
-
-            if(direction=='买入'){
-                if(now_price>buy_price){
-                    profit=amount;
-                    color='red';
-                }else if(now_price<buy_price){
-                    profit=-amount;
-                    color='green';
-                }
-            }else{
-                if(now_price>buy_price){
-                    profit=-amount;
-                    color='green';
-                }else if(now_price<buy_price){
-                    profit=amount;
-                    color='red';
-                }
-            }
-            $(this).children('.profit').text(profit).attr("style","color:"+color+";");
-            $(this).children('.now_price').attr("style","color:"+color+";");
-        });
-    }
-    $(function  () {
-        layui.use('form', function(){
-            $ = layui.jquery;
-            var form = layui.form
-                    ,layer = layui.layer;
-            loadingFirst = layer.load(2, { //icon支持传入0-2
-                shade: [0.5, 'gray'], //0.5透明度的灰色背景
-                content: '连接服务器...',
-                success: function (layero) {
-                    layero.find('.layui-layer-content').css({
-                        'padding-top': '39px',
-                        'width': '14rem',
-                        'color':'white',
-                        'font-size':'2rem'
-
-                    });
-                }
-            });
-        });
-        var uid="{$user.uid}";
-        var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
-
-        ws.onopen = function()
-        {
-            layer.close(loadingFirst);
-            loadingSecond = layer.load(2, { //icon支持传入0-2
-                shade: [0.5, 'gray'], //0.5透明度的灰色背景
-                content: '数据加载中...',
-                success: function (layero) {
-                    layero.find('.layui-layer-content').css({
-                        'padding-top': '39px',
-                        'width': '14rem',
-                        'color':'white',
-                        'font-size':'2rem'
-
-                    });
-                }
-            });
-            // Web Socket 已连接上，使用 send() 方法发送数据
-            //ws.send("发送数据");
-        };
-
-        ws.onmessage = function (evt)
-        {
-            layer.close(loadingSecond);
-//            console.log(evt);
-//        console.log(evt.data);
-            var data=JSON.parse(evt.data);
-            $.each(data,function(k,v){
-                var abbreviation='.'+k;//固定产品位置
-                var abbreviation_up_down='.'+k+'_up_down';
-                var abbreviation_up_down_val='.'+k+'_up_down_val';
-                var up_down_name=  "[data-product-up-down="+k+"]";
-                var up_down_val_name=  "[data-product-up-down-val="+k+"]";
-
-                var new_price=v['USD'];
-                var old_price=$(abbreviation).html();
-                if(old_price!=0){
-                    var range=(new_price-old_price)/old_price;
-                    var range_per=range*100;
-                    var color;
-                    if(new_price>old_price){
-                        color='red';
-                    }else if(new_price<old_price){
-                        color='green';
-                    }
-                    $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
-                    $(up_down_name).text(math_floor(range_per)).attr("style","color:"+color+";");
-                }
-
-                $(abbreviation).text(new_price);
-                //变化的产品位置
-                var name=  "[data-product-abbreviation="+k+"]";
-                $(name).text(v['USD']);
-            });
-            count_profit();
-            layer.close(loadingSecond);
-        };
-    });
+    })
 </script>
+
+
 </body>
+
 </html>

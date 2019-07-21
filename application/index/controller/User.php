@@ -162,7 +162,7 @@ class User extends Common
                 $data['msg'] = '参数错误';
                 return json($data);
             }
-            if($param['money']>$user['money']){
+            if($param['money']>($user['money']-$user['promise_money'])){
                 db::rollback();
                 $data = [];
                 $data['status'] = 0;
@@ -242,6 +242,7 @@ class User extends Common
             $where[]=['status','=',1];
             $bank_info_list=db::name('bank_info')->where($where)->select();
             $this->assign('bank_info_list',$bank_info_list);
+            $real_money=$this->info['money']-$this->info['promise_money'];
             return $this->fetch();
         }
     }

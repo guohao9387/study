@@ -125,7 +125,8 @@
 
     ws.onmessage = function (evt)
     {
-        console.log(evt.data);
+        console.log(evt);
+//        console.log(evt.data);
         var data=JSON.parse(evt.data);
         $.each(data,function(k,v){
             var id='#'+k;

@@ -52,7 +52,7 @@
                 </select>
             </div>
             <input type="text" name="username"  placeholder="会员账号" autocomplete="off" class="layui-input" value="{:input('get.username')}">
-            <input type="text" name="agent_name"  placeholder="代理账号" autocomplete="off" class="layui-input" value="{:input('get.agent_name')}">
+
             <div class="layui-input-inline">
                 <select name="page_number">
                     <option value="">当页数量</option>
@@ -62,17 +62,18 @@
                 </select>
             </div>
             <button class="layui-btn"  lay-submit="" lay-filter="sreach">查询</button>
-            <a href="/agent/Order/keep_order_list?start={$mytime}"  class="layui-btn layui-btn-normal">重置</a>
+            <a href="/agent/Order/keep_order_list"  class="layui-btn layui-btn-normal">重置</a>
+            <!--<a href="{:url('admin/Api/excel_order_list',input('get.'))}"  class="layui-btn" style="background-color: #337AB7">导出</a>-->
 
         </form>
       </div>
         <!--<div class="layui-row">-->
-            <!--<a href="{:url('agent/Order/order_list',input('get.'))}&start={:quick_time_select(1)}&end={:quick_time_select(2)}" class="layui-btn layui-btn-sm layui-btn-normal">昨天</a>-->
-            <!--<a href="{:url('agent/Order/order_list',input('get.'))}&start={:quick_time_select(2)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">今天</a>-->
-            <!--<a href="{:url('agent/Order/order_list',input('get.'))}&start={:quick_time_select(3)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本周</a>-->
-            <!--<a href="{:url('agent/Order/order_list',input('get.'))}&start={:quick_time_select(4)}&end={:quick_time_select(5)}" class="layui-btn layui-btn-sm layui-btn-normal">上周</a>-->
-            <!--<a href="{:url('agent/Order/order_list',input('get.'))}&start={:quick_time_select(6)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本月</a>-->
-            <!--<a href="{:url('agent/Order/order_list',input('get.'))}&start={:quick_time_select(7)}&end={:quick_time_select(8)}" class="layui-btn layui-btn-sm layui-btn-normal">上月</a>-->
+            <!--<a href="{:url('admin/Order/order_list',input('get.'))}&start={:quick_time_select(1)}&end={:quick_time_select(2)}" class="layui-btn layui-btn-sm layui-btn-normal">昨天</a>-->
+            <!--<a href="{:url('admin/Order/order_list',input('get.'))}&start={:quick_time_select(2)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">今天</a>-->
+            <!--<a href="{:url('admin/Order/order_list',input('get.'))}&start={:quick_time_select(3)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本周</a>-->
+            <!--<a href="{:url('admin/Order/order_list',input('get.'))}&start={:quick_time_select(4)}&end={:quick_time_select(5)}" class="layui-btn layui-btn-sm layui-btn-normal">上周</a>-->
+            <!--<a href="{:url('admin/Order/order_list',input('get.'))}&start={:quick_time_select(6)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本月</a>-->
+            <!--<a href="{:url('admin/Order/order_list',input('get.'))}&start={:quick_time_select(7)}&end={:quick_time_select(8)}" class="layui-btn layui-btn-sm layui-btn-normal">上月</a>-->
         <!--</div>-->
       <xblock>
           <span class="x-right" style="line-height:40px">合计保证金：{$count.sum_money|number_format=###,2,'.',''};手续费：{$count.sum_fee|number_format=###,2,'.',''};数量：{$count.count} 条</span>
@@ -86,8 +87,10 @@
             <th>代理</th>
             <th>保证金</th>
             <th>买入价</th>
-            <!--<th>卖出价</th>-->
+            <th>当前价格</th>
               <th>方向</th>
+              <th>合约比例</th>
+              <th>手数</th>
               <th>盈利金额</th>
             <th>下单时间</th>
             <!--<th>平仓时间</th>-->
@@ -97,30 +100,25 @@
         <tbody>
             {volist name="list" id="val"}
             <tr>
-                 <td>{$val['oid']}</td>
+                <td>{$val['order_sn']}</td>
                 <td>{$val['product_name']}</td>
                 <td>{$val['username']}</td>
                 <td>{$val['agent_name']}</td>
-                <td>{$val['money']}</td>
-                <td>{$val['buy_price']}</td>
-                <!--<td>{$val['sell_price']}</td>-->
+                <td class="money">{$val['money']}</td>
+                <td class="buy_price">{$val['buy_price']}</td>
+                <td class="{$val.product_abbreviation} now_price">0.00</td>
                 {if ($val['direction'] eq 1)}
-                <td style="color: red;">买入</td>
+                <td style="color: red;" class="direction">买入</td>
                 {else/}
-                <td style="color: #008000;">卖出</td>
+                <td style="color: #008000;" class="direction">卖出</td>
                 {/if}
-                {if ($val['profit'] >0)}
-                <td style="color: red;">{$val['profit']}</td>
-                {else/}
-                <td style="color: #008000;">{$val['profit']}</td>
-                {/if}
+                <td class="contract">{$val['contract']}</td>
+                <td class="hand">{$val['hand']}</td>
+                <td class="profit">0.00</td>
                 <td>{$val['add_time']}</td>
                 <!--<td>{$val['update_time']}</td>-->
                 <td class="td-manage">
-                    <a title="查看"  onclick="x_admin_show('订单详情','/agent/Order/order_info?oid={$val.oid}')" href="javascript:;">
-                        <i class="layui-icon">&#xe63c;</i>
-                    </a>
-                   
+
                 </td>
             </tr>
             {/volist}
@@ -135,6 +133,61 @@
 
     </div>
     <script>
+        var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=2");
+
+        ws.onopen = function()
+        {
+            // Web Socket 已连接上，使用 send() 方法发送数据
+            //ws.send("发送数据");
+        };
+
+        ws.onmessage = function (evt)
+        {
+//            console.log(evt);
+//        console.log(evt.data);
+            var data=JSON.parse(evt.data);
+            $.each(data,function(k,v){
+                var abbreviation='.'+k;
+
+                $(abbreviation).html(v['USD']);
+            });
+            count_profit();
+        };
+        function count_profit(){
+            $('tbody tr').each(function(){
+                var buy_price=$(this).children('.buy_price').text();
+                var now_price=$(this).children('.now_price').text();
+                if(buy_price==now_price){
+                    return;
+                }
+                var direction=$(this).children('.direction').text();
+                var contract=$(this).children('.contract').text();
+                var hand=$(this).children('.hand').text();
+                var amount=(now_price-buy_price)*contract*hand;
+                var profit;
+                var color;
+
+                if(direction=='买入'){
+                    if(now_price>buy_price){
+                        profit=amount;
+                        color='red';
+                    }else if(now_price<buy_price){
+                        profit=-amount;
+                        color='green';
+                    }
+                }else{
+                    if(now_price>buy_price){
+                        profit=-amount;
+                        color='green';
+                    }else if(now_price<buy_price){
+                        profit=amount;
+                        color='red';
+                    }
+                }
+                $(this).children('.profit').text(profit).attr("style","color:"+color+";");
+                $(this).children('.now_price').attr("style","color:"+color+";");
+            });
+        }
         layui.use('laydate', function(){
             var laydate = layui.laydate;
 
