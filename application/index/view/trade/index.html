@@ -80,13 +80,13 @@
 
         }
 
-        .table-list td {
+        .table-list td,.table-list th  {
             border-left: 1px solid #353a59;
             border-top: 1px solid #353a59;
             padding: 10px 0;
             text-align: center;
         }
-        .models      .itemcon span {
+        .models .itemcon span {
             float: left;
             width: 18%;
             text-align: center;
@@ -97,7 +97,7 @@
             color: black;
         }
 
-        .models    .item .chosecontype {
+        .models .item .chosecontype {
             float: right;
             margin-top: 8px;
             width: 80%;
@@ -112,7 +112,7 @@
             color: black;
         }
 
-        .models   .chosecontype .con {
+        .models .chosecontype .con {
             position: absolute;
             top: 0;
             left: 0;
@@ -120,7 +120,8 @@
             bottom: 0;
             color: black;
         }
-        .models .itemcon .chosecontype{
+
+        .models .itemcon .chosecontype {
             float: right;
             margin-top: 8px;
             width: 80%;
@@ -133,7 +134,8 @@
             position: relative;
             font-size: 14px;
         }
-        .models .itemcon .chosecon{
+
+        .models .itemcon .chosecon {
             float: right;
             margin-top: 8px;
             width: 80%;
@@ -146,7 +148,8 @@
             position: relative;
             font-size: 14px;
         }
-        .models   .chosecontype .btm {
+
+        .models .chosecontype .btm {
             position: absolute;
             right: 10px;
             color: #b5b5b5;
@@ -155,7 +158,8 @@
             cursor: pointer;
             color: black;
         }
-        .models .more{
+
+        .models .more {
             width: 100%;
             box-sizing: border-box;
             padding: 15px 0;
@@ -163,15 +167,18 @@
             position: inherit;
             top: 0;
 
-            left: 0;                }
-        .models   .moretit{
+            left: 0;
+        }
+
+        .models .moretit {
             position: relative;
             font-size: 14px;
             box-sizing: border-box;
             padding-left: 10px;
             color: black;
         }
-        .models   .more .moretit i {
+
+        .models .more .moretit i {
             position: absolute;
             right: 10px;
             font-size: 16px;
@@ -179,7 +186,8 @@
             cursor: pointer;
             color: black;
         }
-        .models   .moresize{
+
+        .models .moresize {
             width: 100%;
             font-size: 14px;
             text-align: center;
@@ -188,13 +196,15 @@
             /*color: #999;*/
             color: black;
         }
-        .models .more .moreitemcon{
+
+        .models .more .moreitemcon {
             width: 100%;
             box-sizing: border-box;
             padding: 0 10px;
             color: black;
         }
-        .models  .moreitemcon span{
+
+        .models .moreitemcon span {
             float: left;
             margin-top: 15px;
             width: 10%;
@@ -205,13 +215,15 @@
             margin-left: 10px;
             color: black;
         }
-        .models    .moreitemcon .one[data-v-c4371006] {
+
+        .models .moreitemcon .one[data-v-c4371006] {
             float: right;
             width: 80%;
             margin: 0 auto;
             color: black;
         }
-        .models  .more .moreitemcon .morechosecon[data-v-c4371006] {
+
+        .models .more .moreitemcon .morechosecon[data-v-c4371006] {
             float: left;
             margin-right: 20px;
             margin-top: 15px;
@@ -225,7 +237,8 @@
             position: relative;
             color: black;
         }
-        .models   .morechosecon .jian[data-v-c4371006] {
+
+        .models .morechosecon .jian[data-v-c4371006] {
             position: absolute;
             left: 5px;
             color: #b5b5b5;
@@ -233,6 +246,7 @@
             color: black;
             cursor: pointer;
         }
+
         .models .more .moreitemcon .morechosecon input[data-v-c4371006] {
             background: transparent;
             margin-top: -4px;
@@ -242,7 +256,8 @@
             width: 130px;
             color: black;
         }
-        .models  .morechosecon .jia[data-v-c4371006] {
+
+        .models .morechosecon .jia[data-v-c4371006] {
             position: absolute;
             right: 5px;
             color: #b5b5b5;
@@ -250,6 +265,7 @@
             cursor: pointer;
             color: black;
         }
+
         .models .more .moreitemcon .a[data-v-c4371006] {
             width: 60px;
             float: left;
@@ -266,7 +282,8 @@
             cursor: pointer;
             color: black;
         }
-        input[type=radio]{
+
+        input[type=radio] {
             /*去除浏览器默认样式*/
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -286,14 +303,16 @@
             border-radius: 20px;
             margin-right: 8px;
         }
-        .moreitemcon label:first-child{
+
+        .moreitemcon label:first-child {
             margin-right: 30px;
 
         }
+
             /**
             * 单选框 选中之后的样式
             **/
-        input[type=radio]:after{
+        input[type=radio]:after {
             content: '';
             position: absolute;
             width: 12px;
@@ -312,14 +331,44 @@
             -moz-transform: scale(0);
             transform: scale(0);
             /*增加一些动画*/
-            -webkit-transition : all ease-in-out 300ms;
-            -moz-transition : all ease-in-out 300ms;
-            transition : all ease-in-out 300ms;
+            -webkit-transition: all ease-in-out 300ms;
+            -moz-transition: all ease-in-out 300ms;
+            transition: all ease-in-out 300ms;
         }
-        input[type=radio]:checked:after{
+
+        input[type=radio]:checked:after {
             -webkit-transform: scale(1);
             -moz-transform: scale(1);
             transform: scale(1);
+        }
+
+        .models .chosecontype .eaffer {
+            position: relative;
+        }
+
+        .models .chosecontype .eaffer:after {
+            content: "/手";
+            position: absolute;
+            width: 20px;
+            height: 15px;
+            right: 75px;
+            top: 0;
+        }
+
+        .models .layui-input-block {
+            text-align: left;
+            margin-left: 9px;
+
+            width: 63px;
+            margin-top: 5px;
+            float: left;
+        }
+
+        .models .more{
+            padding: 0px;
+        }
+        .models-content button{
+            margin-top: 4px;
         }
     </style>
 </head>
@@ -420,33 +469,31 @@
 
                             <div data-v-c4371006="" class="itemcon clearfix"><span data-v-c4371006="">合约比例</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con">{$product_list[0]['contract']} /手</div>
+                                    <div data-v-c4371006="" class="con "><span class="contract">{$product_list[0]['contract']}</span> /手 </div>
                                 </div>
                             </div>
 
-                            <div data-v-c4371006="" class="itemcon clearfix" style="overflow: hidden;">
-                                <span data-v-c4371006="">手数</span>
-                                <div data-v-c4371006="" class="chosecon">
-                                    <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                    <input data-v-c4371006="" type="number" value="{$product_list[0]['min_hand']} ">
+                            <!--<div data-v-c4371006="" class="itemcon clearfix" style="overflow: hidden;">-->
+                                <!--<span data-v-c4371006="">手数</span>-->
+                                <!--<div data-v-c4371006="" class="chosecon">-->
+                                    <!--<i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>-->
+                                    <!--<input data-v-c4371006="" type="number" value="{$product_list[0]['min_hand']} ">-->
 
-                                </div>
-                            </div>
+                                <!--</div>-->
+                            <!--</div>-->
                             <div data-v-c4371006="" class="bb clearfix">
                                 <label data-v-c4371006="" id="buy" class="buy">
-                                    <input data-v-c4371006="" type="radio" name="buy" value="true" for="buy"
+                                    <input data-v-c4371006="" type="radio" name="buy" value="1" for="buy"
                                            class="check">买入 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span> </label>
                                 <label data-v-c4371006="" id="sell" class="sell">
-                                    <input data-v-c4371006="" type="radio" name="buy" value="false" for="sell"
+                                    <input data-v-c4371006="" type="radio" name="buy" value="2" for="sell"
                                            class="check">卖出 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span></label>
                             </div>
-                            <div data-v-c4371006="" class="itemnote" style="margin-top: 18px;">最小下单单位{$product_list[0]['min_hand']}手</div>
-                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px; display: none;">预付款比例
-                                ：0%
-                            </div>
-                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">预付款 ：0/手</div>
+                            <div data-v-c4371006="" class="itemnote" style="margin-top: 18px;">最小下单单位 <span class="min_hand">{$product_list[0]['min_hand']}</span>/手</div>
+
+                            <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">预付款 ：0/手</div>-->
                             <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ：{$product_list[0]['fee']} USDT</div>
-                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需保证金：0.00USDT</div>
+                            <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需保证金：0.00USDT</div>-->
                         </div>
 
                         <div data-v-c4371006="" class="btn">
@@ -454,13 +501,15 @@
                         </div>
                     </div>
                 </div>
-                <div data-v-c4371006="" class="indexright clearfix" style="margin-top: -570px;">
+                <div data-v-c4371006="" class="indexright " style="margin-top: 30px;">
                     <div data-v-c4371006="" class="list">
                         <ul data-v-c4371006="" class="clearfix product_list"
                             style="width: 1422px; transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, 0px) scale(1) translateZ(0px);">
                             {volist name="product_list" id="val"}
                             <li data-product-abbreviation-name="{$val.abbreviation}" data-v-c4371006="" {if $key==0}class="active"{/if}>
-                                <p data-v-c4371006="" class="title">{$val.desc_name}</p>
+                            <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract}"/>
+                            <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand}"/>
+                            <p data-v-c4371006="" class="title">{$val.desc_name}</p>
                                 <p data-v-c4371006="" class="price clearfix">
                                     <span data-v-c4371006="" class="l {$val.abbreviation}">0.00</span>
                                     <span data-v-c4371006="" class="a"><span data-product-up-down="{$val['abbreviation']}">0.00</span> %</span>
@@ -563,82 +612,98 @@
 
                 </div>
             </div>
-
             <div class="models">
+
                 <div class="models-content">
                     <div data-v-c4371006="" class="leftbtm" style="width: 100%;box-sizing: border-box;padding-bottom: 20px;border: 1px solid #353a59;margin-top: 10px;color: black;">
-                        <div data-v-c4371006="" class="tit" style="width: 100%;height: 42px;line-height: 42px;box-sizing: border-box;padding-left: 20px;font-size: 14px;color: black;">
-                            新建订单
+                        <div data-v-c4371006="" class="tit" style="width: 100%;height: 42px;line-height: 42px;box-sizing: border-box;padding-left: 20px;font-size: 14px;color: black;">新建订单
                         </div>
                         <div data-v-c4371006="" class="chose" style="width: 100%;padding: 0 20px;padding-bottom: 12px;box-sizing: border-box;border-top: 1px solid #353a59;border-bottom: 1px dashed #353a59;color: black;">
-                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
+                            <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
                                     data-v-c4371006="">品种</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con">{$product_list[0]['desc_name']}</div>
-                                </div>
-                            </div>
-                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
-                                    data-v-c4371006="">当前价格</span>
-                                <div data-v-c4371006="" class="chosecontype">
                                     <div data-v-c4371006="" class="con">BTC/USDT</div>
-
-                                </div>
-                            </div>
-                            <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
-                                    data-v-c4371006="">合约比例</span>
-                                <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con">0 /手</div>
                                     <i data-v-c4371006="" class="iconfont icon-jiantou32 btm"></i>
                                     <i data-v-c4371006="" class="iconfont icon-jiantou31 btm"
                                        style="display: none;"></i>
                                 </div>
                             </div>
-
-                            <div data-v-c4371006="" class="itemcon clearfix" style="overflow: hidden;    width: 100%;">
+                            <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
+                                    data-v-c4371006="">当前价格</span>
+                                <div data-v-c4371006="" class="chosecontype">
+                                    <div data-v-c4371006="" class="con">100000</div>
+                                </div>
+                            </div>
+                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
+                                    data-v-c4371006="">合约比例</span>
+                                <div data-v-c4371006="" class="chosecontype">
+                                    <div data-v-c4371006="" class="con eaffer contract">0.00</div>
+                                </div>
+                            </div>
+                            <div data-v-c4371006="" class="itemcon clearfix" style="overflow: hidden;width: 100%;">
                                 <span data-v-c4371006="">手数</span>
                                 <div data-v-c4371006="" class="chosecon">
                                     <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                    <input data-v-c4371006="" type="number"> <i data-v-c4371006="" class="iconfont icon-jiahaob jia"></i>
+                                    <input data-v-c4371006="" type="text" class="shosu"  >
+                                    <i data-v-c4371006=""  lass="iconfont icon-jiahaob jia"></i>
                                 </div>
                             </div>
-
+                            <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span data-v-c4371006="">保证金</span>
+                                <div data-v-c4371006="" class="chosecontype">
+                                    <div data-v-c4371006="" class="con">100000</div>
+                                    <i data-v-c4371006="" class="iconfont icon-jiantou32 btm"></i>
+                                    <i data-v-c4371006="" class="iconfont icon-jiantou31 btm"
+                                       style="display: none;"></i>
+                                </div>
+                            </div>
+                            <div data-v-c4371006="" class="itemcon clearfix"
+                                 style="overflow: hidden;    width: 100%;">
+                                <span data-v-c4371006="">手续费</span>
+                                <div data-v-c4371006="" class="chosecon">
+                                    <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
+                                    <input data-v-c4371006="" type="number"> <i data-v-c4371006=""
+                                                                                class="iconfont icon-jiahaob jia"></i>
+                                </div>
+                            </div>
                         </div>
                         <div data-v-c4371006="" class="more" style="display: block;">
-                            <div data-v-c4371006="" >
-                                <div data-v-c4371006="" class="moresize">设置止盈应大于11379.70</div>
-                                <div data-v-c4371006="" class="moresize">设置止损应小于11379.70</div>
-                                <div data-v-c4371006="" class="moreitemcon clearfix" style="overflow: hidden;"><span
-                                        data-v-c4371006="">止盈</span>
-                                    <div data-v-c4371006="" class="one">
-                                        <div data-v-c4371006="" class="morechosecon">
+                            <form class="layui-form" action="">
+                                <div data-v-c4371006="">
+                                    <div data-v-c4371006="" class="moresize">设置止盈应大于11379.70</div>
+                                    <div data-v-c4371006="" class="moresize">设置止损应小于11379.70</div>
+                                    <div data-v-c4371006="" class="itemcon clearfix switchone"
+                                         style="overflow: hidden;width: 100%;padding: 0 20px;">
+                                        <span data-v-c4371006="">止盈</span>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox"  lay-filter="checks" lay-skin="switch" lay-text="开启|关闭">
+                                        </div>
+                                        <div data-v-c4371006="" class="chosecon" style="width: 50%;display: none">
                                             <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                            <input data-v-c4371006="" type="text"> <i data-v-c4371006=""
-                                                                                      class="iconfont icon-jiahaob jia"></i>
+                                            <input data-v-c4371006="" type="number"> <i data-v-c4371006=""
+                                                                                        class="iconfont icon-jiahaob jia"></i>
                                         </div>
-                                        <!--<div data-v-c4371006="" class="a" style="color: white">不设</div>-->
+                                    </div>
+                                    <div data-v-c4371006="" class="itemcon clearfix switchtwo"
+                                         style="overflow: hidden;width: 100%;padding: 0 20px;">
+                                        <span data-v-c4371006="">止损</span>
+                                        <div class="layui-input-block">
+                                            <input type="checkbox"  lay-filter="checks-t" lay-skin="switch" lay-text="开启|关闭">
+                                        </div>
+                                        <div data-v-c4371006="" class="chosecon" style="width: 50%;display: none">
+                                            <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
+                                            <input data-v-c4371006="" type="number"> <i data-v-c4371006=""
+                                                                                        class="iconfont icon-jiahaob jia"></i>
+                                        </div>
                                     </div>
                                 </div>
-                                <div data-v-c4371006="" class="moreitemcon clearfix" style="overflow: hidden;"><span
-                                        data-v-c4371006="">止损</span>
-                                    <div data-v-c4371006="" class="one">
-                                        <div data-v-c4371006="" class="morechosecon"><i data-v-c4371006=""
-                                                                                        class="iconfont icon-jianhaob jian"></i>
-                                            <input data-v-c4371006="" type="text"> <i data-v-c4371006=""
-                                                                                      class="iconfont icon-jiahaob jia"></i>
-                                        </div>
-                                        <!--<div data-v-c4371006="" class="a">不设</div>-->
-                                    </div>
-                                </div>
-                                <!--<div class="moreitemcon clearfix" style="margin-top: 10px">-->
-                                    <!--<label><input name="Fruit" type="radio" value="" />止盈 </label>-->
-                                    <!--<label><input name="Fruit" type="radio" value="" />止损 </label>-->
-                                <!--</div>-->
-                            </div>
+                            </form>
                         </div>
-                        
                     </div>
                     <button>确定</button>
+                    <button class="m-cancel" style="margin-left: 20px">取消</button>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -650,9 +715,6 @@
 
 	function setOnUi(dataFromApi){
     var myChart = echarts.init(document.getElementById('main'));
-    //		app.title = '2015 年上证指数';
-
-	//var dataFromApi = JSON.parse(stringFromApi)
 
 	Date.prototype.format = function(fmt) { 
      var o = { 
@@ -853,10 +915,8 @@
 			$.each(valuePointTo,function(k,v){
 				$("#price-k-" +k).text(v);
 			});
-
-		}	    	
+		}
 	})
-
 	}
 
 		var url = "http://47.90.122.200:8080/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
@@ -872,10 +932,7 @@
             //不知道该干啥
         }
     });
-
-
 	}
-
 
     $(".list ul li").click(function () {
         $(this).addClass("active");
@@ -885,6 +942,12 @@
         $('.product_price_change').attr('data-product-abbreviation',name).text($(this).find('.l').text());
         $('.up_down_val').attr('data-product-up-down-val',name);
         $('.up_down').attr('data-product-up-down',name);
+        var contract_id='#'+name+'_contract';
+        var min_hand_id='#'+name+'_min_hand';
+        var contract_val=$(contract_id).val();
+        var min_hand_val=$(min_hand_id).val();
+        $('.contract').text(contract_val);
+        $('.min_hand').text(min_hand_val);
 		setCandlestick(name,"day",30);
     });
     $(".navs  li").click(function () {
@@ -894,9 +957,38 @@
     $(".btn .btnsure").click(function () {
         $(".models").show();
     });
-    $(".models button").click(function () {
+    $(".models .m-cancel").click(function () {
         $(".models").hide()
-    });
+    })
+    $(".models .shosu").blur(function () {
+        var vals=$(this).val();
+        console.log(vals)
+        var low="0";
+        if(isNotANumber(vals)==true){
+            if(vals<0){
+                $(".shosu").val(low)
+            }
+        }else{
+            var index=layer.open({
+                title:"提示",
+                content:"请输入数字",
+                yes: function(index, layero){
+
+                    layer.close(index);
+                    $(".shosu").val(low);
+                }
+            })
+        }
+    })
+    function isNotANumber(inputData) {
+        //isNaN(inputData)不能判断空串或一个空格
+        //如果是一个空串或是一个空格，而isNaN是做为数字0进行处理的，而parseInt与parseFloat是返回一个错误消息，这个isNaN检查不严密而导致的。
+        if(parseFloat(inputData).toString() == "NaN") {
+            return false;
+        } else {
+            return true;
+        }
+    }
     function close_order(oid){
         layer.confirm('确认要平仓吗？',function(index){
             //发异步删除数据
@@ -970,90 +1062,87 @@
         var layer;
 		var loadingFirst;
 		var loadingSecond;
-	function prepareWs(){
-        var uid="{$user.uid}";
-        var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
+        function prepareWs(){
+            var uid="{$user.uid}";
+            var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
 
-        ws.onopen = function()
-        {
-            layer.close(loadingFirst);
-            loadingSecond = layer.load(2, { //icon支持传入0-2
-                shade: [0.5, 'gray'], //0.5透明度的灰色背景
-                content: '数据加载中...',
-                success: function (layero) {
-                    layero.find('.layui-layer-content').css({
-                        'padding-top': '39px',
-                        'width': '14rem',
-                        'color':'white',
-                        'font-size':'2rem'
+            ws.onopen = function()
+            {
+                layer.close(loadingFirst);
+                loadingSecond = layer.load(2, { //icon支持传入0-2
+                    shade: [0.5, 'gray'], //0.5透明度的灰色背景
+                    content: '数据加载中...',
+                    success: function (layero) {
+                        layero.find('.layui-layer-content').css({
+                            'padding-top': '39px',
+                            'width': '14rem',
+                            'color':'white',
+                            'font-size':'2rem'
 
-                    });
-                }
-            });
-            // Web Socket 已连接上，使用 send() 方法发送数据
-            //ws.send("发送数据");
-        };
-
-		var openPrice = {BTC:0,ETH:0,EOS:0};
-        var url = "http://47.90.122.200:8080/openPrice"
-        $.ajax({
-        type: 'get',
-        url: url,
-        //async: false,//同步
-        success : function(msg) {
-            openPrice.BTC =msg.BTC;
-			openPrice.ETH = msg.ETH;
-			openPrice.EOS = msg.EOS;
-        },
-        error : function(errMsg) {
-            //不知道该干啥
-        }
-    	});
-
-        ws.onmessage = function (evt)
-        {
-            layer.close(loadingSecond);
-//            console.log(evt);
-//        console.log(evt.data);
-            var data=JSON.parse(evt.data);
-            $.each(data,function(k,v){
-                var abbreviation='.'+k;//固定产品位置
-                var abbreviation_up_down='.'+k+'_up_down';
-                var abbreviation_up_down_val='.'+k+'_up_down_val';
-                var up_down_name=  "[data-product-up-down="+k+"]";
-                var up_down_val_name=  "[data-product-up-down-val="+k+"]";
-
-                var new_price=v['USD'];
-                //var old_price=$(abbreviation).html();
-                var old_price= openPrice[k].USD;
-                if(old_price!=0){
-                    var range=(new_price-old_price)/old_price;
-                    var range_per=range*100;
-                    var color;
-                    if(new_price>old_price){
-                        color='red';
-                    }else if(new_price<old_price){
-                        color='green';
+                        });
                     }
-                    $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
-                    $(up_down_name).text(math_floor(range_per)).attr("style","color:"+color+";");
-                }
+                });
+                // Web Socket 已连接上，使用 send() 方法发送数据
+                //ws.send("发送数据");
+            };
 
-                $(abbreviation).text(new_price);
-                //变化的产品位置
-                var name=  "[data-product-abbreviation="+k+"]";
-                $(name).text(v['USD']);
+            var openPrice = {BTC:0,ETH:0,EOS:0};
+            var url = "http://47.90.122.200:8080/openPrice"
+            $.ajax({
+            type: 'get',
+            url: url,
+            //async: false,//同步
+            success : function(msg) {
+                openPrice.BTC =msg.BTC;
+                openPrice.ETH = msg.ETH;
+                openPrice.EOS = msg.EOS;
+            },
+            error : function(errMsg) {
+                //不知道该干啥
+            }
             });
-            count_profit();
-            layer.close(loadingSecond);
-        };
-		};
 
+            ws.onmessage = function (evt)
+            {
+                layer.close(loadingSecond);
+    //            console.log(evt);
+    //        console.log(evt.data);
+                var data=JSON.parse(evt.data);
+                $.each(data,function(k,v){
+                    var abbreviation='.'+k;//固定产品位置
+                    var abbreviation_up_down='.'+k+'_up_down';
+                    var abbreviation_up_down_val='.'+k+'_up_down_val';
+                    var up_down_name=  "[data-product-up-down="+k+"]";
+                    var up_down_val_name=  "[data-product-up-down-val="+k+"]";
 
-        layui.use('form', function(){
-            $ = layui.jquery;
-			form = layui.form;
-        	layer = layui.layer;
+                    var new_price=v['USD'];
+                    //var old_price=$(abbreviation).html();
+                    var old_price= openPrice[k].USD;
+                    if(old_price!=0){
+                        var range=(new_price-old_price)/old_price;
+                        var range_per=range*100;
+                        var color;
+                        if(new_price>old_price){
+                            color='red';
+                        }else if(new_price<old_price){
+                            color='green';
+                        }
+                        $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
+                        $(up_down_name).text(math_floor(range_per)).attr("style","color:"+color+";");
+                    }
+
+                    $(abbreviation).text(new_price);
+                    //变化的产品位置
+                    var name=  "[data-product-abbreviation="+k+"]";
+                    $(name).text(v['USD']);
+                });
+                count_profit();
+                layer.close(loadingSecond);
+            };
+		}
+        layui.use(['layer', 'form'], function () {
+            layer = layui.layer;
+            var form = layui.form;
             loadingFirst = layer.load(2, { //icon支持传入0-2
                 shade: [0.5, 'gray'], //0.5透明度的灰色背景
                 content: '连接服务器...',
@@ -1065,13 +1154,28 @@
                         'font-size':'2rem'
 
                     });
-					prepareWs();
+                    prepareWs();
+                }
+            });
+            // layer.msg('Hello World');
+            form.on('switch(checks)', function(data){
+                console.log(data.elem.checked); //开关是否开启，true或者false
+                if(data.elem.checked==true){
+                    $(".switchone .chosecon").show();
+                }else{
+                    $(".switchone .chosecon").hide();
+                }
+            });
+            form.on('switch(checks-t)', function(data){
+                console.log(data.elem.checked); //开关是否开启，true或者false
+                if(data.elem.checked==true){
+                    $(".switchtwo .chosecon").show();
+                }else{
+                    $(".switchtwo .chosecon").hide();
                 }
             });
         });
-
 		setCandlestick("BTC","day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
-		//setCandlestick("BTC","hour",300);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
     });
 </script>
 </body>
