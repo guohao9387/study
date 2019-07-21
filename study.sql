@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-07-20 12:57:38
+Date: 2019-07-21 12:02:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -504,7 +504,7 @@ CREATE TABLE `st_operation_log` (
   `add_ip` varchar(50) NOT NULL,
   `add_time` datetime NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COMMENT='操作表';
+) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8 COMMENT='操作表';
 
 -- ----------------------------
 -- Records of st_operation_log
@@ -664,6 +664,23 @@ INSERT INTO `st_operation_log` VALUES ('160', '1', '2', '18237837598', '1', '2',
 INSERT INTO `st_operation_log` VALUES ('161', '1', '2', '18237837598', '1', '2', '', '申购币购买', '/index/Coin/buy', 'a:3:{s:15:\"/index/Coin/buy\";s:0:\"\";s:6:\"number\";s:1:\"2\";s:2:\"id\";s:1:\"2\";}', '127.0.0.1', '2019-07-20 12:48:49');
 INSERT INTO `st_operation_log` VALUES ('162', '1', '2', '18237837598', '1', '2', '', '申购币购买', '/index/Coin/buy', 'a:3:{s:15:\"/index/Coin/buy\";s:0:\"\";s:6:\"number\";s:2:\"10\";s:2:\"id\";s:1:\"2\";}', '127.0.0.1', '2019-07-20 12:49:54');
 INSERT INTO `st_operation_log` VALUES ('163', '1', '2', '18237837598', '1', '2', '', '申购币购买', '/index/Coin/buy', 'a:3:{s:15:\"/index/Coin/buy\";s:0:\"\";s:6:\"number\";s:1:\"1\";s:2:\"id\";s:1:\"2\";}', '127.0.0.1', '2019-07-20 12:53:40');
+INSERT INTO `st_operation_log` VALUES ('164', '1', '2', '18237837598', '1', '0', '', '会员退出登陆', '/index/Login/logout', 'a:1:{s:19:\"/index/Login/logout\";s:0:\"\";}', '127.0.0.1', '2019-07-20 13:57:49');
+INSERT INTO `st_operation_log` VALUES ('165', '1', '2', '18237837598', '1', '0', '', '会员登录', '/index/Login/login', 'a:4:{s:18:\"/index/Login/login\";s:0:\"\";s:8:\"username\";s:11:\"18237837598\";s:8:\"password\";s:6:\"123123\";s:5:\"vcode\";s:4:\"4275\";}', '127.0.0.1', '2019-07-20 15:23:54');
+INSERT INTO `st_operation_log` VALUES ('166', '1', '2', '18237837598', '1', '100004', '', '会员建仓扣除手续费', '/index/Trade/create_order', 'a:1:{s:25:\"/index/Trade/create_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 00:46:11');
+INSERT INTO `st_operation_log` VALUES ('167', '1', '2', '18237837598', '1', '100003', '', '会员平仓', '/index/Trade/close_order', 'a:1:{s:24:\"/index/Trade/close_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 01:15:26');
+INSERT INTO `st_operation_log` VALUES ('168', '1', '2', '18237837598', '1', '100004', '', '会员平仓', '/index/Trade/close_order', 'a:1:{s:24:\"/index/Trade/close_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 01:18:13');
+INSERT INTO `st_operation_log` VALUES ('169', '1', '2', '18237837598', '1', '100005', '', '会员建仓', '/index/Trade/create_order', 'a:1:{s:25:\"/index/Trade/create_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 01:21:43');
+INSERT INTO `st_operation_log` VALUES ('170', '1', '2', '18237837598', '1', '100006', '', '会员建仓', '/index/Trade/create_order', 'a:1:{s:25:\"/index/Trade/create_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 01:24:54');
+INSERT INTO `st_operation_log` VALUES ('171', '1', '2', '18237837598', '1', '100007', '', '会员建仓', '/index/Trade/create_order', 'a:1:{s:25:\"/index/Trade/create_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 02:01:37');
+INSERT INTO `st_operation_log` VALUES ('172', '1', '2', '18237837598', '1', '100008', '', '会员建仓', '/index/Trade/create_order', 'a:1:{s:25:\"/index/Trade/create_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 02:01:40');
+INSERT INTO `st_operation_log` VALUES ('173', '1', '2', '18237837598', '1', '100005', '', '会员平仓', '/index/Trade/close_order', 'a:2:{s:24:\"/index/Trade/close_order\";s:0:\"\";s:3:\"oid\";s:6:\"100005\";}', '127.0.0.1', '2019-07-21 02:16:06');
+INSERT INTO `st_operation_log` VALUES ('174', '1', '2', '18237837598', '1', '0', '', '会员登录', '/index/Login/login', 'a:4:{s:18:\"/index/Login/login\";s:0:\"\";s:8:\"username\";s:11:\"18237837598\";s:8:\"password\";s:6:\"123123\";s:5:\"vcode\";s:4:\"4924\";}', '127.0.0.1', '2019-07-21 09:09:21');
+INSERT INTO `st_operation_log` VALUES ('175', '1', '2', '18237837598', '1', '100006', '', '会员平仓', '/index/Trade/close_order', 'a:2:{s:24:\"/index/Trade/close_order\";s:0:\"\";s:3:\"oid\";s:6:\"100006\";}', '127.0.0.1', '2019-07-21 09:18:09');
+INSERT INTO `st_operation_log` VALUES ('176', '1', '2', '18237837598', '1', '100007', '', '会员平仓', '/index/Trade/close_order', 'a:2:{s:24:\"/index/Trade/close_order\";s:0:\"\";s:3:\"oid\";s:6:\"100007\";}', '127.0.0.1', '2019-07-21 09:30:54');
+INSERT INTO `st_operation_log` VALUES ('177', '1', '2', '18237837598', '1', '100008', '', '会员平仓', '/index/Trade/close_order', 'a:2:{s:24:\"/index/Trade/close_order\";s:0:\"\";s:3:\"oid\";s:6:\"100008\";}', '127.0.0.1', '2019-07-21 09:34:20');
+INSERT INTO `st_operation_log` VALUES ('178', '1', '2', '18237837598', '1', '100009', '', '会员建仓', '/index/Trade/create_order', 'a:1:{s:25:\"/index/Trade/create_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 09:39:11');
+INSERT INTO `st_operation_log` VALUES ('179', '1', '2', '18237837598', '1', '100010', '', '会员建仓', '/index/Trade/create_order', 'a:1:{s:25:\"/index/Trade/create_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 09:39:13');
+INSERT INTO `st_operation_log` VALUES ('180', '1', '2', '18237837598', '1', '100011', '', '会员建仓', '/index/Trade/create_order', 'a:1:{s:25:\"/index/Trade/create_order\";s:0:\"\";}', '127.0.0.1', '2019-07-21 09:39:15');
 
 -- ----------------------------
 -- Table structure for st_order
@@ -678,6 +695,7 @@ CREATE TABLE `st_order` (
   `agent_name` varchar(255) DEFAULT NULL,
   `pid` int(11) DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
+  `product_abbreviation` varchar(255) DEFAULT NULL,
   `money` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '保证金',
   `hand` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '手数',
   `contract` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '合约比例',
@@ -689,17 +707,26 @@ CREATE TABLE `st_order` (
   `stop_loss` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '止损',
   `profit` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '盈利金额',
   `order_status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1持仓2平仓',
-  `order_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1用户平仓2总后台强平3爆仓',
+  `order_close_type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1用户平仓2总后台强平3爆仓',
   `add_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`oid`)
-) ENGINE=InnoDB AUTO_INCREMENT=100002 DEFAULT CHARSET=utf8 COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=100012 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 -- ----------------------------
 -- Records of st_order
 -- ----------------------------
-INSERT INTO `st_order` VALUES ('100000', '123123', '1', '13138602014', '5', 'dfgdghgh', '1', '1', '100.000000', '1.000000', '2.000000', '1.000000', '1', '2.000000', '3.000000', '4.000000', '0.000000', '0.000000', '2', '1', '2019-07-08 13:42:23', '2019-07-08 13:42:28');
-INSERT INTO `st_order` VALUES ('100001', '1231233', '1', '13138602014', '5', 'dfgdghgh', '1', '1', '100.000000', '1.000000', '2.000000', '1.000000', '1', '2.000000', '3.000000', '4.000000', '0.000000', '0.000000', '1', '1', '2019-07-08 13:42:23', '2019-07-08 13:42:28');
+INSERT INTO `st_order` VALUES ('100000', '123123', '1', '13138602014', '5', 'dfgdghgh', '1', '1', 'BTC', '100.000000', '1.000000', '2.000000', '1.000000', '1', '2.000000', '3.000000', '4.000000', '0.000000', '0.000000', '2', '1', '2019-07-08 13:42:23', '2019-07-08 13:42:28');
+INSERT INTO `st_order` VALUES ('100001', '1231233', '1', '13138602014', '5', 'dfgdghgh', '1', '1', 'BTC', '100.000000', '1.000000', '2.000000', '1.000000', '1', '2.000000', '3.000000', '4.000000', '0.000000', '0.000000', '1', '1', '2019-07-08 13:42:23', '2019-07-08 13:42:28');
+INSERT INTO `st_order` VALUES ('100003', 'sn15636407267635', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10685.610000', '1.000000', '1.000000', '5.000000', '1', '10685.610000', '10906.950000', '0.000000', '0.000000', '0.000000', '2', '1', '2019-07-21 00:38:46', '2019-07-21 01:15:26');
+INSERT INTO `st_order` VALUES ('100004', 'sn15636411716949', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10695.750000', '1.000000', '1.000000', '5.000000', '1', '10695.750000', '10926.960000', '0.000000', '0.000000', '10926.960000', '2', '1', '2019-07-21 00:46:11', '2019-07-21 01:18:13');
+INSERT INTO `st_order` VALUES ('100005', 'sn15636433036681', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10.924580', '1.000000', '0.001000', '5.000000', '1', '10924.580000', '10931.970000', '0.000000', '0.000000', '10931.970000', '2', '1', '2019-07-21 01:21:43', '2019-07-21 02:16:06');
+INSERT INTO `st_order` VALUES ('100006', 'sn15636434945648', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10.946940', '1.000000', '0.001000', '5.000000', '1', '10946.940000', '10807.230000', '0.000000', '0.000000', '10807.230000', '2', '1', '2019-07-21 01:24:54', '2019-07-21 09:18:09');
+INSERT INTO `st_order` VALUES ('100007', 'sn15636456972101', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10.928320', '1.000000', '0.001000', '5.000000', '2', '10928.320000', '10777.760000', '0.000000', '0.000000', '10777.760000', '2', '1', '2019-07-21 02:01:37', '2019-07-21 09:30:54');
+INSERT INTO `st_order` VALUES ('100008', 'sn15636457006106', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10.929650', '1.000000', '0.001000', '5.000000', '2', '10929.650000', '10782.260000', '0.000000', '0.000000', '10782.260000', '2', '1', '2019-07-21 02:01:40', '2019-07-21 09:34:20');
+INSERT INTO `st_order` VALUES ('100009', 'sn15636731513272', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10.790030', '1.000000', '0.001000', '5.000000', '2', '10790.030000', '0.000000', '0.000000', '0.000000', '0.000000', '1', '1', '2019-07-21 09:39:11', null);
+INSERT INTO `st_order` VALUES ('100010', 'sn15636731537166', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10.790250', '1.000000', '0.001000', '5.000000', '2', '10790.250000', '0.000000', '0.000000', '0.000000', '0.000000', '1', '1', '2019-07-21 09:39:13', null);
+INSERT INTO `st_order` VALUES ('100011', 'sn15636731552966', '2', '34234', '5', 'dfgdghgh', '3', 'BTC', 'BTC', '10.790250', '1.000000', '0.001000', '5.000000', '2', '10790.250000', '0.000000', '0.000000', '0.000000', '0.000000', '1', '1', '2019-07-21 09:39:15', null);
 
 -- ----------------------------
 -- Table structure for st_page_number
@@ -728,6 +755,7 @@ DROP TABLE IF EXISTS `st_product`;
 CREATE TABLE `st_product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
+  `desc_name` varchar(255) DEFAULT NULL,
   `abbreviation` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `contract` decimal(20,6) NOT NULL DEFAULT '0.000000' COMMENT '合约比例',
@@ -741,17 +769,14 @@ CREATE TABLE `st_product` (
   `add_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='产品表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='产品表';
 
 -- ----------------------------
 -- Records of st_product
 -- ----------------------------
-INSERT INTO `st_product` VALUES ('1', '1', '1', '/uploads/product/20190719\\c4994bca1340d8c7d171fbb2fba125e8.png', '1.000000', '1.000000', '1.000000', '1.200000', '2', '2', '0.050000', '1', null, null);
-INSERT INTO `st_product` VALUES ('2', '2', '1', null, '2.000000', '12.000000', '12.000000', '0.000000', '2', '2', '0.000000', '2', null, null);
-INSERT INTO `st_product` VALUES ('3', 'BTC', 'BTC', '/uploads/product/20190719\\ad194c7b4958445f898daef96bcfb9a7.png', '1.000000', '0.100000', '100.000000', '12.000000', '1', '1', '5.000000', '1', '2019-07-15 11:29:08', '2019-07-15 11:29:08');
-INSERT INTO `st_product` VALUES ('4', 'ETH', 'ETH', '/uploads/product/20190719\\d78f57cf01f19ebc8fedf2d18e968110.png', '1.000000', '10.000000', '100.000000', '123.000000', '1', '1', '5.000000', '1', '2019-07-15 11:29:32', '2019-07-15 11:29:32');
-INSERT INTO `st_product` VALUES ('5', 'EOS', 'EOS', '/uploads/product/20190719\\a853b5703e5becb59afca0fe246f7e70.png', '1.000000', '1.000000', '1.000000', '123.000000', '1', '1', '1.000000', '1', '2019-07-15 11:29:43', '2019-07-15 11:29:43');
-INSERT INTO `st_product` VALUES ('6', '123', '123', '/uploads/product/20190719\\ce512f917b80d74387cb2c582070266c.png', '123.000000', '123.000000', '123.000000', '123.000000', '2', '2', '123.000000', '1', '2019-07-19 14:18:38', '2019-07-19 14:18:38');
+INSERT INTO `st_product` VALUES ('3', 'BTC', 'BTC/USTD', 'BTC', '/uploads/product/20190719\\ad194c7b4958445f898daef96bcfb9a7.png', '0.001000', '0.100000', '100.000000', '12.000000', '1', '1', '5.000000', '1', '2019-07-15 11:29:08', '2019-07-15 11:29:08');
+INSERT INTO `st_product` VALUES ('4', 'ETH', 'ETH/USTD', 'ETH', '/uploads/product/20190719\\d78f57cf01f19ebc8fedf2d18e968110.png', '1.000000', '10.000000', '100.000000', '123.000000', '1', '1', '5.000000', '1', '2019-07-15 11:29:32', '2019-07-15 11:29:32');
+INSERT INTO `st_product` VALUES ('5', 'EOS', 'EOS/USTD', 'EOS', '/uploads/product/20190719\\a853b5703e5becb59afca0fe246f7e70.png', '1.000000', '1.000000', '1.000000', '123.000000', '1', '1', '1.000000', '1', '2019-07-15 11:29:43', '2019-07-15 11:29:43');
 
 -- ----------------------------
 -- Table structure for st_real_auth
@@ -836,7 +861,7 @@ CREATE TABLE `st_user` (
 -- Records of st_user
 -- ----------------------------
 INSERT INTO `st_user` VALUES ('1', '13138602014', 'asdasd', 'e10adc3949ba59abbe56e057f20f883e', '123456', '0', '5', 'dfgdghgh', 'rerer', '/uploads/code/156342697637800.png', '1234', '1', '1', '1', '1.00', '1', '0', '1.000000', '0.000000', null, null, '127.0.0.1', '2019-07-06 23:23:50', '2019-07-06 23:23:50');
-INSERT INTO `st_user` VALUES ('2', '18237837598', '34234', '4297f44b13955235245b2497399d7a93', '123123', '1', '5', 'dfgdghgh', 'rerer1', '/uploads/code/156342697440497.png', '2345', '1', '2', '2', '99.99', '1', '1', '871.000000', '0.000000', '2019-07-19 22:34:43', '127.0.0.1', '127.0.0.1', '2019-07-06 23:27:41', '2019-07-20 10:24:32');
+INSERT INTO `st_user` VALUES ('2', '18237837598', '34234', '4297f44b13955235245b2497399d7a93', '123123', '1', '5', 'dfgdghgh', 'rerer1', '/uploads/code/156342697440497.png', '2345', '1', '2', '2', '99.99', '1', '1', '1283.399150', '37.370530', '2019-07-21 09:09:21', '127.0.0.1', '127.0.0.1', '2019-07-06 23:27:41', '2019-07-20 10:24:32');
 INSERT INTO `st_user` VALUES ('3', '18237837599', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '/uploads/code/156342688269339.png', '4561', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', null, null, '127.0.0.1', '2019-07-09 20:08:52', '2019-07-09 20:08:52');
 INSERT INTO `st_user` VALUES ('4', '18237837512', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', null, '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', null, null, '127.0.0.1', '2019-07-19 17:31:14', null);
 INSERT INTO `st_user` VALUES ('5', '18237837513', '123', '4297f44b13955235245b2497399d7a93', '123123', '2', '6', '123456', '123123', '', '252664', '1', '1', '1', '100.00', '1', '0', '0.000000', '0.000000', '0000-00-00 00:00:00', '', '127.0.0.1', '2019-07-19 17:31:14', '0000-00-00 00:00:00');
@@ -889,7 +914,7 @@ CREATE TABLE `st_user_money_log` (
   `type_info` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='用户资金记录';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='用户资金记录';
 
 -- ----------------------------
 -- Records of st_user_money_log
@@ -904,6 +929,20 @@ INSERT INTO `st_user_money_log` VALUES ('7', '2', '18237837598', '34234', '1', '
 INSERT INTO `st_user_money_log` VALUES ('8', '2', '18237837598', '34234', '2', '161', '988.000000', '18.000000', '970.000000', '2019-07-20 12:48:49', '5', '申购币', '申购币购买');
 INSERT INTO `st_user_money_log` VALUES ('9', '2', '18237837598', '34234', '3', '162', '970.000000', '90.000000', '880.000000', '2019-07-20 12:49:54', '5', '申购币', '申购币购买');
 INSERT INTO `st_user_money_log` VALUES ('10', '2', '18237837598', '34234', '4', '163', '880.000000', '9.000000', '871.000000', '2019-07-20 12:53:40', '5', '申购币', '申购币购买');
+INSERT INTO `st_user_money_log` VALUES ('11', '2', '34234', '34234', '100004', '166', '871.000000', '5.000000', '866.000000', '2019-07-21 00:46:11', '3', '建仓', '会员建仓，扣除手续费');
+INSERT INTO `st_user_money_log` VALUES ('12', '2', '34234', '34234', '100003', '167', '866.000000', '221.340000', '1087.340000', '2019-07-21 01:15:26', '3', '平仓', '会员平仓，结算收益');
+INSERT INTO `st_user_money_log` VALUES ('13', '2', '34234', '34234', '100004', '168', '1087.340000', '231.210000', '1318.550000', '2019-07-21 01:18:13', '3', '平仓', '会员平仓，结算收益');
+INSERT INTO `st_user_money_log` VALUES ('14', '2', '34234', '34234', '100005', '169', '1318.550000', '5.000000', '1313.550000', '2019-07-21 01:21:43', '3', '建仓', '会员建仓，扣除手续费');
+INSERT INTO `st_user_money_log` VALUES ('15', '2', '34234', '34234', '100006', '170', '1313.550000', '5.000000', '1308.550000', '2019-07-21 01:24:54', '3', '建仓', '会员建仓，扣除手续费');
+INSERT INTO `st_user_money_log` VALUES ('16', '2', '34234', '34234', '100007', '171', '1308.550000', '5.000000', '1303.550000', '2019-07-21 02:01:37', '3', '建仓', '会员建仓，扣除手续费');
+INSERT INTO `st_user_money_log` VALUES ('17', '2', '34234', '34234', '100008', '172', '1303.550000', '5.000000', '1298.550000', '2019-07-21 02:01:40', '3', '建仓', '会员建仓，扣除手续费');
+INSERT INTO `st_user_money_log` VALUES ('18', '2', '34234', '34234', '100005', '173', '1298.550000', '0.007390', '1298.557390', '2019-07-21 02:16:06', '3', '平仓', '会员平仓，结算收益');
+INSERT INTO `st_user_money_log` VALUES ('19', '2', '34234', '34234', '100006', '175', '1298.557390', '0.139710', '1298.697100', '2019-07-21 09:18:09', '3', '平仓', '会员平仓，结算收益');
+INSERT INTO `st_user_money_log` VALUES ('20', '2', '34234', '34234', '100007', '176', '1298.697100', '-0.150560', '1298.546540', '2019-07-21 09:30:54', '3', '平仓', '会员平仓，结算收益');
+INSERT INTO `st_user_money_log` VALUES ('21', '2', '34234', '34234', '100008', '177', '1298.546540', '-0.147390', '1298.399150', '2019-07-21 09:34:20', '3', '平仓', '会员平仓，结算收益');
+INSERT INTO `st_user_money_log` VALUES ('22', '2', '34234', '34234', '100009', '178', '1298.399150', '5.000000', '1293.399150', '2019-07-21 09:39:11', '3', '建仓', '会员建仓，扣除手续费');
+INSERT INTO `st_user_money_log` VALUES ('23', '2', '34234', '34234', '100010', '179', '1293.399150', '5.000000', '1288.399150', '2019-07-21 09:39:13', '3', '建仓', '会员建仓，扣除手续费');
+INSERT INTO `st_user_money_log` VALUES ('24', '2', '34234', '34234', '100011', '180', '1288.399150', '5.000000', '1283.399150', '2019-07-21 09:39:15', '3', '建仓', '会员建仓，扣除手续费');
 
 -- ----------------------------
 -- Table structure for st_user_withdraw_log
