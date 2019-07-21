@@ -917,6 +917,18 @@
 			});
 		}
 	})
+
+	myChart.on('mouseout', function(param){
+		if(param.seriesType == "candlestick"){
+			var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1]
+			$.each(valueToday,function(k,v){
+				$("#price-k-" +k).text(v);
+			});
+
+		}           
+	})
+
+	
 	}
 
 		var url = "http://47.90.122.200:8080/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
