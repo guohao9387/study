@@ -847,9 +847,13 @@
     };
     myChart.setOption(option);
 
-	myChart.on('mouseover', function(a){
-		if(a.dataIndex!=0){
-			//unemphasis();
+	myChart.on('mouseover', function(param){
+		if(param.seriesType == "candlestick"){
+			var valuePointTo = dataFromApi.Data[param.dataIndex];
+			$.each(valuePointTo,function(k,v){
+				$("#price-k-" +k).text(v);
+			});
+
 		}	    	
 	})
 
