@@ -421,6 +421,16 @@ class Admin extends Common{
     public function product_add(){
         if(request()->isAjax()){
             $data = input('post.');
+            if($data['fee']<0){
+                $data = array();
+                $data['status'] = 0;
+                $data['msg'] = '手续费必须大于0';
+            }
+            if($data['night_fee']<0){
+                $data = array();
+                $data['status'] = 0;
+                $data['msg'] = '过夜费必须大于0';
+            }
             $data['show_status']=2;
             $data['trade_status']=2;
             $data['add_time'] = date('Y-m-d H:i:s',time());
@@ -448,7 +458,16 @@ class Admin extends Common{
         if(request()->isAjax()){
             $data = input('post.');
             unset($data['file']);
-
+            if($data['fee']<0){
+                $data = array();
+                $data['status'] = 0;
+                $data['msg'] = '手续费必须大于0';
+            }
+            if($data['night_fee']<0){
+                $data = array();
+                $data['status'] = 0;
+                $data['msg'] = '过夜费必须大于0';
+            }
             $res = db::name('product')->update($data);
             if($res){
                 add_user_operation($this->admin,$this->admin_name, 3,4,'修改产品', $_SERVER['REQUEST_URI'], serialize($_REQUEST));

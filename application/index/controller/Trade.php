@@ -33,7 +33,7 @@ class Trade extends Common
         $where=[];
         $where[]=['order_status','=',1];
         $where[]=['uid','=',$this->user];
-        $keep_order_list=db::name('order')->where($where)->select();
+        $keep_order_list=db::name('order')->order('oid desc')->where($where)->select();
         $this->assign('keep_order_list',$keep_order_list);
 
         return $this->fetch();
@@ -107,42 +107,44 @@ class Trade extends Common
                     return json_return(0,'操作失败，请重试');
                 }
                 //创建订单
-                $data=[];
-                $data['order_sn']='sn'.time().rand(1000,9999);
-                $data['uid']=$this->user;
-                $data['username']=$this->user_name;
-                $data['agent_id']=$user['agent_id'];
-                $data['agent_name']=$user['agent_name'];
-                $data['pid']=$product_info['id'];
-                $data['product_name']=$product_info['name'];
-                $data['product_abbreviation']=$product_info['abbreviation'];
-                $data['money']=$amount;
-                $data['hand']=$param['hand'];
-                $data['contract']=$product_info['contract'];
-                $data['fee']=$fee;
-                $data['direction']=$param['direction'];
-                $data['buy_price']=$now_price;
+                $order=[];
+                $order['order_sn']='sn'.time().rand(1000,9999);
+                $order['uid']=$this->user;
+                $order['username']=$this->user_name;
+                $order['agent_id']=$user['agent_id'];
+                $order['agent_name']=$user['agent_name'];
+                $order['pid']=$product_info['id'];
+                $order['product_name']=$product_info['name'];
+                $order['product_abbreviation']=$product_info['abbreviation'];
+                $order['money']=$amount;
+                $order['hand']=$param['hand'];
+                $order['contract']=$product_info['contract'];
+                $order['fee']=$fee;
+                $order['direction']=$param['direction'];
+                $order['buy_price']=$now_price;
                 if(isset($param['target_profit_check'])){
-                    $data['target_profit_check']=2;
-                    $data['target_profit']=$param['target_profit'];
+                    $order['target_profit_check']=2;
+                    $order['target_profit']=$param['target_profit'];
                 }else{
-                    $data['target_profit_check']=1;
-                    $data['target_profit']=0;
+                    $order['target_profit_check']=1;
+                    $order['target_profit']=0;
                 }
                 if(isset($param['stop_loss_check'])){
-                    $data['stop_loss_check']=2;
-                    $data['stop_loss']=$param['stop_loss'];
+                    $order['stop_loss_check']=2;
+                    $order['stop_loss']=$param['stop_loss'];
                 }else{
-                    $data['stop_loss_check']=1;
-                    $data['stop_loss']=0;
+                    $order['stop_loss_check']=1;
+                    $order['stop_loss']=0;
                 }
-                $data['add_time']=date('Y-m-d H:i:s');
+                $order['add_time']=date('Y-m-d H:i:s');
 //                dump($data);die;
-                $oid=db::name('order')->insertGetId($data);
+                $oid=db::name('order')->insertGetId($order);
                 if(!$oid){
                     db::rollback();
                     return json_return(0,'操作失败，请重试');
                 }
+                $order['oid']=$oid;
+                $order['now_price']=$now_price;
                 //记录用户操作
                 $operation_id=add_user_operation($user['uid'],$user['username'],1,1,'会员建仓', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$oid);
                 //添加资金记录
@@ -162,7 +164,7 @@ class Trade extends Common
                 $status=db::name('user_money_log')->insert($data);
                 if($status){
                     db::commit();
-                    return json_return(1,'建仓成功',$data);
+                    return json_return(1,'建仓成功',$order);
                 }else{
                     db::rollback();
                     return json_return(0,'操作失败，请重试');

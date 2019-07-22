@@ -456,8 +456,9 @@
             <div data-v-c4371006="" class="indexCon clearfix">
                 <div data-v-c4371006="" class="indexleft" style="margin-top: 30px;">
                     <div data-v-c4371006="" class="lefttop">
-                        <p data-v-c4371006="">账户余额 :{$user.money}USDT</p>
-                        <p data-v-c4371006="">可用余额 :{$user.real_money}USDT</p>
+                        <p data-v-c4371006="">账户余额 :  <span id="user_money">{$user.money}</span>USDT</p>
+                        <p data-v-c4371006="">保证金余额 :  <span id="user_promise_money">{$user.promise_money}</span> USDT</p>
+                        <p data-v-c4371006="">可用余额 :  <span id="user_real_money">{$user.real_money}</span> USDT</p>
                     </div>
                     <div data-v-c4371006="" class="leftbtm">
                         <div data-v-c4371006="" class="tit">新建订单</div>
@@ -581,7 +582,7 @@
                                                     <th >操作</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="keep_order_list">
                                                 {volist name="keep_order_list" id="val"}
                                                 <tr class="{$val.oid}">
                                                     <td>{$val['order_sn']}</td>
@@ -704,228 +705,226 @@
     </div>
 </div>
 <script>
-	
 
 	function setCandlestick(coinType,gap,count){
 
         function setOnUi(dataFromApi){
-        var myChart = echarts.init(document.getElementById('main'));
+            var myChart = echarts.init(document.getElementById('main'));
 
-        Date.prototype.format = function(fmt) {
-         var o = {
-            "M+" : this.getMonth()+1,                 //月份
-            "d+" : this.getDate(),                    //日
-            "h+" : this.getHours(),                   //小时
-            "m+" : this.getMinutes(),                 //分
-            "s+" : this.getSeconds(),                 //秒
-            "q+" : Math.floor((this.getMonth()+3)/3), //季度
-            "S"  : this.getMilliseconds()             //毫秒
-        };
-        if(/(y+)/.test(fmt)) {
-                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
-        }
-         for(var k in o) {
-            if(new RegExp("("+ k +")").test(fmt)){
-                 fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-             }
-         }
-        return fmt;
-        }
-
-        function calculateMA(dayCount, data) {
-            var result = [];
-            for (var i = 0, len = data.length; i < len; i++) {
-                if (i < dayCount) {
-                    result.push('-');
-                    continue;
-                }
-                var sum = 0;
-                for (var j = 0; j < dayCount; j++) {
-                    sum += data[i - j][1];
-                }
-                result.push(sum / dayCount);
+            Date.prototype.format = function(fmt) {
+             var o = {
+                "M+" : this.getMonth()+1,                 //月份
+                "d+" : this.getDate(),                    //日
+                "h+" : this.getHours(),                   //小时
+                "m+" : this.getMinutes(),                 //分
+                "s+" : this.getSeconds(),                 //秒
+                "q+" : Math.floor((this.getMonth()+3)/3), //季度
+                "S"  : this.getMilliseconds()             //毫秒
+            };
+            if(/(y+)/.test(fmt)) {
+                    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
             }
-            return result;
-        }
+             for(var k in o) {
+                if(new RegExp("("+ k +")").test(fmt)){
+                     fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+                 }
+             }
+             return fmt;
+            }
 
-        var datefmt = "yyyy-MM-dd";
-        if(gap == "hour"){
-            datefmt = "yyyy-MM-dd mm时";
-        }
-        if(gap == "minute"){
-            datefmt = "yyyy-MM-dd mm:hh";
-        }
-
-        var dates = dataFromApi.Data.map(function (item) {
-            return new Date(item.time*1000).format(datefmt);
-        });
-
-        var data = dataFromApi.Data.map(function (item) {
-            return [item.open,item.close,item.low,item.high];
-        });
-
-        var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1]
-        $.each(valueToday,function(k,v){
-            $("#price-k-" +k).text(v);
-        });
-
-        var option = {
-            backgroundColor: '#21202D',
-            legend: {
-                data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
-                inactiveColor: '#777',
-                textStyle: {
-                    color: '#fff'
-                }
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    animation: false,
-                    type: 'cross',
-                    lineStyle: {
-                        color: '#376df4',
-                        width: 2,
-                        opacity: 1
+            function calculateMA(dayCount, data) {
+                var result = [];
+                for (var i = 0, len = data.length; i < len; i++) {
+                    if (i < dayCount) {
+                        result.push('-');
+                        continue;
                     }
-                }
-            },
-            xAxis: {
-                type: 'category',
-                data: dates,
-                axisLine: {
-                    lineStyle: {
-                        color: '#8392A5'
+                    var sum = 0;
+                    for (var j = 0; j < dayCount; j++) {
+                        sum += data[i - j][1];
                     }
+                    result.push(sum / dayCount);
                 }
-            },
-            yAxis: {
-                scale: true,
-                axisLine: {
-                    lineStyle: {
-                        color: '#8392A5'
+                return result;
+            }
+
+            var datefmt = "yyyy-MM-dd";
+            if(gap == "hour"){
+                datefmt = "yyyy-MM-dd mm时";
+            }
+            if(gap == "minute"){
+                datefmt = "yyyy-MM-dd mm:hh";
+            }
+
+            var dates = dataFromApi.Data.map(function (item) {
+                return new Date(item.time*1000).format(datefmt);
+            });
+
+            var data = dataFromApi.Data.map(function (item) {
+                return [item.open,item.close,item.low,item.high];
+            });
+
+            var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
+            $.each(valueToday,function(k,v){
+                $("#price-k-" +k).text(v);
+            });
+
+            var option = {
+                backgroundColor: '#21202D',
+                legend: {
+                    data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
+                    inactiveColor: '#777',
+                    textStyle: {
+                        color: '#fff'
                     }
                 },
-                splitLine: {
-                    show: false
-                }
-            },
-            grid: {
-                bottom: 80
-            },
-            dataZoom: [{
-                textStyle: {
-                    color: '#8392A5'
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        animation: false,
+                        type: 'cross',
+                        lineStyle: {
+                            color: '#376df4',
+                            width: 2,
+                            opacity: 1
+                        }
+                    }
                 },
-                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
-                handleSize: '80%',
-                dataBackground: {
-                    areaStyle: {
+                xAxis: {
+                    type: 'category',
+                    data: dates,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#8392A5'
+                        }
+                    }
+                },
+                yAxis: {
+                    scale: true,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#8392A5'
+                        }
+                    },
+                    splitLine: {
+                        show: false
+                    }
+                },
+                grid: {
+                    bottom: 80
+                },
+                dataZoom: [{
+                    textStyle: {
                         color: '#8392A5'
                     },
-                    lineStyle: {
-                        opacity: 0.8,
-                        color: '#8392A5'
+                    handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                    handleSize: '80%',
+                    dataBackground: {
+                        areaStyle: {
+                            color: '#8392A5'
+                        },
+                        lineStyle: {
+                            opacity: 0.8,
+                            color: '#8392A5'
+                        }
+                    },
+                    handleStyle: {
+                        color: '#fff',
+                        shadowBlur: 3,
+                        shadowColor: 'rgba(0, 0, 0, 0.6)',
+                        shadowOffsetX: 2,
+                        shadowOffsetY: 2
                     }
-                },
-                handleStyle: {
-                    color: '#fff',
-                    shadowBlur: 3,
-                    shadowColor: 'rgba(0, 0, 0, 0.6)',
-                    shadowOffsetX: 2,
-                    shadowOffsetY: 2
-                }
-            }, {
-                type: 'inside'
-            }],
-            animation: false,
-            series: [{
-                type: 'candlestick',
-                name: '日K',
-                data: data,
-                itemStyle: {
-                    normal: {
-                        color: '#FD1050',
-                        color0: '#0CF49B',
-                        borderColor: '#FD1050',
-                        borderColor0: '#0CF49B'
-                    }
-                }
-            },
-                {
-                    name: 'MA5',
-                    type: 'line',
-                    data: calculateMA(5, data),
-                    smooth: true,
-                    showSymbol: false,
-                    lineStyle: {
+                }, {
+                    type: 'inside'
+                }],
+                animation: false,
+                series: [{
+                    type: 'candlestick',
+                    name: '日K',
+                    data: data,
+                    itemStyle: {
                         normal: {
-                            width: 1
+                            color: '#FD1050',
+                            color0: '#0CF49B',
+                            borderColor: '#FD1050',
+                            borderColor0: '#0CF49B'
                         }
                     }
                 },
-                {
-                    name: 'MA10',
-                    type: 'line',
-                    data: calculateMA(10, data),
-                    smooth: true,
-                    showSymbol: false,
-                    lineStyle: {
-                        normal: {
-                            width: 1
+                    {
+                        name: 'MA5',
+                        type: 'line',
+                        data: calculateMA(5, data),
+                        smooth: true,
+                        showSymbol: false,
+                        lineStyle: {
+                            normal: {
+                                width: 1
+                            }
+                        }
+                    },
+                    {
+                        name: 'MA10',
+                        type: 'line',
+                        data: calculateMA(10, data),
+                        smooth: true,
+                        showSymbol: false,
+                        lineStyle: {
+                            normal: {
+                                width: 1
+                            }
+                        }
+                    },
+                    {
+                        name: 'MA20',
+                        type: 'line',
+                        data: calculateMA(20, data),
+                        smooth: true,
+                        showSymbol: false,
+                        lineStyle: {
+                            normal: {
+                                width: 1
+                            }
+                        }
+                    },
+                    {
+                        name: 'MA30',
+                        type: 'line',
+                        data: calculateMA(30, data),
+                        smooth: true,
+                        showSymbol: false,
+                        lineStyle: {
+                            normal: {
+                                width: 1
+                            }
                         }
                     }
-                },
-                {
-                    name: 'MA20',
-                    type: 'line',
-                    data: calculateMA(20, data),
-                    smooth: true,
-                    showSymbol: false,
-                    lineStyle: {
-                        normal: {
-                            width: 1
-                        }
-                    }
-                },
-                {
-                    name: 'MA30',
-                    type: 'line',
-                    data: calculateMA(30, data),
-                    smooth: true,
-                    showSymbol: false,
-                    lineStyle: {
-                        normal: {
-                            width: 1
-                        }
-                    }
-                }
-            ]
-        };
-        myChart.setOption(option);
+                ]
+            };
+            myChart.setOption(option);
 
-        myChart.on('mouseover', function(param){
-            if(param.seriesType == "candlestick"){
-                var valuePointTo = dataFromApi.Data[param.dataIndex];
-                $.each(valuePointTo,function(k,v){
-                    $("#price-k-" +k).text(v);
-                });
-            }
-        })
+            myChart.on('mouseover', function(param){
+                if(param.seriesType == "candlestick"){
+                    var valuePointTo = dataFromApi.Data[param.dataIndex];
+                    $.each(valuePointTo,function(k,v){
+                        $("#price-k-" +k).text(v);
+                    });
+                }
+            });
 
-        myChart.on('mouseout', function(param){
-            if(param.seriesType == "candlestick"){
-                var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1]
-                $.each(valueToday,function(k,v){
-                    $("#price-k-" +k).text(v);
-                });
+            myChart.on('mouseout', function(param){
+                if(param.seriesType == "candlestick"){
+                    var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
+                    $.each(valueToday,function(k,v){
+                        $("#price-k-" +k).text(v);
+                    });
 
-            }
-        })
+                }
+            });
         }
-
-            var url = "http://47.90.122.200:8080/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
-            $.ajax({
+        var url = "http://47.90.122.200:8080/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
+        $.ajax({
             type: 'get',
             url: url,
             //async: false,//同步
@@ -967,7 +966,11 @@
         $('.form_id').val(form_id_val);
 
         $('.target_profit').text(now_price-(-wave_val));
+        $('input[name="target_profit"]').val(now_price-(-wave_val));
+
         $('.stop_loss').text(now_price-wave_val);
+        $('input[name="stop_loss"]').val(now_price-wave_val);
+
         setCandlestick(name,"day",30);
     });
 
@@ -982,6 +985,19 @@
 
     });
     $(".models .m-cancel").click(function () {
+        if( $("input[name='target_profit_check']").is(':checked') ){
+            $("input[name='target_profit_check']").removeAttr('checked');
+            $("input[name='target_profit']").val('');
+            $(".switchone .chosecon").hide();
+            layui.form.render('checkbox');
+        }
+        if( $("input[name='stop_loss_check']").is(':checked') ){
+            $("input[name='stop_loss_check']").removeAttr('checked');
+            $("input[name='stop_loss']").val('');
+            $(".switchtwo .chosecon").hide();
+            layui.form.render('checkbox');
+        }
+
         $(".models").hide();
     });
     function set_direction(val,number){
@@ -999,7 +1015,7 @@
                 var money=now_price*contract*vals;
 //                console.log(now_price);
 //                console.log(contract);
-                $('.promise_money').text(math_floor(money));
+                $('.promise_money').text(math_floor(money,1000));
             }
         }else{
             $(".shosu").val(0);
@@ -1038,8 +1054,14 @@
     }
 
 
-    function math_floor(number){
-        return Math.floor(number * 1000) / 1000;
+    function math_floor(number,per){
+        var times;
+        if(per){
+            times=per;
+        }else{
+            times=100;
+        }
+        return Math.floor(number * times) / times;
     }
 
 
@@ -1075,7 +1097,7 @@
                     color='red';
                 }
             }
-            $(this).children('.profit').text(profit).attr("style","color:"+color+";");
+            $(this).children('.profit').text(math_floor(profit,1000)).attr("style","color:"+color+";");
             $(this).children('.now_price').attr("style","color:"+color+";");
         });
     }
@@ -1083,7 +1105,11 @@
     function count_wave(price){
         var point_wave=$('#point_wave').val();
         $('.target_profit').text(price-(-point_wave));
+        $('input[name="target_profit"]').val(price-(-point_wave));
         $('.stop_loss').text(price-point_wave);
+        $('input[name="stop_loss"]').val(price-point_wave);
+
+        //计算保证金
         var hand=$(".models .shosu").val();
         if(isNotANumber(hand)==true){
             if(hand<0){
@@ -1101,6 +1127,26 @@
 		var loadingFirst;
 		var loadingSecond;
         function prepareWs(){
+            var openPrice = [];
+            var url = "http://47.90.122.200:8080/openPrice"
+            $.ajax({
+                type: 'get',
+                url: url,
+                //async: false,//同步
+                success : function(data) {
+                    for(let i in data){
+                        openPrice[i] =data[i]['USD'];
+                    }
+
+                },
+                error : function(errMsg) {
+                    //不知道该干啥
+                    layer.msg('网络波动',{icon: 1,time:1000},function(){
+                        window.location.href="/index/User/index"
+                    });
+                }
+            });
+
             var uid="{$user.uid}";
             var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
 
@@ -1124,61 +1170,48 @@
                 //ws.send("发送数据");
             };
 
-            var openPrice = {BTC:0,ETH:0,EOS:0};
-            var url = "http://47.90.122.200:8080/openPrice"
-            $.ajax({
-            type: 'get',
-            url: url,
-            //async: false,//同步
-            success : function(msg) {
-                openPrice.BTC =msg.BTC;
-                openPrice.ETH = msg.ETH;
-                openPrice.EOS = msg.EOS;
-            },
-            error : function(errMsg) {
-                //不知道该干啥
-            }
-            });
-
             ws.onmessage = function (evt)
             {
-                layer.close(loadingSecond);
     //            console.log(evt);
 //            console.log(evt.data);
                 var data=JSON.parse(evt.data);
-                var active_name = $('.list ul li.active').attr('data-product-abbreviation-name');
-                $.each(data,function(k,v){
-                    var abbreviation='.'+k;//固定产品位置
+                if(data.status){
+
+                }else{
+                    var active_name = $('.list ul li.active').attr('data-product-abbreviation-name');
+                    $.each(data,function(k,v){
+                        var abbreviation='.'+k;//固定产品位置
 //                    var abbreviation_up_down='.'+k+'_up_down';
 //                    var abbreviation_up_down_val='.'+k+'_up_down_val';
-                    var up_down_name=  "[data-product-up-down="+k+"]";
-                    var up_down_val_name=  "[data-product-up-down-val="+k+"]";
-                    var new_price=v['USD'];
-                    if(k==active_name){
-                        count_wave(new_price);
-                    }
-                    //var old_price=$(abbreviation).html();
-                    var old_price= openPrice[k]['USD'];
-                    if(old_price!=0){
-                        var range=new_price-old_price;
-                        var range_per=range/old_price*100;
-                        var color;
-                        if(new_price>old_price){
-                            color='red';
-                        }else if(new_price<old_price){
-                            color='green';
+                        var up_down_name=  "[data-product-up-down="+k+"]";
+                        var up_down_val_name=  "[data-product-up-down-val="+k+"]";
+                        var new_price=v['USD'];
+                        if(k==active_name){
+                            count_wave(new_price);
                         }
-                        $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
-                        $(up_down_name).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
-                    }
+                        //var old_price=$(abbreviation).html();
+                        var old_price= openPrice[k];
+                        if(old_price!=0){
+                            var range=new_price-old_price;
+                            var range_per=range/old_price*100;
+                            var color;
+                            if(new_price>old_price){
+                                color='red';
+                            }else if(new_price<old_price){
+                                color='green';
+                            }
+                            $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
+                            $(up_down_name).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+                        }
 
-                    $(abbreviation).text(new_price);
-                    //变化的产品位置
-                    var name=  "[data-product-abbreviation="+k+"]";
-                    $(name).text(v['USD']);
-                });
-                count_profit();
-                layer.close(loadingSecond);
+                        $(abbreviation).text(new_price);
+                        //变化的产品位置
+                        var name=  "[data-product-abbreviation="+k+"]";
+                        $(name).text(v['USD']);
+                    });
+                    count_profit();
+                    layer.close(loadingSecond);
+                }
             };
 		}
         layui.use(['layer', 'form'], function () {
@@ -1236,6 +1269,7 @@
                         });
                     }else{
                         layer.msg(res.msg,{icon: 1,time:1000},function(){
+                            keep_order_list_add(res.info);
                            // window.location.href="/index/User/index"
                         });
                     }
@@ -1246,6 +1280,33 @@
         });
 		setCandlestick("BTC","day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
     });
+    function keep_order_list_add(data){
+        console.log(data);
+        var html='<tr class="'+data.oid+'">';
+        html+='<td>'+data.order_sn+'</td>';
+        html+='<td>'+data.product_name+'</td>';
+        html+='<td class="money">'+data.money+'</td>';
+        html+='<td class="buy_price">'+data.buy_price+'</td>';
+        html+='<td class="now_price '+data.product_abbreviation+'">'+data.now_price+'</td>';
+        if(data.direction==1){
+            html+='<td style="color: red;" class="direction">买入</td>';
+        }else{
+            html+='<td style="color: #008000;" class="direction">卖出</td>';
+        }
+        html+='<td class="contract">'+data.contract+'</td>';
+        html+='<td class="hand">'+data.hand+'</td>';
+        html+='<td class="profit">0.00</td>';
+        html+='<td>'+data.add_time+'</td>';
+        html+='<td><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order('+data.oid+')">平仓</button></td></tr>';
+        var user_money =$('#user_money').text();
+        var user_real_money =$('#user_real_money').text();
+        var user_promise_money =$('#user_promise_money').text();
+        $('#user_money').text(user_money-data.fee);
+        $('#user_real_money').text(user_real_money-data.fee-data.money);
+        $('#user_promise_money').text(user_promise_money-(-data.money));
+        $(".keep_order_list").prepend(html);
+        $(".models .m-cancel").click();
+    }
 </script>
 </body>
 </html>
