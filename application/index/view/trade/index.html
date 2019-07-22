@@ -780,6 +780,29 @@
                 },
                 tooltip: {
                     trigger: 'axis',
+					formatter:function(params) {
+
+						var valuePointTo = dataFromApi.Data[params[0].dataIndex];
+						//修改dom
+						$.each(valuePointTo,
+						function(k, v) {
+							$("#price-k-" + k).text(v);
+						});
+						
+						var kStyle = '<br><span style="display:inline-block;vertical-align:middle;margin-right:8px;margin-left:3px;border-radius:4px;width:4px;height:4px;background-color:#0CF49B;"></span>';
+
+						var relVal = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#0CF49B;"></span>' + params[0].axisValue;
+						for (var i = 0, l = params.length; i < l; i++) {
+							relVal += '<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#0CF49B;"></span>' + params[i].seriesName + ': ';
+
+							if (params[i].seriesType == "candlestick") {
+								relVal += kStyle + 'open: ' + params[i].data[1] + kStyle + 'close: ' + params[i].data[2] + kStyle + 'lowest: ' + params[i].data[3] + kStyle + 'highest: ' + params[i].data[4];
+							} else {
+								relVal += params[i].data;
+							}
+						}
+						return relVal;
+					},
                     axisPointer: {
                         animation: false,
                         type: 'cross',
@@ -903,7 +926,7 @@
                 ]
             };
             myChart.setOption(option);
-
+/*
             myChart.on('mouseover', function(param){
                 if(param.seriesType == "candlestick"){
                     var valuePointTo = dataFromApi.Data[param.dataIndex];
@@ -922,6 +945,7 @@
 
                 }
             });
+*/
         }
         var url = "http://47.90.122.200:8080/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
         $.ajax({
