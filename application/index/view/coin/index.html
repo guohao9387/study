@@ -211,6 +211,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.5);
+            z-index: 999;
         }
         .models-content{
             position:fixed;
@@ -243,7 +244,7 @@
     </style>
     <link rel="stylesheet" href="/static/admin/css/xadmin.css">
 
-    <div class="models">
+    <div class="models" >
         <div class="models-content">
             <p>申购币购买</p>
             <form method="post" class="layui-form" >
@@ -284,13 +285,13 @@
                              购买数量
                     </label>
                     <div class="layui-input-inline">
-                        <input type="number" id="number" name="number" required="" lay-verify="number|buy"
+                        <input type="text" id="number" name="number" required="" lay-verify="number|buy"
                                autocomplete="off" class="layui-input" value="" placeholder="请输入购买数量">
                     </div>
                 </div>
                 <input type="hidden" id="id" name="id" value=""/>
                 <button class="btn" lay-filter="add" lay-submit="" style="color: white">确定</button>
-                <button class="lay-btn" style="background-color: #008000;color: white">取消</button>
+                <button class="lay-btn" style="background-color: #008000;color: white" type="button">取消</button>
             </form>
 
         </div>

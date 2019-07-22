@@ -238,7 +238,7 @@ class Trade extends Common
             $data=[];
             $data['oid']=$order['oid'];
             $data['sell_price']=$now_price;
-            $data['profit']=$now_price;
+            $data['profit']=$money;
             $data['order_status']=2;
             $data['order_close_type']=1;
             $data['update_time']=date('Y-m-d H:i:s');

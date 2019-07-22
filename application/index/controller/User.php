@@ -243,6 +243,8 @@ class User extends Common
             $bank_info_list=db::name('bank_info')->where($where)->select();
             $this->assign('bank_info_list',$bank_info_list);
             $real_money=$this->info['money']-$this->info['promise_money'];
+            $this->assign('real_money',$real_money);
+
             return $this->fetch();
         }
     }
