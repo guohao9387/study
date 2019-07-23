@@ -798,7 +798,12 @@
 							if (params[i].seriesType == "candlestick") {
 								relVal += kStyle + 'open: ' + params[i].data[1] + kStyle + 'close: ' + params[i].data[2] + kStyle + 'lowest: ' + params[i].data[3] + kStyle + 'highest: ' + params[i].data[4];
 							} else {
-								relVal += params[i].data;
+								var d = params[i].data;
+								if(parseFloat(d).toString() =="NaN"){
+									relVal += params[i].data;
+								}else {
+									relVal += params[i].data.toFixed(2);
+								}
 							}
 						}
 						return relVal;
