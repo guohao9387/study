@@ -202,6 +202,10 @@
                 if(data.status==1002){
                     remove_tr(data.oid);
                 }
+                //全局平仓
+                if(data.status==1003){
+                    window.location.reload();
+                }
             }else{
                 $.each(data,function(k,v){
                     var abbreviation='.'+k;

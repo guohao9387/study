@@ -47,24 +47,11 @@ class Api extends Common{
                 $money=0;
             }else{
                 $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']*$user['lever'];
-                //如果涨了
-                if($now_price>$order['buy_price']){
-                    //买入(买涨）
-                    if($order['direction']==1){
-                        $money=$profit;
-                        //卖出(买跌）
-                    }elseif($order['direction']==2){
-                        $money=-$profit;
-                    }
-                    //如果跌了
-                }elseif($now_price<$order['buy_price']){
-                    //买入(买涨）
-                    if($order['direction']==1){
-                        $money=-$profit;
-                        //卖出(买跌）
-                    }elseif($order['direction']==2){
-                        $money=$profit;
-                    }
+                if($order['direction']==1){
+                    $money=$profit;
+                    //卖出(买跌）
+                }elseif($order['direction']==2){
+                    $money=-$profit;
                 }
             }
             //操作用户账户
