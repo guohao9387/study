@@ -262,7 +262,7 @@
                     </p>
                     <p>
                         <span>卡号</span>
-                        <span>{$val.bank_card}</span>
+                        <span>{$val.bank_card|dataDesensitization=###,4,8}</span>
                     </p>
                     <p>
                         <span>添加时间</span>

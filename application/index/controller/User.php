@@ -14,7 +14,9 @@ class User extends Common
         if (empty($this->user)) {
             $this->redirect('/index/Login/login');
         }
+
         $this->info=db::name('user')->where('uid',$this->user)->find();
+        $this->info['real_money']=$this->info['money']-$this->info['promise_money'];
         $this->assign('info',$this->info);
     }
     public function index()

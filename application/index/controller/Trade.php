@@ -22,7 +22,6 @@ class Trade extends Common
         if($this->user){
             $user=db::name('user')->where('uid',$this->user)->find();
             $user['real_money']=$user['money']-$user['promise_money'];
-
             $where=[];
             $where[]=['order_status','=',1];
             $where[]=['uid','=',$this->user];
@@ -189,6 +188,11 @@ class Trade extends Common
                 $status=db::name('user_money_log')->insert($data);
                 if($status){
                     db::commit();
+                    $msg=[];
+                    $msg['status']=1001;
+                    $msg['order']=$order;
+                    //给总后台发消息，刷新持仓页面
+                    bar(1,$msg);
                     return json_return(1,'建仓成功',$order);
                 }else{
                     db::rollback();
@@ -268,6 +272,7 @@ class Trade extends Common
                 db::rollback();
                 return json_return(0,'操作失败');
             }
+            $after=db::name('user')->where('uid',$this->user)->find();
             //更新订单状态
             $data=[];
             $data['oid']=$order['oid'];
@@ -300,7 +305,17 @@ class Trade extends Common
             $status=db::name('user_money_log')->insert($data);
             if($status){
                 db::commit();
-                return json_return(1,'平仓成功',$data);
+                $msg=[];
+                $msg['status']=1002;
+                $msg['oid']=$order['oid'];
+                //给总后台发消息，刷新持仓页面
+                bar(1,$msg);
+                $info=[];
+                $info['oid']=$order['oid'];
+                $info['money']=number_format($after['money'],2,'.','');
+                $info['promise_money']=number_format($after['promise_money'],2,'.','');
+                $info['real_money']=number_format(($after['money']-$after['promise_money']),2,'.','');
+                return json_return(1,'平仓成功',$info);
             }else{
                 db::rollback();
                 return json_return(0,'操作失败，请重试');

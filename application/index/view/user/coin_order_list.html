@@ -206,9 +206,9 @@
                     {volist name="list" id="vo"  }
                     <tr>
                         <td>{$vo.apply_coin_name}</td>
-                        <td>{$vo.number}</td>
-                        <td>{$vo.price}</td>
-                        <td>{$vo.amount}</td>
+                        <td>{$vo.number|number_format=###,2,'.',''}</td>
+                        <td>{$vo.price|number_format=###,2,'.',''}</td>
+                        <td>{$vo.amount|number_format=###,2,'.',''}</td>
                         <td>{$vo.add_time}</td>
                     </tr>
                     {/volist}

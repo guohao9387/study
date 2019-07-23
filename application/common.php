@@ -944,6 +944,9 @@ function dataDesensitization($string, $start = 0, $length = 0, $re = '*')
 }
 //$data = array("name" => "Hagrid", "age" => "36");
 //bar('http://127.0.0.1:8080/unicast?uid=5678',json_encode($data));
+//总后台:uid=1,代理后台uid='agent'+xxx;用户首页3，未登录交易中心4
+//总后台状态码1001：用户下单；1002：用户平仓
+//用户状态码101：总后台平仓；102：爆仓;
 function bar($uid, $body){
     if($uid){
         $url='http://47.90.122.200:8080/unicast?uid='.$uid;

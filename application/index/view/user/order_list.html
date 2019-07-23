@@ -215,15 +215,15 @@
                     <tr>
                         <td>{$vo.product_name}</td>
                         <td>{$vo.direction|str_direction}</td>
-                        <td>{$vo.buy_price}</td>
-                        <td>{$vo.sell_price}</td>
-                        <td>{$vo.hand}</td>
+                        <td>{$vo.buy_price|number_format=###,2,'.',''}</td>
+                        <td>{$vo.sell_price|number_format=###,2,'.',''}</td>
+                        <td>{$vo.hand|number_format=###,2,'.',''}</td>
                         <!--<td>{$vo.contract}</td>-->
-                        <td>{$vo.money}</td>
-                        <td>{$vo.fee}</td>
-                        <td>{$vo.target_profit}</td>
-                        <td>{$vo.stop_loss}</td>
-                        <td>{$vo.profit}</td>
+                        <td>{$vo.money|number_format=###,2,'.',''}</td>
+                        <td>{$vo.fee|number_format=###,2,'.',''}</td>
+                        <td>{$vo.target_profit|number_format=###,2,'.',''}</td>
+                        <td>{$vo.stop_loss|number_format=###,2,'.',''}</td>
+                        <td>{$vo.profit|number_format=###,2,'.',''}</td>
                         <td>{$vo.add_time}</td>
                         <td>{$vo.update_time}</td>
                     </tr>

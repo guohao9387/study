@@ -205,7 +205,7 @@
                     {volist name="list" id="vo"  }
                     <tr>
                         <td>{$vo.apply_coin_name}</td>
-                        <td>{$vo.number}</td>
+                        <td>{$vo.number|number_format=###,2,'.',''}</td>
                         <td>{$vo.give_username}</td>
                         <td>{$vo.add_time}</td>
                     </tr>

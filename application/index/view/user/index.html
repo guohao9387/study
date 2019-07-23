@@ -211,18 +211,6 @@
                 padding: 11px 0;
             }
 
-            .new_list ul li:nth-child(3n-2) {
-                margin-left: 10%;
-            }
-
-            .new_list ul li:nth-child(3n-1) {
-                margin-left: 10%;
-                margin-right: 10%;
-            }
-
-            .new_list ul li:nth-child(3n) {
-                margin-right: 10%;
-            }
 
             .new_list ul:after {
                 content: "";
@@ -289,20 +277,20 @@
                       账号：{$info.username}
                     </li>
                     <li>姓名：&nbsp;&nbsp;{$info.nickname}</li>
-                </ul>
-                <ul>
                     {if $info.real == 0}
                     <li>实名状态:&nbsp;&nbsp; <a href="/index/User/real_auth" style="color: blue"> 未实名，去认证</a></li>
                     {else/}
                     <li>实名状态:&nbsp;&nbsp;已实名</li>
                     {/if}
-                    <li>杠杆比例:&nbsp;&nbsp;{$info.lever}/100</li>
                 </ul>
                 <ul>
-                    <li>账户余额:&nbsp;&nbsp;{$info.money}</li>
-                    <li>保证金:&nbsp;&nbsp;{$info.promise_money}</li>
+                    <li>账户余额:&nbsp;&nbsp;{$info.money|number_format=###,2,'.',''}</li>
+                    <li>可用余额:&nbsp;&nbsp;{$info.promise_money|number_format=###,2,'.',''}</li>
+                    <li>保证金:&nbsp;&nbsp;{$info.promise_money|number_format=###,2,'.',''}</li>
+
                 </ul>
                 <ul>
+                    <li>杠杆比例:&nbsp;&nbsp;{$info.lever}/1</li>
                     <li>上次登陆时间:&nbsp;&nbsp;{$info.last_login_time}</li>
                     <li>上次登陆IP:&nbsp;&nbsp;{$info.last_login_ip}</li>
                 </ul>

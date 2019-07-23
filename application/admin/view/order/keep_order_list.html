@@ -76,7 +76,7 @@
             <!--<a href="{:url('admin/Order/order_list',input('get.'))}&start={:quick_time_select(7)}&end={:quick_time_select(8)}" class="layui-btn layui-btn-sm layui-btn-normal">上月</a>-->
         <!--</div>-->
       <xblock>
-          <span class="x-right" style="line-height:40px">合计保证金：{$count.sum_money|number_format=###,2,'.',''};手续费：{$count.sum_fee|number_format=###,2,'.',''};数量：{$count.count} 条</span>
+          <span class="x-right" style="line-height:40px">合计保证金<span class="sum_money">{$count.sum_money|number_format=###,2,'.',''}</span> ;手续费： <span class="sum_fee"> {$count.sum_fee|number_format=###,2,'.',''}</span>;数量： <span class="sum_count">{$count.count} </span> 条</span>
       </xblock>
       <table class="layui-table">
         <thead>
@@ -91,33 +91,36 @@
               <th>方向</th>
               <th>合约比例</th>
               <th>手数</th>
+              <th>手续费</th>
               <th>盈利金额</th>
             <th>下单时间</th>
             <!--<th>平仓时间</th>-->
             <th >操作</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="keep_order_list">
             {volist name="list" id="val"}
-            <tr>
+            <tr class="oid_{$val.oid}">
                 <td>{$val['order_sn']}</td>
                 <td>{$val['product_name']}</td>
                 <td>{$val['username']}</td>
                 <td>{$val['agent_name']}</td>
-                <td class="money">{$val['money']}</td>
-                <td class="buy_price">{$val['buy_price']}</td>
+                <td class="money">{$val['money']|number_format=###,2,'.',''}</td>
+                <td class="buy_price">{$val['buy_price']|number_format=###,2,'.',''}</td>
                 <td class="{$val.product_abbreviation} now_price">0.00</td>
                 {if ($val['direction'] eq 1)}
                 <td style="color: red;" class="direction">买入</td>
                 {else/}
                 <td style="color: #008000;" class="direction">卖出</td>
                 {/if}
-                <td class="contract">{$val['contract']}</td>
-                <td class="hand">{$val['hand']}</td>
+                <td class="contract">{$val['contract']|number_format=###,3,'.',''}</td>
+                <td class="hand">{$val['hand']|number_format=###,2,'.',''}</td>
+                <td class="fee">{$val['fee']|number_format=###,2,'.',''}</td>
                 <td class="profit">0.00</td>
                 <td>{$val['add_time']}</td>
                 <!--<td>{$val['update_time']}</td>-->
                 <td class="td-manage">
+                    <button class="layui-btn layui-btn-danger layui-btn-sm" onclick="close_order({$val['oid']})">平仓</button>
 
                 </td>
             </tr>
@@ -133,6 +136,50 @@
 
     </div>
     <script>
+        function math_floor(number,per){
+            var times;
+            if(per){
+                times=per;
+            }else{
+                times=100;
+            }
+            return Math.floor(number * times) / times;
+        }
+        function keep_order_list_add(data){
+//        console.log(data);
+            var html='<tr   class="oid_'+data.oid+'">';
+            html+='<td style="color:orange;">'+data.order_sn+'</td>';
+            html+='<td>'+data.product_name+'</td>';
+            html+='<td>'+data.username+'</td>';
+            html+='<td>'+data.agent_name+'</td>';
+            html+='<td class="money">'+math_floor(data.money)+'</td>';
+            html+='<td class="buy_price">'+math_floor(data.buy_price)+'</td>';
+            html+='<td class="now_price '+data.product_abbreviation+'">'+data.now_price+'</td>';
+            if(data.direction==1){
+                html+='<td style="color: red;" class="direction">买入</td>';
+            }else{
+                html+='<td style="color: #008000;" class="direction">卖出</td>';
+            }
+            html+='<td class="contract">'+math_floor(data.contract,1000)+'</td>';
+            html+='<td class="hand">'+math_floor(data.hand)+'</td>';
+            html+='<td class="fee">'+math_floor(data.fee)+'</td>';
+            html+='<td class="profit">0.00</td>';
+            html+='<td>'+data.add_time+'</td>';
+            html+='<td><button class="layui-btn layui-btn-danger layui-btn-sm" onclick="close_order('+data.oid+')">平仓</button></td></tr>';
+            $(".keep_order_list").prepend(html);
+            $('.sum_money').text(math_floor($('.sum_money').text()-(-data.money)));
+            $('.sum_fee').text(math_floor($('.sum_fee').text()-(-data.fee)));
+            $('.sum_count').text($('.sum_count').text()-(-1));
+        }
+        function remove_tr(oid){
+            var tr='.oid_'+oid;
+            var sum_money=$(tr).find('.money').text();
+            var sum_fee=$(tr).find('.fee').text();
+            $('.sum_money').text(math_floor($('.sum_money').text()-sum_money));
+            $('.sum_fee').text(math_floor($('.sum_fee').text()-sum_fee));
+            $('.sum_count').text($('.sum_count').text()-1);
+            $(tr).remove();
+        }
         var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=1");
 
         ws.onopen = function()
@@ -144,13 +191,25 @@
         ws.onmessage = function (evt)
         {
 //            console.log(evt);
-//        console.log(evt.data);
+        console.log(evt.data);
             var data=JSON.parse(evt.data);
-            $.each(data,function(k,v){
-                var abbreviation='.'+k;
+            if(data.status){
+                //用户下单
+                if(data.status==1001){
+                    keep_order_list_add(data.order);
+                }
+                //用户平仓
+                if(data.status==1002){
+                    remove_tr(data.oid);
+                }
+            }else{
+                $.each(data,function(k,v){
+                    var abbreviation='.'+k;
 
-                $(abbreviation).html(v['USD']);
-            });
+                    $(abbreviation).html(v['USD']);
+                });
+            }
+
             count_profit();
         };
         function count_profit(){
@@ -184,7 +243,7 @@
                         color='red';
                     }
                 }
-                $(this).children('.profit').text(profit).attr("style","color:"+color+";");
+                $(this).children('.profit').text(math_floor(profit,1000)).attr("style","color:"+color+";");
                 $(this).children('.now_price').attr("style","color:"+color+";");
             });
         }
@@ -205,7 +264,27 @@
 
             });
         });
-
+        function close_order(oid){
+            layer.confirm('确认要强行平仓吗',function(index){
+                var load = layer.load();
+                $.ajax({
+                    url:'/admin/Api/closeOrder',
+                    data:{oid:oid},
+                    type:'post',
+                    dataType:'json',
+                    success:function(res){
+                        layer.close(load);
+                        if(res['status']==1){
+                            layer.msg('操作成功!',{icon: 1,time:1000},function(){
+                                remove_tr(oid);
+                            });
+                        }else{
+                            layer.msg('操作失败!',{icon: 2,time:1000});
+                        }
+                    }
+                });
+            });
+        }
         
     </script>
   </body>

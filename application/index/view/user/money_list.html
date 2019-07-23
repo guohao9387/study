@@ -209,9 +209,9 @@
                     <tr>
                         <td>{$vo.username}</td>
                         <td>{$vo.type_info}</td>
-                        <td>{$vo.before_money}</td>
-                        <td>{$vo.money}</td>
-                        <td>{$vo.after_money}</td>
+                        <td>{$vo.before_money|number_format=###,2,'.',''}</td>
+                        <td>{$vo.money|number_format=###,2,'.',''}</td>
+                        <td>{$vo.after_money|number_format=###,2,'.',''}</td>
                         <td>{$vo.add_time}</td>
                         <td>{$vo.remark}</td>
                     </tr>

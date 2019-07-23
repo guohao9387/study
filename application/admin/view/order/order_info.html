@@ -73,44 +73,44 @@
     <div class="layui-form-item">
         <label class="layui-form-label">手数</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.hand}" disabled>
+            <input type="text" class="layui-input" value="{$info.hand|number_format=###,2,'.',''}" disabled>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">合约比例</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.contract}" disabled>
+            <input type="text" class="layui-input" value="{$info.contract|number_format=###,3,'.',''}" disabled>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">手续费</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.fee}" disabled>
+            <input type="text" class="layui-input" value="{$info.fee|number_format=###,2,'.',''}" disabled>
         </div>
     </div>
 
     <div class="layui-form-item">
         <label class="layui-form-label">买入价</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.buy_price}" disabled>
+            <input type="text" class="layui-input" value="{$info.buy_price|number_format=###,2,'.',''}" disabled>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">卖出价</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.sell_price}" disabled>
+            <input type="text" class="layui-input" value="{$info.sell_price|number_format=###,2,'.',''}" disabled>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">止盈</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.target_profit}" disabled>
+            <input type="text" class="layui-input" value="{$info.target_profit|number_format=###,2,'.',''}" disabled>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">止损</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.stop_loss}" disabled>
+            <input type="text" class="layui-input" value="{$info.stop_loss|number_format=###,2,'.',''}" disabled>
         </div>
     </div>
     {if $info.direction == 1}
@@ -132,14 +132,14 @@
     <div class="layui-form-item">
         <label class="layui-form-label">盈利金额</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.profit}" disabled style="color: red;">
+            <input type="text" class="layui-input" value="{$info.profit|number_format=###,2,'.',''}" disabled style="color: red;">
         </div>
     </div>
     {else/}
     <div class="layui-form-item">
         <label class="layui-form-label">盈利金额</label>
         <div class="layui-input-inline">
-            <input type="text" class="layui-input" value="{$info.profit}" disabled style="color: #008000;">
+            <input type="text" class="layui-input" value="{$info.profit|number_format=###,2,'.',''}" disabled style="color: #008000;">
         </div>
     </div>
     {/if}

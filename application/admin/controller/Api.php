@@ -7,6 +7,121 @@ class Api extends Common{
     public function initialize(){
         parent::initialize();
     }
+    public function closeOrder(){
+        if(request()->isAjax()){
+            $param=input('post.');
+            if(!$param['oid']){
+                return json_return(0,'参数错误');
+            }
+            $where=[];
+            $where[]=['oid','=',$param['oid']];
+            $where[]=['order_status','=',1];
+            db::startTrans();
+            $order=db::name('order')->where($where)->lock(true)->find();
+            if(!$order){
+                db::rollback();
+                return json_return(0,'订单信息有误');
+            }
+            //当前价格
+            $now_price=get_now_price($order['product_abbreviation']);
+            if(!$now_price){
+                db::rollback();
+                return json_return(0,'网络错误，请重试');
+            }
+            $map=[];
+            $map[]=['uid','=',$order['uid']];
+            $map[]=['status','=',1];
+            $user=db::name('user')->where($map)->lock(true)->find();
+            if(!$user){
+                return json_return(0,'网络错误，请重试');
+            }
+            //操作用户保证金
+            $status=db::name('user')->where('uid',$user['uid'])->setDec('promise_money',$order['money']);
+            if(!$status){
+                db::rollback();
+                return json_return(0,'操作失败');
+            }
+            //计算用户盈亏
+            //如果平局
+            if($now_price==$order['buy_price']){
+                $money=0;
+            }else{
+                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']*$user['lever'];
+                //如果涨了
+                if($now_price>$order['buy_price']){
+                    //买入(买涨）
+                    if($order['direction']==1){
+                        $money=$profit;
+                        //卖出(买跌）
+                    }elseif($order['direction']==2){
+                        $money=-$profit;
+                    }
+                    //如果跌了
+                }elseif($now_price<$order['buy_price']){
+                    //买入(买涨）
+                    if($order['direction']==1){
+                        $money=-$profit;
+                        //卖出(买跌）
+                    }elseif($order['direction']==2){
+                        $money=$profit;
+                    }
+                }
+            }
+            //操作用户账户
+            $status=db::name('user')->where('uid',$user['uid'])->setInc('money',$money);
+            if(!$status){
+                db::rollback();
+                return json_return(0,'操作失败');
+            }
+            $after=db::name('user')->where('uid',$user['uid'])->find();
+            //更新订单状态
+            $data=[];
+            $data['oid']=$order['oid'];
+            $data['sell_price']=$now_price;
+            $data['profit']=$money;
+            $data['order_status']=2;
+            $data['order_close_type']=2;
+            $data['update_time']=date('Y-m-d H:i:s');
+            $status=db::name('order')->update($data);
+            if(!$status){
+                db::rollback();
+                return json_return(0,'操作失败');
+            }
+            //记录用户操作
+            $operation_id=add_user_operation($this->admin,$this->admin_name,3,1,'强行平仓', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$order['oid']);
+
+            //添加资金记录
+            $data=[];
+            $data['uid']=$user['uid'];
+            $data['username']=$user['username'];
+            $data['nickname']=$user['nickname'];
+            $data['from_oid']=$order['oid'];
+            $data['operation_id']=$operation_id;
+            $data['before_money']=$user['money'];
+            $data['money']=$money;
+            $data['after_money']=$user['money']+$money;
+            $data['type']=3;
+            $data['type_info']='平仓';
+            $data['remark']='强行平仓，结算收益';
+            $data['add_time']=date('Y-m-d H:i:s');
+            $status=db::name('user_money_log')->insert($data);
+            if($status){
+                db::commit();
+                $msg=[];
+                $msg['status']=101;
+                $msg['msg']='风险过大，您的订单【单号：'.$order['order_sn'].'】已经被强行平仓';
+                $msg['oid']=$order['oid'];
+                $msg['money']=number_format($after['money'],2,'.','');
+                $msg['promise_money']=number_format($after['promise_money'],2,'.','');
+                $msg['real_money']=number_format(($after['money']-$after['promise_money']),2,'.','');
+                bar($user['uid'],$msg);
+                return json_return(1,'平仓成功');
+            }else{
+                db::rollback();
+                return json_return(0,'操作失败，请重试');
+            }
+        }
+    }
     //会员提现处理
     public function user_withdraw_handle()
     {
