@@ -11,7 +11,7 @@ class Trade extends Common
         $this->user = session('user');
         $this->user_name = session('user_name');
         if (empty($this->user)) {
-            $this->redirect('/index/Login/login');
+//            $this->redirect('/index/Login/login');
         }
     }
     public function index2(){
@@ -19,10 +19,24 @@ class Trade extends Common
     }
     public function index()
     {
-        $user=db::name('user')->where('uid',$this->user)->find();
-        $user['real_money']=$user['money']-$user['promise_money'];
-        $this->assign('user',$user);
+        if($this->user){
+            $user=db::name('user')->where('uid',$this->user)->find();
+            $user['real_money']=$user['money']-$user['promise_money'];
 
+            $where=[];
+            $where[]=['order_status','=',1];
+            $where[]=['uid','=',$this->user];
+            $keep_order_list=db::name('order')->order('oid desc')->where($where)->select();
+        }else{
+            $user=[];
+            $user['real_money']=0.00;
+            $user['uid']=4;
+            $user['money']=0.00;
+            $user['promise_money']=0.00;
+            $keep_order_list=[];
+        }
+        $this->assign('user',$user);
+        $this->assign('keep_order_list',$keep_order_list);
 
         $where=[];
         $where[]=['status','=',1];
@@ -30,17 +44,16 @@ class Trade extends Common
         $product_list=db::name('product')->where($where)->select();
         $this->assign('product_list',$product_list);
 
-        $where=[];
-        $where[]=['order_status','=',1];
-        $where[]=['uid','=',$this->user];
-        $keep_order_list=db::name('order')->order('oid desc')->where($where)->select();
-        $this->assign('keep_order_list',$keep_order_list);
+
 
         return $this->fetch();
     }
     public function create_order(){
         if(request()->isAjax()){
 //        if(1){
+            if(!$this->user){
+                return json_return(0,'请先登录');
+            }
             $param=input('post.');
 //            $param['id']=3;
 //            $param['hand']=1;
@@ -88,8 +101,18 @@ class Trade extends Common
                 $fee=$param['hand']*$product_info['fee'];
 
                 db::startTrans();
-                $user=db::name('user')->where('uid',$this->user)->lock(true)->find();
+                $map=[];
+                $map[]=['uid','=',$this->user];
+                $map[]=['status','=',1];
+                $user=db::name('user')->where($map)->lock(true)->find();
 //                dump($amount+$fee);die;
+                if(!$user){
+                    return json_return(0,'网络错误，请重试');
+                }
+                if($user['trade_status']==2){
+                    return json_return(0,'交易受限，请联系客服');
+                }
+
                 if(($user['money']-$user['promise_money'])<($amount+$fee)){
                     db::rollback();
                     return json_return(0,'账户余额不足');
@@ -177,6 +200,9 @@ class Trade extends Common
     public function close_order(){
         if(request()->isAjax()){
 //        if(1){
+            if(!$this->user){
+                return json_return(0,'请先登录');
+            }
             $param=input('post.');
 //            $param['oid']=100004;
             $where=[];
@@ -195,7 +221,13 @@ class Trade extends Common
                 db::rollback();
                 return json_return(0,'网络错误，请重试');
             }
-            $user=db::name('user')->where('uid',$this->user)->lock(true)->find();
+            $map=[];
+            $map[]=['uid','=',$this->user];
+            $map[]=['status','=',1];
+            $user=db::name('user')->where($map)->lock(true)->find();
+            if(!$user){
+                return json_return(0,'网络错误，请重试');
+            }
             //操作用户保证金
             $status=db::name('user')->where('uid',$this->user)->setDec('promise_money',$order['money']);
             if(!$status){
