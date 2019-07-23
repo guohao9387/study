@@ -95,10 +95,6 @@ class Trade extends Common
                 if($param['hand']>$product_info['max_hand']){
                     return json_return(0,'大于最大手数');
                 }
-                //总价
-                $amount=$now_price*$product_info['contract']*$param['hand'];
-                //手续费
-                $fee=$param['hand']*$product_info['fee'];
 
                 db::startTrans();
                 $map=[];
@@ -112,6 +108,11 @@ class Trade extends Common
                 if($user['trade_status']==2){
                     return json_return(0,'交易受限，请联系客服');
                 }
+
+                //总价
+                $amount=$now_price*$product_info['contract']*$param['hand']*$user['lever'];
+                //手续费
+                $fee=$param['hand']*$product_info['fee'];
 
                 if(($user['money']-$user['promise_money'])<($amount+$fee)){
                     db::rollback();
@@ -142,6 +143,7 @@ class Trade extends Common
                 $order['money']=$amount;
                 $order['hand']=$param['hand'];
                 $order['contract']=$product_info['contract'];
+                $order['lever']=$user['lever'];
                 $order['fee']=$fee;
                 $order['direction']=$param['direction'];
                 $order['buy_price']=$now_price;
@@ -239,7 +241,7 @@ class Trade extends Common
             if($now_price==$order['buy_price']){
                 $money=0;
             }else{
-                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract'];
+                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']*$user['lever'];
                 //如果涨了
                 if($now_price>$order['buy_price']){
                     //买入(买涨）

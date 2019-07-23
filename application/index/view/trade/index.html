@@ -456,9 +456,9 @@
             <div data-v-c4371006="" class="indexCon clearfix">
                 <div data-v-c4371006="" class="indexleft" style="margin-top: 30px;">
                     <div data-v-c4371006="" class="lefttop">
-                        <p data-v-c4371006="">账户余额 :  <span id="user_money">{$user.money}</span>USDT</p>
-                        <p data-v-c4371006="">保证金余额 :  <span id="user_promise_money">{$user.promise_money}</span> USDT</p>
-                        <p data-v-c4371006="">可用余额 :  <span id="user_real_money">{$user.real_money}</span> USDT</p>
+                        <p data-v-c4371006="">账户余额 :  <span id="user_money">{$user.money|number_format=###,2,'.',''}</span>USDT</p>
+                        <p data-v-c4371006="">保证金余额 :  <span id="user_promise_money">{$user.promise_money|number_format=###,2,'.',''}</span> USDT</p>
+                        <p data-v-c4371006="">可用余额 :  <span id="user_real_money">{$user.real_money|number_format=###,2,'.',''}</span> USDT</p>
                     </div>
                     <div data-v-c4371006="" class="leftbtm">
                         <div data-v-c4371006="" class="tit">新建订单</div>
@@ -471,7 +471,7 @@
 
                             <div data-v-c4371006="" class="itemcon clearfix"><span data-v-c4371006="">合约比例</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con "><span class="contract">{$product_list[0]['contract']}</span> /手 </div>
+                                    <div data-v-c4371006="" class="con "><span class="contract">{$product_list[0]['contract']|number_format=###,3,'.',''}</span> /手 </div>
                                 </div>
                             </div>
 
@@ -489,10 +489,10 @@
                                 <label data-v-c4371006="" id="sell" class="sell">
                                     <input data-v-c4371006="" type="radio" name="buy" value="2" for="sell"  class="check" onclick="set_direction('卖出',2)">卖出 <span data-product-abbreviation="{$product_list[0]['abbreviation']}" class="product_price_change">0.00</span></label>
                             </div>
-                            <div data-v-c4371006="" class="itemnote" style="margin-top: 18px;">最小下单单位 <span class="min_hand">{$product_list[0]['min_hand']}</span>/手</div>
+                            <div data-v-c4371006="" class="itemnote" style="margin-top: 18px;">最小下单单位 <span class="min_hand">{$product_list[0]['min_hand']|number_format=###,2,'.',''}</span>/手</div>
 
                             <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">预付款 ：0/手</div>-->
-                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ： <span class="fee">{$product_list[0]['fee']} </span> USDT</div>
+                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ： <span class="fee">{$product_list[0]['fee']|number_format=###,2,'.',''} </span> USDT</div>
                             <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需保证金：0.00USDT</div>-->
                         </div>
 
@@ -508,9 +508,9 @@
                             {volist name="product_list" id="val"}
                             <li data-product-abbreviation-name="{$val.abbreviation}" data-v-c4371006="" {if $key==0}class="active"{/if}>
                                 <input type="hidden" id="{$val.abbreviation}_id" value="{$val.id}"/>
-                                <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract}"/>
-                                <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand}"/>
-                                <input type="hidden" id="{$val.abbreviation}_fee" value="{$val.fee}"/>
+                                <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract|number_format=###,3,'.',''}"/>
+                                <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand|number_format=###,2,'.',''}"/>
+                                <input type="hidden" id="{$val.abbreviation}_fee" value="{$val.fee|number_format=###,2,'.',''}"/>
                                 <input type="hidden" id="{$val.abbreviation}_wave" value="{$val.wave}"/>
                                 <p data-v-c4371006="" class="title">{$val.desc_name}</p>
                                 <p data-v-c4371006="" class="price clearfix">
@@ -587,16 +587,16 @@
                                                 <tr class="{$val.oid}">
                                                     <td>{$val['order_sn']}</td>
                                                     <td>{$val['product_name']}</td>
-                                                    <td class="money">{$val['money']}</td>
-                                                    <td class="buy_price">{$val['buy_price']}</td>
+                                                    <td class="money">{$val['money']|number_format=###,2,'.',''}</td>
+                                                    <td class="buy_price">{$val['buy_price']|number_format=###,2,'.',''}</td>
                                                     <td class="{$val.product_abbreviation} now_price">0.00</td>
                                                     {if ($val['direction'] eq 1)}
                                                     <td style="color: red;" class="direction">买入</td>
                                                     {else/}
                                                     <td style="color: #008000;" class="direction">卖出</td>
                                                     {/if}
-                                                    <td class="contract">{$val['contract']}</td>
-                                                    <td class="hand">{$val['hand']}</td>
+                                                    <td class="order_contract">{$val['contract']|number_format=###,3,'.',''}</td>
+                                                    <td class="hand">{$val['hand']|number_format=###,2,'.',''}</td>
                                                     <td class="profit">0.00</td>
                                                     <td>{$val['add_time']}</td>
                                                     <td><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order({$val.oid})">平仓</button></td>
@@ -638,7 +638,7 @@
                             <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
                                     data-v-c4371006="">合约比例</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con eaffer contract">{$product_list[0]['contract']}</div>
+                                    <div data-v-c4371006="" class="con eaffer contract">{$product_list[0]['contract']|number_format=###,2,'.',''}</div>
                                 </div>
                             </div>
                             <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
@@ -651,7 +651,7 @@
                                 <span data-v-c4371006="">手数</span>
                                 <div data-v-c4371006="" class="chosecon">
                                     <i data-v-c4371006="" class="iconfont icon-jianhaob jian"></i>
-                                    <input data-v-c4371006="" type="text" value=""  autocomplete="off" placeholder="0" class="shosu" name="hand" style="text-align: center"  lay-verify="number">
+                                    <input data-v-c4371006="" type="text" value=""  autocomplete="off" placeholder="0" class="shosu" name="hand" style="text-align: center"  lay-verify="number|hand">
                                     <i data-v-c4371006=""  lass="iconfont icon-jiahaob jia"></i>
                                 </div>
                             </div>
@@ -664,7 +664,7 @@
                             <div data-v-c4371006="" class="itemcon clearfix" style="overflow: hidden;width: 100%;">
                                 <span data-v-c4371006="">手续费</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con fee">{$product_list[0]['fee']}</div>
+                                    <div data-v-c4371006="" class="con fee">{$product_list[0]['fee']|number_format=###,2,'.',''}</div>
                                 </div>
                             </div>
                         </div>
@@ -1102,7 +1102,7 @@
                 return;
             }
             var direction=$(this).children('.direction').text();
-            var contract=$(this).children('.contract').text();
+            var contract=$(this).children('.order_contract').text();
             var hand=$(this).children('.hand').text();
             var amount=(now_price-buy_price)*contract*hand;
             var profit;
@@ -1311,9 +1311,9 @@
                 }
             });
             form.verify({
-                vcode: function(value){
-                    if(value.length !=4){
-                        return '请输入图形验证码';
+                hand: function(value){
+                    if(value<=0){
+                        return '请输入正确的手数';
                     }
                 }
             });
@@ -1347,25 +1347,25 @@
         var html='<tr class="'+data.oid+'">';
         html+='<td>'+data.order_sn+'</td>';
         html+='<td>'+data.product_name+'</td>';
-        html+='<td class="money">'+data.money+'</td>';
-        html+='<td class="buy_price">'+data.buy_price+'</td>';
+        html+='<td class="money">'+math_floor(data.money)+'</td>';
+        html+='<td class="buy_price">'+math_floor(data.buy_price)+'</td>';
         html+='<td class="now_price '+data.product_abbreviation+'">'+data.now_price+'</td>';
         if(data.direction==1){
             html+='<td style="color: red;" class="direction">买入</td>';
         }else{
             html+='<td style="color: #008000;" class="direction">卖出</td>';
         }
-        html+='<td class="contract">'+data.contract+'</td>';
-        html+='<td class="hand">'+data.hand+'</td>';
+        html+='<td class="contract">'+math_floor(data.contract,1000)+'</td>';
+        html+='<td class="hand">'+math_floor(data.hand)+'</td>';
         html+='<td class="profit">0.00</td>';
         html+='<td>'+data.add_time+'</td>';
         html+='<td><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order('+data.oid+')">平仓</button></td></tr>';
         var user_money =$('#user_money').text();
         var user_real_money =$('#user_real_money').text();
         var user_promise_money =$('#user_promise_money').text();
-        $('#user_money').text(user_money-data.fee);
-        $('#user_real_money').text(user_real_money-data.fee-data.money);
-        $('#user_promise_money').text(user_promise_money-(-data.money));
+        $('#user_money').text(math_floor(user_money-data.fee));
+        $('#user_real_money').text(math_floor(user_real_money-data.fee-data.money));
+        $('#user_promise_money').text(math_floor(user_promise_money-(-data.money)));
         $(".keep_order_list").prepend(html);
         $(".models .m-cancel").click();
     }
