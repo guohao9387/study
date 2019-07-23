@@ -1047,3 +1047,69 @@ function json_return($status,$msg,$info='')
     }
     return json($data);
 }
+//平仓更新用户和订单
+function save_order($order,$now_price,$type,$direction){
+    db::startTrans();
+    $where=[];
+    $where[]=['status','=',1];
+    $where[]=['uid','=',$order['uid']];
+    $user=db::name('user')->where($where)->lock(true)->find();
+    if($direction==1){
+        $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']/$order['lever'];
+    }else{
+        $profit=($order['buy_price']-$now_price)*$order['hand']*$order['contract']/$order['lever'];
+    }
+    //盈利金额
+    //操作用户保证金
+    $status=db::name('user')->where('uid',$user['uid'])->setDec('promise_money',$order['money']);
+    //操作账户余额
+    $status=db::name('user')->where('uid',$user['uid'])->setInc('money',$profit);
+    $after=db::name('user')->where('uid',$user['uid'])->find();
+    //更新订单状态
+    $data=[];
+    $data['oid']=$order['oid'];
+    $data['sell_price']=$now_price;
+    $data['profit']=$profit;
+    $data['order_status']=2;
+    $data['order_close_type']=$type;
+    $data['update_time']=date('Y-m-d H:i:s');
+    $status=db::name('order')->update($data);
+    if($type==1){
+        $remark='用户平仓';
+    }elseif($type==2){
+        $remark='风险平仓';
+    }elseif($type==3){
+        $remark='爆仓';
+    }elseif($type==4){
+        $remark='止盈平仓';
+    }elseif($type==5){
+        $remark='止损平仓';
+    }else{
+        $remark='过夜费不足平仓';
+    }
+    //添加资金记录
+    $data=[];
+    $data['uid']=$user['uid'];
+    $data['username']=$user['username'];
+    $data['nickname']=$user['nickname'];
+    $data['from_oid']=$order['oid'];
+    $data['operation_id']=0;
+    $data['before_money']=$user['money'];
+    $data['money']=$profit;
+    $data['after_money']=$after['money'];
+    $data['type']=3;
+    $data['type_info']='平仓';
+    $data['remark']=$remark.'，结算收益';
+    $data['add_time']=date('Y-m-d H:i:s');
+    $status=db::name('user_money_log')->insert($data);
+    db::commit();
+    //给用户发送消息
+    $msg=[];
+    $msg['status']=101;
+    $msg['msg']='您的订单【单号：'.$order['order_sn'].'】，已经'.$remark;
+    $msg['oid']=$order['oid'];
+    $msg['money']=number_format($after['money'],2,'.','');
+    $msg['promise_money']=number_format($after['promise_money'],2,'.','');
+    $msg['real_money']=number_format(($after['money']-$after['promise_money']),2,'.','');
+    bar($user['uid'],$msg);
+}

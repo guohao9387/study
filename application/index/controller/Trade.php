@@ -54,6 +54,7 @@ class Trade extends Common
                 return json_return(0,'请先登录');
             }
             $param=input('post.');
+
 //            $param['id']=3;
 //            $param['hand']=1;
 //            $param['win']=0;
@@ -112,6 +113,13 @@ class Trade extends Common
                 $amount=$now_price*$product_info['contract']*$param['hand']*$user['lever'];
                 //手续费
                 $fee=$param['hand']*$product_info['fee'];
+                //买涨时候的爆仓价格
+                if($param['direction']==1){
+                    $point=$now_price*(1-1/$user['lever']);
+                }else{
+                    //买跌时候的爆仓价格
+                    $point=$now_price*(1+1/$user['lever']);
+                }
 
                 if(($user['money']-$user['promise_money'])<($amount+$fee)){
                     db::rollback();
@@ -160,6 +168,7 @@ class Trade extends Common
                     $order['stop_loss_check']=1;
                     $order['stop_loss']=0;
                 }
+                $order['loss_point']=$point;
                 $order['add_time']=date('Y-m-d H:i:s');
 //                dump($data);die;
                 $oid=db::name('order')->insertGetId($order);
@@ -245,7 +254,7 @@ class Trade extends Common
             if($now_price==$order['buy_price']){
                 $money=0;
             }else{
-                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']*$user['lever'];
+                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']/$user['lever'];
                 //买入(买涨）
                 if($order['direction']==1){
                     $money=$profit;

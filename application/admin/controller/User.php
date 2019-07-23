@@ -300,7 +300,7 @@ class User extends Common{
             if($data['lever']){
                 $param['lever'] = $data['lever'];
             }else{
-                $param['lever'] = 100;
+                $param['lever'] = 1;
             }
             $param['invite_status'] = 1;
             $param['invite_number'] = create_user_invite_number();
@@ -428,6 +428,7 @@ class User extends Common{
 
             $param['username'] = $data['username'];
             $param['nickname'] = $data['nickname'];
+            $param['lever'] = $data['lever'];
             $param['login_status'] = $data['login_status'];
             $param['trade_status'] = $data['trade_status'];
             $param['invite_status'] = $data['invite_status'];

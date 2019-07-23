@@ -46,7 +46,7 @@ class Api extends Common{
             if($now_price==$order['buy_price']){
                 $money=0;
             }else{
-                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']*$user['lever'];
+                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']/$user['lever'];
                 if($order['direction']==1){
                     $money=$profit;
                     //卖出(买跌）
@@ -89,14 +89,14 @@ class Api extends Common{
             $data['after_money']=$user['money']+$money;
             $data['type']=3;
             $data['type_info']='平仓';
-            $data['remark']='强行平仓，结算收益';
+            $data['remark']='风险平仓，结算收益';
             $data['add_time']=date('Y-m-d H:i:s');
             $status=db::name('user_money_log')->insert($data);
             if($status){
                 db::commit();
                 $msg=[];
                 $msg['status']=101;
-                $msg['msg']='风险过大，您的订单【单号：'.$order['order_sn'].'】已经被强行平仓';
+                $msg['msg']='风险过大，您的订单【单号：'.$order['order_sn'].'】已经被平仓';
                 $msg['oid']=$order['oid'];
                 $msg['money']=number_format($after['money'],2,'.','');
                 $msg['promise_money']=number_format($after['promise_money'],2,'.','');
