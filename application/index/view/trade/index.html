@@ -931,6 +931,14 @@
                 ]
             };
             myChart.setOption(option);
+			var zr = myChart.getZr();
+			zr.on('mouseout', function(){
+                    var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
+                    $.each(valueToday,function(k,v){
+                        $("#price-k-" +k).text(v);
+                    });
+
+			});
 /*
             myChart.on('mouseover', function(param){
                 if(param.seriesType == "candlestick"){
