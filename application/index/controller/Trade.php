@@ -32,6 +32,7 @@ class Trade extends Common
             $user['uid']=4;
             $user['money']=0.00;
             $user['promise_money']=0.00;
+            $user['lever']=1;
             $keep_order_list=[];
         }
         $this->assign('user',$user);
