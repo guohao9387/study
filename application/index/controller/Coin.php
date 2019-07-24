@@ -5,9 +5,6 @@ class Coin extends Common
 {
     public function initialize(){
         parent::initialize();
-        dump(session('user'));
-        dump(session('user_name'));
-        die;
         $kefu=[];
         $kefu['qq']=db::name('kefu')->where('id','=',2)->cache('qq_kefu')->value('value');
         $kefu['weixin']=db::name('kefu')->where('id','=',3)->cache('weixin_kefu')->value('image');
