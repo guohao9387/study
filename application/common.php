@@ -1048,30 +1048,23 @@ function json_return($status,$msg,$info='')
     return json($data);
 }
 //平仓更新用户和订单
-function save_order($order,$now_price,$type,$direction){
+function save_order($order,$now_price,$type,$money){
     db::startTrans();
     $where=[];
     $where[]=['status','=',1];
     $where[]=['uid','=',$order['uid']];
     $user=db::name('user')->where($where)->lock(true)->find();
-    if($direction==1){
-//        $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']/$order['lever'];
-        $profit=$order['money'];
-    }else{
-//        $profit=($order['buy_price']-$now_price)*$order['hand']*$order['contract']/$order['lever'];
-        $profit=-$order['money'];
-    }
     //盈利金额
     //操作用户保证金
     $status=db::name('user')->where('uid',$user['uid'])->setDec('promise_money',$order['money']);
     //操作账户余额
-    $status=db::name('user')->where('uid',$user['uid'])->setInc('money',$profit);
+    $status=db::name('user')->where('uid',$user['uid'])->setInc('money',$money);
     $after=db::name('user')->where('uid',$user['uid'])->find();
     //更新订单状态
     $data=[];
     $data['oid']=$order['oid'];
     $data['sell_price']=$now_price;
-    $data['profit']=$profit;
+    $data['profit']=$money;
     $data['order_status']=2;
     $data['order_close_type']=$type;
     $data['update_time']=date('Y-m-d H:i:s');
@@ -1086,7 +1079,7 @@ function save_order($order,$now_price,$type,$direction){
         $remark='止盈平仓';
     }elseif($type==5){
         $remark='止损平仓';
-    }else{
+    }elseif($type==6){
         $remark='过夜费不足平仓';
     }
     //添加资金记录
@@ -1097,7 +1090,7 @@ function save_order($order,$now_price,$type,$direction){
     $data['from_oid']=$order['oid'];
     $data['operation_id']=0;
     $data['before_money']=$user['money'];
-    $data['money']=$profit;
+    $data['money']=$money;
     $data['after_money']=$after['money'];
     $data['type']=3;
     $data['type_info']='平仓';
@@ -1124,4 +1117,5 @@ function cache_night_fee(){
         $arr[$val['abbreviation']]=$val['night_fee'];
     }
     cache('product_night_fee',$arr);
+    return $arr;
 }

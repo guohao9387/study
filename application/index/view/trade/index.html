@@ -1129,7 +1129,7 @@
             var direction=$(this).children('.direction').text();
             var contract=$(this).children('.order_contract').text();
             var hand=$(this).children('.hand').text();
-            var amount=(now_price-buy_price)*contract*hand/lever;
+            var amount=(now_price-buy_price)*contract*hand;
             var color;
             if(direction=='买入'){
                 if(now_price>buy_price){

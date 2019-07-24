@@ -268,7 +268,7 @@ class Trade extends Common
             if($now_price==$order['buy_price']){
                 $money=0;
             }else{
-                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']/$user['lever'];
+                $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract'];
                 //买入(买涨）
                 if($order['direction']==1){
                     $money=$profit;

@@ -151,7 +151,7 @@ class Login extends Controller
             }else{
                 $data=[];
                 if($param['invite_number']){
-                    if(strlen($param['invite_number'])!=4||strlen($param['invite_number'])!=6){
+                    if(strlen($param['invite_number'])!=4&&strlen($param['invite_number'])!=6){
                      $data = array();
                      $data['status'] = 0;
                      $data['msg'] = '请输入正确的邀请码';
