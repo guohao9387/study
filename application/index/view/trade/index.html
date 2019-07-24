@@ -1174,7 +1174,7 @@
             }else if(hand>0){
                 var now_price=$('.product_price_change').first().text();
                 var contract= $('.contract').first().text();
-                var money=now_price*contract*hand;
+                var money=now_price*contract*hand/lever;
                 $('.promise_money').text(math_floor(money));
             }
         }
