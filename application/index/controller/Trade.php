@@ -124,7 +124,7 @@ class Trade extends Common
                 }
 
                 //总价
-                $amount=$now_price*$product_info['contract']*$param['hand']*$user['lever'];
+                $amount=$now_price*$product_info['contract']*$param['hand']/$user['lever'];
                 //手续费
                 $fee=$param['hand']*$product_info['fee'];
                 //买涨时候的爆仓价格
