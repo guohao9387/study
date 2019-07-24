@@ -425,9 +425,9 @@ class User extends Common{
 
             $where=[];
             $where[] = ['uid','=',$data['uid']];
-
             $param['username'] = $data['username'];
             $param['nickname'] = $data['nickname'];
+            $param['invite_number'] = $data['invite_number'];
             $param['lever'] = $data['lever'];
             $param['login_status'] = $data['login_status'];
             $param['trade_status'] = $data['trade_status'];
