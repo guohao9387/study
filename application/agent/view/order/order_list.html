@@ -51,6 +51,7 @@
                     <option value="2" {if condition="input('get.direction') eq 2"} selected="selected"{/if}>卖出</option>
                 </select>
             </div>
+            <input type="text" name="order_sn"  placeholder="单号" autocomplete="off" class="layui-input" value="{:input('get.order_sn')}">
             <input type="text" name="username"  placeholder="会员账号" autocomplete="off" class="layui-input" value="{:input('get.username')}">
             <input type="text" name="agent_name"  placeholder="代理账号" autocomplete="off" class="layui-input" value="{:input('get.agent_name')}">
             <div class="layui-input-inline">

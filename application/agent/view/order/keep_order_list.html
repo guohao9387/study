@@ -36,6 +36,7 @@
         <form class="layui-form layui-col-md12 x-so">
           <input class="layui-input" placeholder="开始日" name="start" id="start" value="{:input('get.start')}" autocomplete="off">
           <input class="layui-input" placeholder="截止日" name="end" id="end" value="{:input('get.end')}" autocomplete="off">
+          <input class="layui-input" placeholder="单号" name="order_sn" id="order_sn" value="{:input('get.order_sn')}" autocomplete="off">
             <div class="layui-input-inline">
                 <select name="pid">
                     <option value="">游戏类型</option>
@@ -133,7 +134,51 @@
 
     </div>
     <script>
-        var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=2");
+        function math_floor(number,per){
+            var times;
+            if(per){
+                times=per;
+            }else{
+                times=100;
+            }
+            return Math.floor(number * times) / times;
+        }
+        function keep_order_list_add(data){
+//        console.log(data);
+            var html='<tr   class="oid_'+data.oid+'">';
+            html+='<td style="color:orange;">'+data.order_sn+'</td>';
+            html+='<td>'+data.product_name+'</td>';
+            html+='<td>'+data.username+'</td>';
+            html+='<td>'+data.agent_name+'</td>';
+            html+='<td class="money">'+math_floor(data.money)+'</td>';
+            html+='<td class="buy_price">'+math_floor(data.buy_price)+'</td>';
+            html+='<td class="now_price '+data.product_abbreviation+'">'+data.now_price+'</td>';
+            if(data.direction==1){
+                html+='<td style="color: red;" class="direction">买入</td>';
+            }else{
+                html+='<td style="color: #008000;" class="direction">卖出</td>';
+            }
+            html+='<td class="contract">'+math_floor(data.contract,1000)+'</td>';
+            html+='<td class="hand">'+math_floor(data.hand)+'</td>';
+            html+='<td class="fee">'+math_floor(data.fee)+'</td>';
+            html+='<td class="profit">0.00</td>';
+            html+='<td>'+data.add_time+'</td>';
+            html+='<td></td></tr>';
+            $(".keep_order_list").prepend(html);
+            $('.sum_money').text(math_floor($('.sum_money').text()-(-data.money)));
+            $('.sum_fee').text(math_floor($('.sum_fee').text()-(-data.fee)));
+            $('.sum_count').text($('.sum_count').text()-(-1));
+        }
+        function remove_tr(oid){
+            var tr='.oid_'+oid;
+            var sum_money=$(tr).find('.money').text();
+            var sum_fee=$(tr).find('.fee').text();
+            $('.sum_money').text(math_floor($('.sum_money').text()-sum_money));
+            $('.sum_fee').text(math_floor($('.sum_fee').text()-sum_fee));
+            $('.sum_count').text($('.sum_count').text()-1);
+            $(tr).remove();
+        }
+        var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=agent");
 
         ws.onopen = function()
         {
@@ -144,13 +189,29 @@
         ws.onmessage = function (evt)
         {
 //            console.log(evt);
-//        console.log(evt.data);
+            console.log(evt.data);
             var data=JSON.parse(evt.data);
-            $.each(data,function(k,v){
-                var abbreviation='.'+k;
+            if(data.status){
+                //用户下单
+                if(data.status==1001){
+                    keep_order_list_add(data.order);
+                }
+                //用户平仓
+                if(data.status==1002){
+                    remove_tr(data.oid);
+                }
+                //全局平仓
+                if(data.status==1003){
+                    window.location.reload();
+                }
+            }else{
+                $.each(data,function(k,v){
+                    var abbreviation='.'+k;
 
-                $(abbreviation).html(v['USD']);
-            });
+                    $(abbreviation).html(v['USD']);
+                });
+            }
+
             count_profit();
         };
         function count_profit(){
@@ -164,27 +225,24 @@
                 var contract=$(this).children('.contract').text();
                 var hand=$(this).children('.hand').text();
                 var amount=(now_price-buy_price)*contract*hand;
-                var profit;
                 var color;
 
                 if(direction=='买入'){
                     if(now_price>buy_price){
-                        profit=amount;
                         color='red';
                     }else if(now_price<buy_price){
-                        profit=-amount;
                         color='green';
                     }
                 }else{
                     if(now_price>buy_price){
-                        profit=-amount;
                         color='green';
                     }else if(now_price<buy_price){
-                        profit=amount;
                         color='red';
                     }
+                    amount=-amount;
+
                 }
-                $(this).children('.profit').text(profit).attr("style","color:"+color+";");
+                $(this).children('.profit').text(math_floor(amount,1000)).attr("style","color:"+color+";");
                 $(this).children('.now_price').attr("style","color:"+color+";");
             });
         }

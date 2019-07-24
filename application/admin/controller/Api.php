@@ -1467,6 +1467,9 @@ class Api extends Common{
             if(!empty($param['pid'])){
                 $where[] = ['pid','=',$param['pid']];
             }
+            if(!empty($param['order_sn'])){
+                $where[] = ['order_sn','=',$param['order_sn']];
+            }
             if(!empty($param['direction'])){
                 $where[] = ['direction','=',$param['direction']];
             }
@@ -1477,7 +1480,7 @@ class Api extends Common{
                 $where[] = ['add_time','<=',$param['end']];
             }
         }
-        $list = db::name('order')->where($where)->field('oid,username,agent_name,product_name,hand,contract,fee,money,direction,buy_price,sell_price,target_profit,stop_loss,profit,add_time,update_time')->order(['oid'=>'desc'])->select();
+        $list = db::name('order')->where($where)->field('order_sn,username,agent_name,product_name,hand,contract,fee,money,direction,buy_price,sell_price,target_profit,stop_loss,profit,add_time,update_time')->order(['oid'=>'desc'])->select();
 
         $name = '订单记录'.date('Y-m-d H:i:s');
         $title = "<tr>

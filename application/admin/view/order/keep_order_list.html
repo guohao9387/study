@@ -36,6 +36,7 @@
         <form class="layui-form layui-col-md12 x-so">
           <input class="layui-input" placeholder="开始日" name="start" id="start" value="{:input('get.start')}" autocomplete="off">
           <input class="layui-input" placeholder="截止日" name="end" id="end" value="{:input('get.end')}" autocomplete="off">
+          <input class="layui-input" placeholder="单号" name="order_sn" id="order_sn" value="{:input('get.order_sn')}" autocomplete="off">
             <div class="layui-input-inline">
                 <select name="pid">
                     <option value="">游戏类型</option>
@@ -227,27 +228,23 @@
                 var contract=$(this).children('.contract').text();
                 var hand=$(this).children('.hand').text();
                 var amount=(now_price-buy_price)*contract*hand;
-                var profit;
                 var color;
 
                 if(direction=='买入'){
                     if(now_price>buy_price){
-                        profit=amount;
                         color='red';
                     }else if(now_price<buy_price){
-                        profit=-amount;
                         color='green';
                     }
                 }else{
                     if(now_price>buy_price){
-                        profit=-amount;
                         color='green';
                     }else if(now_price<buy_price){
-                        profit=amount;
                         color='red';
                     }
+                    amount=-amount;
                 }
-                $(this).children('.profit').text(math_floor(profit,1000)).attr("style","color:"+color+";");
+                $(this).children('.profit').text(math_floor(amount,1000)).attr("style","color:"+color+";");
                 $(this).children('.now_price').attr("style","color:"+color+";");
             });
         }

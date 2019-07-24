@@ -239,6 +239,9 @@ class Login extends Controller
         }
     }
     public function logout(){
+        if (!session('user')) {
+            $this->redirect('/index/Index/index');
+        }
         add_user_operation(session('user'),select_user_username(session('user')),1,1,'会员退出登陆', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
         session('user',null);
         session('user_name',null);

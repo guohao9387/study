@@ -17,6 +17,9 @@ class Order extends Common{
             if(!empty($param['pid'])){
                 $where[] = ['pid','=',$param['pid']];
             }
+            if(!empty($param['order_sn'])){
+                $where[] = ['order_sn','=',$param['order_sn']];
+            }
             if(!empty($param['direction'])){
                 $where[] = ['direction','=',$param['direction']];
             }
@@ -66,6 +69,9 @@ class Order extends Common{
             }
             if(!empty($param['pid'])){
                 $where[] = ['pid','=',$param['pid']];
+            }
+            if(!empty($param['order_sn'])){
+                $where[] = ['order_sn','=',$param['order_sn']];
             }
             if(!empty($param['direction'])){
                 $where[] = ['direction','=',$param['direction']];
