@@ -234,9 +234,7 @@ class Login extends Controller
                 $this->redirect('/index/User/index');
             }
             $invite_number=input('get.code');
-            if($invite_number){
-                $this->assign('invite_number',$invite_number);
-            }
+            $this->assign('invite_number',$invite_number);
             return $this->fetch();
         }
     }
