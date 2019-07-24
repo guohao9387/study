@@ -439,6 +439,7 @@ class Admin extends Common{
 
             $res = db::name('product')->insert($data);
             if($res){
+                cache_night_fee();
                 add_user_operation($this->admin,$this->admin_name, 3,4,'添加产品', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
                 $data = array();
                 $data['status'] = 1;
@@ -470,6 +471,7 @@ class Admin extends Common{
             }
             $res = db::name('product')->update($data);
             if($res){
+                cache_night_fee();
                 add_user_operation($this->admin,$this->admin_name, 3,4,'修改产品', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
                 $data = array();
                 $data['status'] = 1;

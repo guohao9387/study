@@ -91,7 +91,7 @@
             </label>
             <div class="layui-input-inline"  >
                 <input type="number" id="wave" name="wave" required="" lay-verify="number"
-                       autocomplete="off" class="layui-input" >
+                       autocomplete="off" class="layui-input" value="{$info.wave}">
             </div>
             <div class="layui-form-mid layui-word-aux">
                 止盈止损点位差
@@ -104,6 +104,18 @@
             <div class="layui-input-inline"  >
                 <input type="number" id="fee" name="fee" required="" lay-verify="number"
                        autocomplete="off" class="layui-input" value="{$info.fee}">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                /1手
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="night_fee" class="layui-form-label">
+                过夜费
+            </label>
+            <div class="layui-input-inline"  >
+                <input type="number" id="night_fee" name="night_fee" required="" lay-verify="number"
+                       autocomplete="off" class="layui-input" value="{$info.night_fee}">
             </div>
             <div class="layui-form-mid layui-word-aux">
                 /1手

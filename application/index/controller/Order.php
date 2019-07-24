@@ -8,10 +8,6 @@ class Order extends Common
         parent::initialize();
     }
     public function close_order(){
-//        if(cache('close_order_lock')==1){
-//            echo '脚本执行中';die;
-//        }
-//        cache('close_order_lock',1);
         $now_all_price=get_all_price();
         //查询所有买涨爆仓
         $where=[];
@@ -66,7 +62,6 @@ class Order extends Common
             }
 
         }
-//        cache('close_order_lock',0);
         if($n==1){
             $msg=[];
             $msg['status']=1003;
@@ -78,5 +73,21 @@ class Order extends Common
         }
 
     }
+    public function night_fee(){
+        if(cache('night_fee_time')==date('Y-m-d')){
+            echo '今日已运行过';
+        }
+        $where=[];
+        $where[]=['order_status','=',1];
+        $order_list=db::name('order')->where($where)->select();
+        $where=[];
+        $where[]=['status','=',1];
+        $product_night_fee=cache('product_night_fee');
+        if(!$product_night_fee){
+            cache_night_fee();
+        }
 
+        cache('night_fee_time',date('Y-m-d'));
+
+    }
 }

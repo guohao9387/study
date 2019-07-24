@@ -1113,3 +1113,13 @@ function save_order($order,$now_price,$type,$direction){
     $msg['real_money']=number_format(($after['money']-$after['promise_money']),2,'.','');
     bar($user['uid'],$msg);
 }
+function cache_night_fee(){
+    $where=[];
+    $where[]=['status','=',1];
+    $product=db::name('product')->where($where)->select();
+    $arr=[];
+    foreach($product as $val){
+        $arr[$val['abbreviation']]=$val['night_fee'];
+    }
+    cache('product_night_fee',$arr);
+}
