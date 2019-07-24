@@ -105,16 +105,16 @@
                 <td>{$val['product_name']}</td>
                 <td>{$val['username']}</td>
                 <td>{$val['agent_name']}</td>
-                <td class="money">{$val['money']}</td>
-                <td class="buy_price">{$val['buy_price']}</td>
+                <td class="money">{$val['money']|number_format=###,2,'.',''}</td>
+                <td class="buy_price">{$val['buy_price']|number_format=###,2,'.',''}</td>
                 <td class="{$val.product_abbreviation} now_price">0.00</td>
                 {if ($val['direction'] eq 1)}
                 <td style="color: red;" class="direction">买入</td>
                 {else/}
                 <td style="color: #008000;" class="direction">卖出</td>
                 {/if}
-                <td class="contract">{$val['contract']}</td>
-                <td class="hand">{$val['hand']}</td>
+                <td class="contract">{$val['contract']|number_format=###,2,'.',''}</td>
+                <td class="hand">{$val['hand']|number_format=###,2,'.',''}</td>
                 <td class="profit">0.00</td>
                 <td>{$val['add_time']}</td>
                 <!--<td>{$val['update_time']}</td>-->
