@@ -86,7 +86,9 @@ class Order extends Common
         if(!$product_night_fee){
             cache_night_fee();
         }
+        foreach($order_list as $val){
 
+        }
         cache('night_fee_time',date('Y-m-d'));
 
     }

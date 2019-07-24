@@ -974,6 +974,7 @@
             }
         });
 	}
+    var lever="{$user.lever}";
 
     $(".list ul li").click(function () {
         $(this).addClass("active");
@@ -1060,7 +1061,7 @@
             }else if(vals>0){
                 var now_price=$('.product_price_change').first().text();
                 var contract= $('.contract').first().text();
-                var money=now_price*contract*vals;
+                var money=now_price*contract*vals/lever;
 //                console.log(now_price);
 //                console.log(contract);
                 $('.promise_money').text(math_floor(money,1000));
@@ -1117,7 +1118,6 @@
         return Math.floor(number * times) / times;
     }
 
-    var lever="{$user.lever}";
     //计算pin持仓单盈亏
     function count_profit(){
         $('tbody tr').each(function(){

@@ -1055,9 +1055,11 @@ function save_order($order,$now_price,$type,$direction){
     $where[]=['uid','=',$order['uid']];
     $user=db::name('user')->where($where)->lock(true)->find();
     if($direction==1){
-        $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']/$order['lever'];
+//        $profit=($now_price-$order['buy_price'])*$order['hand']*$order['contract']/$order['lever'];
+        $profit=$order['money'];
     }else{
-        $profit=($order['buy_price']-$now_price)*$order['hand']*$order['contract']/$order['lever'];
+//        $profit=($order['buy_price']-$now_price)*$order['hand']*$order['contract']/$order['lever'];
+        $profit=-$order['money'];
     }
     //盈利金额
     //操作用户保证金
