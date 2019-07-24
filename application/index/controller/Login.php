@@ -250,11 +250,6 @@ class Login extends Controller
         if(request()->isAjax()){
 
             $phone = input('post.phone');
-            session('a'.$phone,111111);//清除session
-            $data=[];
-            $data['status']=1;
-            $data['msg']='发送成功';
-            return json($data);
             $vcode = input('post.vcode');
             if(!preg_match_all("/^1[3456789]\d{9}$/", $phone)){
                 $data = array();
@@ -268,8 +263,6 @@ class Login extends Controller
                 $data['msg'] = '图形验证码错误';
                 return json($data);
             };
-
-
             $res = send_msg($phone);
             if($res['status']==1){
                 $data=[];

@@ -8,9 +8,9 @@ class Msg {
 	//查询余额的接口地址
 	const API_BALANCE_QUERY_URL='http://sms.253.com/msg/balance?';
 
-	const API_ACCOUNT='N562042_N9473023';//短信账号从 https://zz.253.com/site/login.html 里面获取。
+	const API_ACCOUNT='N015441_N9473023';//短信账号从 https://zz.253.com/site/login.html 里面获取。
 
-	const API_PASSWORD='rIxu4nEX3z7c9a';//短信密码从 from https://zz.253.com/site/login.html 里面获取。
+	const API_PASSWORD='z9UsA4qEWt6f84';//短信密码从 from https://zz.253.com/site/login.html 里面获取。
 
 	/**
 	 * 发送短信需要的接口参数

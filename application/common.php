@@ -39,7 +39,7 @@ function getWeixinInfo($openid) {
 }
 
 //发送短信
-function send_msg($mobile, $msg = "【内部学习系统】您好，您的验证码是：")
+function send_msg($mobile, $msg = "【艾比特】您好，您的验证码是：")
 {
 
     session('a'.$mobile,null);//清除session
@@ -104,19 +104,7 @@ function send_msg($mobile, $msg = "【内部学习系统】您好，您的验证
     return $data;
 
 }
-//发送短信
-function send_info($mobile,$msg)
-{
-    //创建一个类
-    $clapi = new \msg\Msg;
-    /**
-     * 调用短信方法
-     * 如果需要发送多个手机号码 请用英文逗号","隔开
-     * 签名需在平台审核通过后 在短信内容前面添加
-     */
-    $result = $clapi->sendSMS($mobile, $msg);
-    return true;
-}
+
 //生成二维码
 function code($url,$filename=''){
     //生成二维码图片
