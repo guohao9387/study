@@ -1338,7 +1338,7 @@
                             $('#user_promise_money').text(data.promise_money);
                         });
                     }
-                    //爆仓
+                    //爆仓,止盈平仓，止损平仓
                     if(data.status==102){
                         layer.msg(data.msg,{icon: 2,time:3000},function(){
                             var tr='.'+data.oid;
@@ -1348,6 +1348,11 @@
                             $('#user_real_money').text(data.real_money);
                             $('#user_promise_money').text(data.promise_money);
                         });
+                    }
+                    //资金变化
+                    if(data.status==201){
+                        $('#user_money').text(data.money);
+                        $('#user_real_money').text( $('#user_real_money').text()-data.real_money_dec);
                     }
                 }else{
                     var active_name = $('.list ul li.active').attr('data-product-abbreviation-name');
