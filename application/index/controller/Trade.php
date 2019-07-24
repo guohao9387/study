@@ -78,14 +78,27 @@ class Trade extends Common
                     return json_return(0,'网络错误，请重试');
                 }
                 //判断止盈止损
+
                 if(isset($param['target_profit_check'])&&$param['target_profit_check']==1){
-                    if($param['target_profit']<($now_price+$product_info['wave'])){
-                        return json_return(0,'止盈应大于等于最大止盈值');
+                    if($param['direction']==1){
+                        if($param['target_profit']<($now_price+$product_info['wave'])){
+                            return json_return(0,'止盈应大于等于最小止盈值');
+                        }
+                    }else{
+                        if($param['target_profit']>($now_price-$product_info['wave'])){
+                            return json_return(0,'止盈应小于等于最小止盈值');
+                        }
                     }
                 }
                 if(isset($param['stop_loss_check'])&&$param['stop_loss_check']==1){
-                    if($param['stop_loss']>($now_price-$product_info['wave'])){
-                        return json_return(0,'止损应小于等于最小止损值');
+                    if($param['direction']==1){
+                        if($param['stop_loss']>($now_price-$product_info['wave'])){
+                            return json_return(0,'止损应小于等于最小止损值');
+                        }
+                    }else{
+                        if($param['stop_loss']<($now_price+$product_info['wave'])){
+                            return json_return(0,'止损应大于等于最小止损值');
+                        }
                     }
                 }
                 //判断手数范围

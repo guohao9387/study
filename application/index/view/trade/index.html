@@ -671,8 +671,8 @@
                         <div data-v-c4371006="" class="more" style="display: block;">
                             <input type="hidden" id="point_wave" value="{$product_list[0]['wave']}"/>
                                 <div data-v-c4371006="">
-                                    <div data-v-c4371006="" class="moresize">设置止盈应大于等于<span class="target_profit">0.00</span></div>
-                                    <div data-v-c4371006="" class="moresize">设置止损应小于等于<span class="stop_loss">0.00</span></div>
+                                    <div data-v-c4371006="" class="moresize">设置止盈应<span class="win_des">大于</span>等于<span class="target_profit">0.00</span></div>
+                                    <div data-v-c4371006="" class="moresize">设置止损应<span class="loss_des">小于</span>等于<span class="stop_loss">0.00</span></div>
                                     <div data-v-c4371006="" class="itemcon clearfix switchone"  style="overflow: hidden;width: 100%;padding: 0 20px;">
                                         <span data-v-c4371006="">止盈</span>
                                         <div class="layui-input-block">
@@ -1041,6 +1041,13 @@
     });
     //设置建仓方向
     function set_direction(val,number){
+        if(number==1){
+            $('.win_des').text('大于');
+            $('.loss_des').text('小于');
+        }else{
+            $('.win_des').text('小于');
+            $('.loss_des').text('大于');
+        }
         $('.order_direction').text(val);
         $('.form_direction').val(number);
     }
@@ -1110,7 +1117,7 @@
         return Math.floor(number * times) / times;
     }
 
-
+    var lever="{$user.lever}";
     //计算pin持仓单盈亏
     function count_profit(){
         $('tbody tr').each(function(){
@@ -1122,37 +1129,42 @@
             var direction=$(this).children('.direction').text();
             var contract=$(this).children('.order_contract').text();
             var hand=$(this).children('.hand').text();
-            var amount=(now_price-buy_price)*contract*hand;
-            var profit;
+            var amount=(now_price-buy_price)*contract*hand/lever;
             var color;
             if(direction=='买入'){
                 if(now_price>buy_price){
-                    profit=amount;
                     color='red';
                 }else if(now_price<buy_price){
-                    profit=-amount;
                     color='green';
                 }
             }else{
                 if(now_price>buy_price){
-                    profit=-amount;
                     color='green';
                 }else if(now_price<buy_price){
-                    profit=amount;
                     color='red';
                 }
+                amount=-amount;
             }
-            $(this).children('.profit').text(math_floor(profit,1000)).attr("style","color:"+color+";");
+            $(this).children('.profit').text(math_floor(amount,1000)).attr("style","color:"+color+";");
             $(this).children('.now_price').attr("style","color:"+color+";");
         });
     }
     //计算止盈止损
     function count_wave(price){
         var point_wave=$('#point_wave').val();
-        $('.target_profit').text(price-(-point_wave));
-        $('input[name="target_profit"]').val(price-(-point_wave));
-        $('.stop_loss').text(price-point_wave);
-        $('input[name="stop_loss"]').val(price-point_wave);
+        var form_direction=$('.form_direction').val();
+        if(form_direction==1){
+            $('.target_profit').text(price-(-point_wave));
+            $('input[name="target_profit"]').val(price-(-point_wave));
+            $('.stop_loss').text(price-point_wave);
+            $('input[name="stop_loss"]').val(price-point_wave);
+        }else{
+            $('.target_profit').text(price-point_wave);
+            $('input[name="target_profit"]').val(price-point_wave);
+            $('.stop_loss').text(price-(-point_wave));
+            $('input[name="stop_loss"]').val(price-(-point_wave));
+        }
+
 
         //计算保证金
         var hand=$(".models .shosu").val();
