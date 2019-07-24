@@ -1088,7 +1088,7 @@ function save_order($order,$now_price,$type,$money){
     db::commit();
     //给用户发送消息
     $msg=[];
-    $msg['status']=101;
+    $msg['status']=102;
     $msg['msg']='您的订单【单号：'.$order['order_sn'].'】，已经'.$remark;
     $msg['oid']=$order['oid'];
     $msg['money']=number_format($after['money'],2,'.','');

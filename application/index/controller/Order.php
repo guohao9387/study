@@ -83,7 +83,7 @@ class Order extends Common
 //        }
         $where=[];
         $where[]=['order_status','=',1];
-        $order_list=db::name('order')->where($where)->select();
+        $order_list=db::name('order')->where($where)->order('oid asc')->select();
         $where=[];
         $where[]=['status','=',1];
         $product_night_fee=cache('product_night_fee');
@@ -91,21 +91,75 @@ class Order extends Common
             $product_night_fee=cache_night_fee();
         }
         $now_all_price=get_all_price();
-
+        $n=0;
         foreach($order_list as $val){
+            $where=[];
+            $where[]=['date','=',date('Y-m-d')];
+            $where[]=['oid','=',$val['oid']];
+            $res=db::name('night_fee')->where($where)->find();
+            if($res){
+                continue;
+            }
             $now_price=$now_all_price[$val['product_abbreviation']]['USD'];
             $where=[];
             $where[]=['uid','=',$val['uid']];
-            $user=db::name('user')->where($where)->lock(true)->find();
+            $user=db::name('user')->where($where)->find();
             if($user['money']<$product_night_fee[$val['product_abbreviation']]){
-                save_order($val,$now_price,6);
+                $profit=($now_price-$val['buy_price'])*$val['hand']*$val['contract'];
+                if($val['direction']==1){
+                    $amount=$profit;
+                }else{
+                    $amount=-$profit;
+                }
+                save_order($val,$now_price,6,$amount);
+                $n=1;
             }else{
+                db::startTrans();
+                $where=[];
+                $where[]=['uid','=',$val['uid']];
+                $user=db::name('user')->where($where)->lock(true)->find();
+                //扣除过夜费
+                $status=db::name('user')->where($where)->setDec('money',$product_night_fee[$val['product_abbreviation']]);
 
+                $data=[];
+                $data['oid']=$val['oid'];
+                $data['fee']=$product_night_fee[$val['product_abbreviation']];
+                $data['date']=date('Y-m-d');
+                $data['add_time']=date('Y-m-d H:i:s');
+                $operation_id=db::name('night_fee')->insertGetId($data);
+                //添加资金记录
+                $data=[];
+                $data['uid']=$user['uid'];
+                $data['username']=$user['username'];
+                $data['nickname']=$user['nickname'];
+                $data['from_oid']=$val['oid'];
+                $data['operation_id']=$operation_id;
+                $data['before_money']=$user['money'];
+                $data['money']=$product_night_fee[$val['product_abbreviation']];
+                $data['after_money']=$user['money']-$product_night_fee[$val['product_abbreviation']];
+                $data['type']=3;
+                $data['type_info']='过夜费';
+                $data['remark']='扣除过夜费';
+                $data['add_time']=date('Y-m-d H:i:s');
+                $status=db::name('user_money_log')->insert($data);
+                 db::commit();
+                //给用户发送消息
+                $msg=[];
+                $msg['status']=201;
+                $msg['money']=number_format($data['after_money'],2,'.','');
+                $msg['real_money_dec']=number_format(($data['money']),2,'.','');
+                bar($user['uid'],$msg);
             }
-            $status=db::name('user')->where($where)->setDec('money',$product_night_fee[$val['product_abbreviation']]);
 
         }
-        cache('night_fee_time',date('Y-m-d'));
-
+        if($n==1){
+            $msg=[];
+            $msg['status']=1003;
+            //给总后台发消息，刷新持仓页面
+            bar(1,$msg);
+            return 'ok';
+        }else{
+            return 'success';
+        }
     }
 }
