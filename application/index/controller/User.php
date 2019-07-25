@@ -143,6 +143,7 @@ class User extends Common
             $data['type']=$param['type'];
             $data['status']=1;
             $data['add_time']=date('Y-m-d H:i:s');
+            dump($data);die;
             $status=db::name('recharge')->insert($data);
             if(!$status){
                 return json_return(0,'网络错误，请重试');
