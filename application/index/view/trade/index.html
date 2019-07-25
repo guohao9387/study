@@ -1149,9 +1149,7 @@
                         layer.msg(res['msg'],{icon:1,time:1000},function(){
                             var tr='.'+oid;
                             $(tr).remove();
-                            $('#user_money').text(res.info.money);
-                            $('#user_real_money').text(res.info.real_money);
-                            $('#user_promise_money').text(res.info.promise_money);
+                            handle_money(res.info.money,res.info.promise_money);
                         });
                     }else{
                         layer.msg(res['msg'],{icon: 2,time:1000});
@@ -1172,7 +1170,7 @@
         return Math.floor(number * times) / times;
     }
 
-    //计算pin持仓单盈亏
+    //计算持仓单盈亏
     function count_profit(){
         $('tbody tr').each(function(){
             var buy_price=$(this).children('.buy_price').text();
@@ -1185,22 +1183,25 @@
             var hand=$(this).children('.hand').text();
             var amount=(now_price-buy_price)*contract*hand;
             var color;
+            console.log(direction=='买入');
             if(direction=='买入'){
-                if(now_price>buy_price){
+                if(now_price>=buy_price){
                     color='red';
                 }else if(now_price<buy_price){
                     color='green';
                 }
             }else{
-                if(now_price>buy_price){
+                if(now_price>=buy_price){
                     color='green';
                 }else if(now_price<buy_price){
                     color='red';
                 }
                 amount=-amount;
             }
+            console.log(color);
             $(this).children('.profit').text(math_floor(amount,1000)).attr("style","color:"+color+";");
             $(this).children('.now_price').attr("style","color:"+color+";");
+            handle_money(amount,0);
         });
     }
     //计算止盈止损
@@ -1247,6 +1248,18 @@
         }
         $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
         $(up_down_name).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+    }
+    function handle_money(money,promise_money){
+        money=math_floor(money);
+        promise_money=math_floor(promise_money);
+        console.log(money);
+        console.log(promise_money);
+        var user_money= math_floor($('#user_money').text());
+        var user_promise_money= math_floor($('#user_promise_money').text());
+        var user_real_money= math_floor($('#user_real_money').text());
+        $('#user_money').text(user_money+money);
+        $('#user_promise_money').text(user_promise_money+promise_money);
+        $('#user_real_money').text(user_real_money+money-promise_money);
     }
     $(function  () {
         var layer;
@@ -1343,10 +1356,7 @@
                         layer.msg(data.msg,{icon: 2,time:3000},function(){
                             var tr='.'+data.oid;
                             $(tr).remove();
-//                            console.log(data.money);
-                            $('#user_money').text(data.money);
-                            $('#user_real_money').text(data.real_money);
-                            $('#user_promise_money').text(data.promise_money);
+                            handle_money(data.money,data.promise_money);
                         });
                     }
                     //爆仓,止盈平仓，止损平仓
@@ -1354,16 +1364,12 @@
                         layer.msg(data.msg,{icon: 2,time:3000},function(){
                             var tr='.'+data.oid;
                             $(tr).remove();
-//                            console.log(data.money);
-                            $('#user_money').text(data.money);
-                            $('#user_real_money').text(data.real_money);
-                            $('#user_promise_money').text(data.promise_money);
+                            handle_money(data.money,data.promise_money);
                         });
                     }
                     //资金变化
                     if(data.status==201){
-                        $('#user_money').text(data.money);
-                        $('#user_real_money').text( $('#user_real_money').text()-data.real_money_dec);
+                        handle_money(data.money,data.promise_money);
                     }
                 }else{
                     var active_name = $('.list ul li.active').attr('data-product-abbreviation-name');
@@ -1443,7 +1449,9 @@
                     }else{
                         layer.msg(res.msg,{icon: 1,time:1000},function(){
                             keep_order_list_add(res.info);
-                           // window.location.href="/index/User/index"
+                            handle_money(-res.info.fee,res.info.money);
+
+                            // window.location.href="/index/User/index"
                         });
                     }
                 },'json');
@@ -1471,12 +1479,6 @@
         html+='<td class="profit">0.00</td>';
         html+='<td>'+data.add_time+'</td>';
         html+='<td><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order('+data.oid+')">平仓</button></td></tr>';
-        var user_money =$('#user_money').text();
-        var user_real_money =$('#user_real_money').text();
-        var user_promise_money =$('#user_promise_money').text();
-        $('#user_money').text(math_floor(user_money-data.fee));
-        $('#user_real_money').text(math_floor(user_real_money-data.fee-data.money));
-        $('#user_promise_money').text(math_floor(user_promise_money-(-data.money)));
         $(".keep_order_list").prepend(html);
         $(".models .m-cancel").click();
     }

@@ -146,8 +146,8 @@ class Order extends Common
                 //给用户发送消息
                 $msg=[];
                 $msg['status']=201;
-                $msg['money']=number_format($data['after_money'],2,'.','');
-                $msg['real_money_dec']=number_format(($data['money']),2,'.','');
+                $msg['money']=-$product_night_fee[$val['product_abbreviation']];
+                $msg['promise_money']=0;
                 bar($user['uid'],$msg);
             }
 

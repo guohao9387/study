@@ -1037,9 +1037,8 @@ function save_order($order,$now_price,$type,$money){
     $msg['status']=102;
     $msg['msg']='您的订单【单号：'.$order['order_sn'].'】，已经'.$remark;
     $msg['oid']=$order['oid'];
-    $msg['money']=number_format($after['money'],2,'.','');
-    $msg['promise_money']=number_format($after['promise_money'],2,'.','');
-    $msg['real_money']=number_format(($after['money']-$after['promise_money']),2,'.','');
+    $msg['money']=$money;
+    $msg['promise_money']=-$order['money'];
     bar($user['uid'],$msg);
 }
 function cache_night_fee(){

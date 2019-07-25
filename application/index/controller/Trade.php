@@ -343,9 +343,8 @@ class Trade extends Common
                 bar(1,$msg);
                 $info=[];
                 $info['oid']=$order['oid'];
-                $info['money']=number_format($after['money'],2,'.','');
-                $info['promise_money']=number_format($after['promise_money'],2,'.','');
-                $info['real_money']=number_format(($after['money']-$after['promise_money']),2,'.','');
+                $info['money']=$money;
+                $info['promise_money']=-$order['money'];
                 return json_return(1,'平仓成功',$info);
             }else{
                 db::rollback();
