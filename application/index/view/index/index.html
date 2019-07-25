@@ -105,6 +105,7 @@
 <!-- top 结束  -->
 <link rel="stylesheet" href="/static/index/css/index.css"/>
 <div class="banner-box">
+    {if $username===0}
     <div class="banner-tag-box">
         <div class="banner-tag visitor-banner-tag">
             <ul class="clearfix">
@@ -119,6 +120,8 @@
             <a href="/index/Login/login" class="login-now"> 立即登录</a>
         </div>
     </div>
+    {/if}
+
 
     <div id="slider_index"
          class="slider" style="height:400px;">
