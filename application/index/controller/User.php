@@ -121,7 +121,64 @@ class User extends Common
     }
     public function recharge()
     {
-        return $this->fetch();
+        if(request()->isAjax()){
+            $param=input('post.');
+            if($param['type']!='5001'&&$param['type']!='2004'&&$param['type']!='QWJ_QUICK'&&$param['type']!='7001'){
+                return json_return(0,'参数有误');
+            }
+            if($param['money']<500){
+                return json_return(0,'最低充值金额500');
+            }
+            if($param['money']>30000){
+                return json_return(0,'最大充值金额30000');
+            }
+            $order_sn='rn'.time().rand(1000,9999);
+            $data=[];
+            $data['uid']=$this->user;
+            $data['username']=$this->user_name;
+            $data['agent_id']=$this->info['agent_id'];
+            $data['agent_name']=$this->info['agent_name'];
+            $data['order_sn']=$order_sn;
+            $data['money'] = number_format($param['money'], 2, ".", "");
+            $data['type']=$param['type'];
+            $data['status']=1;
+            $data['add_time']=date('Y-m-d H:i:s');
+            $status=db::name('recharge')->insert($data);
+            if(!$status){
+                return json_return(0,'网络错误，请重试');
+            }
+
+            $data=[];
+            $data['total_fee'] = number_format($param['money'], 2, ".", "");
+            $data['appid'] = '19575690';
+            $secret = '1821b732aaa00678caeec99530e399a8';
+            $data['version'] = '1.1';
+            $data['pay_id'] = $param['type'];
+            $data['out_trade_no'] = $order_sn;
+            $data['return_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/index/User/index';
+            $data['notify_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/index/Notify/index';
+            ksort($data);
+            $fieldString = array();
+            foreach ($data as $key => $value) {
+                if(!empty($value)){
+                    $fieldString [] = $key . "=" . $value . "";
+                }
+            }
+            $fieldString = implode('&', $fieldString);
+            $data['sign'] = md5($fieldString . $secret);
+            $payUrl = 'https://pay.jr8789.com/api.php/webRequest/tradePay';//支付接口地址
+
+            $result = post_json($payUrl, $data);
+            $result = json_decode($result, true);
+            if($result['data']['resp_code']=='00'){
+                $info=$result['data']['payment'];
+                return json_return(1,'1',$info);
+            }else{
+                return json_return(0,'网络错误，请重试');
+            }
+        }else{
+            return $this->fetch();
+        }
     }
     public function withdraw()
     {

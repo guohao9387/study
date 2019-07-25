@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="/static/index/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/index/css/style.css" id="theme"/>
     <link rel="stylesheet" href="/static/index/css/common.css"/>
+    <link rel="stylesheet" href="/static/admin/lib/layui/css/layui.css"/>
     <script type="text/javascript" src="/static/index/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="/static/layer/layer.js"></script>
-
+    <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
 
 </head>
 
@@ -251,14 +252,6 @@
                 width: 60%;
             }
 
-            .rows select {
-                padding: 5px 0;
-                outline: none;
-                display: block;
-                background: #FFFFFF;
-                border: none;
-                width: 100%;
-            }
 
             .rows button {
                 text-align: center;
@@ -284,58 +277,111 @@
         </style>
         <div class="assets_content w900 right bg_w mh1500">
             <h1>账户充值</h1>
-            <form action="">
-
-
+            <form method="post" class="layui-form" >
                 <div class="new_list">
                     <ul>
-                        <li>
-
-                            5000
-                        </li>
-                        <li class="active">
-                            3000
-                        </li>
-                        <li>
-                            2000
-                        </li>
-                        <li>
-                            1000
-                        </li>
-                        <li>
-                            800
-                        </li>
-                        <li>
-                            500
-                        </li>
-                        <li>
-                            300
-                        </li>
-                        <li>
-                            200
-                        </li>
-                        <li>
-                            100
-                        </li>
+                        <li>30000</li>
+                        <li>20000</li>
+                        <li>10000</li>
+                        <li>5000</li>
+                        <li class="active">3000</li>
+                        <li>2000</li>
+                        <li>1000</li>
+                        <li>800</li>
+                        <li>500</li>
                     </ul>
                     <div class="rows">
                         <label>充值金额</label>
-                        <input type="number" />
+                        <input type="number" value="3000" class="money" name="money" lay-verify="number"/>
                     </div>
                     <div class="rows">
-                        <select>
-                            <option>微信支付</option>
-                            <option>支付宝</option>
-                            <option>银行卡</option>
+                        <select lay-verify="type" id="type" name="type">
+                            <option value="0">清选择支付方式</option>
+                            <option value="5001">微信扫码</option>
+                            <option value="2004">支付宝扫码</option>
+                            <option value="QWJ_QUICK">快捷支付</option>
+                            <option value="7001">网银支付</option>
                         </select>
                     </div>
                     <div class="rows" style="border: none;">
-                        <button type="submit">确认充值</button>
+                        <button type="submit" lay-submit lay-filter="recharge">确认充值</button>
                     </div>
                 </div>
             </form>
+            <div  style="text-indent: 5rem;">
+                <p>特别提醒：</p>
+                <p>1.微信支付宝扫码限额500-30000</p>
+                <p>2.快捷支付限额100-10000</p>
+                <p>3.网银支付限额100-200000</p>
+            </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    $(function  () {
+        $('.new_list ul li').click(function(){
+            $(this).addClass('active').siblings().removeClass('active');
+//            console.log($(this).text());
+            $('.money').val($(this).text());
+        })
+        layui.use('form', function(){
+            $ = layui.jquery;
+            var form = layui.form
+                    ,layer = layui.layer;
+            form.verify({
+                type: function(value){
+                    if(value==0){
+                        return '请选择支付方式';
+                    }
+                }
+            });
+
+            form.on('submit(recharge)', function(data){
+                var type=$('#type').val();
+                var money=$('.money').val();
+                if(type==5001||type==2004){
+                    if(money<500){
+                        layer.msg('最低充值金额500',{icon: 2,time:1000});
+                        return false;
+                    }
+                    if(money>30000){
+                        layer.msg('最高充值金额30000',{icon: 2,time:1000});
+                        return false;
+                    }
+                }else if(type=='QWJ_QUICK'){
+                    if(money<100){
+                        layer.msg('最低充值金额100',{icon: 2,time:1000});
+                        return false;
+                    }
+                    if(money>5000){
+                        layer.msg('最高充值金额10000',{icon: 2,time:1000});
+                        return false;
+                    }
+                } else if(type==7001){
+                    if(money<100){
+                        layer.msg('最低充值金额100',{icon: 2,time:1000});
+                        return false;
+                    }
+                    if(money>200000){
+                        layer.msg('最高充值金额200000',{icon: 2,time:1000});
+                        return false;
+                    }
+                }
+                var load = layer.load();
+                $('button[type="submit"]').attr("disabled",true);
+                $.post("/index/User/recharge",data.field,function(res){
+                    layer.close(load);
+                    $('button[type="submit"]').removeAttr("disabled");
+                    if(res.status==1){
+                        window.location.href=res.info;
+                    }else{
+                        layer.msg(res.msg,{icon: 2,time:1000});
+                    }
+                },'json');
+                return false;
+            });
+        });
+    })
+</script>

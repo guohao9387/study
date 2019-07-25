@@ -742,78 +742,12 @@ function get_real_ip(){
 
 
 /**
- * ajax返回
- * @param $msg
- * @param $data
- * @param int $code
- * @return \think\Response
- */
-function ajax_return($msg,$data=[],$code=0){
-    $ret = [
-        'code'      =>  $code,
-        'msg'       =>  $msg,
-        'data'      =>  $data,
-    ];
-    return \think\Response::create($ret,'json');
-}
-
-/**
- * 失败状态的返回
- * @param $msg
- * @param $data
- * @return \think\Response
- */
-function ajax_return_error($msg,$data=[]){
-    return ajax_return($msg,$data,-1);
-}
-
-/**
- * 成功状态的ajax
- * @param $msg
- * @param $data
- * @return \think\Response
- */
-function ajax_return_success($msg,$data=[]){
-    return ajax_return($msg,$data,0);
-}
-
-
-function has_ts_privilege($value,$ts_ids){
-    return $count_data_p = Db::name('privilege')->where(['id'=>['IN',$ts_ids],'parent_id'=>-1,'value'=>$value])->count();
-}
-
-/**
  * post request
  * @param $url
  * @param $post
  * @return mixed
  */
 function post_json($url, $post)
-{
-    $headers = [
-        "Content-type: application/json;charset='utf-8'",
-        "Accept: application/json",
-        "Cache-Control: no-cache",
-        "Pragma: no-cache"
-    ];
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($ch, CURLOPT_HEADER, false);
-    curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    $s = curl_exec($ch);
-    curl_close($ch);
-    return $s;
-}
-
-
-function post_request($url, $post)
 {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
@@ -825,11 +759,11 @@ function post_request($url, $post)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-//    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     $s = curl_exec($ch);
     curl_close($ch);
     return $s;
 }
+
 
 
 
