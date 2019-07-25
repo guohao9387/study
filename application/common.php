@@ -763,7 +763,19 @@ function post_json($url, $post)
     curl_close($ch);
     return $s;
 }
-
+function get_pay_type_name($type){
+    $str='';
+    if($type=='2004'){
+        $str='支付宝扫码';
+    }elseif($type=='5001'){
+        $str='微信扫码';
+    }elseif($type=='QWJ_QUICK'){
+        $str='快捷支付';
+    }elseif($type=='7001'){
+        $str='网银支付';
+    }
+    return $str;
+}
 
 
 
