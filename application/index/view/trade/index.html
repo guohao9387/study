@@ -594,12 +594,12 @@
                             <div data-v-c4371006="" id="box" class="kline">
                                 <div class="minutes">
                                     <ul style="padding: 0 10px;">
-                                        <li>1分钟</li>
-                                        <li>5分钟</li>
-                                        <li>10分钟</li>
-                                        <li>1小时</li>
-                                        <li>4小时</li>
-                                        <li class="my_active default_active">1天</li>
+                                        <li gap="1minute">1分钟</li>
+                                        <li gap="5minute">5分钟</li>
+                                        <li gap="10minute">10分钟</li>
+                                        <li gap="1hour">1小时</li>
+                                        <li gap="4hour">4小时</li>
+                                        <li class="my_active default_active" gap="1day" count="30">1天</li>
                                     </ul>
                                 </div>
                                 <div data-v-c4371006="" id="tv_chart_container">
@@ -1023,6 +1023,9 @@
     //切换1min 5min
     $('.minutes ul li').click(function(){
         $(this).addClass('my_active').siblings().removeClass('my_active');
+		var coinType = $('.active').attr('data-product-abbreviation-name');
+		var gap = $(this).attr('gap');
+		setCandlestick(coinType,gap,30);
     });
     var lever="{$user.lever}";
 
@@ -1060,7 +1063,7 @@
         $('.stop_loss').text(now_price-wave_val);
         $('input[name="stop_loss"]').val(now_price-wave_val);
         countRange(now_price,name);
-        setCandlestick(name,"day",30);
+        setCandlestick(name,"1day",30);
     });
 
     $(".navs  li").click(function () {
@@ -1303,7 +1306,7 @@
                 $('.stop_loss').text(now_price-wave_val);
                 $('input[name="stop_loss"]').val(now_price-wave_val);
                 countRange(now_price,name);
-                setCandlestick(name,"day",30);
+                setCandlestick(name,"1day",30);
             });
             var uid="{$user.uid}";
             var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
@@ -1448,7 +1451,7 @@
             });
 
         });
-		setCandlestick("BTC","day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
+		setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
     });
     function keep_order_list_add(data){
 //        console.log(data);
