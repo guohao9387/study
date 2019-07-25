@@ -599,7 +599,7 @@
                                         <li>10分钟</li>
                                         <li>1小时</li>
                                         <li>4小时</li>
-                                        <li class="my_active">1天</li>
+                                        <li class="my_active default_active">1天</li>
                                     </ul>
                                 </div>
                                 <div data-v-c4371006="" id="tv_chart_container">
@@ -1020,6 +1020,7 @@
             }
         });
 	}
+    //切换1min 5min
     $('.minutes ul li').click(function(){
         $(this).addClass('my_active').siblings().removeClass('my_active');
     });
@@ -1028,6 +1029,7 @@
     $(".list ul li").click(function () {
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
+        $('.default_active').addClass('my_active').siblings().removeClass('my_active');
         //产品名称
         var name= $(this).attr('data-product-abbreviation-name');
         var now_price=$(this).find('.l').text();
