@@ -252,11 +252,11 @@
                     <ul>
                         <li>
                             <label>当前费率</label>
-                            <input type="text" value="{$rate}"  readonly />
+                            <input type="text" value="{$rate}" id="rate" readonly />
                         </li>
                         <li>
                             <label>提现金额</label>
-                            <input type="number" placeholder="请输入提现金额" name="money" lay-verify="number|money"  />
+                            <input type="number" placeholder="请输入提现金额" id="money" name="money" lay-verify="number|money"  />
                         </li>
                         <li>
                             <label>到账金额</label>
@@ -290,7 +290,29 @@
 </body>
 </html>
 <script>
-
+    $("#money").blur(function () {
+        var vals=$(this).val();
+        var rate=$('#rate').val();
+        if(isNotANumber(vals)==true){
+            if(vals<0){
+                $("#money").val(0);
+            }else if(vals>0){
+                var money=parseFloat(vals)/parseFloat(rate);
+                $('#real_money').val(money.toFixed(2));
+            }
+        }else{
+            $("#money").val(0);
+        }
+    });
+    function isNotANumber(inputData) {
+        //isNaN(inputData)不能判断空串或一个空格
+        //如果是一个空串或是一个空格，而isNaN是做为数字0进行处理的，而parseInt与parseFloat是返回一个错误消息，这个isNaN检查不严密而导致的。
+        if(parseFloat(inputData).toString() == "NaN") {
+            return false;
+        } else {
+            return true;
+        }
+    }
     layui.use(['form','layer'], function(){
         $ = layui.jquery;
         var form = layui.form
