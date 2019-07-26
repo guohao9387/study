@@ -1125,7 +1125,7 @@
                 var money=now_price*contract*vals/lever;
 //                console.log(now_price);
 //                console.log(contract);
-                $('.promise_money').text(math_floor(money,1000));
+                $('.promise_money').text(math_floor(money));
             }
         }else{
             $(".shosu").val(0);
@@ -1166,6 +1166,8 @@
         });
     }
     function math_floor(number,per){
+        number = parseFloat(number);
+        console.log(number);
         return number.toFixed(2);
     }
 
@@ -1198,7 +1200,7 @@
                 amount=-amount;
             }
 //            console.log(color);
-            $(this).children('.profit').text(math_floor(amount,1000)).attr("style","color:"+color+";");
+            $(this).children('.profit').text(math_floor(amount)).attr("style","color:"+color+";");
             $(this).children('.now_price').attr("style","color:"+color+";");
             handle_money(amount,0);
         });
@@ -1256,9 +1258,19 @@
         var user_money= math_floor($('#user_money').text());
         var user_promise_money= math_floor($('#user_promise_money').text());
         var user_real_money= math_floor($('#user_real_money').text());
-        $('#user_money').text(user_money+money);
-        $('#user_promise_money').text(user_promise_money+promise_money);
-        $('#user_real_money').text(user_real_money+money-promise_money);
+        var my_number_money=toRead(x100(user_money)+x100(money));
+        var my_promise_money=toRead(x100(user_promise_money)+x100(promise_money));
+        var my_real_money=toRead(x100(user_real_money)+x100(money)-x100(promise_money));
+        $('#user_money').text(my_number_money);
+        $('#user_promise_money').text(my_promise_money);
+        $('#user_real_money').text(my_real_money);
+    }
+    function x100(x){
+        return Math.floor((+x)*100);
+    }
+    function toRead(x){
+        x = x + '';
+        return x.slice(0,-2) + '.'  + x.slice(-2);
     }
     $(function  () {
         var layer;
@@ -1479,7 +1491,7 @@
         }else{
             html+='<td style="color: #008000;" class="direction">卖出</td>';
         }
-        html+='<td class="order_contract">'+math_floor(data.contract,1000)+'</td>';
+        html+='<td class="order_contract">'+math_floor(data.contract)+'</td>';
         html+='<td class="hand">'+math_floor(data.hand)+'</td>';
         html+='<td class="profit">0.00</td>';
         html+='<td>'+data.add_time+'</td>';
