@@ -8,6 +8,7 @@ function reset_cache(){
         $sys[$v['key']] = $v['value'];
     }
     cache('config',$sys);
+    return $sys;
 }
 function is_weixin(){
     if ( strpos($_SERVER['HTTP_USER_AGENT'],

@@ -14,9 +14,10 @@ class Common extends Controller
             $this->assign('username',0);
         }
         if(!cache('config')){
-            reset_cache();
+            $this->config =reset_cache();
+        }else{
+            $this->config = cache('config');
         }
-        $this->config = cache('config');
         $GLOBALS['title'] =$this->config['title'];
 
     }

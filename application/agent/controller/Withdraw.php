@@ -76,6 +76,8 @@ class Withdraw extends Common{
                 $data['agent_name'] = $this->agent_name;
                 $data['nickname'] = $agent['nickname'];
                 $data['money'] = $param['money'];
+                $data['rate'] = $this->config['withdraw_rate'];
+                $data['real_money'] = number_format($param['money']/$this->config['withdraw_rate'], 2, ".", "");
                 $data['name'] = $bank_info['name'];
                 $data['phone'] = $bank_info['phone'];
                 $data['bank_name'] = $bank_info['bank_name'];
@@ -127,6 +129,8 @@ class Withdraw extends Common{
             $this->assign('bank_info_list',$bank_info_list);
             $money=db::name('agent')->where('agent_id',$this->agent)->value('money');
             $this->assign('money',$money);
+            $this->assign('rate',$this->config['withdraw_rate']);
+
             return $this->fetch();
         }
 

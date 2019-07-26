@@ -30,15 +30,17 @@ class Notify extends Controller
                 db::startTrans();
                 $where=[];
                 $where['order_sn']=$_REQUEST['out_trade_no'];
-                $order=db::name('order')->lock(true)->where($where)->find();
+                $order=db::name('recharge')->lock(true)->where($where)->find();
+                $money=number_format($_REQUEST['amount']/$order['rate'], 2, ".", "");
+
                 if($order){
-                    if($order['order_status']==2){
+                    if($order['status']==2){
                         db::rollback();
                         echo 'success';
                         exit;
                     }else{
                         $data=[];
-                        $data['order_status']=2;
+                        $data['status']=2;
                         $data['update_time']=date('Y-m-d H:i:s');
                         $status=db::name('order')->where($where)->update($data);
                         if(!$status){
@@ -54,7 +56,7 @@ class Notify extends Controller
                             echo 'error';
                             exit;
                         }
-                        $status=db::name('user')->where($where)->setInc('money',$_REQUEST['amount']);
+                        $status=db::name('user')->where($where)->setInc('money',$money);
                         if(!$status){
                             db::rollback();
                             echo 'error';
@@ -64,11 +66,11 @@ class Notify extends Controller
                         $data['uid']=$user['uid'];
                         $data['username']=$user['username'];
                         $data['nickname']=$user['nickname'];
-                        $data['from_oid']=$order['oid'];
+                        $data['from_oid']=$order['id'];
                         $data['operation_id']=0;
                         $data['before_money']=$user['money'];
-                        $data['money']=$_REQUEST['amount'];
-                        $data['after_money']=$user['money']+$_REQUEST['amount'];
+                        $data['money']=$money;
+                        $data['after_money']=$user['money']+$money;
                         $data['type']=1;
                         $data['type_info']='自动充值';
                         $data['remark']='自动充值';

@@ -251,9 +251,18 @@
                 <div class="new_list">
                     <ul>
                         <li>
+                            <label>当前费率</label>
+                            <input type="text" value="{$rate}"  readonly />
+                        </li>
+                        <li>
                             <label>提现金额</label>
                             <input type="number" placeholder="请输入提现金额" name="money" lay-verify="number|money"  />
                         </li>
+                        <li>
+                            <label>到账金额</label>
+                            <input type="number" readonly id="real_money" value="0"/>
+                        </li>
+
                         <li>
                             <select id="bank_info_id" name="bank_info_id" class="valid" lay-verify="bank_info_id">
                                 <option  value="0">请选择银行卡信息</option>

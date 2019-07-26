@@ -88,6 +88,8 @@
             <th>账号</th>
             <th>代理</th>
             <th>金额</th>
+            <th>费率</th>
+            <th>到账金额</th>
             <th>支付类型</th>
             <th>创建时间</th>
             <th>到账时间</th>
@@ -101,6 +103,8 @@
             <td>{$vo.username}</td>
             <td>{$vo.agent_name}</td>
             <td>{$vo.money|number_format=###,2,'.',''}</td>
+            <td>{$vo.rate}</td>
+            <td>{$vo.real_money|number_format=###,2,'.',''}</td>
             <td>{$vo.type|get_pay_type_name}</td>
             <!-- <td>{$vo.type|str_recharge_type}</td> -->
             <td>{$vo.add_time}</td>

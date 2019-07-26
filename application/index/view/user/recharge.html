@@ -279,6 +279,10 @@
             <h1>账户充值</h1>
             <form method="post" class="layui-form" >
                 <div class="new_list">
+                    <div class="rows">
+                        <label>当前费率</label>
+                        <input type="text" value="{$rate}" readonly/>
+                    </div>
                     <ul>
                         <li>30000</li>
                         <li>20000</li>
@@ -294,6 +298,10 @@
                         <label>充值金额</label>
                         <input type="number" value="3000" class="money" name="money" lay-verify="number"/>
                     </div>
+                    <li>
+                        <label>到账金额</label>
+                        <input type="number" readonly id="real_money" value="{$real}" />
+                    </li>
                     <div class="rows">
                         <select lay-verify="type" id="type" name="type">
                             <option value="0">清选择支付方式</option>

@@ -139,7 +139,9 @@ class User extends Common
             $data['agent_id']=$this->info['agent_id'];
             $data['agent_name']=$this->info['agent_name'];
             $data['order_sn']=$order_sn;
+            $data['real_money']=number_format($param['money']/$this->config['recharge_rate'], 2, ".", "");
             $data['money'] = number_format($param['money'], 2, ".", "");
+            $data['rate'] = $this->config['recharge_rate'];
             $data['type']=$param['type'];
             $data['status']=1;
             $data['add_time']=date('Y-m-d H:i:s');
@@ -177,6 +179,9 @@ class User extends Common
                 return json_return(0,'网络错误，请重试');
             }
         }else{
+            $this->assign('rate',$this->config['recharge_rate']);
+            $this->assign('real',number_format(3000/$this->config['recharge_rate'], 2, ".", ""));
+
             return $this->fetch();
         }
     }
@@ -252,6 +257,8 @@ class User extends Common
                 $data['username'] = $this->user_name;
                 $data['nickname'] = $user['nickname'];
                 $data['money'] = $param['money'];
+                $data['rate'] = $this->config['withdraw_rate'];
+                $data['real_money'] = number_format($param['money']/$this->config['withdraw_rate'], 2, ".", "");
                 $data['name'] = $bank_info['name'];
                 $data['phone'] = $bank_info['phone'];
                 $data['bank_name'] = $bank_info['bank_name'];
@@ -269,7 +276,7 @@ class User extends Common
                 $data['from_oid'] = $res;
                 $data['operation_id'] =$oid;
                 $data['type'] =2;
-                $data['type_info'] ='代理提现';
+                $data['type_info'] ='用户提现';
                 $data['before_money'] =$user['money'];
                 $data['money'] =$param['money'];
                 $data['after_money'] =$after_money;
@@ -303,7 +310,7 @@ class User extends Common
             $this->assign('bank_info_list',$bank_info_list);
             $real_money=$this->info['money']-$this->info['promise_money'];
             $this->assign('real_money',$real_money);
-
+            $this->assign('rate',$this->config['withdraw_rate']);
             return $this->fetch();
         }
     }

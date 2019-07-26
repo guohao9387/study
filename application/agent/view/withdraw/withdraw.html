@@ -37,13 +37,28 @@
                 <div class="layui-card">
                     <div class="layui-card-body">
                         <form class="layui-form">
-
+                            <div class="layui-form-item">
+                                <label for="money" class="layui-form-label">
+                                                当前费率
+                                </label>
+                                <div class="layui-input-inline">
+                                    <input type="text" readonly value="{$rate}" class="layui-input" >
+                                </div>
+                            </div>
                             <div class="layui-form-item">
                                 <label for="money" class="layui-form-label">
                                     金额
                                 </label>
                                 <div class="layui-input-inline">
                                     <input type="number" id="money" name="money" required="" lay-verify="number|money" autocomplete="off" class="layui-input" >
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="money" class="layui-form-label">
+                                           到账金额
+                                </label>
+                                <div class="layui-input-inline">
+                                    <input type="text" readonly value="0" id="real_money" class="layui-input" >
                                 </div>
                             </div>
                             <div class="layui-form-item">
