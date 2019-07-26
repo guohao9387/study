@@ -504,9 +504,9 @@
                                 </div>
                             </div>
 
-                            <div data-v-c4371006="" class="itemcon clearfix"><span data-v-c4371006="">合约比例</span>
+                            <div data-v-c4371006="" class="itemcon clearfix"><span data-v-c4371006="">交易单位</span>
                                 <div data-v-c4371006="" class="chosecontype">
-                                    <div data-v-c4371006="" class="con "><span class="contract">{$product_list[0]['contract']|number_format=###,3,'.',''}</span> /手 </div>
+                                    <div data-v-c4371006="" class="con "><span class="contract">{$product_list[0]['contract']|number_format=###,2,'.',''}</span> /手 </div>
                                 </div>
                             </div>
 
@@ -543,7 +543,7 @@
                             {volist name="product_list" id="val"}
                             <li data-product-abbreviation-name="{$val.abbreviation}" data-v-c4371006="" {if $key==0}class="active"{/if}>
                                 <input type="hidden" id="{$val.abbreviation}_id" value="{$val.id}"/>
-                                <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract|number_format=###,3,'.',''}"/>
+                                <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract|number_format=###,2,'.',''}"/>
                                 <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand|number_format=###,2,'.',''}"/>
                                 <input type="hidden" id="{$val.abbreviation}_fee" value="{$val.fee|number_format=###,2,'.',''}"/>
                                 <input type="hidden" id="{$val.abbreviation}_wave" value="{$val.wave}"/>
@@ -620,7 +620,7 @@
                                                     <th>买入价</th>
                                                     <th>当前价格</th>
                                                     <th>方向</th>
-                                                    <th>合约比例</th>
+                                                    <th>交易单位</th>
                                                     <th>手数</th>
                                                     <th>盈利金额</th>
                                                     <th>下单时间</th>
@@ -640,7 +640,7 @@
                                                     {else/}
                                                     <td style="color: #008000;" class="direction">卖出</td>
                                                     {/if}
-                                                    <td class="order_contract">{$val['contract']|number_format=###,3,'.',''}</td>
+                                                    <td class="order_contract">{$val['contract']|number_format=###,2,'.',''}</td>
                                                     <td class="hand">{$val['hand']|number_format=###,2,'.',''}</td>
                                                     <td class="profit">0.00</td>
                                                     <td>{$val['add_time']}</td>
@@ -681,7 +681,7 @@
                                 </div>
                             </div>
                             <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
-                                    data-v-c4371006="">合约比例</span>
+                                    data-v-c4371006="">交易单位</span>
                                 <div data-v-c4371006="" class="chosecontype">
                                     <div data-v-c4371006="" class="con eaffer contract">{$product_list[0]['contract']|number_format=###,2,'.',''}</div>
                                 </div>

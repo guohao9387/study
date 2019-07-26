@@ -1488,7 +1488,7 @@ class Api extends Common{
                 <th>代理</th>
                 <th>产品名称</th>
                 <th>手数</th>
-                <th>合约比例</th>
+                <th>交易单位</th>
                 <th>手续费</th>
                 <th>保证金</th>
                 <th>方向</th>
