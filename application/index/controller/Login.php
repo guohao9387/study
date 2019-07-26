@@ -67,7 +67,7 @@ class Login extends Controller
                     $data['uid'] = $user['uid'];
                     db::name('user')->update($data);
                     session('user',$user['uid']);
-                    session('user_name',$user['username']);
+                    session('user_name',$username);
                     $data = array();
                     $data['status'] = 1;
                     $data['msg'] = '登录成功';
