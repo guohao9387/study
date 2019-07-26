@@ -491,9 +491,9 @@
             <div data-v-c4371006="" class="indexCon clearfix">
                 <div data-v-c4371006="" class="indexleft" style="margin-top: 30px;">
                     <div data-v-c4371006="" class="lefttop">
-                        <p data-v-c4371006="">账户余额 :  <span id="user_money">{$user.money|number_format=###,2,'.',''}</span>USDT</p>
-                        <p data-v-c4371006="">保证金余额 :  <span id="user_promise_money">{$user.promise_money|number_format=###,2,'.',''}</span> USDT</p>
-                        <p data-v-c4371006="">可用余额 :  <span id="user_real_money">{$user.real_money|number_format=###,2,'.',''}</span> USDT</p>
+                        <p data-v-c4371006="">账户余额 :  <span id="user_money">{$user.money|number_format=###,2,'.',''}</span>USD</p>
+                        <p data-v-c4371006="">保证金余额 :  <span id="user_promise_money">{$user.promise_money|number_format=###,2,'.',''}</span> USD</p>
+                        <p data-v-c4371006="">可用余额 :  <span id="user_real_money">{$user.real_money|number_format=###,2,'.',''}</span> USD</p>
                     </div>
                     <div data-v-c4371006="" class="leftbtm">
                         <div data-v-c4371006="" class="tit">新建订单</div>
@@ -527,8 +527,8 @@
                             <div data-v-c4371006="" class="itemnote" style="margin-top: 18px;">最小下单单位 <span class="min_hand">{$product_list[0]['min_hand']|number_format=###,2,'.',''}</span>/手</div>
 
                             <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">预付款 ：0/手</div>-->
-                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ： <span class="fee">{$product_list[0]['fee']|number_format=###,2,'.',''} </span> USDT</div>
-                            <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需保证金：0.00USDT</div>-->
+                            <div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需手续费 ： <span class="fee">{$product_list[0]['fee']|number_format=###,2,'.',''} </span> USD</div>
+                            <!--<div data-v-c4371006="" class="itemnote" style="line-height: 26px;">所需保证金：0.00USD</div>-->
                         </div>
 
                         <div data-v-c4371006="" class="btn">
@@ -1167,12 +1167,14 @@
     }
     function math_floor(number,per){
         number = parseFloat(number);
-        console.log(number);
+//        console.log(number);
         return number.toFixed(2);
     }
+    var last_money=0;
 
     //计算持仓单盈亏
     function count_profit(){
+        var all=0;
         $('tbody tr').each(function(){
             var buy_price=$(this).children('.buy_price').text();
             var now_price=$(this).children('.now_price').text();
@@ -1199,11 +1201,14 @@
                 }
                 amount=-amount;
             }
+            all=all+parseFloat(amount);
+
 //            console.log(color);
             $(this).children('.profit').text(math_floor(amount)).attr("style","color:"+color+";");
             $(this).children('.now_price').attr("style","color:"+color+";");
-            handle_money(amount,0);
         });
+        handle_money(all-last_money,0);
+        last_money=all;
     }
     //计算止盈止损
     function count_wave(price){
@@ -1427,7 +1432,6 @@
                     prepareWs();
                 }
             });
-            // layer.msg('Hello World');
             form.on('switch(checks)', function(data){
 //                console.log(data.elem.checked); //开关是否开启，true或者false
                 if(data.elem.checked==true){
