@@ -1165,16 +1165,8 @@
             });
         });
     }
-
-
     function math_floor(number,per){
-        var times;
-        if(per){
-            times=per;
-        }else{
-            times=100;
-        }
-        return Math.floor(number * times) / times;
+        return number.toFixed(2);
     }
 
     //计算持仓单盈亏
@@ -1190,7 +1182,7 @@
             var hand=$(this).children('.hand').text();
             var amount=(now_price-buy_price)*contract*hand;
             var color;
-            console.log(direction=='买入');
+//            console.log(direction=='买入');
             if(direction=='买入'){
                 if(now_price>=buy_price){
                     color='red';
@@ -1205,7 +1197,7 @@
                 }
                 amount=-amount;
             }
-            console.log(color);
+//            console.log(color);
             $(this).children('.profit').text(math_floor(amount,1000)).attr("style","color:"+color+";");
             $(this).children('.now_price').attr("style","color:"+color+";");
             handle_money(amount,0);
@@ -1259,8 +1251,8 @@
     function handle_money(money,promise_money){
         money=math_floor(money);
         promise_money=math_floor(promise_money);
-        console.log(money);
-        console.log(promise_money);
+//        console.log(money);
+//        console.log(promise_money);
         var user_money= math_floor($('#user_money').text());
         var user_promise_money= math_floor($('#user_promise_money').text());
         var user_real_money= math_floor($('#user_real_money').text());
@@ -1387,9 +1379,11 @@
                             //计算止盈止损
                             count_wave(new_price);
 							var opt = myChart.getOption();
-							opt.series[0].markLine.data[0].yAxis = new_price;
-							myChart.clear();
-							myChart.setOption(opt);
+                            if(opt){
+                                opt.series[0].markLine.data[0].yAxis = new_price;
+                                myChart.clear();
+                                myChart.setOption(opt);
+                            }
                         }
                         //计算涨幅跌幅
                         countRange(new_price,k);
