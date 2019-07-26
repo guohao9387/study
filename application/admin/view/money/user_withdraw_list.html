@@ -78,6 +78,8 @@
             <th>账号</th>
             <th>名称</th>
             <th>金额</th>
+            <th>费率</th>
+            <th>到账金额</th>
             <th>姓名</th>
             <th>电话</th>
             <th>开户行</th>
@@ -97,6 +99,8 @@
             <td>{$vo.username}</td>
             <td>{$vo.nickname}</td>
             <td>{$vo.money|number_format=###,2,'.',''}</td>
+            <td>{$vo.arte|number_format=###,2,'.',''}</td>
+            <td>{$vo.real_money|number_format=###,2,'.',''}</td>
             <td>{$vo.name}</td>
             <td>{$vo.phone}</td>
             <td>{$vo.bank_name}</td>
