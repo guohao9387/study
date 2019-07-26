@@ -104,7 +104,8 @@ class Order extends Common
             $where=[];
             $where[]=['uid','=',$val['uid']];
             $user=db::name('user')->where($where)->find();
-            if($user['money']<$product_night_fee[$val['product_abbreviation']]){
+            //如果可用余额不足就爆仓
+            if(($user['money']-$user['promise_money'])<$product_night_fee[$val['product_abbreviation']]){
                 $profit=($now_price-$val['buy_price'])*$val['hand']*$val['contract'];
                 if($val['direction']==1){
                     $amount=$profit;
