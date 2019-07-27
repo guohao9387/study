@@ -752,6 +752,8 @@
 <script>
 
     var myChart = echarts.init(document.getElementById('main'));
+	var loc = window.location;
+	var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
 	function setCandlestick(coinType,gap,count){
 
         function setOnUi(dataFromApi){
@@ -1013,7 +1015,7 @@
             });
 */
         }
-        var url = "http://47.90.122.200:8080/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
+        var url = baseUrl + "/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
         $.ajax({
             type: 'get',
             url: url,
@@ -1282,7 +1284,7 @@
 		var loadingFirst;
 		var loadingSecond;
         function prepareWs(){
-            var url = "http://47.90.122.200:8080/openPrice";
+            var url = baseUrl + "/openPrice";
             //获取产品开盘价
             $.ajax({
                 type: 'get',
@@ -1338,7 +1340,12 @@
                 setCandlestick(name,"1day",30);
             });
             var uid="{$user.uid}";
-            var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
+			var wsUrl ='ws:';
+			if(loc.protocol == 'https:')
+				wsUrl = 'wss:'
+			wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
+            var ws = new WebSocket(wsUrl)
+            //var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
 
             ws.onopen = function()
             {
