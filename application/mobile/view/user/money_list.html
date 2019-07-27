@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>资金记录</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style type="text/css">
+        .weui-media-box__title,.weui-media-box__desc{
+            color: white;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<!--主体-->
+<header class="wy-header" >
+    <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
+    <div class="wy-header-title">资金记录</div>
+</header>
+<div class='weui-content'>
+    <div class="weui-tab">
+        <div class="weui-tab__bd proinfo-tab-con" >
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                <div class="weui-panel jyjl" id="list">
+                    {volist name='list' id='val'}
+                    <div class="weui-panel__bd">
+                        <div class="weui-media-box weui-media-box_text">
+                            <h4 class="weui-media-box__title">￥<em class="num">{$val.money|number_format=###,2,".",""}</em><span class="fr">{$val.type_info}</span></h4>
+                            <p class="weui-media-box__desc">变化前:{$val.before_money|number_format=###,2,".",""},变化后:{$val.after_money|number_format=###,2,".",""}</p>
+                            <ul class="weui-media-box__info">
+                                <li class="weui-media-box__info__meta">交易时间：<em class="num">{$val.add_time}</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                    {/volist}
+                </div>
+                {if condition='count($list) eq 20'}
+                <div class="weui-loadmore">
+                    <i class="weui-loading"></i>
+                    <span class="weui-loadmore__tips">正在加载</span>
+                </div>
+                {/if}
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script>
+    $(function() {
+        var loading = false;  //状态标记
+        var page = 1;
+        $(document.body).infinite().on("infinite", function() {
+            if(loading) return;
+            loading = true;
+            $.ajax({
+                url:'/mobile/user/more_money_list',
+                type:'post',
+                dataType:'json',
+                data:{page:page},
+                success:function(res){
+                    if(res.length>0){
+                        var list = '';
+                        for(var i=0;i<res.length;i++){
+                            list+='<div class="weui-panel__bd">';
+                            list +='<div class="weui-media-box weui-media-box_text">';
+                            list +='<h4 class="weui-media-box__title">￥<em class="num">'+res[i]['amount']+'</em><span class="fr">'+res[i]['type_info']+'</span></h4>';
+                            list +='<p class="weui-media-box__desc">变化前:'+res[i]['before_money']+',变化后:'+res[i]['after_money']+'</p>';
+                            list +='<ul class="weui-media-box__info">';
+                            list +='<li class="weui-media-box__info__meta">交易时间：<em class="num">'+res[i]['add_time']+'</em></li>';
+                            list +='</ul>';
+                            list +='</div>';
+                            list +='</div>';
+                        }
+                        $("#list").append(list);
+                        loading = false;
+                        page++;
+                    }else if(res.length<20){
+                        $('.weui-loadmore').addClass('weui-loadmore_line');
+                        $('.weui-loading').remove();
+                        $('.weui-loadmore__tips').text('没有更多了');
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script src="/static/mobile/js/jquery-weui.js"></script>
+
+</body>
+</html>

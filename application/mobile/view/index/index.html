@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>{$GLOBALS['title']}</title>
+<meta name="keywords" content="艾比特" />
+<meta name="description" content="艾比特" />
+<link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+<link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
+<link rel="stylesheet" href="/static/mobile/css/style.css">
+<style>
+	.pagelist{
+		padding:10px;
+		padding-top: 0;
+		border-top: 1px solid #586C94;
+		}
+	.clearboth:after{
+		content: "";
+		clear: both;
+		display: block;
+	}
+    .pagelist ul {
+
+    }
+	.pagelist ul li{
+		padding: 10px 0;
+		width: 100%;
+		border-bottom: 1px solid #586C94;
+	}
+	.pagelist ul li:last-child{
+		border-bottom:0;
+	}
+	.pagelist ul li .pali-left{
+		width: 73%;
+		float: left;
+	}
+.pagelist ul li .pali-right{
+	width: 22%;
+	float: right;
+}
+.pali-left>div{
+	line-height: 2rem;
+	
+}
+.pali-left .pl-first{
+	margin-bottom: 2px;
+}
+.pali-left .pl-first p:first-child{
+	float: left;
+	color: white;
+	font-size: 1rem;
+	font-weight: bold;
+}
+.pali-left .pl-first p:first-child small{
+	font-size: 1rem;
+	color: #D4D4D4;
+}
+
+.pali-left .pl-first p:last-child{
+	float: right;
+	color: red;
+	font-size: 1rem;
+}
+.pali-left .pl-tw p:first-child{
+	float: left;
+	color: #D4D4D4;
+	font-size: 1rem;
+}
+.pali-left .pl-tw p:last-child{
+	float: right;
+	color: red;
+	font-size: 12px;
+}
+.pali-right button{
+	font-size: 1rem;
+	height: 1.8rem;
+	line-height: 2rem;
+	background:red;
+	color: white;
+	outline: none;
+	border: none;
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius:5px;
+}
+</style>
+</head>
+<body ontouchstart>
+<!--顶部搜索-->
+
+<!--主体-->
+<div class='weui-content'>
+<div class="pagelist">
+	<ul>
+        {volist name="product" id="val"}
+		<li class="clearboth">
+			<div class="pali-left">
+				<div class="pl-first clearboth">
+					<p class="weui-media-box__bd">{$val.desc_name}</p>
+						<p class="weui-media-box__bd">0.00</p>
+				</div>
+			</div>
+			<div class="pali-right">
+				<button type="button">0.00%</button>
+			</div>
+		</li>
+        {/volist}
+	</ul>
+</div>
+</div>
+
+<!--底部导航-->
+<div class="foot-black"></div>
+<div class="weui-tabbar wy-foot-menu">
+  <a href="/mobile/Index/index" class="weui-tabbar__item weui-bar__item--on">
+    <div class="weui-tabbar__icon foot-menu-home"></div>
+    <p class="weui-tabbar__label">首页</p>
+  </a>
+  <a href="/mobile/Trade/index" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon foot-menu-list"></div>
+    <p class="weui-tabbar__label">交易中心</p>
+  </a>
+  <a href="/mobile/Coin/index" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon foot-menu-cart"></div>
+    <p class="weui-tabbar__label">申购币</p>
+  </a>
+  <a href="/mobile/User/index" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon foot-menu-member"></div>
+    <p class="weui-tabbar__label">我的</p>
+  </a>
+</div>
+
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

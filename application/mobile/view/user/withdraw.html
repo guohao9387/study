@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>提现</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+		<link rel="stylesheet" href="__STATIC__/mobile/lib/weui.min.css">
+		<link rel="stylesheet" href="__STATIC__/mobile/css/style.css">
+	</head>
+<body ontouchstart>
+<!--主体-->
+<header class="wy-header">
+  <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
+  <div class="wy-header-title">提现</div>
+</header>
+<div class="weui-content recharge">
+  <!--<div class="weui-cells weui-cells_form">-->
+  	<!--<div class="weui-cell">-->
+  		<!--<ul class="recharge-item">-->
+  			<!--<li><a  href="javascript:void(0);">1000</a></li>-->
+  			<!--<li><a href="javascript:void(0);">800</a></li>-->
+  			<!--<li><a href="javascript:void(0);">500</a></li>-->
+  			<!--<li><a href="javascript:void(0);">300</a></li>-->
+  			<!--<li><a href="javascript:void(0);">200</a></li>-->
+  			<!--<li><a href="javascript:void(0);">100</a></li>-->
+  		<!--</ul>-->
+  	<!--</div>-->
+  <!--</div>-->
+  <div class="weui-cells weui-cells_form">
+     <div class="weui-cell">
+          <div class="weui-cell__hd"><label class="weui-label">账户余额</label></div>
+          <div class="weui-cell__bd"><input class="weui-input" type="number" readonly="readonly" id="amount" value="{$info.money|number_format=###,2,".",""}"></div>
+      </div>
+      <div class="weui-cell">
+          <div class="weui-cell__hd"><label class="weui-label">真实姓名</label></div>
+          <div class="weui-cell__bd">
+              <input class="weui-input" type="text" id="bank_khm" name='bank_khm' readonly="readonly" placeholder="请输入真实姓名" value="{$info.realname}" >
+          </div>
+      </div>
+
+     <form action="/mobile/user/withdraw" id='withdraw_form'>
+          <div class="weui-cell">
+              <div class="weui-cell__hd"><label class="weui-label">提现金额</label></div>
+              <div class="weui-cell__bd">
+                  <input class="weui-input" type="number" id="money" name='money' placeholder="请输入提现金额">
+              </div>
+          </div>
+         <div class="weui-cell">
+             <div class="weui-cell__hd"><label class="weui-label"></label></div>
+             <div class="weui-cell__bd" id="money-info"></div>
+         </div>
+          <div class="weui-cell">
+              <div class="weui-cell__hd"><label class="weui-label">银行名称</label></div>
+              <div class="weui-cell__bd">
+                  <input class="weui-input" type="text" id="bank_name" name='bank_name'  placeholder="请输入银行名称"  value="{$bank.bank_name|default=''}" >
+              </div>
+          </div>
+         
+          <div class="weui-cell">
+              <div class="weui-cell__hd"><label class="weui-label">银行卡号</label></div>
+              <div class="weui-cell__bd">
+                  <input class="weui-input" type="text" id="bank_id" name='bank_id'  placeholder="请输入银行卡号"  value="{$bank.bank_id|default=''}" >
+              </div>
+          </div>
+          <!--<div class="weui-cell">-->
+              <!--<div class="weui-cell__hd"><label class="weui-label">备注</label></div>-->
+              <!--<div class="weui-cell__bd">-->
+                  <!--<input class="weui-input" type="text" id="remark" name='remark'  placeholder="请输入备注（选填）">-->
+              <!--</div>-->
+          <!--</div>-->
+         <div class="weui-cell">
+             <div class="weui-cell__hd"><label class="weui-label">取款密码</label></div>
+             <div class="weui-cell__bd">
+                 <input class="weui-input" type="password" id="withdraw_pwd" name='withdraw_pwd'  placeholder="请输入取款密码">
+             </div>
+         </div>
+      </form>
+  </div>
+  <div class="weui-btn-area">
+      <input  class="weui-btn weui-btn_primary"  value="确认提交" readonly="readonly" >
+  </div>
+    <style type="text/css">
+        .zy{
+            font-size: 13px;;
+        }
+    </style>
+    <div class="weui-btn-area yue_remind" style="padding-bottom: 20px;padding-top: 10px;">
+        <div class="layui-card-body">
+            {$protocol ? html_entity_decode($protocol):''}
+        </div>
+    </div>
+</div>
+
+<script src="__STATIC__/mobile/lib/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="__STATIC__/layer/layer.js"></script>
+<script src="__STATIC__/mobile/js/jquery-weui.js"></script>
+<script type="text/javascript">
+    $('#money-info').parents('.weui-cell').hide();
+    $('#money').blur(function(){
+        if($(this).val()*1 > 0){
+            $.post("/index/api/_withdraw_check_money",{money:$(this).val()},function(res){
+                if(res.code==0){
+                    $('#money-info').parents('.weui-cell').show();
+                    $('#money-info').html(res.msg);
+                }else{
+                    layer.msg(res.msg);
+                }
+            },'json');
+        }
+    })
+
+
+    $(".weui-btn").click(function(event) {
+//        var test = new Date();
+//        if(test.getHours()<8 || test.getHours()>16 ){
+//            $.toast('请您在每天：9点—17点，提交申请','forbidden');
+//            return false;
+//        }
+//        alert('功能暂未开放，请联系客服处理');
+//        return false;
+        var money = $('#amount').val();
+        if($("#money").val()==""){
+            layer.msg('请输入提现金额');
+            return;
+        }
+        if($("#money").val()<{$min_tixian_money}){
+            layer.msg('单笔最低{$min_tixian_money}元');
+            return;
+        }
+//        if($("#money").val()>money){
+//            layer.msg('账户余额不足');
+//            return;
+//        }
+        if($("#bank_khm").val()==""){
+            layer.msg('请输入您的姓名');
+            return;
+        }
+        if($("#bank_khm").val().length <1 || $("#bank_khm").val().length>10){
+            layer.msg('请输入正确姓名');
+            return;
+        }
+        if($("#bank_name").val()==""){
+            layer.msg('请输入银行名称');
+            return;
+        }
+        if($("#bank_name").val().length <2 || $("#bank_name").val().length>50){
+            layer.msg('请输入正确的银行名称');
+            return;
+        }
+
+        if($("#bank_id").val()==""){
+            layer.msg('请输入银行卡号');
+            return;
+        }
+        if($("#bank_id").val().length <15 || $("#bank_id").val().length>20){
+            layer.msg('请输入正确的银行卡号');
+            return;
+        }
+        if($("#withdraw_pwd").val()==""){
+            layer.msg('请输入取款密码');
+            return;
+        }
+        if($("#withdraw_pwd").val().length < 6 || $("#withdraw_pwd").val().length>16){
+            layer.msg('请输入6-16位取款密码');
+            return;
+        }
+
+        $.showLoading("提交中");
+        _this = $("#withdraw_form");
+        $.post("{:url('index/api/_withdraw')}", _this.serialize(), function(data, textStatus, xhr) {
+            $(".weui-btn").attr('disabled',"true");
+//                console.log(data);
+            $.hideLoading();
+            layer.msg(data.msg,{time:2000},function(){
+                if(data.status==1){
+                    window.location.href="/mobile/user/mine";
+                }else{
+                    $('.weui-btn').removeAttr("disabled");
+                }
+            });
+        });
+        return false;
+    });
+</script>
+</body>
+</html>
