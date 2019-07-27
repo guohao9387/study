@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>会员中心</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+<style>
+	.noborderr:before{
+		content: " ";
+   
+    border-top: 0!important;
+	}
+</style>
+</head>
+<body ontouchstart>
+<!--主体-->
+<div class='weui-content'>
+  <div class="wy-center-top">
+    <div class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd"><img class="weui-media-box__thumb radius" src="/static/mobile/images/head.jpg" alt=""></div>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title user-name">{$info.username}</h4>
+          <p class="user-grade">实名状态：
+              {if $info.real==1}
+              <em class="num">已认证</em>
+              {else/}
+              <em class="num" style="color: red;"><a href="/mobile/User/real_auth">未实名，去认证</a></em>
+              {/if}</p>
+          <p class="user-integral">{$info.nickname}
+        </p>
+      </div>
+    </div>
+<!--    <div class="xx-menu weui-flex">
+      <div class="weui-flex__item"><div class="xx-menu-list"><em>987</em><p>账户余额</p></div></div>
+      <div class="weui-flex__item"><div class="xx-menu-list"><em>459</em><p>我的蓝豆</p></div></div>
+      <div class="weui-flex__item"><div class="xx-menu-list"><em>4</em><p>收藏商品</p></div></div>
+    </div>-->
+  </div>
+
+  <div class="weui-panel weui-panel_access noborderr">
+    <div class="weui-panel__bd">
+      <div class="weui-flex">
+        <div class="weui-flex__item">
+          <a href="myburse.html" class="center-ordersModule">
+            <div class="center-money"><em>{$info.money|number_format=###,2,'.',''}</em></div>
+            <div class="name">账户余额</div>
+          </a>
+        </div>
+        <div class="weui-flex__item">
+          <a href="myburse.html" class="center-ordersModule">
+            <div class="center-money"><em>{$info.promise_money|number_format=###,2,'.',''}</em></div>
+            <div class="name">保证金余额</div>
+          </a>
+        </div>
+        <div class="weui-flex__item">
+          <a href="myburse.html" class="center-ordersModule">
+            <div class="center-money"><em>{$info.real_money|number_format=###,2,'.',''}</em></div>
+            <div class="name">可用余额</div>
+          </a>
+        </div>
+       <!-- <div class="weui-flex__item">
+          <a href="myburse.html" class="center-ordersModule">
+            <div class="center-money"><em>165</em></div>
+            <div class="name">蓝豆</div>
+          </a>
+        </div>-->
+      </div>
+    </div>
+  </div>
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <a href="/mobile/user/friends" class="center-ordersModule">
+                        <div class="imgicon"><img src="/static/mobile/images/center-icon-friends.png"></div>
+                        <div class="name">我的好友</div>
+                    </a>
+                </div>
+                <div class="weui-flex__item">
+                    <a href="javascript:void(0);" class="center-ordersModule open-popup"  data-target="#invite-code">
+                        <div class="imgicon"><img src="/static/mobile/images/center-icon-invite.png"></div>
+                        <div class="name">邀请好友</div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+  
+  <div class="weui-panel noborderr">
+        <div class="weui-panel__bd">
+          <div class="weui-media-box weui-media-box_small-appmsg">
+            <div class="weui-cells">
+              <a class="weui-cell weui-cell_access" href="/mobile/User/real_auth">
+                <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-jyjl.png" alt="" class="center-list-icon"></div>
+                <div class="weui-cell__bd weui-cell_primary">
+                  <p class="center-list-txt">实名认证</p>
+                </div>
+                <span class="weui-cell__ft"></span>
+              </a>
+                <a class="weui-cell weui-cell_access" href="/mobile/User/bank_list">
+                    <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-yhk.png" alt="" class="center-list-icon"></div>
+                    <div class="weui-cell__bd weui-cell_primary">
+                        <p class="center-list-txt">我的银行卡</p>
+                    </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+                <a class="weui-cell weui-cell_access" href="/mobile/User/recharge">
+                    <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-recharge.png" alt="" class="center-list-icon"></div>
+                    <div class="weui-cell__bd weui-cell_primary">
+                        <p class="center-list-txt">账户充值</p>
+                    </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+                <a class="weui-cell weui-cell_access" href="/mobile/User/withdraw">
+                    <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-withdraw.png" alt="" class="center-list-icon"></div>
+                    <div class="weui-cell__bd weui-cell_primary">
+                        <p class="center-list-txt">我要提现</p>
+                    </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+                <a class="weui-cell weui-cell_access" href="/mobile/User/withdraw_list">
+                    <div class="weui-cell__hd"><img src="/static/mobile/images/icon-link3.png" alt="" class="center-list-icon"></div>
+                    <div class="weui-cell__bd weui-cell_primary">
+                        <p class="center-list-txt">提现记录</p>
+                    </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+                <a class="weui-cell weui-cell_access" href="/mobile/User/money_list">
+                    <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-income.png" alt="" class="center-list-icon"></div>
+                    <div class="weui-cell__bd weui-cell_primary">
+                        <p class="center-list-txt">资金记录</p>
+                    </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+                <a class="weui-cell weui-cell_access" href="/mobile/User/order_list">
+                    <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-ls.png" alt="" class="center-list-icon"></div>
+                    <div class="weui-cell__bd weui-cell_primary">
+                        <p class="center-list-txt">平仓记录</p>
+                    </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+                <a class="weui-cell weui-cell_access" href="/mobile/User/my_coin">
+                    <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-app.png" alt="" class="center-list-icon"></div>
+                    <div class="weui-cell__bd weui-cell_primary">
+                        <p class="center-list-txt">我的申购币</p>
+                    </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+                <a class="weui-cell weui-cell_access" href="/mobile/User/coin_list">
+                    <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-sc.png" alt="" class="center-list-icon"></div>
+                    <div class="weui-cell__bd weui-cell_primary">
+                        <p class="center-list-txt">申购币记录</p>
+                    </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+
+              <a class="weui-cell weui-cell_access" href="/mobile/User/re_pwd">
+                <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-dlmm.png" alt="" class="center-list-icon"></div>
+                <div class="weui-cell__bd weui-cell_primary">
+                  <p class="center-list-txt">密码修改</p>
+                </div>
+                <span class="weui-cell__ft"></span>
+              </a>
+              <a class="weui-cell weui-cell_access" href="/mobile/Login/logout">
+                <div class="weui-cell__hd"><img src="/static/mobile/images/center-icon-out.png" alt="" class="center-list-icon"></div>
+                <div class="weui-cell__bd weui-cell_primary">
+                  <p class="center-list-txt">安全退出</p>
+                </div>
+                <span class="weui-cell__ft"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+<div id="invite-code" class="weui-popup__container">
+    <div class="weui-popup__overlay"></div>
+    <div class="weui-popup__modal">
+        <header class="wy-header">
+            <div class="wy-header-title">我的邀请码</div>
+        </header>
+        <img src="{$path}" alt="" />
+        <p class="info">
+            邀请好友扫描二维码,长按保存到手机
+        </p>
+        <!--<p class="info">-->
+            <!--我的邀请码:{$invite_number}-->
+        <!--</p>-->
+        <!--<p class="info">-->
+            <!--邀请地址：{$url}-->
+        <!--</p>-->
+    </div>
+    <a href="javascript:;" class="weui-btn weui-btn_primary close-popup">关闭</a>
+</div>
+<div class="foot-black"></div>
+<div class="weui-tabbar wy-foot-menu">
+    <a href="/mobile/Index/index" class="weui-tabbar__item ">
+        <div class="weui-tabbar__icon foot-menu-home"></div>
+        <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a href="/mobile/Trade/index" class="weui-tabbar__item">
+        <div class="weui-tabbar__icon foot-menu-list"></div>
+        <p class="weui-tabbar__label">交易中心</p>
+    </a>
+    <a href="/mobile/Coin/index" class="weui-tabbar__item">
+        <div class="weui-tabbar__icon foot-menu-cart"></div>
+        <p class="weui-tabbar__label">申购币</p>
+    </a>
+    <a href="/mobile/User/index" class="weui-tabbar__item weui-bar__item--on">
+        <div class="weui-tabbar__icon foot-menu-member"></div>
+        <p class="weui-tabbar__label">我的</p>
+    </a>
+</div>
+
+</body>
+</html>
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script src="/static/mobile/js/jquery-weui.js"></script>
+
+<script>
+    $(function(){
+        $(document).on("open", ".weui-popup-modal", function() {
+        }).on("close", ".weui-popup-modal", function() {
+                });
+    })
+</script>

@@ -1,5 +1,5 @@
 <?php
-namespace app\index\controller;
+namespace app\mobile\controller;
 use think\Db;
 class User extends Common
 {
@@ -12,15 +12,30 @@ class User extends Common
         $this->user = session('user');
         $this->user_name = session('user_name');
         if (empty($this->user)) {
-            $this->redirect('/index/Login/login');
+            $this->redirect('/Mobile/Login/login');
         }
 
         $this->info=db::name('user')->where('uid',$this->user)->find();
-        $this->info['real_money']=($this->info['money']-$this->info['promise_money']);
+        $this->info['real_money']=$this->info['money']-$this->info['promise_money'];
         $this->assign('info',$this->info);
     }
     public function index()
     {
+        $url = 'http://' .$this->config['address']. '/index/login/register?code='.$this->info['invite_number'];
+        if(!$this->info['code']){
+            $path = substr(code($url), 1);
+            $data = array();
+            $data['code'] = $path;
+            $res = db::name('user')->where('uid',$this->user)->update($data);
+            if(!$res){
+                $this->error('生成二维码失败','/index/User/index');
+            }
+        }else{
+            $path = $this->info['code'];
+        }
+        $this->assign('path',$path);
+        $this->assign('url',$url);
+        $this->assign('invite_number',$this->info['invite_number']);
         return $this->fetch();
     }
 

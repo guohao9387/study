@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>我的好友</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style type="text/css">
+        .weui-media-box__title,.weui-media-box__desc{
+            color: white;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<!--主体-->
+<header class="wy-header" >
+    <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
+    <div class="wy-header-title">我的好友</div>
+</header>
+<div class='weui-content'>
+    <div class="weui-tab">
+        <div class="weui-tab__bd proinfo-tab-con" >
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                <div class="weui-panel__bd"  id="list">
+                    {volist name='list' id='val'}
+                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                        <div class="weui-media-box__hd">
+                            <img class="weui-media-box__thumb" src="/static/mobile/images/head.jpg" style="border-radius: 50%;" alt="">
+                        </div>
+                        <div class="weui-media-box__bd">
+                            <h4 class="weui-media-box__title">{$val.nickname}</h4>
+                            <p class="weui-media-box__desc">注册时间：{$val.add_time}</p>
+                        </div>
+                    </a>
+                    {/volist}
+                </div>
+                {if condition='count($list) eq 20'}
+                <div class="weui-loadmore">
+                    <i class="weui-loading"></i>
+                    <span class="weui-loadmore__tips">正在加载</span>
+                </div>
+                {/if}
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script>
+    $(function() {
+        var loading = false;  //状态标记
+        var page = 1;
+        $(document.body).infinite().on("infinite", function() {
+            if(loading) return;
+            loading = true;
+            $.ajax({
+                url:'/mobile/user/more_friends',
+                type:'post',
+                dataType:'json',
+                data:{page:page},
+                success:function(res){
+                    if(res.length>0){
+                        var list = '';
+                        for(var i=0;i<res.length;i++){
+                            list+='<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">';
+                            list +='<div class="weui-media-box__hd">';
+                            list +='<img class="weui-media-box__thumb" src="__STATIC__/mobile/upload/headimg.jpg" alt="">';
+                            list +='</div>';
+                            list +='<div class="weui-media-box__bd">';
+                            list +='<h4 class="weui-media-box__title">'+res[i]['nickname']+'</h4>';
+                            list +='<p class="weui-media-box__desc">注册时间：'+res[i]['add_time']+'</p>';
+                            list +='</div>';
+                            list +='</a>';
+                        }
+                        $("#list").append(list);
+                        loading = false;
+                        page++;
+                    }else if(res.length<20){
+                        $('.weui-loadmore').addClass('weui-loadmore_line');
+                        $('.weui-loading').remove();
+                        $('.weui-loadmore__tips').text('没有更多了');
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script src="/static/mobile/js/jquery-weui.js"></script>
+</body>
+</html>

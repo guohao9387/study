@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>申购币</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style>
+        .coinlist ul li {
+            padding: 15px;
+            border-bottom: 1px solid #586C94;
+            position: relative;
+        }
+
+        .coinlist ul li:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .coinlist ul li .coli-left {
+            width: 40%;
+            float: left;
+        }
+
+        .coinlist ul li .coli-right {
+            width: 55%;
+            float: right;
+        }
+
+        .coinlist ul li .coli-left img {
+            width: 100%;
+            height: 85px;
+            margin-bottom: 8px;
+        }
+
+        .coli-left p {
+            font-size: 13px;
+            color: white;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .coli-right .c-text {
+            overflow: hidden;
+            height: 100px;
+            line-height: 20px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -moz-box-orient: vertical;
+            -moz-line-clamp: 5;
+            -webkit-line-clamp: 5;
+            overflow: hidden;
+            font-size: 13px;
+            color: white;
+            /*border: 1px solid #FFFFFF;*/
+        }
+
+        .coinlist ul li button {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 100px;
+            outline: none;
+            border: none;
+            padding: 6px 0;
+            text-align: center;
+            font-size: 13px;
+            color: white;
+            background: green;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -o-border-radius: 8px;
+            -mz-border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+    <!--主体-->
+
+    <div class="weui-content">
+        <div class="coinlist">
+            <ul>
+                {volist name="list" id="val"}
+                <li>
+                    <div class="coli-left">
+                        <img src="{$val.image}" />
+                        <p class="c-name">名称： <span class="name">{$val.name}</span></p>
+                        <p class="c-price">单价：￥  <span class="price">{$val.price|number_format=###,2,'.',''}</span></p>
+                        <p class="c-type">规格： <span class="min_hand">{$val.min_hand|number_format=###,2,'.',''}</span> </p>
+                    </div>
+                    <div class="coli-right">
+                        <p class="c-text">{$val.describe}</p>
+
+                    </div>
+                    <button type="button" data-id="{$val.id}">购买</button>
+                </li>
+                {/volist}
+            </ul>
+        </div>
+    </div>
+    <div class="model">
+        <div class="model-content">
+            <h2 class="m-title">
+                申购币购买
+            </h2>
+            <form class="layui-form">
+                <div class="m-hang">
+                    <label>申购币名称</label>
+                    <input type="text" readonly="readonly" value="" id="name" style="border: none;"/>
+                </div>
+                <div class="m-hang">
+                    <label>单价</label>
+                    <input type="text" readonly="readonly" value="0" id="price" style="border: none;"/>
+                </div>
+                <div class="m-hang">
+                    <label>规格</label>
+                    <input type="text" readonly="readonly" value="0" id="min_hand" style="border: none;"/>
+                </div>
+                <div class="m-hang">
+                    <label>账户余额</label>
+                    <input type="text" readonly="readonly" value="{$money}" style="border: none;"/>
+                </div>
+                <div class="m-hang">
+                    <label>购买数量</label>
+                    <input type="number" placeholder="请输入购买数量" name="number" lay-verify="number|buy"/>
+                </div>
+                <input type="hidden" id="id" name="id" value=""/>
+
+                <div class="m-hang" style="margin-top:20px;">
+                    <button type="submit" style="margin-right: 20px;" class="submit" lay-filter="add" lay-submit="">确认</button>
+                <button class="cancel" type="button">取消</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    <!--底部导航-->
+    <div class="foot-black"></div>
+    <div class="weui-tabbar wy-foot-menu">
+        <a href="/mobile/Index/index" class="weui-tabbar__item ">
+            <div class="weui-tabbar__icon foot-menu-home"></div>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a href="/mobile/Trade/index" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon foot-menu-list"></div>
+            <p class="weui-tabbar__label">交易中心</p>
+        </a>
+        <a href="/mobile/Coin/index" class="weui-tabbar__item weui-bar__item--on">
+            <div class="weui-tabbar__icon foot-menu-cart"></div>
+            <p class="weui-tabbar__label">申购币</p>
+        </a>
+        <a href="/mobile/User/index" class="weui-tabbar__item">
+            <div class="weui-tabbar__icon foot-menu-member"></div>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+    <!---全选按钮-->
+    </body>
+</html>
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(".model .cancel").click(function(){
+            $(".model").hide(300);
+        })
+        $(".coinlist ul li button").click(function(){
+            var user='{$username}';
+            if(user=='0'){
+                layer.msg('请先登陆');
+                return false;
+            }
+            var name=$(this).parent('li').find('.name').text();
+            var price=$(this).parent('li').find('.price').text();
+            var min_hand=$(this).parent('li').find('.min_hand').text();
+            var id=$(this).attr('data-id');
+            $('#name').val(name);
+            $('#price').val(price);
+            $('#min_hand').val(min_hand);
+            $('#id').val(id);
+            $(".model").show(300);
+        })
+
+        layui.use(['form','layer'], function(){
+            $ = layui.jquery;
+            var form = layui.form
+                    ,layer = layui.layer;
+            //自定义验证规则
+
+            form.verify({
+                buy:function(value){
+                    if(value<= 0){
+                        return '请输入正确的购买数量';
+                    }
+                }
+            });
+
+            //监听提交
+            form.on('submit(add)', function(data){
+                $('.submit').attr("disabled",true);
+                $.post("/index/Coin/buy",data.field,function(res){
+                    if(res.status==0){
+                        layer.msg(res.msg,{icon: 2,time:2000},function(){
+                            $('.submit').removeAttr("disabled");
+                        });
+                    }else{
+                        layer.msg(res.msg,{icon: 1,time:1000},function(){
+                            $('.submit').removeAttr("disabled");
+                            $(".model").hide();
+                        });
+                    }
+                },'json');
+                return false;
+            });
+        });
+    });
+</script>
