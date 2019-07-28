@@ -38,6 +38,7 @@
             <input class="layui-input" placeholder="截止日" name="end" id="end" value="{:input('get.end')}">
 
             <input type="text" name="username"  placeholder="会员账号" autocomplete="off" class="layui-input" value="{:input('get.username')}">
+            <input type="text" name="order_sn"  placeholder="单号" autocomplete="off" class="layui-input" value="{:input('get.order_sn')}">
             <div class="layui-input-inline">
                 <select name="status">
                     <option value="">状态</option>
@@ -74,7 +75,7 @@
     <table class="layui-table">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>单号</th>
             <th>账号</th>
             <th>名称</th>
             <th>金额</th>
@@ -95,7 +96,7 @@
         <tbody>
         {volist name="list" id="vo" empty="暂时没有数据" }
         <tr>
-            <td>{$vo.id}</td>
+            <td>{$vo.order_sn}</td>
             <td>{$vo.username}</td>
             <td>{$vo.nickname}</td>
             <td>{$vo.money|number_format=###,2,'.',''}</td>

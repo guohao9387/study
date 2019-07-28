@@ -258,13 +258,14 @@
                 <div class="new_list">
                     <ul>
                         <li>
-                            <label>手机号码</label>
-                            <input type="number" value="{$real.phone}"  readonly/>
-                        </li>
-                        <li>
                             <label>真实姓名</label>
                             <input type="text" value="{$real.name}" readonly />
                         </li>
+                        <li>
+                            <label>手机号码</label>
+                            <input type="number" value="{$real.phone}"  readonly/>
+                        </li>
+
                         <li>
                             <select name="bank_name" lay-verify="bank_name" class="valid">
                                 <option value="0">请选择开户行   </option>
@@ -286,10 +287,13 @@
                         <button type="button" class="btn" lay-filter="add" lay-submit="">确定</button>
                     </div>
                     <div class="config">
+                        <p>特別提醒:</p>
                         <p>1.绑定银行卡前必须进行实名认证</p>
-                        <p>2.每人最多绑定3张银行卡</p>
-                        <p>3.提现时只能提现到已绑定的银行卡</p>
-                        <p>4.一但绑定若要修改请联系客服修改</p>
+                        <p>2.提现所用的银行卡对应的姓名必须是实名认证的真实姓名</p>
+                        <p>3.提现所用的银行卡对应的手机号必须是注册时的手机号码</p>
+                        <p>4.每人最多绑定3张银行卡</p>
+                        <p>5.提现时只能提现到已绑定的银行卡</p>
+                        <p>6.一但绑定若要修改请联系客服</p>
                     </div>
                 </div>
             </form>

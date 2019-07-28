@@ -195,7 +195,7 @@
                 <table class="layui-table">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>单号</th>
                         <th>金额</th>
                         <!--<th>费率</th>-->
                         <!--<th>到账金额</th>-->
@@ -213,7 +213,7 @@
                     <tbody>
                     {volist name="list" id="vo" empty="暂时没有数据" }
                     <tr>
-                        <td>{$vo.id}</td>
+                        <td>{$vo.order_sn}</td>
                         <td>{$vo.money|number_format=###,2,'.',''}</td>
                         <!--<td>{$vo.rate|number_format=###,2,'.',''}</td>-->
                         <!--<td>{$vo.real_money|number_format=###,2,'.',''}</td>-->

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>我的银行卡</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style type="text/css">
+        .weui-form-preview__label,.weui-form-preview__value,.weui-btn{
+            color: white;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<!--主体-->
+<header class="wy-header">
+    <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
+  <div class="wy-header-title">我的银行卡</div>
+</header>
+<div class="weui-content">
+    <div class="weui-tab">
+        <div class="weui-tab__bd proinfo-tab-con" >
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                <div class="weui-panel jyjl" id="list">
+                    {volist name='list' id='val'}
+                    <div class="weui-form-preview" >
+                        <div class="weui-form-preview__hd">
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">开户行</label>
+                                <em class="weui-form-preview__value" >{$val['name']}</em>
+                            </div>
+                        </div>
+                        <div class="weui-form-preview__bd">
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">开户支行</label>
+                                <span class="weui-form-preview__value">{$val['branch_name']}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">银行卡号</label>
+                                <span class="weui-form-preview__value">{$val['bank_card']|dataDesensitization=###,4,8}</span>
+                            </div>
+                            <div class="weui-form-preview__item">
+                                <label class="weui-form-preview__label">添加时间</label>
+                                <span class="weui-form-preview__value">{$val['add_time']}</span>
+                            </div>
+                    </div>
+                    {/volist}
+                </div>
+
+            </div>
+
+        </div>
+        </div>
+    </div>
+    {if $count<3}
+  <div class="weui-btn-area">
+   <a href="/mobile/User/bank_add" class="weui-btn weui-btn_plain-default" style="border:1px solid white;">绑定银行卡</a>
+  </div>
+    {/if}
+    <div  style="text-indent: 1rem;color: white;margin-top: 3rem;">
+        <p>特别提醒：</p>
+        <p>1.绑定银行卡前必须进行实名认证</p>
+        <p>2.每人最多绑定3张银行卡</p>
+        <p>3.提现时只能提现到已绑定的银行卡</p>
+        <p>4.一但绑定若要修改请联系客服</p>
+    </div>
+</div>
+</body>
+</html>

@@ -235,6 +235,7 @@ class Api extends Common{
                     if($res){
                         $data=[];
                         $data['real']=1;
+                        $data['update_time'] = date('Y-m-d H:i:s');
                         $res=db::name('user')->where('uid',$real_info['uid'])->update($data);
                         if($res){
                             add_user_operation($this->admin,$this->admin_name,3,1,'审核通过会员实名', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$real_info['uid']);
@@ -950,8 +951,8 @@ class Api extends Common{
             if(!empty($param['nickname'])){
                 $where[]= ['nickname','=',$param['nickname']];
             }
-            if(!empty($param['phone'])){
-                $where[]= ['phone','=',$param['phone']];
+            if(!empty($param['order_sn'])){
+                $where[]= ['order_sn','=',$param['order_sn']];
             }
             if(!empty($param['agent_name'])){
                 $where[]= ['agent_name','=',$param['agent_name']];
@@ -968,14 +969,14 @@ class Api extends Common{
         }
         $list = db::name('user_withdraw_log')
             ->where($where)
-            ->field('id,username,nickname,money,name,phone,bank_name,branch_name,bank_card,status,remark,add_time,update_time')
+            ->field('order_sn,username,nickname,money,name,phone,bank_name,branch_name,bank_card,status,remark,add_time,update_time')
             ->select();
         foreach($list as &$v){
             $v['status'] = str_withdraw_status($v['status']);
         }
         $name ='会员提现_'.date('Y-m-d H:i:s');
         $title = "<tr>
-                <th>ID</th>
+                <th>单号</th>
                 <th>账号</th>
                 <th>名称</th>
                 <th>金额</th>

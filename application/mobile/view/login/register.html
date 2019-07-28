@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
     <link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
     <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style type="text/css">
+        .weui-input{
+            color: white;
+        }
+    </style>
 </head>
 <body ontouchstart>
 <!--主体-->
@@ -25,23 +30,23 @@
     </div>
     <div class="weui-cell weui-cell_vcode">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">图形验证码</label></div>
-      <div class="weui-cell__bd"><input class="weui-input" type="number" placeholder="请输入验证码"></div>
+      <div class="weui-cell__bd"><input class="weui-input" type="number" placeholder="请输入图形验证码"></div>
       <div class="weui-cell__ft">
       <img src="/agent/Login/verify" id="my_code" alt="captcha" style="height: 2rem;width: 5.4rem" onClick="this.src=this.src+'?'+Math.random()"/>
       </div>
     </div>
       <div class="weui-cell weui-cell_vcode">
           <div class="weui-cell__hd"><label class="weui-label wy-lab">动态验证码</label></div>
-          <div class="weui-cell__bd"><input class="weui-input" type="tel" placeholder="请输入手机号"></div>
+          <div class="weui-cell__bd"><input class="weui-input" type="number" placeholder="请输入动态验证码"></div>
           <div class="weui-cell__ft"><button class="weui-vcode-btn">获取验证码</button></div>
       </div>
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">设置密码</label></div>
-      <div class="weui-cell__bd"><input class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入新密码"></div>
+      <div class="weui-cell__bd"><input class="weui-input" type="password" pattern="[0-9]*" placeholder="请输入新密码"></div>
     </div>
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">确认密码</label></div>
-      <div class="weui-cell__bd"><input class="weui-input" type="number" pattern="[0-9]*" placeholder="请再次输入新密码"></div>
+      <div class="weui-cell__bd"><input class="weui-input" type="password" pattern="[0-9]*" placeholder="请再次输入新密码"></div>
     </div>
   </div>
   <label for="weuiAgree" class="weui-agree">

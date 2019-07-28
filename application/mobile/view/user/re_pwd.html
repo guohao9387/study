@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>密码修改</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+</head>
+<body ontouchstart>
+<!--主体-->
+<header class="wy-header">
+  <div class="wy-header-icon-back" onclick="history_back()"><span></span></div>
+  <div class="wy-header-title">密码修改</div>
+</header>
+<div class="weui-content">
+    <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">旧密码</label></div>
+                <div class="weui-cell__bd">
+                    <input  style="color: white" class="weui-input" type="password" id="old_password" name='old_password' placeholder="请输入旧密码">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">新密码</label></div>
+                <div class="weui-cell__bd">
+                    <input style="color: white"  class="weui-input" type="password" id="password" name='password' placeholder="请输入新密码,6-18位不含空格">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">重复密码</label></div>
+                <div class="weui-cell__bd">
+                    <input style="color: white"  class="weui-input" type="password" id="repass" name='repass' placeholder="请输入重复密码">
+                </div>
+            </div>
+            <div class="weui-btn-area"><button type="button" class="weui-btn weui-btn_primary">确认修改</button></div>
+    </div>
+</div>
+
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script src="/static/mobile/js/jquery-weui.js"></script>
+<script src="/static/layer/layer.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $(".weui-btn").click(function(event) {
+        var old_password = $('#old_password').val();
+        var password = $('#password').val();
+        var repass = $('#repass').val();
+        var reg = /^[\S]{6,18}$/;
+        if(reg.test(old_password) === false)
+        {
+            layer.msg('请输入正确的旧密码',{icon: 2,time:1000});
+            return;
+        }
+        if(reg.test(password) === false)
+        {
+            layer.msg('请输入正确的新密码',{icon: 2,time:1000});
+            return;
+        }
+        if(repass !== password)
+        {
+            layer.msg('重复密码输入不一致',{icon: 2,time:1000});
+            return;
+        }
+        $.showLoading("提交中");
+        $.post("/mobile/User/re_pwd",{old_password:old_password,password:password,repass:repass}, function(data) {
+            $(".weui-btn").attr('disabled',"true");
+            $.hideLoading();
+            layer.msg(data.msg,{icon: 1,time:2000},function(){
+                if(data.status==1){
+                    window.location.href="/mobile/User/index";
+                }else{
+                    $('.weui-btn').removeAttr("disabled");
+                }
+            });
+        });
+        return false;
+    });
+</script>
+</body>
+</html>

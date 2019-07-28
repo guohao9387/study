@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>提现详情</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style type="text/css">
+        .right{
+            float: right;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<!--主体-->
+<header class="wy-header">
+  <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
+  <div class="wy-header-title">提现详情</div>
+</header>
+<div class="weui-content recharge my_info">
+	<div class="weui-panel">
+        <div class="weui-panel__bd">
+            <div class="weui-media-box weui-media-box_small-appmsg">
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">单号
+                                <span class="right" >{$info.order_sn}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">提现金额
+                                <span class="right" >{$info.money|number_format=###,2,".",""}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <!--<div class="weui-cells">-->
+                    <!--<a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >-->
+                        <!--<div class="weui-cell__hd"></div>-->
+                        <!--<div class="weui-cell__bd weui-cell_primary">-->
+                            <!--<p class="center-list-txt">真实姓名-->
+                                <!--<span class="right">{$info.name}</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="weui-cells">-->
+                    <!--<a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >-->
+                        <!--<div class="weui-cell__hd"></div>-->
+                        <!--<div class="weui-cell__bd weui-cell_primary">-->
+                            <!--<p class="center-list-txt">电话-->
+                                <!--<span class="right">{$info.phone}</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</a>-->
+                <!--</div>-->
+
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">银行名称
+                                <span class="right">{$info.bank_name}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">开户行
+                                <span class="right">{$info.branch_name}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">银行卡号
+                                <span class="right">{$info.bank_card|dataDesensitization=###,4,8}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">审核备注
+                                <span class="right">{$info.remark}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">审核状态
+                                <span class="right">{$info.status|str_withdraw_status}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">发起时间
+                                <span class="right">{$info.add_time}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="weui-cells">
+                    <a class="weui-cell weui-cell_access open-popup" href="javascript:void(0);"  >
+                        <div class="weui-cell__hd"></div>
+                        <div class="weui-cell__bd weui-cell_primary">
+                            <p class="center-list-txt">审核时间
+                                <span class="right">{$info.update_time}</span>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

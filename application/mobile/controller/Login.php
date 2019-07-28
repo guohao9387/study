@@ -12,12 +12,10 @@ class Login extends Controller
     }
     //会员登陆页面
     public function login(){
-
         if(request()->isAjax()){
             $username=input('post.username');
             $pwd=input('post.password');
 //            $vcode=input('post.vcode');
-
             if(!$username){
                 $data = array();
                 $data['status'] = 0;
@@ -237,12 +235,12 @@ class Login extends Controller
     }
     public function logout(){
         if (!session('user')) {
-            $this->redirect('/mobile/Index/index');
+            $this->redirect('/mobile/Login/login');
         }
         add_user_operation(session('user'),select_user_username(session('user')),1,1,'会员退出登陆', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
         session('user',null);
         session('user_name',null);
-        $this->redirect('/mobile/Index/index');
+        $this->redirect('/mobile/Login/login');
     }
 
     public function send_msg()

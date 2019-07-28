@@ -61,8 +61,8 @@ class Money extends Common{
             if(!empty($param['nickname'])){
                 $where[]= ['nickname','=',$param['nickname']];
             }
-            if(!empty($param['phone'])){
-                $where[]= ['phone','=',$param['phone']];
+            if(!empty($param['order_sn'])){
+                $where[]= ['order_sn','=',$param['order_sn']];
             }
             if(!empty($param['agent_name'])){
                 $where[]= ['agent_name','=',$param['agent_name']];

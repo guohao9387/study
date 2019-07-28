@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>游戏记录</title>
+    <title>申购币获赠记录</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -19,7 +19,7 @@
 <!--主体-->
 <header class="wy-header" >
     <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
-    <div class="wy-header-title">游戏记录</div>
+    <div class="wy-header-title">申购币获赠记录</div>
 </header>
 <div class='weui-content' >
     <div class="weui-tab">
@@ -30,34 +30,23 @@
                     <div class="weui-form-preview" >
                         <div class="weui-form-preview__hd">
                             <div class="weui-form-preview__item">
-                                <label class="weui-form-preview__label">产品名称</label>
-                                <em class="weui-form-preview__value" >{$val['product_name']}</em>
+                                <label class="weui-form-preview__label">货币名称</label>
+                                <em class="weui-form-preview__value" >{$val['apply_coin_name']}</em>
                             </div>
                         </div>
                         <div class="weui-form-preview__bd">
                             <div class="weui-form-preview__item">
-                                <label class="weui-form-preview__label">建仓价</label>
-                                <span class="weui-form-preview__value">¥{$val['buy_price']|number_format=###,2,'.',''}</span>
+                                <label class="weui-form-preview__label">赠送人</label>
+                                <span class="weui-form-preview__value">{$val['give_username']}</span>
                             </div>
                             <div class="weui-form-preview__item">
-                                <label class="weui-form-preview__label">平仓价</label>
-                                <span class="weui-form-preview__value">¥{$val['sell_price']|number_format=###,2,'.',''}</span>
+                                <label class="weui-form-preview__label">数量</label>
+                                <span class="weui-form-preview__value">{$val['number']|number_format=###,2,'.',''}</span>
                             </div>
                             <div class="weui-form-preview__item">
-                                <label class="weui-form-preview__label">保证金</label>
-                                <span class="weui-form-preview__value">¥{$val['money']|number_format=###,2,'.',''}</span>
-                            </div>
-                            <div class="weui-form-preview__item">
-                                <label class="weui-form-preview__label">订单收益</label>
-                                <span class="weui-form-preview__value">¥{$val['profit']|number_format=###,2,'.',''}</span>
-                            </div>
-                            <div class="weui-form-preview__item">
-                                <label class="weui-form-preview__label">建仓时间</label>
+                                <label class="weui-form-preview__label">时间</label>
                                 <span class="weui-form-preview__value">{$val.add_time}</span>
                             </div>
-                        </div>
-                        <div class="weui-form-preview__ft">
-                            <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="/mobile/user/order_info?oid={$val.oid}">查看详情</a>
                         </div>
                     </div>
                     {/volist}
@@ -73,20 +62,20 @@
         </div>
     </div>
 </div>
-
 <script src="/static/index/js/jquery-2.1.1.min.js"></script>
 <script>
     $(function() {
         var loading = false;  //状态标记
         var page = 1;
+        var id="{$id}";
         $(document.body).infinite().on("infinite", function() {
             if(loading) return;
             loading = true;
             $.ajax({
-                url:'/mobile/User/more_order_list',
+                url:'/mobile/User/more_coin_give_log',
                 type:'post',
                 dataType:'json',
-                data:{page:page},
+                data:{page:page,id:id},
                 success:function(res){
                     if(res.length>0){
                         var list = '';
@@ -94,34 +83,24 @@
                             list+='<div class="weui-form-preview">';
                             list +='<div class="weui-form-preview__hd">';
                             list +='<div class="weui-form-preview__item">';
-                            list +='<label class="weui-form-preview__label">产品名称</label>';
-                            list +='<em class="weui-form-preview__value">'+res[i]['product_name']+'</em>';
+                            list +='<label class="weui-form-preview__label">货币名称</label>';
+                            list +='<em class="weui-form-preview__value">'+res[i]['apply_coin_name']+'</em>';
                             list +='</div>';
                             list +='</div>';
                             list +='<div class="weui-form-preview__bd">';
                             list +='<div class="weui-form-preview__item">';
-                            list +='<label class="weui-form-preview__label">建仓价</label>';
-                            list +='<span class="weui-form-preview__value">¥'+res[i]['buy_price']+'</span>';
+                            list +='<label class="weui-form-preview__label">赠送人</label>';
+                            list +='<span class="weui-form-preview__value">'+res[i]['give_username']+'</span>';
+                            list +='</div>';
+                            list +='<div class="weui-form-preview__bd">';
+                            list +='<div class="weui-form-preview__item">';
+                            list +='<label class="weui-form-preview__label">数量</label>';
+                            list +='<span class="weui-form-preview__value">'+res[i]['number']+'</span>';
                             list +='</div>';
                             list +='<div class="weui-form-preview__item">';
-                            list +='<label class="weui-form-preview__label">平仓价</label>';
-                            list +='<span class="weui-form-preview__value">'+res[i]['sell_price']+'</span>';
-                            list +='</div>';
-                            list +='<div class="weui-form-preview__item">';
-                            list +='<label class="weui-form-preview__label">保证金</label>';
-                            list +='<span class="weui-form-preview__value">'+res[i]['money']+'</span>';
-                            list +='</div>';
-                            list +='<div class="weui-form-preview__item">';
-                            list +='<label class="weui-form-preview__label">订单收益</label>';
-                            list +='<span class="weui-form-preview__value">'+res[i]['profit']+'</span>';
-                            list +='</div>';
-                            list +='<div class="weui-form-preview__item">';
-                            list +='<label class="weui-form-preview__label">建仓时间</label>';
+                            list +='<label class="weui-form-preview__label">时间</label>';
                             list +='<span class="weui-form-preview__value">'+res[i]['add_time']+'</span>';
                             list +='</div>';
-                            list +='</div>';
-                            list +='<div class="weui-form-preview__ft">';
-                            list +='<a class="weui-form-preview__btn weui-form-preview__btn_primary" href="/mobile/user/order_info?oid='+res[i]['oid']+'">查看详情</a>';
                             list +='</div>';
                             list +='</div>';
                         }

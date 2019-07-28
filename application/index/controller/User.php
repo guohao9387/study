@@ -253,6 +253,7 @@ class User extends Common
             if($oid){
 
                 $data = [];
+                $data['order_sn']='uw'.time().rand(1000,9999);
                 $data['uid'] = $this->user;
                 $data['username'] = $this->user_name;
                 $data['nickname'] = $user['nickname'];
@@ -465,6 +466,12 @@ class User extends Common
         $where[]=['status','=',2];
         $where[]=['uid','=',$this->user];
         $real=db::name('real_auth')->where($where)->field('name')->find();
+        if(!$real){
+            $data=[];
+            $data['status']=0;
+            $data['msg']='请先进行实名认证';
+            return json($data);
+        }
         $real['phone']=$this->user_name;
         if(request()->isAjax()){
             $where=[];

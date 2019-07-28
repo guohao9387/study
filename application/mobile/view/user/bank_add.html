@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>添加银行卡</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style type="text/css">
+        .weui-input,.weui-btn{
+            color: white;
+        }
+        #bank{
+            background-color: #000000;
+            color: white;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<!--主体-->
+<header class="wy-header">
+    <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
+  <div class="wy-header-title">添加银行卡</div>
+</header>
+<div class="weui-content">
+  <div class="weui-cell wy-address-edit">
+    <div class="weui-cell__hd"><label class="weui-label wy-lab">真实姓名</label></div>
+    <div class="weui-cell__bd"><input class="weui-input" type="text"   value="{$real.name}" readonly></div>
+  </div>
+    <div class="weui-cell wy-address-edit">
+    <div class="weui-cell__hd"><label  class="weui-label wy-lab">手机号码</label></div>
+    <div class="weui-cell__bd"><input class="weui-input" type="text" value="{$real.phone}"></div>
+  </div>
+    <div class="weui-cell wy-address-edit">
+    <div class="weui-cell__hd"><label class="weui-label wy-lab">开户行</label></div>
+    <div class="weui-cell__bd">
+        <select name="bank_name" id="bank">
+            <option value="0">请选择开户行   </option>
+            {volist name="bank" id="val"}
+            <option value="{$val.bank_name}">{$val.bank_name}</option>
+            {/volist}
+        </select>
+    </div>
+  </div>
+  <div class="weui-cell wy-address-edit">
+    <div class="weui-cell__hd"><label class="weui-label wy-lab">开户支行</label></div>
+    <div class="weui-cell__bd"><input class="weui-input" id="branch_name" name="branch_name" type="text" placeholder="请输入开户支行"></div>
+  </div>
+  <div class="weui-cell wy-address-edit">
+    <div class="weui-cell__hd"><label class="weui-label wy-lab">银行卡号</label></div>
+    <div class="weui-cell__bd"><input class="weui-input" id="bank_card" name="bank_card" type="text" placeholder="请输入银行卡号"></div>
+  </div>
+  <div class="weui-btn-area">
+   <a href="javascript:;" class="weui-btn weui-btn_plain-default" style="border:1px solid white;">保存此银行卡</a>
+  </div>
+</div>
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script src="/static/mobile/js/jquery-weui.js"></script>
+<script src="/static/layer/layer.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $(".weui-btn ").click(function(){
+        var bank_name=$('#bank').val();
+        var branch_name=$('#branch_name').val();
+        var bank_card=$('#bank_card').val();
+        if(bank_name==0){
+            layer.msg('请选择开户行',{icon: 2,time:1000});
+            return false;
+        }
+        if(branch_name.length<=0||branch_name.length>50){
+            layer.msg('请输入正确的开户支行名称',{icon: 2,time:1000});
+            return false;
+        }
+        var num = /^[\S]{16,20}$/; //全数字
+        if(!num.exec(bank_card)) {
+            layer.msg('请输入正确的银行卡号',{icon: 2,time:1000});
+            return false;
+        }
+        $('.weui-btn').attr("disabled",true);
+        $.post("/mobile/User/bank_add",{bank_name:bank_name,branch_name:branch_name,bank_card:bank_card},function(res){
+            if(res.status==0){
+                layer.msg(res.msg,{icon: 2,time:2000},function(){
+                    $('.weui-btn').removeAttr("disabled");
+                });
+            }else{
+                layer.msg(res.msg,{icon: 1,time:1000},function(){
+                    window.location.href="/mobile/User/bank_list";
+                });
+            }
+        },'json');
+        return false;
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>提现记录</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style type="text/css">
+        .weui-form-preview__label,.weui-form-preview__value,.weui-btn{
+            color: white;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<!--主体-->
+<header class="wy-header" >
+  <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
+  <div class="wy-header-title">提现记录</div>
+</header>
+<div class='weui-content'>
+  <div class="weui-tab">
+    <div class="weui-tab__bd proinfo-tab-con" >
+      <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+        <div class="weui-panel jyjl" id="list">
+            {volist name='list' id='val'}
+            <div class="weui-form-preview">
+                <div class="weui-form-preview__hd">
+                    <div class="weui-form-preview__item">
+                        <label class="weui-form-preview__label">单号</label>
+                        <em class="weui-form-preview__value">{$val.order_sn}</em>
+                    </div>
+                </div>
+                <div class="weui-form-preview__bd">
+                    <div class="weui-form-preview__item">
+                        <label class="weui-form-preview__label">提现金额</label>
+                        <span class="weui-form-preview__value">¥{$val.money|number_format=###,2,".",""}</span>
+                    </div>
+                    <div class="weui-form-preview__item">
+                        <label class="weui-form-preview__label">审核状态</label>
+                        <span class="weui-form-preview__value">{$val.status|str_withdraw_status}</span>
+                    </div>
+                    <div class="weui-form-preview__item">
+                        <label class="weui-form-preview__label">提现时间</label>
+                        <span class="weui-form-preview__value">{$val.add_time}</span>
+                    </div>
+                </div>
+                <div class="weui-form-preview__ft">
+                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="/mobile/User/withdraw_info?id={$val.id}">查看详情</a>
+                </div>
+            </div>
+            {/volist}
+        </div>
+          {if condition='count($list) eq 20'}
+        <div class="weui-loadmore">
+          <i class="weui-loading"></i>
+          <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+          {/if}
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script src="/static/mobile/js/jquery-weui.js"></script>
+<script>
+  $(function() {
+      var loading = false;  //状态标记
+      var page = 1;
+      $(document.body).infinite().on("infinite", function() {
+		  if(loading) return;
+		  loading = true;
+            $.ajax({
+                url:'/mobile/User/more_withdraw',
+                type:'post',
+                dataType:'json',
+                data:{page:page},
+                success:function(res){
+                    if(res.length>0){
+                        var list = '';
+                        for(var i=0;i<res.length;i++){
+                            list+='<div class="weui-form-preview">';
+                            list +='<div class="weui-form-preview__hd">';
+                            list +='<div class="weui-form-preview__item">';
+                            list +='<label class="weui-form-preview__label">单号</label>';
+                            list +='<em class="weui-form-preview__value">'+res[i]['order_sn']+'</em>';
+                            list +='</div>';
+                            list +='</div>';
+                            list +='<div class="weui-form-preview__bd">';
+                            list +='<div class="weui-form-preview__item">';
+                            list +='<label class="weui-form-preview__label">提现金额</label>';
+                            list +='<span class="weui-form-preview__value">¥'+res[i]['money']+'</span>';
+                            list +='</div>';
+                            list +='<div class="weui-form-preview__item">';
+                            list +='<label class="weui-form-preview__label">审核状态</label>';
+                            list +='<span class="weui-form-preview__value">'+res[i]['status']+'</span>';
+                            list +='</div>';
+                            list +='<div class="weui-form-preview__item">';
+                            list +='<label class="weui-form-preview__label">提现时间</label>';
+                            list +='<span class="weui-form-preview__value">'+res[i]['add_time']+'</span>';
+                            list +='</div>';
+                            list +='</div>';
+                            list +='<div class="weui-form-preview__ft">';
+                            list +='<a class="weui-form-preview__btn weui-form-preview__btn_primary" href="/mobile/user/withdraw_info?id='+res[i]['id']+'">查看详情</a>';
+                            list +='</div>';
+                            list +='</div>';
+                        }
+                        $("#list").append(list);
+                        loading = false;
+                        page++;
+                    }else if(res.length<20){
+                        $('.weui-loadmore').addClass('weui-loadmore_line');
+                        $('.weui-loading').remove();
+                        $('.weui-loadmore__tips').text('没有更多了');
+                    }
+                }
+            });
+		});
+  });
+</script>
+</body>
+</html>

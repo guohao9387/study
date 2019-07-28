@@ -58,7 +58,7 @@
             if(loading) return;
             loading = true;
             $.ajax({
-                url:'/mobile/user/more_friends',
+                url:'/mobile/User/more_friends',
                 type:'post',
                 dataType:'json',
                 data:{page:page},
@@ -68,7 +68,7 @@
                         for(var i=0;i<res.length;i++){
                             list+='<a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">';
                             list +='<div class="weui-media-box__hd">';
-                            list +='<img class="weui-media-box__thumb" src="__STATIC__/mobile/upload/headimg.jpg" alt="">';
+                            list +='<img class="weui-media-box__thumb" src="/static/mobile/images/head.jpg" alt="">';
                             list +='</div>';
                             list +='<div class="weui-media-box__bd">';
                             list +='<h4 class="weui-media-box__title">'+res[i]['nickname']+'</h4>';

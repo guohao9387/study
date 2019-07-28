@@ -72,13 +72,23 @@ class User extends Common
         die;
     }
     public function friends(){
-        $param=input('get.');
         $where=[];
         $where[]=['status','=',1];
         $where[]=['pid','=',$this->user];
-        $list=db::name('user')->where($where)->paginate(20,false,['query'=>$param]);
+        $list=db::name('user')->where($where)->paginate(20);
         $this->assign('list',$list);
         return $this->fetch();
+    }
+    public function more_friends(){
+        if(request()->isAjax()){
+            $num = 20;
+            $page = input('post.page');
+            $where = [];
+            $where[] = ['pid','=',$this->user];
+            $where[] = ['status','=',1];
+            $list = db::name('user')->where($where)->order('uid desc')->field('nickname,add_time')->limit($page*$num,$num)->select();
+            return $list;
+        }
     }
     public function real_auth()
     {
@@ -268,6 +278,7 @@ class User extends Common
             if($oid){
 
                 $data = [];
+                $data['order_sn']='uw'.time().rand(1000,9999);
                 $data['uid'] = $this->user;
                 $data['username'] = $this->user_name;
                 $data['nickname'] = $user['nickname'];
@@ -332,64 +343,100 @@ class User extends Common
 
     public function withdraw_list()
     {
-        $param = input('get.');
         $where = array();
-        if(request()->isGet()){
-            if(!empty($param['status'])){
-                $where[]= ['status','=',$param['status']];
-            }
-            if(!empty($param['start'])){
-                $where[]= ['add_time','>=',$param['start']];
-            }
-            if(!empty($param['end'])){
-                $where[]= ['add_time','<=',$param['end']];
-            }
-        }
         $where[] = ['uid','=',$this->user];
         $list = db::name('user_withdraw_log')
             ->where($where)
             ->order('id desc')
-            ->paginate(20,false,['query'=>$param]);
+            ->paginate(20);
         $this->assign('list',$list);
         return $this->fetch();
     }
+    public function withdraw_info()
+    {
+        $where = [];
+        $where[] = ['status','=',1];
+        $where[] = ['uid','=',$this->user];
+        $id = input('get.id');
+        if(!$id){
+            $this->error('参数错误');
+        }
+        $where =[];
+        $where[] = ['id','=',$id];
+        $where[] = ['uid','=',$this->user];
+        $info = db::name('user_withdraw_log')->where($where)->find();
+        $this->assign('info',$info);
+        return $this->fetch();
+    }
+    public function more_withdraw(){
 
+        if(request()->isAjax()){
+            $num = 20;
+            $page = input('post.page');
+            $where = [];
+            $where[] = ['uid','=',$this->user];
+            $list = db::name('user_withdraw_log')->where($where)->order('id desc')->limit($page*$num,$num)->select();
+            if($list){
+                foreach($list as &$val){
+                    $val['status'] = str_withdraw_status($val['status']);
+                    $val['money'] = number_format($val['money'],'2','.','');
+                }
+            }
+            return $list;
+        }
+    }
     public function money_list()
     {
-        $post = input('get.');
         $where = [];
         $where[] = ['uid','=',$this->user];
-
-        if(request()->isGet()){
-            if(!empty($post['start'])){
-                $where[] = ['add_time','>=',$post['start']];
-            }
-            if(!empty($post['end'])){
-                $where[] = ['add_time','<=',$post['end']];
-            }
-        }
-        $list = db::name('user_money_log')->where($where)->order('id desc')->paginate(20,false,['query'=>$post]);
+        $list = db::name('user_money_log')->where($where)->order('id desc')->paginate(20);
         $this->assign('list',$list);
         return $this->fetch();
     }
-
+    public function more_money_list(){
+        if(request()->isAjax()){
+            $num = 20;
+            $page = input('post.page');
+            $where = [];
+            $where[] = ['uid','=',$this->user];
+            $list = db::name('user_money_log')->where($where)->order('id desc')->limit($page*$num,$num)->select();
+            if($list){
+                foreach($list as &$val){
+                    $val['money'] = number_format($val['money'],'2','.','');
+                    $val['before_money'] = number_format($val['before_money'],'2','.','');
+                    $val['after_money'] = number_format($val['after_money'],'2','.','');
+                }
+            }
+            return $list;
+        }
+    }
     public function order_list()
     {
-        $post = input('post.');
         $where = [];
         $where[] = ['uid','=',$this->user];
          $where[] = ['order_status','=',2];
-        if(request()->isGet()){
-            if(!empty($post['start'])){
-                $where[] = ['add_time','>=',$post['start']];
-            }
-            if(!empty($post['end'])){
-                $where[] = ['add_time','<=',$post['end']];
-            }
-        }
-        $list = db::name('order')->where($where)->order('oid desc')->paginate(20,false,['query'=>$post]);
+        $list = db::name('order')->where($where)->order('oid desc')->paginate(20);
         $this->assign('list',$list);
         return $this->fetch();
+    }
+    public function more_order_list(){
+        if(request()->isAjax()){
+            $num = 20;
+            $page = input('post.page');
+            $where = [];
+            $where[] = ['uid','=',$this->user];
+            $where[] = ['order_status','=',2];
+            $list = db::name('order')->where($where)->order('oid desc')->limit($page*$num,$num)->select();
+            if($list){
+                foreach($list as &$val){
+                    $val['buy_price'] = number_format($val['buy_price'],'2','.','');
+                    $val['sell_price'] = number_format($val['sell_price'],'2','.','');
+                    $val['money'] = number_format($val['money'],'2','.','');
+                    $val['profit'] = number_format($val['profit'],'2','.','');
+                }
+            }
+            return $list;
+        }
     }
     public function re_pwd()
     {
@@ -469,17 +516,23 @@ class User extends Common
         $where[] =['status','=',1];
         $where[] =['utype','=',1];
         $where[] =['uid','=',$this->user];
-        $list = db::name('bank_info')->where($where)->order(['id'=>'desc'])->select();
+        $list = db::name('bank_info')->where($where)->select();
         $count=count($list);
         $this->assign('count',$count);
         $this->assign('list',$list);
         return $this->fetch();
     }
-    public function blind_bank_card(){
+    public function bank_add(){
         $where=[];
         $where[]=['status','=',2];
         $where[]=['uid','=',$this->user];
         $real=db::name('real_auth')->where($where)->field('name')->find();
+        if(!$real){
+            $data=[];
+            $data['status']=0;
+            $data['msg']='请先进行实名认证';
+            return json($data);
+        }
         $real['phone']=$this->user_name;
         if(request()->isAjax()){
             $where=[];
@@ -542,45 +595,67 @@ class User extends Common
             return $this->fetch();
         }
     }
-    public function coin(){
+    public function my_coin(){
         $where=[];
         $where[]=['uid','=',$this->user];
         $list=db::name('user_apply_coin')->where($where)->select();
         $this->assign('list',$list);
         return $this->fetch();
     }
-    public function coin_order_list()
+    public function coin_order_log()
     {
-        $post = input('get.');
         $where = [];
         $where[] = ['uid','=',$this->user];
-        if(request()->isGet()){
-            if(!empty($post['start'])){
-                $where[] = ['add_time','>=',$post['start']];
-            }
-            if(!empty($post['end'])){
-                $where[] = ['add_time','<=',$post['end']];
-            }
-        }
-        $list = db::name('apply_coin_order_log')->where($where)->order('id desc')->paginate(20,false,['query'=>$post]);
+        $where[]=['apply_coin_id','=',input('get.id')];
+        $list = db::name('apply_coin_order_log')->where($where)->order('id desc')->paginate(20);
         $this->assign('list',$list);
+        $this->assign('id',input('get.id'));
         return $this->fetch();
     }
-    public function coin_give_list()
+    public function more_coin_order_list(){
+        if(request()->isAjax()){
+            $num = 20;
+            $page = input('post.page');
+            $id = input('post.id');
+            $where = [];
+            $where[] = ['uid','=',$this->user];
+            $where[] = ['apply_coin_id','=',$id];
+            $list = db::name('apply_coin_order_log')->where($where)->order('id desc')->limit($page*$num,$num)->select();
+            if($list){
+                foreach($list as &$val){
+                    $val['number'] = number_format($val['number'],'2','.','');
+                    $val['price'] = number_format($val['price'],'2','.','');
+                    $val['amount'] = number_format($val['amount'],'2','.','');
+                }
+            }
+            return $list;
+        }
+    }
+    public function coin_give_log()
     {
-        $post = input('get.');
         $where = [];
         $where[] = ['uid','=',$this->user];
-        if(request()->isGet()){
-            if(!empty($post['start'])){
-                $where[] = ['add_time','>=',$post['start']];
-            }
-            if(!empty($post['end'])){
-                $where[] = ['add_time','<=',$post['end']];
-            }
-        }
-        $list = db::name('apply_coin_give_log')->where($where)->order('id desc')->paginate(20,false,['query'=>$post]);
+        $where[]=['apply_coin_id','=',input('get.id')];
+        $list = db::name('apply_coin_give_log')->where($where)->order('id desc')->paginate(20);
         $this->assign('list',$list);
+        $this->assign('id',input('get.id'));
         return $this->fetch();
+    }
+    public function more_coin_give_list(){
+        if(request()->isAjax()){
+            $num = 20;
+            $page = input('post.page');
+            $id = input('post.id');
+            $where = [];
+            $where[] = ['uid','=',$this->user];
+            $where[] = ['apply_coin_id','=',$id];
+            $list = db::name('apply_coin_give_log')->where($where)->order('id desc')->limit($page*$num,$num)->select();
+            if($list){
+                foreach($list as &$val){
+                    $val['number'] = number_format($val['number'],'2','.','');
+                }
+            }
+            return $list;
+        }
     }
 }
