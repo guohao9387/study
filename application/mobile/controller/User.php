@@ -527,12 +527,6 @@ class User extends Common
         $where[]=['status','=',2];
         $where[]=['uid','=',$this->user];
         $real=db::name('real_auth')->where($where)->field('name')->find();
-        if(!$real){
-            $data=[];
-            $data['status']=0;
-            $data['msg']='请先进行实名认证';
-            return json($data);
-        }
         $real['phone']=$this->user_name;
         if(request()->isAjax()){
             $where=[];
@@ -591,7 +585,6 @@ class User extends Common
             $bank=db::name('bank')->order('id asc')->select();
             $this->assign('bank',$bank);
             $this->assign('real',$real);
-
             return $this->fetch();
         }
     }

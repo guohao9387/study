@@ -273,9 +273,16 @@
             </ul>
 
         </div>
+            {if $info.real==2}
             {if $count<3}
             <div class="rows">
                 <a href="/index/User/blind_bank_card"><button type="button">立即绑定</button></a>
+            </div>
+
+            {/if}
+            {else/}
+            <div class="rows">
+                <a href="/index/User/real_auth"><button type="button">请先进行实名认证，去认证</button></a>
             </div>
             {/if}
             <div class="config">
