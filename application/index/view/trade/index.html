@@ -1346,7 +1346,7 @@
 			wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
             var ws = new WebSocket(wsUrl)
             //var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
-
+            console.log(wsUrl);
             ws.onopen = function()
             {
                 layer.close(loadingFirst);

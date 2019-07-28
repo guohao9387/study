@@ -651,7 +651,16 @@
 </html>
 
 <script type="text/javascript">
-    var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=3");
+    var loc = window.location;
+    loc.host='aioq.cn';
+    var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
+    var uid=3;
+    var wsUrl ='ws:';
+    if(loc.protocol == 'https:')
+        wsUrl = 'wss:'
+    wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
+    var ws = new WebSocket(wsUrl)
+//    var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=3");
 
     ws.onopen = function()
     {
