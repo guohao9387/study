@@ -6,73 +6,28 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<link rel="stylesheet" href="lib/weui.min.css">
-<link rel="stylesheet" href="css/jquery-weui.css">
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
 </head>
 <body ontouchstart>
 <!--主体-->
 <header class="wy-header">
-  <div class="wy-header-icon-back"><span></span></div>
+    <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
   <div class="wy-header-title">新闻列表</div>
 </header>
 <div class="weui-content">
   <div class="weui-cells wy-news-list">
-    <a class="weui-cell weui-cell_access" href="news_info.html">
+      {volist name="list" id="val"}
+    <a class="weui-cell weui-cell_access" href="/mobile/Notice/news_info?id={$val.id}">
       <div class="weui-cell__bd">
-        <p>热烈祝贺伟义商城成功上线</p>
+        <p style="color: white">{$val.title}</p>
       </div>
       <div class="weui-cell__ft"></div>
      </a>
-     <a class="weui-cell weui-cell_access" href="news_info.html">
-      <div class="weui-cell__bd">
-        <p>热烈祝贺蓝之蓝股份成功上市</p>
-      </div>
-      <div class="weui-cell__ft"></div>
-     </a>
-     <a class="weui-cell weui-cell_access" href="news_info.html">
-      <div class="weui-cell__bd">
-        <p>热烈祝贺伟义商城成功上线</p>
-      </div>
-      <div class="weui-cell__ft"></div>
-     </a>
-     <a class="weui-cell weui-cell_access" href="news_info.html">
-      <div class="weui-cell__bd">
-        <p>热烈祝贺蓝之蓝股份成功上市</p>
-      </div>
-      <div class="weui-cell__ft"></div>
-     </a>
-     <a class="weui-cell weui-cell_access" href="news_info.html">
-      <div class="weui-cell__bd">
-        <p>热烈祝贺蓝之蓝股份成功上市</p>
-      </div>
-      <div class="weui-cell__ft"></div>
-     </a>
-     <a class="weui-cell weui-cell_access" href="news_info.html">
-      <div class="weui-cell__bd">
-        <p>热烈祝贺伟义商城成功上线</p>
-      </div>
-      <div class="weui-cell__ft"></div>
-     </a>
-     <a class="weui-cell weui-cell_access" href="news_info.html">
-      <div class="weui-cell__bd">
-        <p>热烈祝贺蓝之蓝股份成功上市</p>
-      </div>
-      <div class="weui-cell__ft"></div>
-     </a>
+      {/volist}
   </div>
   
 </div>
-
-<script src="lib/jquery-2.1.4.js"></script> 
-<script src="lib/fastclick.js"></script> 
-<script type="text/javascript" src="js/jquery.Spinner.js"></script>
-<script>
-  $(function() {
-    FastClick.attach(document.body);
-  });
-</script>
-
-<script src="js/jquery-weui.js"></script>
 </body>
 </html>

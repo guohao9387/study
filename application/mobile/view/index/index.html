@@ -5,210 +5,122 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <title>{$GLOBALS['title']}</title>
-<meta name="keywords" content="艾比特" />
-<meta name="description" content="艾比特" />
-<link rel="stylesheet" href="/static/mobile/css/weui.min.css">
-<link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
-<link rel="stylesheet" href="/static/mobile/css/style.css">
-    <style>
-        .pagelist{
-            padding:10px;
-            padding-top: 0;
-            border-top: 1px solid #586C94;
-        }
-        .clearboth:after{
-            content: "";
-            clear: both;
-            display: block;
-        }
-        .pagelist ul {
-
-        }
-        .pagelist ul li{
-            padding: 10px 0;
-            width: 100%;
-            border-bottom: 1px solid #586C94;
-        }
-        .pagelist ul li:last-child{
-            border-bottom:0;
-        }
-        .pagelist ul li .pali-left{
-            width: 73%;
-            float: left;
-        }
-        .pagelist ul li .pali-right{
-            width: 22%;
-            float: right;
-        }
-        .pali-left>div{
-            height: 20px;
-            line-height: 20px;
-
-        }
-        .pali-left .pl-first{
-            margin-bottom: 2px;
-        }
-        .pali-left .pl-first p:first-child{
-            float: left;
-            color: white;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .pali-left .pl-first p:first-child small{
-            font-size: 12px;
-            color: #D4D4D4;
-        }
-
-        .pali-left .pl-first p:last-child{
-            float: right;
-            color: white;
-            font-size: 13px;
-        }
-        .pali-left .pl-tw p:first-child{
-            float: left;
-            color: #D4D4D4;
-            font-size: 12px;
-
-        }
-        .pali-left .pl-tw p:last-child{
-            float: right;
-            color: white;
-            font-size: 12px;
-        }
-        .pali-right button{
-            font-size: 12px;
-            height: 35px;
-            line-height: 35px;
-            background:orange;
-            color: white;
-            outline: none;
-            border: none;
-            width: 100%;
-            text-align: center;
-            border-radius: 5px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            -o-border-radius:5px;
-        }
-    </style>
+<meta name="keywords" content="{$GLOBALS['title']}" />
+<meta name="description" content="{$GLOBALS['title']}" />
+    <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+    <link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
+    <link rel="stylesheet" href="/static/mobile/css/style.css">
 </head>
 <body ontouchstart>
 <!--顶部搜索-->
-
+<header class='weui-header'>
+    <div class="wy-header-title">{$GLOBALS['title']}</div>
+</header>
 <!--主体-->
 <div class='weui-content'>
-<div class="pagelist">
-	<ul>
-        {volist name="product" id="val"}
-        <li class="clearboth">
-            <div class="pali-left">
-                <div class="pl-first clearboth">
-                    <p class="weui-media-box__bd">{$val.desc_name}</p>
-                    <p class="weui-media-box__bd" >涨跌<span id="up_down_val_{$val.abbreviation}">0.00</span></p>
-                </div>
-                <div class="pl-tw clearboth">
-                    <p id="{$val.abbreviation}">0.00</p>
-                    <p>涨幅<span id="up_down_per_{$val.abbreviation}">0.00</span>%</p>
-                </div>
-            </div>
-            <div class="pali-right">
-                <button><a href="/mobile/Trade/index?id={$val.id}" style="color: white">交易</a></button>
-            </div>
-        </li>
-
+  <!--顶部轮播-->
+  <div class="swiper-container swiper-banner">
+    <div class="swiper-wrapper">
+        {volist name="adv" id="val"}
+      <div class="swiper-slide"><a href="{$val.url}"><img src="{$val.image}" /></a></div>
         {/volist}
-	</ul>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!--新闻切换-->
+  <div class="wy-ind-news" style="background-color: #232222">
+    <i class="news-icon-laba"></i>
+    <div class="swiper-container swiper-news">
+      <div class="swiper-wrapper">
+        {volist name="notice_list" id="val"}
+            <div class="swiper-slide" >
+                <a href="/mobile/Notice/notice_info?id={$val.id}" style="color: white">{$val.title}</a>
+            </div>
+        {/volist}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <a href="/mobile/Notice/notice_list" class="newsmore"><i class="news-icon-more"></i></a>
+  </div>
+
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__hd" style="color: white">新闻资讯</div>
+        <div class="weui-panel__bd">
+            {volist name="news_list" id="val"}
+            <div class="weui-media-box weui-media-box_text">
+                <h4 class="weui-media-box__title" style="color: white">{$val.title}</h4>
+                <p class="weui-media-box__desc" style="color: white;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{$val.des}</p>
+            </div>
+            {/volist}
+            <div class="weui-panel__ft">
+                <a href="/mobile/Notice/news_list" class="weui-cell weui-cell_access weui-cell_link">
+                    <div class="weui-cell__bd" style="color: white">查看更多 </div>
+                    <span class="weui-cell__ft"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
 </div>
-</div>
+
 
 <!--底部导航-->
 <div class="foot-black"></div>
 <div class="weui-tabbar wy-foot-menu">
-  <a href="/mobile/Index/index" class="weui-tabbar__item weui-bar__item--on">
-    <div class="weui-tabbar__icon foot-menu-home"></div>
-    <p class="weui-tabbar__label">首页</p>
-  </a>
-  <a href="/mobile/Trade/index" class="weui-tabbar__item">
-    <div class="weui-tabbar__icon foot-menu-list"></div>
-    <p class="weui-tabbar__label">交易中心</p>
-  </a>
-  <a href="/mobile/Coin/index" class="weui-tabbar__item">
-    <div class="weui-tabbar__icon foot-menu-cart"></div>
-    <p class="weui-tabbar__label">申购币</p>
-  </a>
-  <a href="/mobile/User/index" class="weui-tabbar__item">
-    <div class="weui-tabbar__icon foot-menu-member"></div>
-    <p class="weui-tabbar__label">我的</p>
-  </a>
+    <a href="/mobile/Index/index" class="weui-tabbar__item weui-bar__item--on">
+        <div class="weui-tabbar__icon foot-menu-home"></div>
+        <p class="weui-tabbar__label">首页</p>
+    </a>
+    <a href="/mobile/Index/price" class="weui-tabbar__item">
+        <div class="weui-tabbar__icon foot-menu-list"></div>
+        <p class="weui-tabbar__label">行情</p>
+    </a>
+    <a href="/mobile/Trade/index" class="weui-tabbar__item">
+        <div class="weui-tabbar__icon foot-menu-list"></div>
+        <p class="weui-tabbar__label">交易中心</p>
+    </a>
+    <a href="/mobile/Coin/index" class="weui-tabbar__item">
+        <div class="weui-tabbar__icon foot-menu-cart"></div>
+        <p class="weui-tabbar__label">申购币</p>
+    </a>
+    <a href="/mobile/User/index" class="weui-tabbar__item">
+        <div class="weui-tabbar__icon foot-menu-member"></div>
+        <p class="weui-tabbar__label">我的</p>
+    </a>
 </div>
 
 <script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script src="/static/mobile/js/jquery-weui.js"></script>
+<script src="/static/mobile/js/swiper.js"></script>
 <script>
-    var loc = window.location;
-    var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
-    var openPrice = [];
-    function math_floor(number,per){
-        number = parseFloat(number);
-//        console.log(number);
-        return number.toFixed(2);
-    }
-    function countRange(nowPrice,productAbbreviation){
-        var range=nowPrice-openPrice[productAbbreviation];
-        var range_per=range/openPrice[productAbbreviation]*100;
-        var up_down_val=  "#up_down_val_"+productAbbreviation;
-        var up_down_per=  "#up_down_per_"+productAbbreviation;
-        var name="#"+productAbbreviation;
-        var color;
-        if(nowPrice>=openPrice[productAbbreviation]){
-            color='red';
-        }else if(nowPrice<openPrice[productAbbreviation]){
-            color='green';
-        }
-        $(up_down_val).text(math_floor(range)).parent().attr("style","color:"+color+";");
-        $(up_down_per).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
-        $(name).attr("style","color:"+color+";");
-    }
-    $(function  () {
-        var url = baseUrl + "/openPrice";
-        //获取产品开盘价
-        $.ajax({
-            type: 'get',
-            url: url,
-            //async: false,//同步
-            success : function(data) {
-                for(let i in data){
-                    openPrice[i] =data[i]['USD'];
-                }
-            },
-            error : function(errMsg) {
-                //不知道该干啥
-            }
-        });
-        var wsUrl ='ws:';
-        if(loc.protocol == 'https:')
-            wsUrl = 'wss:'
-        wsUrl += '//' + loc.host + '/golang/ws?uid=' + 3;
-        var ws = new WebSocket(wsUrl)
-        ws.onopen = function()
-        {
-        };
-
-        ws.onmessage = function (evt)
-        {
-            var data=JSON.parse(evt.data);
-            if(data.status){
-
-            }else{
-                $.each(data,function(k,v){
-                    var abbreviation='#'+k;//固定产品位置
-                    var new_price=v['USD'];
-                    $(abbreviation).text(new_price);
-                    //计算涨幅跌幅
-                    countRange(new_price,k);
-                });
-            }
-        };
-    });
+	$(".swiper-banner").swiper({
+        loop: true,
+        autoplay: 3000
+      });
+	$(".swiper-news").swiper({
+		loop: true,
+		direction: 'vertical',
+		paginationHide :true,
+        autoplay: 2000
+      });
+	 $(".swiper-jingxuan").swiper({
+		pagination: '.swiper-pagination',
+		loop: true,
+		paginationType:'fraction',
+        slidesPerView:3,
+        paginationClickable: true,
+        spaceBetween: 2
+      });
+	 $(".swiper-jiushui").swiper({
+		pagination: '.swiper-pagination',
+		paginationType:'fraction',
+		loop: true,
+        slidesPerView:3,
+		slidesPerColumn: 2,
+        paginationClickable: true,
+        spaceBetween:2
+      });
 </script>
 </body>
 </html>

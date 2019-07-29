@@ -79,7 +79,7 @@
     </form>
 </div>
 <script>
-    var mmm = '{$info["content"]}';
+    var mmm = '{$info["content"]|raw}';
 
     layui.use('layedit', function(){
         layedit = layui.layedit;

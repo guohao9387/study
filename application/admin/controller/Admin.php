@@ -218,7 +218,7 @@ class Admin extends Common{
             }
             $data['add_time'] = date('Y-m-d H:i:s',time());
             $data['status'] = 1;
-//            $data['des'] = substr($data['content'],0,100);
+            $data['des'] = mb_substr($data['content'],0,100);
             unset($data['file']);
             $res = db::name('news')->insert($data);
             if($res){
@@ -244,7 +244,7 @@ class Admin extends Common{
             if(!$data['sort']||$data['sort']<1||$data['sort']>9999){
                 $data['sort']=1;
             }
-//            $data['des'] = substr($data['content'],0,100);
+            $data['des'] = mb_substr($data['content'],0,100);
             $res = db::name('news')->update($data);
             if($res){
                 add_user_operation($this->admin,$this->admin_name, 3,4,'编辑资讯', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
@@ -261,7 +261,7 @@ class Admin extends Common{
             $where = array();
             $where[] = ['status','<>',3];
             $where[] = ['id','=',input('get.id')];
-            $info = db::name('news')->where($where)->field('id,title,content,sort')->find();
+            $info = db::name('news')->where($where)->find();
             if($info){
                 $this->assign('info',$info);
                 return $this->fetch();

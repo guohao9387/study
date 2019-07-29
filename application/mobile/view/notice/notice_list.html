@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>新闻详情</title>
+<title>公告列表</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -12,19 +12,21 @@
 </head>
 <body ontouchstart>
 <!--主体-->
-
 <header class="wy-header">
     <div class="wy-header-icon-back" onclick="window.history.back();"><span></span></div>
-  <div class="wy-header-title">新闻详情</div>
+  <div class="wy-header-title">公告列表</div>
 </header>
 <div class="weui-content">
-  <article class="weui-article">
-    <h1 style="color: white">{$info.title}</h1>
-    <h3 class="wy-news-time" style="color: white">{$info.add_time}</h3>
-    <section class="wy-news-info" style="color: white">
-      {$info.content|raw}
-    </section>
-  </article>
+  <div class="weui-cells wy-news-list">
+      {volist name="list" id="val"}
+    <a class="weui-cell weui-cell_access" href="/mobile/Notice/news_info?id={$val.id}">
+      <div class="weui-cell__bd">
+        <p style="color: white">{$val.title}</p>
+      </div>
+      <div class="weui-cell__ft"></div>
+     </a>
+      {/volist}
+  </div>
   
 </div>
 </body>

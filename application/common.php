@@ -187,6 +187,8 @@ function str_adv_type($type){
         $str = '首页';
     }elseif($type ==2){
         $str = '申购币';
+    }elseif($type ==3){
+        $str = 'app首页';
     }
     return $str;
 }
