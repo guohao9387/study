@@ -17,7 +17,7 @@ class Index extends Common
         $where=[];
         $where[]=['status','=',1];
         $where[]=['type','=',1];
-        $list=db::name('news')->where($where)->order('sort desc')->limit(6)->select();
+        $list=db::name('news')->where($where)->order('sort desc')->limit(20)->select();
         $this->assign('news_list',$list);
 
         $where=[];
