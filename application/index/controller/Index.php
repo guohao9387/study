@@ -6,7 +6,7 @@ class Index extends Common
     public function initialize(){
         parent::initialize();
         $kefu=[];
-        $kefu['qq']=db::name('kefu')->where('id','=',2)->cache('qq_kefu')->value('value');
+        $kefu['qq']=db::name('kefu')->where('id','=',5)->cache('qq_kefu')->value('value');
         $kefu['weixin']=db::name('kefu')->where('id','=',3)->cache('weixin_kefu')->value('image');
         $kefu['phone']=db::name('kefu')->where('id','=',4)->cache('phone_kefu')->value('image');
         $this->assign('kefu',$kefu);

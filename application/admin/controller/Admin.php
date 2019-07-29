@@ -386,6 +386,7 @@ class Admin extends Common{
                 $data = array();
                 $data['status'] = 1;
                 $data['msg'] = '添加成功';
+                cache_kefu();
             }else{
                 $data = array();
                 $data['status'] = 0;

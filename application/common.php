@@ -1053,3 +1053,8 @@ function cache_night_fee(){
     cache('product_night_fee',$arr);
     return $arr;
 }
+function cache_kefu(){
+    cache('qq_kefu',null);
+    cache('weixin_kefu',null);
+    cache('phone_kefu',null);
+}
