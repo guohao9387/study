@@ -94,7 +94,7 @@ class Order extends Common
         $n=0;
         foreach($order_list as $val){
             $where=[];
-            $where[]=['date','=',date("Y-m-d",strtotime("-1 day"))];
+            $where[]=['date','=',date("Y-m-d")];
             $where[]=['oid','=',$val['oid']];
             $res=db::name('night_fee')->where($where)->find();
             if($res){
@@ -125,7 +125,7 @@ class Order extends Common
                 $data=[];
                 $data['oid']=$val['oid'];
                 $data['fee']=$product_night_fee[$val['product_abbreviation']];
-                $data['date']=date("Y-m-d",strtotime("-1 day"));
+                $data['date']=date("Y-m-d");
                 $data['add_time']=date('Y-m-d H:i:s');
                 $operation_id=db::name('night_fee')->insertGetId($data);
                 //添加资金记录
