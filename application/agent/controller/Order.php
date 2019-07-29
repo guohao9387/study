@@ -99,6 +99,7 @@ class Order extends Common{
         $where[]=['status','=',1];
         $product=db::name('product')->where($where)->select();
         $this->assign('product',$product);
+        $this->assign('agent',$this->agent);
 
         return $this->fetch();
     }

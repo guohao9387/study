@@ -115,7 +115,15 @@
 
 </div>
 <script>
-    var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=1");
+    var loc = window.location;
+    var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
+    var uid=1;
+    var wsUrl ='ws:';
+    if(loc.protocol == 'https:')
+        wsUrl = 'wss:'
+    wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
+    var ws = new WebSocket(wsUrl)
+    //    var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=3");
 
     ws.onopen = function()
     {
@@ -125,8 +133,7 @@
 
     ws.onmessage = function (evt)
     {
-        console.log(evt);
-//        console.log(evt.data);
+        //console.log(evt.data);
         var data=JSON.parse(evt.data);
         $.each(data,function(k,v){
             var id='#'+k;
