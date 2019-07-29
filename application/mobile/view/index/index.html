@@ -61,7 +61,7 @@
 
         .pali-left .pl-first p:last-child{
             float: right;
-            color: green;
+            color: white;
             font-size: 13px;
         }
         .pali-left .pl-tw p:first-child{
@@ -72,7 +72,7 @@
         }
         .pali-left .pl-tw p:last-child{
             float: right;
-            color: green;
+            color: white;
             font-size: 12px;
         }
         .pali-right button{
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="pali-right">
-                <button><a href="/mobile/Trade/index?id={$val.id}">交易</a></button>
+                <button><a href="/mobile/Trade/index?id={$val.id}" style="color: white">交易</a></button>
             </div>
         </li>
 
@@ -147,6 +147,11 @@
     var loc = window.location;
     var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
     var openPrice = [];
+    function math_floor(number,per){
+        number = parseFloat(number);
+//        console.log(number);
+        return number.toFixed(2);
+    }
     function countRange(nowPrice,productAbbreviation){
         var range=nowPrice-openPrice[productAbbreviation];
         var range_per=range/openPrice[productAbbreviation]*100;
