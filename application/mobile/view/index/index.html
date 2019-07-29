@@ -156,15 +156,16 @@
         var range=nowPrice-openPrice[productAbbreviation];
         var range_per=range/openPrice[productAbbreviation]*100;
         var up_down_val=  "#up_down_val_"+productAbbreviation;
-        var up_down_per=  "up_down_per_"+productAbbreviation;
+        var up_down_per=  "#up_down_per_"+productAbbreviation;
         var color;
         if(nowPrice>=openPrice[productAbbreviation]){
             color='red';
         }else if(nowPrice<openPrice[productAbbreviation]){
             color='green';
         }
-        $(up_down_val).text(math_floor(range)).attr("style","color:"+color+";");
+        $(up_down_val).text(math_floor(range)).parent().attr("style","color:"+color+";");
         $(up_down_per).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+        $('#'+k).attr("style","color:"+color+";");
     }
     $(function  () {
         var url = baseUrl + "/openPrice";
