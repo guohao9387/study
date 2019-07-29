@@ -227,13 +227,14 @@ class Login extends Controller
                 }
             }
         }else{
-            if(isMobile()){
-                $this->redirect('/mobile/Login/register');
-            }
+
             if (session('user')) {
                 $this->redirect('/index/User/index');
             }
             $invite_number=input('get.code');
+            if(isMobile()){
+                $this->redirect('/mobile/Login/register'.'?code='.$invite_number);
+            }
             $this->assign('invite_number',$invite_number);
             return $this->fetch();
         }
