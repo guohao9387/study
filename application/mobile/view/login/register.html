@@ -40,8 +40,8 @@
     </div>
       <div class="weui-cell weui-cell_vcode">
           <div class="weui-cell__hd"><label class="weui-label wy-lab">动态验证码</label></div>
-          <div class="weui-cell__bd"><input class="weui-input" type="number" placeholder="请输入动态验证码" lay-verify="code|number" name="code"></div>
-          <div class="weui-cell__ft"><button type="button" class="weui-vcode-btn" onclick="send_msg()">点击发送</button></div>
+          <div class="weui-cell__bd"><input class="weui-input" type="number" placeholder="请输入动态验证码" lay-verify="code|number" name="code" ></div>
+          <div class="weui-cell__ft"><button type="button" class="weui-vcode-btn code_btn" onclick="send_msg()">点击发送</button></div>
       </div>
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">姓名</label></div>
@@ -155,12 +155,12 @@
         }
         var url = "/index/Login/send_msg";
         $.post(url,{phone:phone,vcode:vcode},function(resdata){
-            console.log(resdata);
-            layer.msg(resdata.msg);
             if(resdata.status == 1){
+                layer.msg(resdata.msg,{icon: 1,time:1000});
                 $(".code_btn").attr('onclick',"return false;");
                 msg_time_down();
             }else{
+                layer.msg(resdata.msg,{icon: 2,time:1000});
                 $('#my_code').click();
             }
         })
@@ -171,12 +171,12 @@
         setTime=setInterval(function(){
             if(time<=1){
                 clearInterval(setTime);
-                $(".code_btn").val("再发一次");
+                $(".code_btn").text("再发一次");
                 $(".code_btn").attr('onclick',"return send_msg();");
                 return;
             }
             time--;
-            $(".code_btn").val(time+"s");
+            $(".code_btn").text(time+"s");
 
         },1000);
     }

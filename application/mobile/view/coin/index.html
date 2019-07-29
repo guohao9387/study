@@ -177,7 +177,7 @@
         $(".coinlist ul li button").click(function(){
             var user='{$username}';
             if(user=='0'){
-                layer.msg('请先登陆');
+                layer.msg('请先登陆',{icon: 2,time:1000});
                 return false;
             }
             var name=$(this).parent('li').find('.name').text();
