@@ -34,7 +34,7 @@ class Index extends Common
         $where=[];
         $where[]=['status','=',1];
         $where[]=['show_status','=',1];
-        $product=db::name('product')->where($where)->field('name,desc_name,abbreviation,contract,image')->select();
+        $product=db::name('product')->where($where)->field('id,name,desc_name,abbreviation,contract,image')->select();
 
         $this->assign('product',$product);
 

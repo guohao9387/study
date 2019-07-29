@@ -10,85 +10,87 @@
 <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
 <link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
 <link rel="stylesheet" href="/static/mobile/css/style.css">
-<style>
-	.pagelist{
-		padding:10px;
-		padding-top: 0;
-		border-top: 1px solid #586C94;
-		}
-	.clearboth:after{
-		content: "";
-		clear: both;
-		display: block;
-	}
-    .pagelist ul {
+    <style>
+        .pagelist{
+            padding:10px;
+            padding-top: 0;
+            border-top: 1px solid #586C94;
+        }
+        .clearboth:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .pagelist ul {
 
-    }
-	.pagelist ul li{
-		padding: 10px 0;
-		width: 100%;
-		border-bottom: 1px solid #586C94;
-	}
-	.pagelist ul li:last-child{
-		border-bottom:0;
-	}
-	.pagelist ul li .pali-left{
-		width: 73%;
-		float: left;
-	}
-.pagelist ul li .pali-right{
-	width: 22%;
-	float: right;
-}
-.pali-left>div{
-	line-height: 2rem;
-	
-}
-.pali-left .pl-first{
-	margin-bottom: 2px;
-}
-.pali-left .pl-first p:first-child{
-	float: left;
-	color: white;
-	font-size: 1rem;
-	font-weight: bold;
-}
-.pali-left .pl-first p:first-child small{
-	font-size: 1rem;
-	color: #D4D4D4;
-}
+        }
+        .pagelist ul li{
+            padding: 10px 0;
+            width: 100%;
+            border-bottom: 1px solid #586C94;
+        }
+        .pagelist ul li:last-child{
+            border-bottom:0;
+        }
+        .pagelist ul li .pali-left{
+            width: 73%;
+            float: left;
+        }
+        .pagelist ul li .pali-right{
+            width: 22%;
+            float: right;
+        }
+        .pali-left>div{
+            height: 20px;
+            line-height: 20px;
 
-.pali-left .pl-first p:last-child{
-	float: right;
-	color: red;
-	font-size: 1rem;
-}
-.pali-left .pl-tw p:first-child{
-	float: left;
-	color: #D4D4D4;
-	font-size: 1rem;
-}
-.pali-left .pl-tw p:last-child{
-	float: right;
-	color: red;
-	font-size: 12px;
-}
-.pali-right button{
-	font-size: 1rem;
-	height: 1.8rem;
-	line-height: 2rem;
-	background:red;
-	color: white;
-	outline: none;
-	border: none;
-	width: 100%;
-	text-align: center;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-o-border-radius:5px;
-}
-</style>
+        }
+        .pali-left .pl-first{
+            margin-bottom: 2px;
+        }
+        .pali-left .pl-first p:first-child{
+            float: left;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .pali-left .pl-first p:first-child small{
+            font-size: 12px;
+            color: #D4D4D4;
+        }
+
+        .pali-left .pl-first p:last-child{
+            float: right;
+            color: green;
+            font-size: 13px;
+        }
+        .pali-left .pl-tw p:first-child{
+            float: left;
+            color: #D4D4D4;
+            font-size: 12px;
+
+        }
+        .pali-left .pl-tw p:last-child{
+            float: right;
+            color: green;
+            font-size: 12px;
+        }
+        .pali-right button{
+            font-size: 12px;
+            height: 35px;
+            line-height: 35px;
+            background:orange;
+            color: white;
+            outline: none;
+            border: none;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -o-border-radius:5px;
+        }
+    </style>
 </head>
 <body ontouchstart>
 <!--顶部搜索-->
@@ -98,17 +100,22 @@
 <div class="pagelist">
 	<ul>
         {volist name="product" id="val"}
-		<li class="clearboth">
-			<div class="pali-left">
-				<div class="pl-first clearboth">
-					<p class="weui-media-box__bd">{$val.desc_name}</p>
-						<p class="weui-media-box__bd"  id="{$val.abbreviation}">0.00</p>
-				</div>
-			</div>
-			<div class="pali-right">
-				<button type="button">0.00%</button>
-			</div>
-		</li>
+        <li class="clearboth">
+            <div class="pali-left">
+                <div class="pl-first clearboth">
+                    <p class="weui-media-box__bd">{$val.desc_name}</p>
+                    <p class="weui-media-box__bd" >涨跌<span id="up_down_val_{$val.abbreviation}">0.00</span></p>
+                </div>
+                <div class="pl-tw clearboth">
+                    <p id="{$val.abbreviation}">0.00</p>
+                    <p>涨幅<span id="up_down_per_{$val.abbreviation}">0.00</span>%</p>
+                </div>
+            </div>
+            <div class="pali-right">
+                <button><a href="/mobile/Trade/index?id={$val.id}">交易</a></button>
+            </div>
+        </li>
+
         {/volist}
 	</ul>
 </div>
@@ -139,36 +146,62 @@
 <script>
     var loc = window.location;
     var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
-    var uid=3;
-    var wsUrl ='ws:';
-    if(loc.protocol == 'https:')
-        wsUrl = 'wss:'
-    wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
-    var ws = new WebSocket(wsUrl)
-    //    var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=3");
-
-    ws.onopen = function()
-    {
-        // Web Socket 已连接上，使用 send() 方法发送数据
-        //ws.send("发送数据");
-    };
-
-    ws.onmessage = function (evt)
-    {
-        //console.log(evt.data);
-        var data=JSON.parse(evt.data);
-        $.each(data,function(k,v){
-            var id='#'+k;
-            var last_price=$(id).html();
-            var now_price=v['USD'];
-            if(now_price>=last_price){
-                $(id).attr("style","color:red;");
-            }else{
-                $(id).attr("style","color:green;");
+    var openPrice = [];
+    function countRange(nowPrice,productAbbreviation){
+        var range=nowPrice-openPrice[productAbbreviation];
+        var range_per=range/openPrice[productAbbreviation]*100;
+        var up_down_val=  "#up_down_val"+productAbbreviation;
+        var up_down_per=  "up_down_per"+productAbbreviation+"]";
+        var color;
+        if(nowPrice>=openPrice[productAbbreviation]){
+            color='red';
+        }else if(nowPrice<openPrice[productAbbreviation]){
+            color='green';
+        }
+        $(up_down_val).text(math_floor(range)).attr("style","color:"+color+";");
+        $(up_down_per).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+    }
+    $(function  () {
+        var url = baseUrl + "/openPrice";
+        //获取产品开盘价
+        $.ajax({
+            type: 'get',
+            url: url,
+            //async: false,//同步
+            success : function(data) {
+                for(let i in data){
+                    openPrice[i] =data[i]['USD'];
+                }
+            },
+            error : function(errMsg) {
+                //不知道该干啥
             }
-            $(id).html(v['USD']);
-        })
-    };
+        });
+        var wsUrl ='ws:';
+        if(loc.protocol == 'https:')
+            wsUrl = 'wss:'
+        wsUrl += '//' + loc.host + '/golang/ws?uid=' + 3;
+        var ws = new WebSocket(wsUrl)
+        ws.onopen = function()
+        {
+        };
+
+        ws.onmessage = function (evt)
+        {
+            var data=JSON.parse(evt.data);
+            if(data.status){
+
+            }else{
+                $.each(data,function(k,v){
+                    var abbreviation='#'+k;//固定产品位置
+                    var new_price=v['USD'];
+                    $(abbreviation).text(new_price);
+                    //计算涨幅跌幅
+                    countRange(new_price,k);
+                });
+            }
+        };
+    });
 </script>
 </body>
 </html>

@@ -1281,8 +1281,8 @@
     }
     $(function  () {
         var layer;
-		var loadingFirst;
-		var loadingSecond;
+        var loadingFirst;
+        var loadingSecond;
         function prepareWs(){
             var url = baseUrl + "/openPrice";
             //获取产品开盘价
@@ -1340,10 +1340,10 @@
                 setCandlestick(name,"1day",30);
             });
             var uid="{$user.uid}";
-			var wsUrl ='ws:';
-			if(loc.protocol == 'https:')
-				wsUrl = 'wss:'
-			wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
+            var wsUrl ='ws:';
+            if(loc.protocol == 'https:')
+                wsUrl = 'wss:'
+            wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
             var ws = new WebSocket(wsUrl)
             //var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
             console.log(wsUrl);
@@ -1370,7 +1370,7 @@
 
             ws.onmessage = function (evt)
             {
-    //            console.log(evt);
+                //            console.log(evt);
 //            console.log(evt.data);
                 var data=JSON.parse(evt.data);
                 if(data.status){
@@ -1402,7 +1402,7 @@
                         if(k==active_name){
                             //计算止盈止损
                             count_wave(new_price);
-							var opt = myChart.getOption();
+                            var opt = myChart.getOption();
                             if(opt){
                                 opt.series[0].markLine.data[0].yAxis = new_price;
                                 myChart.clear();
@@ -1421,7 +1421,7 @@
                     layer.close(loadingSecond);
                 }
             };
-		}
+        }
         layui.use(['layer', 'form'], function () {
             layer = layui.layer;
             var form = layui.form;
@@ -1487,7 +1487,7 @@
             });
 
         });
-		setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
+        setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
     });
     function keep_order_list_add(data){
 //        console.log(data);
