@@ -101,7 +101,13 @@ class Api extends Common{
                 $msg['money']=$money;
                 $msg['promise_money']=-$order['money'];
                 bar($user['uid'],$msg);
+                $msg=[];
+                $msg['status']=1002;
+                $msg['oid']=$order['oid'];
+                send_msg_agent($user['agent_id'],$msg);
+
                 return json_return(1,'平仓成功');
+
             }else{
                 db::rollback();
                 return json_return(0,'操作失败，请重试');

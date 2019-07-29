@@ -216,6 +216,7 @@ class Trade extends Common
                     $msg['order']=$order;
                     //给总后台发消息，刷新持仓页面
                     bar(1,$msg);
+                    send_msg_agent($user['agent_id'],$msg);
                     return json_return(1,'建仓成功',$order);
                 }else{
                     db::rollback();
@@ -341,6 +342,8 @@ class Trade extends Common
                 $msg['oid']=$order['oid'];
                 //给总后台发消息，刷新持仓页面
                 bar(1,$msg);
+                send_msg_agent($user['agent_id'],$msg);
+
                 $info=[];
                 $info['oid']=$order['oid'];
                 $info['money']=$money;

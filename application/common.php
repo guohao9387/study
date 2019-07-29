@@ -913,6 +913,15 @@ function bar($uid, $body){
         }
     }
 }
+function send_msg_agent($agent_id,$msg){
+    $where=[];
+    $where[]=['agent_id','=',$agent_id];
+    $agent=db::name('agent')->where($where)->find();
+    if($agent['p_agent_id']){
+        bar('agent_'.$agent['p_agent_id'],$msg);
+    }
+    bar('agent_'.$agent_id,$msg);
+}
 function get_now_price($name){
     $url="http://47.90.122.200:8080/price";
     $curl = curl_init();
@@ -1041,6 +1050,10 @@ function save_order($order,$now_price,$type,$money){
     $msg['money']=$money;
     $msg['promise_money']=-$order['money'];
     bar($user['uid'],$msg);
+    $msg=[];
+    $msg['status']=1002;
+    $msg['oid']=$order['oid'];
+    send_msg_agent($user['agent_id'],$msg);
 }
 function cache_night_fee(){
     $where=[];

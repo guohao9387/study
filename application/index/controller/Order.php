@@ -71,6 +71,7 @@ class Order extends Common
             $msg['status']=1003;
             //给总后台发消息，刷新持仓页面
             bar(1,$msg);
+
             return 'ok';
         }else{
             return 'null';
@@ -150,6 +151,10 @@ class Order extends Common
                 $msg['money']=-$product_night_fee[$val['product_abbreviation']];
                 $msg['promise_money']=0;
                 bar($user['uid'],$msg);
+                $msg=[];
+                $msg['status']=1002;
+                $msg['oid']=$val['oid'];
+                send_msg_agent($user['agent_id'],$msg);
             }
 
         }
