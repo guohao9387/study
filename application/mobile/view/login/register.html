@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/mobile/css/weui.min.css">
     <link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
     <link rel="stylesheet" href="/static/mobile/css/style.css">
+    <link rel="stylesheet" href="/static/admin/css/xadmin.css">
     <style type="text/css">
         .weui-input{
             color: white;
@@ -19,7 +20,7 @@
 <body ontouchstart>
 <!--主体-->
 <header class="wy-header">
-    <div class="wy-header-icon-back" onclick="javascript:history.go(-1)"><span></span></div>
+    <!--<div class="wy-header-icon-back" onclick="javascript:history.go(-1)"><span></span></div>-->
   <div class="wy-header-title">手机注册</div>
 </header>
 <div class="weui-content">
@@ -28,11 +29,11 @@
     <div class="weui-cells weui-cells_form wy-address-edit">
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">手机号</label></div>
-      <div class="weui-cell__bd"><input class="weui-input" type="tel" placeholder="请输入手机号" lay-verify="phone"></div>
+      <div class="weui-cell__bd"><input class="weui-input" name="username" id="username" type="tel" placeholder="请输入手机号" lay-verify="phone"></div>
     </div>
     <div class="weui-cell weui-cell_vcode">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">图形验证码</label></div>
-      <div class="weui-cell__bd"><input class="weui-input" type="number" placeholder="请输入图形验证码" lay-verify="vcode|number" id="vcode"></div>
+      <div class="weui-cell__bd"><input class="weui-input" name="vcode" type="number" placeholder="请输入图形验证码" lay-verify="vcode|number" id="vcode"></div>
       <div class="weui-cell__ft">
       <img src="/agent/Login/verify" id="my_code" alt="captcha" style="height: 2rem;width: 4.1rem" onClick="this.src=this.src+'?'+Math.random()"/>
       </div>
@@ -44,29 +45,34 @@
       </div>
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">姓名</label></div>
-      <div class="weui-cell__bd"><input class="weui-input" lay-verify="nickname" type="text"  placeholder="请输入您的姓名"></div>
+      <div class="weui-cell__bd"><input class="weui-input" name="nickname" lay-verify="nickname" type="text"  placeholder="请输入您的姓名"></div>
     </div>
         <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">设置密码</label></div>
-      <div class="weui-cell__bd"><input class="weui-input" type="password"  name="password" placeholder="请输入新密码" lay-verify="password"></div>
+      <div class="weui-cell__bd"><input class="weui-input" type="password" id="password" name="password" placeholder="请输入新密码" lay-verify="password"></div>
     </div>
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">确认密码</label></div>
-      <div class="weui-cell__bd"><input lay-verify="re_password" class="weui-input" type="password" name="re_password"  placeholder="请再次输入新密码"></div>
+      <div class="weui-cell__bd"><input lay-verify="re_password"  class="weui-input" type="password" name="re_password"  placeholder="请再次输入新密码"></div>
     </div>
         <div class="weui-cell">
             <div class="weui-cell__hd"><label class="weui-label wy-lab">邀请码</label></div>
             <div class="weui-cell__bd"><input class="weui-input"  type="number" name="invite_number"  placeholder="选填" value="{$invite_number}"></div>
         </div>
     </div>
-
-    <label for="weuiAgree" class="weui-agree">
-    <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox" checked="checked">
-    <span class="weui-agree__text" style="float: left">阅读并同意<a href="javascript:void(0);">《注册协议》</a></span>
-  </label>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <input type="checkbox" checked lay-skin="primary"  disabled >
+            </div>
+            <div class="weui-cell__bd">
+                <span class="weui-agree__text" style="float: left">阅读并同意<a href="javascript:void(0);" style="color: white">《注册协议》</a>
+                </span>
+            </div>
+        </div>
+    <div class="weui-btn-area"><button type="submit" class="weui-btn weui-btn_warn" lay-submit lay-filter="reg">立即注册</button></div>
     </form>
-    <div class="weui-btn-area"><a href="javascript:;" class="weui-btn weui-btn_warn">注册并登陆</a></div>
-  <div class="weui-cells__tips t-c font-12">登陆账号为您输入的手机号码</div>
+
+    <div class="weui-cells__tips t-c font-12">登陆账号为您输入的手机号码</div>
   <div class="weui-cells__tips t-c pd-10"><a href="/mobile/Login/xieyi" class="weui-cell_link font-12">查看注册协议</a></div>
 
 </div>
@@ -75,6 +81,65 @@
 <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
 <script type="text/javascript">
+    $(function  () {
+        layui.use('form', function(){
+            $ = layui.jquery;
+            var form = layui.form
+                    ,layer = layui.layer;
+            form.verify({
+                vcode: function(value){
+                    if(value.length !=4){
+                        return '请输入图形验证码';
+                    }
+                }
+                ,code: function(value){
+                    if(value.length !=6){
+                        return '请输入动态验证码';
+                    }
+                }
+                ,nickname:function(value){
+                    if(value.length < 1||value.length > 6){
+                        return '长度1-6位';
+                    }
+                    if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
+                        return '不含特殊字符';
+                    }
+                }
+                ,password: [
+                    /^[\S]{6,18}$/
+                    ,'请输入6到18位密码'
+                ]
+                ,re_password:function(value){
+                    if(value.length < 6||value.length > 18){
+                        return '长度6-18位';
+                    }
+                    if(value!=$('#password').val()){
+                        return '两次输入密码不一致';
+                    }
+                }
+            });
+
+            form.on('submit(reg)', function(data){
+                var load = layer.load();
+                $('button[type="submit"]').attr("disabled",true);
+                $.post("/mobile/Login/register",data.field,function(res){
+                    layer.close(load);
+                    if(res.status==0){
+                        layer.msg(res.msg,{icon: 2,time:1000},function(){
+                            $('button[type="submit"]').removeAttr("disabled");
+                            $('input[name="code"]').val('');
+                            $('#my_code').click();
+                        });
+                    }else{
+                        layer.msg(res.msg,{icon: 1,time:1000},function(){
+                            window.location.href="{$app_download}";
+                        });
+                    }
+                },'json');
+                return false;
+            });
+        });
+    })
     function send_msg() {
         var phone = $('#username').val();
         var vcode = $('#vcode').val();

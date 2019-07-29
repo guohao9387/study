@@ -1,15 +1,8 @@
 <?php
 namespace app\mobile\controller;
-use think\Controller;
 use think\Db;
-class Login extends Controller
+class Login extends Common
 {
-    public function initialize(){
-        if(!cache('config')){
-            reset_cache();
-        }
-        $GLOBALS['title'] =cache('config')['title'];
-    }
     //会员登陆页面
     public function login(){
         if(request()->isAjax()){
@@ -135,7 +128,7 @@ class Login extends Controller
                 $data = array();
                 $data['status'] = 0;
                 $data['msg'] = '动态验证码错误';
-                return json($data);
+//                return json($data);
             }
             $where=[];
             $where[]=['status','=',1];
@@ -210,9 +203,9 @@ class Login extends Controller
                 $uid=db::name('user')->insertGetId($data);
                 if($uid){
                     add_user_operation($uid,$data['username'], 1,1,'会员注册', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$uid);
-                    add_user_operation($uid,$data['username'], 1,1,'会员登陆', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$uid);
-                    session('user',$uid);
-                    session('user_name',$data['username']);
+//                    add_user_operation($uid,$data['username'], 1,1,'会员登陆', $_SERVER['REQUEST_URI'], serialize($_REQUEST),$uid);
+//                    session('user',$uid);
+//                    session('user_name',$data['username']);
                     $data = array();
                     $data['status'] = 1;
                     $data['msg'] = '注册成功';
@@ -225,11 +218,12 @@ class Login extends Controller
                 }
             }
         }else{
-            if (session('user')) {
-                $this->redirect('/mobile/User/index');
-            }
+//            if (session('user')) {
+//                $this->redirect('/mobile/User/index');
+//            }
             $invite_number=input('get.code');
             $this->assign('invite_number',$invite_number);
+            $this->assign('app_download',$this->config['app_download']);
             return $this->fetch();
         }
     }

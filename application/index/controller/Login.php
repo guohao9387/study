@@ -228,7 +228,7 @@ class Login extends Controller
             }
         }else{
             if(isMobile()){
-                $this->redirect('/app/Login/register');
+                $this->redirect('/mobile/Login/register');
             }
             if (session('user')) {
                 $this->redirect('/index/User/index');
