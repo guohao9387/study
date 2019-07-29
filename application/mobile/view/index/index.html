@@ -102,7 +102,7 @@
 			<div class="pali-left">
 				<div class="pl-first clearboth">
 					<p class="weui-media-box__bd">{$val.desc_name}</p>
-						<p class="weui-media-box__bd">0.00</p>
+						<p class="weui-media-box__bd"  id="{$val.abbreviation}">0.00</p>
 				</div>
 			</div>
 			<div class="pali-right">
@@ -137,7 +137,38 @@
 
 <script src="/static/index/js/jquery-2.1.1.min.js"></script>
 <script>
+    var loc = window.location;
+    var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
+    var uid=3;
+    var wsUrl ='ws:';
+    if(loc.protocol == 'https:')
+        wsUrl = 'wss:'
+    wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
+    var ws = new WebSocket(wsUrl)
+    //    var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=3");
 
+    ws.onopen = function()
+    {
+        // Web Socket 已连接上，使用 send() 方法发送数据
+        //ws.send("发送数据");
+    };
+
+    ws.onmessage = function (evt)
+    {
+        //console.log(evt.data);
+        var data=JSON.parse(evt.data);
+        $.each(data,function(k,v){
+            var id='#'+k;
+            var last_price=$(id).html();
+            var now_price=v['USD'];
+            if(now_price>=last_price){
+                $(id).attr("style","color:red;");
+            }else{
+                $(id).attr("style","color:green;");
+            }
+            $(id).html(v['USD']);
+        })
+    };
 </script>
 </body>
 </html>
