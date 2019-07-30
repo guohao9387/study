@@ -140,7 +140,7 @@
 
         .order .order-tit {
             width: 100%;
-            padding: 8px;
+            padding: 8px 0;
             background: #0e1227;
         }
 
@@ -217,11 +217,11 @@
         }
 
         .footer ul li:first-child {
-            background: #40cc5b;
+            background: #ff5e5e;
         }
 
         .footer ul li:last-child {
-            background: #ff5e5e;
+            background: #40cc5b;
         }
 
         .layui-input-block {
@@ -388,16 +388,30 @@ font-size: 13px;
                 <p>持仓订单</p>
             </div>
             <div class="order-list">
-                <table>
+                <table class="order_add_list">
                     <tr>
-                        <th>单号</th>
                         <th>产品</th>
-                        <th>保证金</th>
                         <th>买入价</th>
-                        <th>方向</th>
+                        <th>当前价</th>
+                        <th>收益</th>
+                        <th>操作</th>
                     </tr>
+                    {volist name="keep_order_list" id="val"}
+                    <tr class="{$val.oid} keep_order_list">
+                        <th>{$val.product_name}</th>
+                        <th class="buy_price">{$val['buy_price']|number_format=###,2,'.',''}</th>
+                        <th class="now_price_{$val.product_abbreviation} now_price">0.00</th>
+                        <th class="profit">0.00</th>
+                        <th><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order({$val.oid})">平仓</button></th>
+                        <input type="hidden" value="{$val['direction']}" class="o_direction"/>
+                        <input type="hidden" value="{$val['contract']}" class="o_contract"/>
+                        <input type="hidden" value="{$val['hand']}" class="o_hand"/>
+                    </tr>
+                    {/volist}
+
                 </table>
             </div>
+
 
         </div>
     </div>
@@ -418,13 +432,18 @@ font-size: 13px;
                 <p>涨跌</p>
             </div>
             {volist name="product_list" id="val"}
-            <div class="txt">
-                <p>{$val.desc_name}</p>
+            <div class="txt" data-abbreviation="{$val.abbreviation}">
+                <input type="hidden" id="{$val.abbreviation}_id" value="{$val.id}"/>
+                <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract|number_format=###,2,'.',''}"/>
+                <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand|number_format=###,2,'.',''}"/>
+                <input type="hidden" id="{$val.abbreviation}_fee" value="{$val.fee|number_format=###,2,'.',''}"/>
+                <input type="hidden" id="{$val.abbreviation}_wave" value="{$val.wave}"/>
+                <p class="desc_name ">{$val.desc_name}</p>
                 <p>
-                    <span class="now_price_{$val.abbreviation}">0.00</span>
+                    <span class="now_price_{$val.abbreviation} l color_{$val.abbreviation}">0.00</span>
                 </p>
                 <p>
-                    <small class="up_down_val_{$val.abbreviation}">0.00</small> / <small class="up_down_per_{$val.abbreviation}">0.00</small>%
+                    <small class="up_down_val_{$val.abbreviation} val">0.00</small> / <small class="up_down_per_{$val.abbreviation} per">0.00</small>%
                 </p>
             </div>
             {/volist}
@@ -447,48 +466,54 @@ font-size: 13px;
             </div>
             <div class="m-hang">
                 <label>交易单位</label>
-                <input type="text" readonly="readonly" value="2.00/手" />
+                <input type="text" readonly="readonly" class="order_min_hand" value="{$product.min_hand|number_format=###,2,'.',''}" />
+            </div>
+            <div class="m-hang">
+                <label>合约比例</label>
+                <input type="text" readonly="readonly" class="order_contract" value="{$product.contract|number_format=###,2,'.',''}" />
             </div>
             <div class="m-hang">
                 <label>方向</label>
-                <input type="text" readonly="readonly" value="买入" />
+                <input type="text" readonly="readonly" class="order_direction" value="买入" />
             </div>
             <div class="m-hang">
                 <label>手数</label>
-                <input type="number" value="0"/>
+                <input type="number" value="0" class="shosu" name="hand"/>
             </div>
             <div class="m-hang">
                 <label>保证金</label>
-                <input type="text" readonly="readonly" value="0" />
+                <input type="text" readonly="readonly" value="0" class="promise_money"/>
             </div>
             <div class="m-hang">
                 <label>手续费</label>
-                <input type="text" readonly="readonly" value="30" />
+                <input type="text" readonly="readonly" class="fee" value="{$product.fee|number_format=###,2,'.',''}" />
             </div>
-
+            <input type="hidden" id="point_wave" value="{$product['wave']}"/>
             <div class="m-hang">
-                <p>设置止盈应大于等于<span>0.00</span></p>
-                <p>设置止损应小于等于<span>0.00</span></p>
+                <p>设置止盈应<span class="win_des">大于</span>等于<span class="target_profit">0.00</span></p>
+                <p>设置止损应<span class="loss_des">小于</span>等于<span class="stop_loss">0.00</span></p>
                 <div class="m-h2 switchone">
                     <label>止盈</label>
                     <div class="layui-input-block">
                         <input type="checkbox" lay-filter="checks" lay-skin="switch"
-                               lay-text="开启|关闭">
+                               lay-text="开启|关闭" class="target_profit_check" value="1">
                     </div>
-                    <input type="text" style="width: 100px" class="chosecon"/>
+                    <input type="text" style="width: 100px" class="chosecon " name="target_profit"/>
                 </div>
                 <div class="m-h2 switchtwo">
                     <label>止亏</label>
                     <div class="layui-input-block">
                         <input type="checkbox" lay-filter="checks-t" lay-skin="switch"
-                               lay-text="开启|关闭">
+                               lay-text="开启|关闭" name="stop_loss_check" value="1">
                     </div>
-                    <input type="text" style="width: 100px" class="chosecon"/>
+                    <input type="text" style="width: 100px" class="chosecon " name="stop_loss" />
                 </div>
             </div>
+            <input type="hidden" name="id" class="form_id" value="{$product['id']}"/>
+            <input type="hidden" class="form_direction" name="direction" value="1"/>
             <div class="m-hang" style="margin-top:20px;">
                 <button type="submit" style="margin-right: 20px;" class="submit">确认</button>
-                <button class="cancel">取消</button>
+                <button class="cancel" type="button">取消</button>
             </div>
 
         </form>
@@ -497,10 +522,10 @@ font-size: 13px;
 </div>
 <div class="footer">
     <ul>
-        <li>
+        <li onclick="set_direction('买入',1)">
             买入
         </li>
-        <li>
+        <li onclick="set_direction('卖出',2)">
             卖出
         </li>
     </ul>
@@ -512,28 +537,7 @@ font-size: 13px;
 <script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
 <script>
-layui.use(['layer', 'form'], function () {
-    var layer = layui.layer
-            , form = layui.form;
 
-    // layer.msg('Hello World');
-    form.on('switch(checks)', function (data) {
-        console.log(data.elem.checked); //开关是否开启，true或者false
-        if (data.elem.checked == true) {
-            $(".switchone .chosecon").show();
-        } else {
-            $(".switchone .chosecon").hide();
-        }
-    });
-    form.on('switch(checks-t)', function (data) {
-        console.log(data.elem.checked); //开关是否开启，true或者false
-        if (data.elem.checked == true) {
-            $(".switchtwo .chosecon").show();
-        } else {
-            $(".switchtwo .chosecon").hide();
-        }
-    });
-});
 var myChart = echarts.init(document.getElementById('main'));
 var rawData = [["2015/1/5", "3258.63", "3350.52", "115.84", "3.58%", "3253.88", "3369.28", "531352384", "54976008", "-"], ["2015/1/6", "3330.8", "3351.45", "0.93", "0.03%", "3303.18", "3394.22", "501661696", "53239848", "-"], ["2015/1/7", "3326.65", "3373.95", "22.51", "0.67%", "3312.21", "3374.9", "391918880", "43641672", "-"], ["2015/1/8", "3371.96", "3293.46", "-80.5", "-2.39%", "3285.09", "3381.57", "371131200", "39923032", "-"], ["2015/1/9", "3276.97", "3285.41", "-8.04", "-0.24%", "3267.51", "3404.83", "410240864", "45864804", "-"], ["2015/1/12", "3258.21", "3229.32", "-56.1", "-1.71%", "3191.58", "3275.19", "322064672", "36627308", "-"], ["2015/1/13", "3223.54", "3235.3", "5.98", "0.19%", "3214.41", "3259.39", "230725760", "27358878", "-"], ["2015/1/14", "3242.34", "3222.44", "-12.86", "-0.40%", "3193.98", "3268.48", "240190752", "26720452", "-"], ["2015/1/15", "3224.07", "3336.46", "114.02", "3.54%", "3207.54", "3337.08", "282546240", "33061054", "-"], ["2015/1/16", "3343.6", "3376.5", "40.04", "1.20%", "3340.49", "3400.32", "339876768", "39225388", "-"], ["2015/1/19", "3189.73", "3116.35", "-260.14", "-7.70%", "3095.07", "3262.21", "401098784", "40988600", "-"], ["2015/1/20", "3114.56", "3173.05", "56.7", "1.82%", "3100.48", "3190.25", "357080800", "41629524", "-"], ["2015/1/21", "3189.08", "3323.61", "150.56", "4.74%", "3178.34", "3337", "410956032", "47375868", "-"], ["2015/1/22", "3327.32", "3343.34", "19.73", "0.59%", "3293.98", "3352.38", "353382976", "40787408", "-"], ["2015/1/23", "3357.1", "3351.76", "8.42", "0.25%", "3328.29", "3406.79", "366249248", "42097952", "-"], ["2015/1/26", "3347.26", "3383.18", "31.42", "0.94%", "3321.31", "3384.8", "317540992", "35842744", "-"], ["2015/1/27", "3389.85", "3352.96", "-30.22", "-0.89%", "3290.22", "3390.22", "374517568", "41829884", "-"], ["2015/1/28", "3325.72", "3305.74", "-47.22", "-1.41%", "3294.66", "3354.8", "301927104", "34156428", "-"], ["2015/1/29", "3259", "3262.3", "-43.43", "-1.31%", "3234.24", "3286.79", "274658624", "29642450", "-"], ["2015/1/30", "3273.75", "3210.36", "-51.94", "-1.59%", "3210.31", "3288.5", "258312544", "28426564", "-"], ["2015/2/2", "3148.14", "3128.3", "-82.06", "-2.56%", "3122.57", "3175.13", "250861632", "26684996", "-"], ["2015/2/3", "3156.09", "3204.91", "76.61", "2.45%", "3129.73", "3207.94", "248192160", "28335594", "-"], ["2015/2/4", "3212.82", "3174.13", "-30.78", "-0.96%", "3171.14", "3238.98", "249098080", "29015516", "-"], ["2015/2/5", "3251.21", "3136.53", "-37.6", "-1.18%", "3135.82", "3251.21", "306139296", "34826696", "-"], ["2015/2/6", "3120.09", "3075.91", "-60.62", "-1.93%", "3052.94", "3129.54", "246749680", "26650278", "-"], ["2015/2/9", "3063.51", "3095.12", "19.22", "0.62%", "3049.11", "3119.03", "206108384", "24071968", "-"], ["2015/2/10", "3090.49", "3141.59", "46.47", "1.50%", "3084.25", "3142.1", "193817136", "22508492", "-"], ["2015/2/11", "3145.76", "3157.7", "16.11", "0.51%", "3139.05", "3166.42", "172840096", "21086256", "-"], ["2015/2/12", "3157.96", "3173.42", "15.71", "0.50%", "3134.24", "3181.77", "194592320", "22969158", "-"], ["2015/2/13", "3186.81", "3203.83", "30.41", "0.96%", "3182.79", "3237.16", "261290432", "29301768", "-"], ["2015/2/16", "3206.14", "3222.36", "18.54", "0.58%", "3195.88", "3228.85", "223797440", "26595070", "-"], ["2015/2/17", "3230.88", "3246.91", "24.54", "0.76%", "3230.77", "3255.73", "228332624", "26334004", "-"], ["2015/2/25", "3256.48", "3228.84", "-18.06", "-0.56%", "3215.55", "3257.22", "233348096", "26514336", "-"], ["2015/2/26", "3222.15", "3298.36", "69.52", "2.15%", "3202.19", "3300.62", "301263872", "33434746", "-"], ["2015/2/27", "3296.83", "3310.3", "11.94", "0.36%", "3291.01", "3324.55", "299163712", "33501958", "-"], ["2015/3/2", "3332.72", "3336.28", "25.98", "0.78%", "3298.67", "3336.76", "346445664", "41025956", "-"], ["2015/3/3", "3317.7", "3263.05", "-73.23", "-2.20%", "3260.43", "3317.7", "382044608", "44159348", "-"], ["2015/3/4", "3264.18", "3279.53", "16.48", "0.51%", "3250.48", "3286.59", "293639520", "34678976", "-"], ["2015/3/5", "3264.08", "3248.48", "-31.06", "-0.95%", "3221.67", "3266.64", "320663584", "37358000", "-"], ["2015/3/6", "3248.04", "3241.19", "-7.29", "-0.22%", "3234.53", "3266.93", "282915808", "32834414", "-"], ["2015/3/9", "3224.31", "3302.41", "61.22", "1.89%", "3198.37", "3307.7", "321495456", "35992752", "-"], ["2015/3/10", "3289.08", "3286.07", "-16.34", "-0.49%", "3277.09", "3309.92", "285817568", "32995596", "-"], ["2015/3/11", "3289.59", "3290.9", "4.83", "0.15%", "3278.47", "3325.05", "282985536", "32757308", "-"], ["2015/3/12", "3314.81", "3349.32", "58.42", "1.78%", "3300.49", "3360.05", "357295104", "40719240", "-"], ["2015/3/13", "3359.49", "3372.91", "23.59", "0.70%", "3352.15", "3391.25", "328410144", "37404140", "-"], ["2015/3/16", "3391.16", "3449.3", "76.39", "2.26%", "3377.09", "3449.3", "399132416", "47935532", "-"], ["2015/3/17", "3469.6", "3502.85", "53.54", "1.55%", "3459.69", "3504.12", "520939520", "60150068", "-"], ["2015/3/18", "3510.5", "3577.3", "74.45", "2.13%", "3503.85", "3577.66", "545217152", "61736700", "-"], ["2015/3/19", "3576.02", "3582.27", "4.97", "0.14%", "3546.84", "3600.68", "537346624", "61224968", "-"], ["2015/3/20", "3587.08", "3617.32", "35.05", "0.98%", "3569.38", "3632.34", "516661664", "65177196", "-"], ["2015/3/23", "3640.1", "3687.73", "70.41", "1.95%", "3635.49", "3688.25", "536062816", "66157464", "-"], ["2015/3/24", "3692.57", "3691.41", "3.68", "0.10%", "3600.7", "3715.87", "639554688", "75488472", "-"], ["2015/3/25", "3680.95", "3660.73", "-30.68", "-0.83%", "3634.56", "3693.15", "521886336", "64549892", "-"], ["2015/3/26", "3641.94", "3682.09", "21.37", "0.58%", "3615.01", "3707.32", "488647200", "61951560", "-"], ["2015/3/27", "3686.13", "3691.1", "9", "0.24%", "3656.83", "3710.48", "408945184", "50929848", "-"], ["2015/3/30", "3710.61", "3786.57", "95.47", "2.59%", "3710.61", "3795.94", "564702400", "69212536", "-"], ["2015/3/31", "3822.99", "3747.9", "-38.67", "-1.02%", "3737.04", "3835.57", "561676032", "72129488", "-"], ["2015/4/1", "3748.34", "3810.29", "62.4", "1.66%", "3742.21", "3817.08", "447458304", "59241832", "-"], ["2015/4/2", "3827.69", "3825.78", "15.49", "0.41%", "3775.89", "3835.45", "479299680", "63202892", "-"], ["2015/4/3", "3803.38", "3863.93", "38.14", "1.00%", "3792.21", "3864.41", "473033312", "63565136", "-"]];
 var colorList = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'];
@@ -776,31 +780,103 @@ var option = {
     }]
 };
 myChart.setOption(option);
-$(function () {
-    $(".footer ul li").click(function () {
-        $(".addbill").show();
-    })
-    $(".model .model-content").click(function (e) {
-        e.stopPropagation();
-    })
-    $(".model").click(function () {
-        $(".model").hide();
-    })
-    $(".tr-header .tr-mo img").click(function () {
-        $('.headar').show();
-    })
-    $(".ar-tit ul li").click(function(){
-        $(this).addClass("active");
-        $(this).siblings().removeClass("active");
 
-    })
-})
+$(".model .model-content").click(function (e) {
+    e.stopPropagation();
+});
+$(".model").click(function () {
+    $(".model").hide();
+});
+$(".tr-header .tr-mo").click(function () {
+    $('.headar').show();
+});
+$(".ar-tit ul li").click(function(){
+    $(this).addClass("active");
+    $(this).siblings().removeClass("active");
+});
 
+//设置建仓方向
+function set_direction(val,number){
+    var color;
+    if(number==1){
+        $('.win_des').text('大于');
+        $('.loss_des').text('小于');
+        color='red';
+    }else{
+        $('.win_des').text('小于');
+        $('.loss_des').text('大于');
+        color='green';
+    }
+    $('.order_direction').val(val).attr("style","color:"+color+";");
+    $('.form_direction').val(number);
+    $('.promise_money').val(0.00);
+    $(".addbill").show();
+    $('.shosu').val('').focus();
+}
+$(".cancel").click(function () {
+    if( $("input[name='target_profit_check']").is(':checked') ){
+        $("input[name='target_profit_check']").removeAttr('checked');
+        $("input[name='target_profit']").val('');
+        $(".switchone .chosecon").hide();
+        layui.form.render('checkbox');
+    }
+    if( $("input[name='stop_loss_check']").is(':checked') ){
+        $("input[name='stop_loss_check']").removeAttr('checked');
+        $("input[name='stop_loss']").val('');
+        $(".switchtwo .chosecon").hide();
+        layui.form.render('checkbox');
+    }
+    $(".model").hide();
+});
+layui.use(['layer', 'form'], function () {
+    var layer = layui.layer
+            , form = layui.form;
+
+    // layer.msg('Hello World');
+    form.on('switch(checks)', function (data) {
+        console.log(data.elem.checked); //开关是否开启，true或者false
+        if (data.elem.checked == true) {
+            $(".switchone .chosecon").show();
+        } else {
+            $(".switchone .chosecon").hide();
+        }
+    });
+    form.on('switch(checks-t)', function (data) {
+        console.log(data.elem.checked); //开关是否开启，true或者false
+        if (data.elem.checked == true) {
+            $(".switchtwo .chosecon").show();
+        } else {
+            $(".switchtwo .chosecon").hide();
+        }
+    });
+});
+
+//手数失焦事件，必须数字，并计算保证金
+$(".shosu").blur(function () {
+    var vals=$(this).val();
+    if(isNotANumber(vals)==true){
+        if(vals<0){
+            $(".shosu").val(0);
+        }else if(vals>0){
+            var now_price=$('.order_price').val();
+            var contract= $('.order_contract').val();
+            var money=now_price*contract*vals/lever;
+//                console.log(now_price);
+//                console.log(contract);
+//                console.log(money);
+            $('.promise_money').val(math_floor(money));
+        }
+    }else{
+        $(".shosu").val(0);
+    }
+});
 
 var loc = window.location;
 var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
 var openPrice = [];
-function countRange(nowPrice,productAbbreviation){
+var lever="{$user.lever}";
+
+function countRange(nowPrice,productAbbreviation,active_name){
     var range=nowPrice-openPrice[productAbbreviation];
     var range_per=range/openPrice[productAbbreviation]*100;
     var up_down_name=  ".up_down_per_"+productAbbreviation;
@@ -813,6 +889,14 @@ function countRange(nowPrice,productAbbreviation){
     }
     $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
     $(up_down_name).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+    $('.color_'+productAbbreviation).attr("style","color:"+color+";");
+    if(productAbbreviation==active_name){
+        $('.now_price').text(nowPrice).attr("style","color:"+color+";");
+        $('.order_price').val(nowPrice).attr("style","color:"+color+";");
+        $('.up_down_val').text(math_floor(range)).attr("style","color:"+color+";");
+        $('.up_down_per').text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+    }
+
 }
 function handle_money(money,promise_money){
     money=math_floor(money);
@@ -833,38 +917,121 @@ function count_wave(price){
     var point_wave=$('#point_wave').val();
     var form_direction=$('.form_direction').val();
     if(form_direction==1){
-        $('.target_profit').text(price-(-point_wave));
-        $('input[name="target_profit"]').val(price-(-point_wave));
-        $('.stop_loss').text(price-point_wave);
-        $('input[name="stop_loss"]').val(price-point_wave);
+        $('.target_profit').text(math_floor(price-(-point_wave)));
+        $('input[name="target_profit"]').val(math_floor(price-(-point_wave)));
+        $('.stop_loss').text(math_floor(price-point_wave));
+        $('input[name="stop_loss"]').val(math_floor(price-point_wave));
     }else{
-        $('.target_profit').text(price-point_wave);
-        $('input[name="target_profit"]').val(price-point_wave);
-        $('.stop_loss').text(price-(-point_wave));
-        $('input[name="stop_loss"]').val(price-(-point_wave));
+        $('.target_profit').text(math_floor(price-point_wave));
+        $('input[name="target_profit"]').val(math_floor(price-point_wave));
+        $('.stop_loss').text(math_floor(price-(-point_wave)));
+        $('input[name="stop_loss"]').val(math_floor(price-(-point_wave)));
     }
-
-
     //计算保证金
-    var hand=$(".models .shosu").val();
+    var hand=$(".shosu").val();
     if(isNotANumber(hand)==true){
         if(hand<0){
             $(".shosu").val(0);
         }else if(hand>0){
-            var now_price=$('.product_price_change').first().text();
-            var contract= $('.contract').first().text();
+            var now_price=$('.order_price').val();
+            var contract= $('.order_contract').val();
             var money=now_price*contract*hand/lever;
-            $('.promise_money').text(math_floor(money));
+            $('.promise_money').val(math_floor(money));
         }
     }
 }
+//计算持仓单盈亏
+function count_profit(){
+//        var all=0;
+    $('.keep_order_list').each(function(){
+        var buy_price=$(this).children('.buy_price').text();
+        var now_price=$(this).children('.now_price').text();
+        if(buy_price==now_price){
+            return;
+        }
+        var direction=$(this).children('.o_direction').val();
+        var contract=$(this).children('.o_contract').val();
+        var hand=$(this).children('.o_hand').val();
+        var amount=(now_price-buy_price)*contract*hand;
+        var color;
+//            console.log(direction=='买入');
+        if(direction==1){
+            if(now_price>=buy_price){
+                color='red';
+            }else if(now_price<buy_price){
+                color='green';
+            }
+        }else{
+            if(now_price>=buy_price){
+                color='green';
+            }else if(now_price<buy_price){
+                color='red';
+            }
+            amount=-amount;
+        }
+        $(this).children('.profit').text(math_floor(amount)).attr("style","color:"+color+";");
+        $(this).children('.now_price').attr("style","color:"+color+";");
+    });
+}
+//计算涨幅跌幅
+
+$(".txt").click(function () {
+//    $(this).addClass("active");
+//    $(this).siblings().removeClass("active");
+    //产品名称
+    var name= $(this).attr('data-abbreviation');
+    //顶部产品属性
+    $('#active_product_name').attr('data-abbreviation',name);
+
+    var now_price=$(this).find('.l').text();
+    var color= $(this).find('.l').css("color");
+    //顶部产品名称
+    $('.product_name').text($(this).find('.desc_name').text());
+    //建仓产品名称
+    $('.order_product_name').val($(this).find('.desc_name').text());
+
+    $('.now_price').text(now_price).attr("style","color:"+color+";");
+    $('.order_price').val(now_price).attr("style","color:"+color+";");
+    $('.up_down_val').text($(this).find('.val').text()).attr("style","color:"+color+";");
+    $('.up_down_per').text($(this).find('.per').text()).parent().attr("style","color:"+color+";");
+
+//    $('.up_down_val').attr('data-product-up-down-val',name);
+//    $('.up_down').attr('data-product-up-down',name);
+
+    var form_id='#'+name+'_id';
+    var contract_id='#'+name+'_contract';
+    var min_hand_id='#'+name+'_min_hand';
+    var fee_id='#'+name+'_fee';
+    var wave_id='#'+name+'_wave';
+
+    var form_id_val=$(form_id).val();
+    var contract_val=$(contract_id).val();
+    var min_hand_val=$(min_hand_id).val();
+    var fee_val=$(fee_id).val();
+    var wave_val=$(wave_id).val();
+    $('.order_contract').val(contract_val);
+    $('.order_min_hand').val(min_hand_val);
+    $('.fee').val(fee_val);
+    $('.point_wave').val(wave_val);
+    $('.form_id').val(form_id_val);
+
+    $('.target_profit').text(now_price-(-wave_val));
+    $('input[name="target_profit"]').val(now_price-(-wave_val));
+
+    $('.stop_loss').text(now_price-wave_val);
+    $('input[name="stop_loss"]').val(now_price-wave_val);
+    countRange(now_price,name);
+    $('.headar').hide();
+//                setCandlestick(name,"1day",30);
+});
+
 $(function  () {
     var layer;
     var loadingFirst;
     var loadingSecond;
     function prepareWs(){
         var url = baseUrl + "/openPrice";
-//        url = 'https://aioq.cn/golang/openPrice';
+        url = 'https://aioq.cn/golang/openPrice';
         //获取产品开盘价
         $.ajax({
             type: 'get',
@@ -882,49 +1049,13 @@ $(function  () {
                 });
             }
         });
-        //计算涨幅跌幅
 
-        $(".list ul li").click(function () {
-            $(this).addClass("active");
-            $(this).siblings().removeClass("active");
-            //产品名称
-            var name= $(this).attr('data-product-abbreviation-name');
-            var now_price=$(this).find('.l').text();
-            $('.product_name').text($(this).children('.title').text());
-            $('.product_price_change').attr('data-product-abbreviation',name).text(now_price);
-            $('.up_down_val').attr('data-product-up-down-val',name);
-            $('.up_down').attr('data-product-up-down',name);
-            var form_id='#'+name+'_id';
-            var contract_id='#'+name+'_contract';
-            var min_hand_id='#'+name+'_min_hand';
-            var fee_id='#'+name+'_fee';
-            var wave_id='#'+name+'_wave';
-
-            var form_id_val=$(form_id).val();
-            var contract_val=$(contract_id).val();
-            var min_hand_val=$(min_hand_id).val();
-            var fee_val=$(fee_id).val();
-            var wave_val=$(wave_id).val();
-            $('.contract').text(contract_val);
-            $('.min_hand').text(min_hand_val);
-            $('.fee').text(fee_val);
-            $('.point_wave').val(wave_val);
-            $('.form_id').val(form_id_val);
-
-            $('.target_profit').text(now_price-(-wave_val));
-            $('input[name="target_profit"]').val(now_price-(-wave_val));
-
-            $('.stop_loss').text(now_price-wave_val);
-            $('input[name="stop_loss"]').val(now_price-wave_val);
-            countRange(now_price,name);
-//                setCandlestick(name,"1day",30);
-        });
         var uid="{$user.uid}";
         var wsUrl ='ws:';
         if(loc.protocol == 'https:')
             wsUrl = 'wss:'
         wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
-//        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
+        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
 
         var ws = new WebSocket(wsUrl)
 //        console.log(wsUrl);
@@ -988,11 +1119,11 @@ $(function  () {
 //                            }
                     }
                     //计算涨幅跌幅
-                    countRange(new_price,k);
+                    countRange(new_price,k,active_name);
                     $(now_price_class).text(new_price);
                 });
                 //计算持仓单输赢
-//                    count_profit();
+                count_profit();
                 layer.close(loadingSecond);
             }
         };
@@ -1065,25 +1196,17 @@ $(function  () {
 //        setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
 });
 function keep_order_list_add(data){
-//        console.log(data);
-    var html='<tr class="'+data.oid+'">';
-    html+='<td>'+data.order_sn+'</td>';
-    html+='<td>'+data.product_name+'</td>';
-    html+='<td class="money">'+math_floor(data.money)+'</td>';
-    html+='<td class="buy_price">'+math_floor(data.buy_price)+'</td>';
-    html+='<td class="now_price '+data.product_abbreviation+'">'+data.now_price+'</td>';
-    if(data.direction==1){
-        html+='<td style="color: red;" class="direction">买入</td>';
-    }else{
-        html+='<td style="color: #008000;" class="direction">卖出</td>';
-    }
-    html+='<td class="order_contract">'+math_floor(data.contract)+'</td>';
-    html+='<td class="hand">'+math_floor(data.hand)+'</td>';
-    html+='<td class="profit">0.00</td>';
-    html+='<td>'+data.add_time+'</td>';
-    html+='<td><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order('+data.oid+')">平仓</button></td></tr>';
-    $(".keep_order_list").prepend(html);
-    $(".models .m-cancel").click();
+    var html='<tr class="'+data.oid+' keep_order_list">';
+    html+='<th>'+data.product_name+'</th>';
+    html+='<th class="buy_price">'+math_floor(data.buy_price)+'</th>';
+    html+='<th class="now_price now_price_'+data.product_abbreviation+'">'+data.now_price+'</th>';
+    html+='<th class="profit">0.00</th>';
+    html+='<th><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order('+data.oid+')">平仓</button></th></tr>';
+    html+='<input type="hidden" value="'+math_floor(data.direction)+'" class="o_direction"/>';
+    html+='<input type="hidden" value="'+math_floor(data.contract)+'" class="o_contract"/>';
+    html+='<input type="hidden" value="'+math_floor(data.hand)+'" class="o_hand"/>';
+    $(".order_add_list").prepend(html);
+    $(".cancel").click();
 }
 function math_floor(number,per){
     number = parseFloat(number);
