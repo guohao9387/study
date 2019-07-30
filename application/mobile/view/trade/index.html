@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>商城分类</title>
+    <title>交易中心</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -283,12 +283,12 @@ font-size: 13px;
         .ar-text div p span{
             width: 100%;
             display: block;
-            height: 17.5px;
-            line-height:17.5px;
+            /*height: 17.5px;*/
+            /*line-height:17.5px;*/
         }
-        .ar-text div p span:last-child,.ar-text .txt1 p{
-            color: #656570;
-        }
+        /*.ar-text div p span:last-child,.ar-text .txt1 p{*/
+            /*color: #656570;*/
+        /*}*/
         .ar-text .txt1{
             border-bottom: 1px dashed #fff;
             border-top: 1px dashed #fff;
@@ -332,7 +332,7 @@ font-size: 13px;
         <div class="tr-header">
             <img src="/static/mobile/images/xiayibuer.png" class="goback" onclick="window.history.back();"/>
             <div class="tr-mo">
-                <span>XBTC/USDT</span>
+                <span class="product_name" id="active_product_name" data-abbreviation="{$product.abbreviation}">{$product.desc_name}</span>
                 <img src="/static/mobile/images/xiamore.png"/>
             </div>
 
@@ -340,47 +340,47 @@ font-size: 13px;
         <div class="k-trtext">
             <div class="ktr-lf">
                 <div class="lf-h1">
-                    <span>10585.27</span>
+                    <span class="now_price_{$product.abbreviation}">0.00</span>
                     <!--<img src="/static/mobile/images/upup.png"/>-->
                 </div>
                 <div class="lf-h2">
-                    <p>
-                        <small>0.08%</small>
-                        =￥72827.72
+                    <p style="color: white">
+                        <small><span>0.00</span>%</small>
+                        =￥ <span>0.00</span>
                     </p>
                 </div>
             </div>
             <div class="ktr-lr">
                 <p>
-                    <span>24h高11051.10</span>
-                    <span>24h开11051.10</span>
+                    <span style="color: white">高 <span id="high">0.00</span></span>
+                    <span>开 <span id="open">0.00</span></span>
                 </p>
                 <p>
-                    <span>24h低11051.10<</span>
-                    <span>24h收1881.10</span>
+                    <span style="color: white">低 <span class="low">0.00</span></span>
+                    <span style="color: white">收 <span class="close">0.00</span></span>
                 </p>
                
             </div>
         </div>
         <div class="k-min">
-            <ul>
-                <li>
-                    ~
-                </li>
-                <li>分时线</li>
-                <li>1分钟</li>
-                <li>5分钟</li>
-                <li>15分钟</li>
-                <li>30分钟</li>
-                <li>45分钟</li>
+            <ul >
+                <!--<li>-->
+                    <!--~-->
+                <!--</li>-->
+                <!--<li>分时线</li>-->
+                <li style="color: white">1分钟</li>
+                <li style="color: white">5分钟</li>
+                <li style="color: white">15分钟</li>
+                <li style="color: white">30分钟</li>
+                <li style="color: white">45分钟</li>
             </ul>
         </div>
         <div class="k-xian">
             <div id="main" style="width: 100%;height:420px;"></div>
             <div class="moe">
-            	<p>账户余额：10000</p>
-            	<p>保证金：1000</p>
-            	<p>可用余额：10000</p>
+            	<p>账户余额：{$user.money|number_format=###,2,'.',''}</p>
+            	<p>保证金：{$user.promise_money|number_format=###,2,'.',''}</p>
+            	<p>可用余额：{$user.real_money|number_format=###,2,'.',''}</p>
             </div>
         </div>
         <div class="order">
@@ -396,91 +396,6 @@ font-size: 13px;
                         <th>买入价</th>
                         <th>方向</th>
                     </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>BTUS</td>
-                        <td>500</td>
-                        <td>1200</td>
-                        <td>上涨</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>MCS</td>
-                        <td>200</td>
-                        <td>400</td>
-                        <td>下跌</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>BTUS</td>
-                        <td>500</td>
-                        <td>1200</td>
-                        <td>上涨</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>MCS</td>
-                        <td>200</td>
-                        <td>400</td>
-                        <td>下跌</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>BTUS</td>
-                        <td>500</td>
-                        <td>1200</td>
-                        <td>上涨</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>MCS</td>
-                        <td>200</td>
-                        <td>400</td>
-                        <td>下跌</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>BTUS</td>
-                        <td>500</td>
-                        <td>1200</td>
-                        <td>上涨</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>MCS</td>
-                        <td>200</td>
-                        <td>400</td>
-                        <td>下跌</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>BTUS</td>
-                        <td>500</td>
-                        <td>1200</td>
-                        <td>上涨</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>MCS</td>
-                        <td>200</td>
-                        <td>400</td>
-                        <td>下跌</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>BTUS</td>
-                        <td>500</td>
-                        <td>1200</td>
-                        <td>上涨</td>
-                    </tr>
-                    <tr>
-                        <td>00010</td>
-                        <td>MCS</td>
-                        <td>200</td>
-                        <td>400</td>
-                        <td>下跌</td>
-                    </tr>
-
                 </table>
             </div>
 
@@ -489,79 +404,30 @@ font-size: 13px;
 </div>
 <div class="model headar">
     <div class="model-content">
-        <div class="ar-tit">
-            <ul>
-                <li class="active">合约区</li>
-                <li>主币区</li>
-                <li>通证区</li>
-            </ul>
-        </div>
+        <!--<div class="ar-tit">-->
+            <!--<ul>-->
+                <!--<li class="active">合约区</li>-->
+                <!--<li>主币区</li>-->
+                <!--<li>通证区</li>-->
+            <!--</ul>-->
+        <!--</div>-->
         <div class="ar-text">
             <div class="txt1">
-                <p>交易对象</p>
-                <p>最新价格(CNY)</p>
-                <p>涨跌幅</p>
+                <p>产品类型</p>
+                <p>当前价格</p>
+                <p>涨跌</p>
             </div>
+            {volist name="product_list" id="val"}
             <div class="txt">
-                <p>XBTC/USDY</p>
+                <p>{$val.desc_name}</p>
                 <p>
-                    <span>10525.50</span>
-                    <span>￥72427.55</span>
+                    <span class="now_price_{$val.abbreviation}">0.00</span>
                 </p>
                 <p>
-                    -0.49%
-                </p>
-            </div>
-            <div class="txt">
-                <p>XBTC/USDY</p>
-                <p>
-                    <span>10525.50</span>
-                    <span>￥72427.55</span>
-                </p>
-                <p>
-                    -0.49%
+                    <small>0.00</small> / <small>0.00</small>%
                 </p>
             </div>
-            <div class="txt">
-                <p>XBTC/USDY</p>
-                <p>
-                    <span>10525.50</span>
-                    <span>￥72427.55</span>
-                </p>
-                <p>
-                    -0.49%
-                </p>
-            </div>
-            <div class="txt">
-                <p>XBTC/USDY</p>
-                <p>
-                    <span>10525.50</span>
-                    <span>￥72427.55</span>
-                </p>
-                <p>
-                    -0.49%
-                </p>
-            </div>
-            <div class="txt">
-                <p>XBTC/USDY</p>
-                <p>
-                    <span>10525.50</span>
-                    <span>￥72427.55</span>
-                </p>
-                <p>
-                    -0.49%
-                </p>
-            </div>
-            <div class="txt">
-                <p>XBTC/USDY</p>
-                <p>
-                    <span>10525.50</span>
-                    <span>￥72427.55</span>
-                </p>
-                <p>
-                    -0.49%
-                </p>
-            </div>
+            {/volist}
         </div>
     </div>
 </div>
@@ -601,8 +467,8 @@ font-size: 13px;
             </div>
 
             <div class="m-hang">
-                <p>设置止盈应大于等于9541.22</p>
-                <p>设置止损应小于等于9441.22</p>
+                <p>设置止盈应大于等于<span>0.00</span></p>
+                <p>设置止损应小于等于<span>0.00</span></p>
                 <div class="m-h2 switchone">
                     <label>止盈</label>
                     <div class="layui-input-block">
@@ -632,10 +498,10 @@ font-size: 13px;
 <div class="footer">
     <ul>
         <li>
-            买入开多
+            买入
         </li>
         <li>
-            卖出开空
+            卖出
         </li>
     </ul>
 </div>
@@ -926,8 +792,9 @@ font-size: 13px;
     })
 
 </script>
+<script src="/static/admin/lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="/static/admin/js/xadmin.js"></script>
 <script src="/static/mobile/js/jquery-weui.js"></script>
-
 <script type="text/javascript">
     $(function ($) {
 
@@ -937,6 +804,310 @@ font-size: 13px;
             $('.j-content').eq(index).show().siblings('.j-content').hide();
         })
     })
+
+    var loc = window.location;
+    var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
+    var openPrice = [];
+    function countRange(nowPrice,productAbbreviation){
+        var range=nowPrice-openPrice[productAbbreviation];
+        var range_per=range/openPrice[productAbbreviation]*100;
+        var up_down_name=  "[data-product-up-down="+productAbbreviation+"]";
+        var up_down_val_name=  "[data-product-up-down-val="+productAbbreviation+"]";
+        var color;
+        if(nowPrice>openPrice[productAbbreviation]){
+            color='red';
+        }else if(nowPrice<openPrice[productAbbreviation]){
+            color='green';
+        }
+        $(up_down_val_name).text(math_floor(range)).attr("style","color:"+color+";");
+        $(up_down_name).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+    }
+    function handle_money(money,promise_money){
+        money=math_floor(money);
+        promise_money=math_floor(promise_money);
+//        console.log(money);
+//        console.log(promise_money);
+        var user_money= math_floor($('#user_money').text());
+        var user_promise_money= math_floor($('#user_promise_money').text());
+        var user_real_money= math_floor($('#user_real_money').text());
+        var my_number_money=toRead(x100(user_money)+x100(money));
+        var my_promise_money=toRead(x100(user_promise_money)+x100(promise_money));
+        var my_real_money=toRead(x100(user_real_money)+x100(money)-x100(promise_money));
+        $('#user_money').text(my_number_money);
+        $('#user_promise_money').text(my_promise_money);
+        $('#user_real_money').text(my_real_money);
+    }
+    function count_wave(price){
+        var point_wave=$('#point_wave').val();
+        var form_direction=$('.form_direction').val();
+        if(form_direction==1){
+            $('.target_profit').text(price-(-point_wave));
+            $('input[name="target_profit"]').val(price-(-point_wave));
+            $('.stop_loss').text(price-point_wave);
+            $('input[name="stop_loss"]').val(price-point_wave);
+        }else{
+            $('.target_profit').text(price-point_wave);
+            $('input[name="target_profit"]').val(price-point_wave);
+            $('.stop_loss').text(price-(-point_wave));
+            $('input[name="stop_loss"]').val(price-(-point_wave));
+        }
+
+
+        //计算保证金
+        var hand=$(".models .shosu").val();
+        if(isNotANumber(hand)==true){
+            if(hand<0){
+                $(".shosu").val(0);
+            }else if(hand>0){
+                var now_price=$('.product_price_change').first().text();
+                var contract= $('.contract').first().text();
+                var money=now_price*contract*hand/lever;
+                $('.promise_money').text(math_floor(money));
+            }
+        }
+    }
+    $(function  () {
+        var layer;
+        var loadingFirst;
+        var loadingSecond;
+        function prepareWs(){
+            var url = baseUrl + "/openPrice";
+            //获取产品开盘价
+            $.ajax({
+                type: 'get',
+                url: url,
+                //async: false,//同步
+                success : function(data) {
+                    for(let i in data){
+                        openPrice[i] =data[i]['USD'];
+                    }
+                },
+                error : function(errMsg) {
+                    //不知道该干啥
+                    layer.msg('网络波动',{icon: 1,time:1000},function(){
+                        window.location.href="/mobile/User/index"
+                    });
+                }
+            });
+            //计算涨幅跌幅
+
+            $(".list ul li").click(function () {
+                $(this).addClass("active");
+                $(this).siblings().removeClass("active");
+                //产品名称
+                var name= $(this).attr('data-product-abbreviation-name');
+                var now_price=$(this).find('.l').text();
+                $('.product_name').text($(this).children('.title').text());
+                $('.product_price_change').attr('data-product-abbreviation',name).text(now_price);
+                $('.up_down_val').attr('data-product-up-down-val',name);
+                $('.up_down').attr('data-product-up-down',name);
+                var form_id='#'+name+'_id';
+                var contract_id='#'+name+'_contract';
+                var min_hand_id='#'+name+'_min_hand';
+                var fee_id='#'+name+'_fee';
+                var wave_id='#'+name+'_wave';
+
+                var form_id_val=$(form_id).val();
+                var contract_val=$(contract_id).val();
+                var min_hand_val=$(min_hand_id).val();
+                var fee_val=$(fee_id).val();
+                var wave_val=$(wave_id).val();
+                $('.contract').text(contract_val);
+                $('.min_hand').text(min_hand_val);
+                $('.fee').text(fee_val);
+                $('.point_wave').val(wave_val);
+                $('.form_id').val(form_id_val);
+
+                $('.target_profit').text(now_price-(-wave_val));
+                $('input[name="target_profit"]').val(now_price-(-wave_val));
+
+                $('.stop_loss').text(now_price-wave_val);
+                $('input[name="stop_loss"]').val(now_price-wave_val);
+                countRange(now_price,name);
+                setCandlestick(name,"1day",30);
+            });
+            var uid="{$user.uid}";
+            var wsUrl ='ws:';
+            if(loc.protocol == 'https:')
+                wsUrl = 'wss:'
+            wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
+            var ws = new WebSocket(wsUrl)
+            console.log(wsUrl);
+            ws.onopen = function()
+            {
+                layer.close(loadingFirst);
+                loadingSecond = layer.load(2, { //icon支持传入0-2
+                    shade: [0.5, 'gray'], //0.5透明度的灰色背景
+                    content: '数据加载中...',
+                    success: function (layero) {
+                        layero.find('.layui-layer-content').css({
+                            'padding-top': '39px',
+                            'width': '14rem',
+                            'color':'white',
+                            'font-size':'2rem'
+
+                        });
+                    }
+                });
+            };
+
+            ws.onmessage = function (evt)
+            {
+                var data=JSON.parse(evt.data);
+                if(data.status){
+                    //总后台强平
+                    if(data.status==101){
+                        layer.msg(data.msg,{icon: 2,time:3000},function(){
+                            var tr='.'+data.oid;
+                            $(tr).remove();
+                            handle_money(data.money,data.promise_money);
+                        });
+                    }
+                    //爆仓,止盈平仓，止损平仓
+                    if(data.status==102){
+                        layer.msg(data.msg,{icon: 2,time:3000},function(){
+                            var tr='.'+data.oid;
+                            $(tr).remove();
+                            handle_money(data.money,data.promise_money);
+                        });
+                    }
+                    //资金变化
+                    if(data.status==201){
+                        handle_money(data.money,data.promise_money);
+                    }
+                }else{
+                    var active_name = $('#active_product_name').attr('data-abbreviation');
+                    $.each(data,function(k,v){
+                        var now_price_class='.now_price_'+k;//固定产品位置
+                        var new_price=v['USD'];
+                        if(k==active_name){
+                            //计算止盈止损
+                            count_wave(new_price);
+//                            var opt = myChart.getOption();
+//                            if(opt){
+//                                opt.series[0].markLine.data[0].yAxis = new_price;
+//                                myChart.clear();
+//                                myChart.setOption(opt);
+//                            }
+                        }
+                        //计算涨幅跌幅
+                        countRange(new_price,k);
+                        $(now_price_class).text(new_price);
+                    });
+                    //计算持仓单输赢
+//                    count_profit();
+                    layer.close(loadingSecond);
+                }
+            };
+        }
+        layui.use(['layer', 'form'], function () {
+            layer = layui.layer;
+            var form = layui.form;
+            loadingFirst = layer.load(2, { //icon支持传入0-2
+                shade: [0.5, 'gray'], //0.5透明度的灰色背景
+                content: '连接服务器...',
+                success: function (layero) {
+                    layero.find('.layui-layer-content').css({
+                        'padding-top': '39px',
+                        'width': '14rem',
+                        'color':'white',
+                        'font-size':'2rem'
+
+                    });
+                    prepareWs();
+                }
+            });
+            form.on('switch(checks)', function(data){
+//                console.log(data.elem.checked); //开关是否开启，true或者false
+                if(data.elem.checked==true){
+                    $(".switchone .chosecon").show();
+                }else{
+                    $(".switchone .chosecon").hide();
+                }
+            });
+            form.on('switch(checks-t)', function(data){
+//                console.log(data.elem.checked); //开关是否开启，true或者false
+                if(data.elem.checked==true){
+                    $(".switchtwo .chosecon").show();
+                }else{
+                    $(".switchtwo .chosecon").hide();
+                }
+            });
+            form.verify({
+                hand: function(value){
+                    if(value<=0){
+                        return '请输入正确的手数';
+                    }
+                }
+            });
+
+            form.on('submit(create_order)', function(data){
+//                console.log(data.field);
+//                return false;
+                var load = layer.load();
+                $('input[type="submit"]').attr("disabled",true);
+                $.post("/index/Trade/create_order",data.field,function(res){
+                    layer.close(load);
+                    if(res.status==0){
+                        layer.msg(res.msg,{icon: 2,time:1000},function(){
+                            $('input[type="submit"]').removeAttr("disabled");
+                        });
+                    }else{
+                        layer.msg(res.msg,{icon: 1,time:1000},function(){
+                            keep_order_list_add(res.info);
+                            handle_money(-res.info.fee,res.info.money);
+
+                            // window.location.href="/index/User/index"
+                        });
+                    }
+                },'json');
+                return false;
+            });
+
+        });
+        setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
+    });
+    function keep_order_list_add(data){
+//        console.log(data);
+        var html='<tr class="'+data.oid+'">';
+        html+='<td>'+data.order_sn+'</td>';
+        html+='<td>'+data.product_name+'</td>';
+        html+='<td class="money">'+math_floor(data.money)+'</td>';
+        html+='<td class="buy_price">'+math_floor(data.buy_price)+'</td>';
+        html+='<td class="now_price '+data.product_abbreviation+'">'+data.now_price+'</td>';
+        if(data.direction==1){
+            html+='<td style="color: red;" class="direction">买入</td>';
+        }else{
+            html+='<td style="color: #008000;" class="direction">卖出</td>';
+        }
+        html+='<td class="order_contract">'+math_floor(data.contract)+'</td>';
+        html+='<td class="hand">'+math_floor(data.hand)+'</td>';
+        html+='<td class="profit">0.00</td>';
+        html+='<td>'+data.add_time+'</td>';
+        html+='<td><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order('+data.oid+')">平仓</button></td></tr>';
+        $(".keep_order_list").prepend(html);
+        $(".models .m-cancel").click();
+    }
+    function math_floor(number,per){
+        number = parseFloat(number);
+        return number.toFixed(2);
+    }
+    function x100(x){
+        return Math.floor((+x)*100);
+    }
+    function toRead(x){
+        x = x + '';
+        return x.slice(0,-2) + '.'  + x.slice(-2);
+    }
+    function isNotANumber(inputData) {
+        //isNaN(inputData)不能判断空串或一个空格
+        //如果是一个空串或是一个空格，而isNaN是做为数字0进行处理的，而parseInt与parseFloat是返回一个错误消息，这个isNaN检查不严密而导致的。
+        if(parseFloat(inputData).toString() == "NaN") {
+            return false;
+        } else {
+            return true;
+        }
+    }
 </script>
 </body>
 </html>

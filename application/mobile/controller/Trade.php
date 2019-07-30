@@ -14,9 +14,7 @@ class Trade extends Common
 //            $this->redirect('/index/Login/login');
         }
     }
-    public function index2(){
-        return $this->fetch();
-    }
+
     public function index()
     {
         if($this->user){
@@ -41,10 +39,18 @@ class Trade extends Common
         $where=[];
         $where[]=['status','=',1];
         $where[]=['show_status','=',1];
+        $where[]=['id','=',input('get.id')];
+        $product=db::name('product')->where($where)->find();
+        if(!$product){
+            $this->error('该产品暂未开放','/mobile/Index/index');
+        }
+        $this->assign('product',$product);
+
+        $where=[];
+        $where[]=['status','=',1];
+        $where[]=['show_status','=',1];
         $product_list=db::name('product')->where($where)->select();
         $this->assign('product_list',$product_list);
-
-
 
         return $this->fetch();
     }

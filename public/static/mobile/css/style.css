@@ -421,6 +421,15 @@ header,
 	background: url(../images/footer001.png) no-repeat;
 	background-size: 22px;
 }
+.weui-tabbar__item .foot-menu-price {
+	background: url(../images/footer05.png) no-repeat;
+	background-size: 22px;
+}
+
+.weui-tabbar__item.weui-bar__item--on .foot-menu-price {
+	background: url(../images/footer005.png) no-repeat;
+	background-size: 22px;
+}
 
 .weui-tabbar__item .foot-menu-list {
 	background: url(../images/footer02.png) no-repeat;

@@ -1172,11 +1172,11 @@
 //        console.log(number);
         return number.toFixed(2);
     }
-    var last_money=0;
+//    var last_money=0;
 
     //计算持仓单盈亏
     function count_profit(){
-        var all=0;
+//        var all=0;
         $('tbody tr').each(function(){
             var buy_price=$(this).children('.buy_price').text();
             var now_price=$(this).children('.now_price').text();
@@ -1203,14 +1203,14 @@
                 }
                 amount=-amount;
             }
-            all=all+parseFloat(amount);
+//            all=all+parseFloat(amount);
 
 //            console.log(color);
             $(this).children('.profit').text(math_floor(amount)).attr("style","color:"+color+";");
             $(this).children('.now_price').attr("style","color:"+color+";");
         });
 //        handle_money(all-last_money,0);
-        last_money=all;
+//        last_money=all;
     }
     //计算止盈止损
     function count_wave(price){
@@ -1285,6 +1285,7 @@
         var loadingSecond;
         function prepareWs(){
             var url = baseUrl + "/openPrice";
+            console.log(url);
             //获取产品开盘价
             $.ajax({
                 type: 'get',
