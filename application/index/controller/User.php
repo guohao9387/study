@@ -70,7 +70,7 @@ class User extends Common
 
         if(request()->isAjax()){
             $param=input('post.');
-            if(strlen($param['name'])<1||strlen($param['name'])>6){
+            if(strlen($param['name'])<1||strlen($param['name'])>12){
                 $data=[];
                 $data['status']=0;
                 $data['msg']='请输入正确的真实姓名';

@@ -439,11 +439,11 @@ font-size: 13px;
         <form action="" class="layui-form">
             <div class="m-hang">
                 <label>品种</label>
-                <input type="text" readonly="readonly" value="BTC/USD" />
+                <input type="text" readonly="readonly" value="{$product.desc_name}" />
             </div>
             <div class="m-hang">
                 <label>当前价格</label>
-                <input type="text" readonly="readonly" value="94130.1" />
+                <input type="text" readonly="readonly" value="0.00" class="order_price" />
             </div>
             <div class="m-hang">
                 <label>交易单位</label>
@@ -872,6 +872,7 @@ font-size: 13px;
         var loadingSecond;
         function prepareWs(){
             var url = baseUrl + "/openPrice";
+                                url = 'https://aioq.cn/golang/openPrice';
             //获取产品开盘价
             $.ajax({
                 type: 'get',
@@ -924,13 +925,15 @@ font-size: 13px;
                 $('.stop_loss').text(now_price-wave_val);
                 $('input[name="stop_loss"]').val(now_price-wave_val);
                 countRange(now_price,name);
-                setCandlestick(name,"1day",30);
+//                setCandlestick(name,"1day",30);
             });
             var uid="{$user.uid}";
             var wsUrl ='ws:';
             if(loc.protocol == 'https:')
                 wsUrl = 'wss:'
             wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
+            wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
+
             var ws = new WebSocket(wsUrl)
             console.log(wsUrl);
             ws.onopen = function()
@@ -942,9 +945,9 @@ font-size: 13px;
                     success: function (layero) {
                         layero.find('.layui-layer-content').css({
                             'padding-top': '39px',
-                            'width': '14rem',
+                            'width': '6rem',
                             'color':'white',
-                            'font-size':'2rem'
+                            'font-size':'1rem'
 
                         });
                     }
@@ -1009,9 +1012,9 @@ font-size: 13px;
                 success: function (layero) {
                     layero.find('.layui-layer-content').css({
                         'padding-top': '39px',
-                        'width': '14rem',
+                        'width': '6rem',
                         'color':'white',
-                        'font-size':'2rem'
+                        'font-size':'1rem'
 
                     });
                     prepareWs();
@@ -1065,7 +1068,7 @@ font-size: 13px;
             });
 
         });
-        setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
+//        setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
     });
     function keep_order_list_add(data){
 //        console.log(data);

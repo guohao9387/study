@@ -1285,6 +1285,7 @@
         var loadingSecond;
         function prepareWs(){
             var url = baseUrl + "/openPrice";
+//                    url = 'https://aioq.cn/golang/openPrice';
             console.log(url);
             //获取产品开盘价
             $.ajax({
@@ -1345,6 +1346,8 @@
             if(loc.protocol == 'https:')
                 wsUrl = 'wss:'
             wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
+//            wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
+
             var ws = new WebSocket(wsUrl)
             //var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
             console.log(wsUrl);

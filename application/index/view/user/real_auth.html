@@ -370,7 +370,7 @@
                     ,layer = layui.layer;
             form.verify({
                 name:function(value){
-                    if(value.length < 1||value.length > 6){
+                    if(value.length < 1||value.length > 4){
                         return '请输入正确的真实姓名';
                     }
                     if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
