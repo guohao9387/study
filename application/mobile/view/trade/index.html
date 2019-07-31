@@ -285,8 +285,8 @@
     .ar-text div p span{
         width: 100%;
         display: block;
-        height: 1rem;
-        line-height:2rem;
+        height: 17.5px;
+        line-height:17.5px;
     }
     .ar-text div p span:last-child,.ar-text .txt1 p{
         color: #656570;
@@ -332,7 +332,7 @@
 <div class='weui-content'>
     <div class="transaction">
         <div class="tr-header">
-            <img src="/static/mobile/images/xiayibuer.png" class="goback" onclick="window.history.back();"/>
+            <img src="/static/mobile/images/xiayibuer.png" class="goback" onclick="window.location.href='/mobile/Index/price'"/>
             <div class="tr-mo">
                 <span class="product_name" id="active_product_name" data-abbreviation="{$product.abbreviation}">{$product.desc_name}</span>
                 <img src="/static/mobile/images/xiamore.png"/>
@@ -380,9 +380,9 @@
         <div class="k-xian">
             <div id="main" style="width: 100%;height:420px;"></div>
             <div class="moe">
-            	<p>账户余额： <span id="money">{$user.money|number_format=###,2,'.',''}</span>  </p>
-            	<p>保证金：<span id="promise_money">{$user.promise_money|number_format=###,2,'.',''}</span></p>
-            	<p>可用余额：<span id="real_money">{$user.real_money|number_format=###,2,'.',''}</span></p>
+            	<p>账户余额： <span id="user_money">{$user.money|number_format=###,2,'.',''}</span>  </p>
+            	<p>保证金：<span id="user_promise_money">{$user.promise_money|number_format=###,2,'.',''}</span></p>
+            	<p>可用余额：<span id="user_real_money">{$user.real_money|number_format=###,2,'.',''}</span></p>
             </div>
         </div>
         <div class="order">
@@ -1010,72 +1010,6 @@ $(function  () {
     var layer;
     var loadingFirst;
     var loadingSecond;
-    layui.use(['layer', 'form'], function () {
-        layer = layui.layer;
-        var form = layui.form;
-        loadingFirst = layer.load(2, { //icon支持传入0-2
-            shade: [0.5, 'gray'], //0.5透明度的灰色背景
-            content: '连接服务器...',
-            success: function (layero) {
-                layero.find('.layui-layer-content').css({
-                    'padding-top': '39px',
-                    'width': '6rem',
-                    'color':'white',
-                    'font-size':'1rem'
-
-                });
-                prepareWs();
-            }
-        });
-        form.on('switch(checks)', function(data){
-//                console.log(data.elem.checked); //开关是否开启，true或者false
-            if(data.elem.checked==true){
-                $(".switchone .chosecon").show();
-            }else{
-                $(".switchone .chosecon").hide();
-            }
-        });
-        form.on('switch(checks-t)', function(data){
-//                console.log(data.elem.checked); //开关是否开启，true或者false
-            if(data.elem.checked==true){
-                $(".switchtwo .chosecon").show();
-            }else{
-                $(".switchtwo .chosecon").hide();
-            }
-        });
-        form.verify({
-            hand: function(value){
-                if(value<=0){
-                    return '请输入正确的手数';
-                }
-            }
-        });
-
-        form.on('submit(create_order)', function(data){
-            alert(11);
-            console.log(data.field);
-            return false;
-            var load = layer.load();
-            $('input[type="submit"]').attr("disabled",true);
-            $.post("/mobile/Trade/create_order",data.field,function(res){
-                layer.close(load);
-                if(res.status==0){
-                    layer.msg(res.msg,{icon: 2,time:1000},function(){
-                        $('input[type="submit"]').removeAttr("disabled");
-                    });
-                }else{
-                    layer.msg(res.msg,{icon: 1,time:1000},function(){
-                        keep_order_list_add(res.info);
-                        handle_money(-res.info.fee,res.info.money);
-
-                        // window.location.href="/index/User/index"
-                    });
-                }
-            },'json');
-            return false;
-        });
-
-    });
     function prepareWs(){
         var url = baseUrl + "/openPrice";
         url = 'https://aioq.cn/golang/openPrice';
@@ -1175,9 +1109,101 @@ $(function  () {
             }
         };
     }
+    layui.use(['layer', 'form'], function () {
+        layer = layui.layer;
+        var form = layui.form;
+        loadingFirst = layer.load(2, { //icon支持传入0-2
+            shade: [0.5, 'gray'], //0.5透明度的灰色背景
+            content: '连接服务器...',
+            success: function (layero) {
+                layero.find('.layui-layer-content').css({
+                    'padding-top': '39px',
+                    'width': '6rem',
+                    'color':'white',
+                    'font-size':'1rem'
+
+                });
+                prepareWs();
+            }
+        });
+        form.on('switch(checks)', function(data){
+//                console.log(data.elem.checked); //开关是否开启，true或者false
+            if(data.elem.checked==true){
+                $(".switchone .chosecon").show();
+            }else{
+                $(".switchone .chosecon").hide();
+            }
+        });
+        form.on('switch(checks-t)', function(data){
+//                console.log(data.elem.checked); //开关是否开启，true或者false
+            if(data.elem.checked==true){
+                $(".switchtwo .chosecon").show();
+            }else{
+                $(".switchtwo .chosecon").hide();
+            }
+        });
+        form.verify({
+            hand: function(value){
+                if(value<=0){
+                    return '请输入正确的手数';
+                }
+            }
+        });
+
+        form.on('submit(create_order)', function(data){
+            alert(11);
+            console.log(data.field);
+            return false;
+            var load = layer.load();
+            $('input[type="submit"]').attr("disabled",true);
+            $.post("/mobile/Trade/create_order",data.field,function(res){
+                layer.close(load);
+                if(res.status==0){
+                    layer.msg(res.msg,{icon: 2,time:1000},function(){
+                        $('input[type="submit"]').removeAttr("disabled");
+                    });
+                }else{
+                    layer.msg(res.msg,{icon: 1,time:1000},function(){
+                        keep_order_list_add(res.info);
+                        handle_money(-res.info.fee,res.info.money);
+
+                        // window.location.href="/index/User/index"
+                    });
+                }
+            },'json');
+            return false;
+        });
+
+    });
+
 
 //        setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
 });
+function close_order(oid){
+    layer.confirm('确认要平仓吗？',function(index){
+        //发异步删除数据
+        var load = layer.load();
+        $.ajax({
+            url:'/mobile/Trade/close_order',
+            data:{oid:oid},
+            type:'post',
+            dataType:'json',
+            success:function(res){
+                layer.close(load);
+                if(res['status']==1){
+                    layer.msg(res['msg'],{icon:1,time:1000},function(){
+                        var tr='.'+oid;
+                        $(tr).remove();
+                        console.log(res);
+                        handle_money(res.info.money,res.info.promise_money);
+                    });
+                }else{
+                    layer.msg(res['msg'],{icon: 2,time:1000});
+                }
+            }
+        });
+    });
+}
 function keep_order_list_add(data){
     var html='<tr class="'+data.oid+' keep_order_list">';
     html+='<th>'+data.product_name+'</th>';
