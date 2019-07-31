@@ -155,6 +155,7 @@
         width: 100%;
         height: 200px;
         overflow-y: scroll;
+        padding-bottom: 40px;
     }
 
     .order table {
@@ -198,7 +199,7 @@
         color: #2f8e4a;
     }
 
-    .order table tr:nth-child(2) td {
+    .order table tr:nth-child(2) th{
         padding-top: 46px;
     }
 
@@ -285,8 +286,8 @@
     .ar-text div p span{
         width: 100%;
         display: block;
-        height: 17.5px;
-        line-height:17.5px;
+        height: 1rem;
+        line-height:2rem;
     }
     .ar-text div p span:last-child,.ar-text .txt1 p{
         color: #656570;
@@ -320,10 +321,13 @@
         float: left;
         text-align: center;
     }
-
+    .txt p small{
+        font-size: 13px;
+    }
     .k-xian{
         position: relative;
     }
+
     </style>
 </head>
 <body ontouchstart>
@@ -480,7 +484,7 @@
             </div>
             <div class="m-hang">
                 <label>手数</label>
-                <input type="number" value="0" class="shosu" name="hand" lay-verify="number|hand"/>
+                <input type="number" value="0" class="shosu" name="hand" />
             </div>
             <div class="m-hang">
                 <label>保证金</label>
@@ -514,7 +518,7 @@
             <input type="hidden" name="id" class="form_id" value="{$product['id']}"/>
             <input type="hidden" class="form_direction" name="direction" value="1"/>
             <div class="m-hang" style="margin-top:20px;">
-                <button style="background-color: orange;color: white" type="submit" class="create_order submit" lay-submit lay-filter="create_order">确定</button>
+                <button style="background-color: orange;color: white" class="create_order submit" type="button">确定</button>
                 <button class="cancel" type="button">取消</button>
             </div>
 
@@ -950,6 +954,7 @@ function count_profit(){
             }
             amount=-amount;
         }
+        console.log(amount);
         $(this).children('.profit').text(math_floor(amount)).attr("style","color:"+color+";");
         $(this).children('.list_now_price').attr("style","color:"+color+";");
     });
@@ -1142,31 +1147,26 @@ $(function  () {
                 $(".switchtwo .chosecon").hide();
             }
         });
-        form.verify({
-            hand: function(value){
-                if(value<=0){
-                    return '请输入正确的手数';
-                }
-            }
-        });
 
-        form.on('submit(create_order)', function(data){
-            alert(11);
-            console.log(data.field);
-            return false;
+        $(".create_order").click(function(event) {
+            var hand=$('.shosu').val();
+            var id=$('.form_id').val();
+            var direction=$('.form_direction').val();
+            if(hand<=0){
+                layer.msg('请输入正确的手数',{icon: 2,time:1000});
+                return false;
+            }
             var load = layer.load();
-            $('input[type="submit"]').attr("disabled",true);
-            $.post("/mobile/Trade/create_order",data.field,function(res){
+            $(".create_order").attr("disabled",true);
+            $.post("/mobile/Trade/create_order",{hand:hand,id:id,direction:direction},function(res){
                 layer.close(load);
+                $(".create_order").removeAttr("disabled");
                 if(res.status==0){
-                    layer.msg(res.msg,{icon: 2,time:1000},function(){
-                        $('input[type="submit"]').removeAttr("disabled");
-                    });
+                    layer.msg(res.msg,{icon: 2,time:1000});
                 }else{
                     layer.msg(res.msg,{icon: 1,time:1000},function(){
                         keep_order_list_add(res.info);
                         handle_money(-res.info.fee,res.info.money);
-
                         // window.location.href="/index/User/index"
                     });
                 }
@@ -1210,11 +1210,13 @@ function keep_order_list_add(data){
     html+='<th class="buy_price">'+math_floor(data.buy_price)+'</th>';
     html+='<th class="list_now_price now_price_'+data.product_abbreviation+'">'+data.now_price+'</th>';
     html+='<th class="profit">0.00</th>';
-    html+='<th><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order('+data.oid+')">平仓</button></th></tr>';
+    html+='<th><button style="background-color: red;color: white;border-radius:8%;width: 3rem;" onclick="close_order('+data.oid+')">平仓</button></th>';
     html+='<input type="hidden" value="'+math_floor(data.direction)+'" class="o_direction"/>';
     html+='<input type="hidden" value="'+math_floor(data.contract)+'" class="o_contract"/>';
     html+='<input type="hidden" value="'+math_floor(data.hand)+'" class="o_hand"/>';
-    $(".order_add_list").prepend(html);
+    html+='</tr>';
+    $(".order_add_list tr:eq(0)").after(html);
+//    $(".order_add_list").prepend(html);
     $(".cancel").click();
 }
 function math_floor(number,per){
