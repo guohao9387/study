@@ -77,7 +77,7 @@ class Withdraw extends Common{
                 $data['nickname'] = $agent['nickname'];
                 $data['money'] = $param['money'];
                 $data['rate'] = $this->config['withdraw_rate'];
-                $data['real_money'] = number_format($param['money']/$this->config['withdraw_rate'], 2, ".", "");
+                $data['real_money'] = number_format($param['money']*$this->config['withdraw_rate'], 2, ".", "");
                 $data['name'] = $bank_info['name'];
                 $data['phone'] = $bank_info['phone'];
                 $data['bank_name'] = $bank_info['bank_name'];
