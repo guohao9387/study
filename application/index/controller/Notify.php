@@ -42,7 +42,7 @@ class Notify extends Controller
                         $data=[];
                         $data['status']=2;
                         $data['update_time']=date('Y-m-d H:i:s');
-                        $status=db::name('order')->where($where)->update($data);
+                        $status=db::name('recharge')->where($where)->update($data);
                         if(!$status){
                             db::rollback();
                             echo 'error';

@@ -35,13 +35,13 @@
       <div class="weui-cell__hd"><label class="weui-label wy-lab">图形验证码</label></div>
       <div class="weui-cell__bd"><input class="weui-input" name="vcode" type="number" placeholder="请输入图形验证码" lay-verify="vcode|number" id="vcode"></div>
       <div class="weui-cell__ft">
-      <img src="/agent/Login/verify" id="my_code" alt="captcha" style="height: 2rem;width: 4.1rem" onClick="this.src=this.src+'?'+Math.random()"/>
+      <img src="/agent/Login/verify" id="my_code" alt="captcha" style="height: 2rem;width: 4.6rem" onClick="this.src=this.src+'?'+Math.random()"/>
       </div>
     </div>
       <div class="weui-cell weui-cell_vcode">
           <div class="weui-cell__hd"><label class="weui-label wy-lab">动态验证码</label></div>
           <div class="weui-cell__bd"><input class="weui-input" type="number" placeholder="请输入动态验证码" lay-verify="code|number" name="code" ></div>
-          <div class="weui-cell__ft"><button type="button" class="weui-vcode-btn code_btn" onclick="send_msg()">点击发送</button></div>
+          <div class="weui-cell__ft"><button style="width: 4.6rem" type="button" class="weui-vcode-btn code_btn" onclick="send_msg()">点击发送</button></div>
       </div>
     <div class="weui-cell">
       <div class="weui-cell__hd"><label class="weui-label wy-lab">姓名</label></div>
