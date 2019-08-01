@@ -449,6 +449,7 @@ class User extends Common
             $this->error('参数错误','/mobile/User/index');
         }
         $this->assign('info',$info);
+        return $this->fetch();
     }
     public function re_pwd()
     {
