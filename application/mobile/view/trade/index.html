@@ -220,11 +220,11 @@
     }
 
     .footer ul li:first-child {
-        background: #40cc5b;
+        background: #ff5e5e;
     }
 
     .footer ul li:last-child {
-        background: #ff5e5e;
+        background: #40cc5b;
     }
 
     .layui-input-block {
@@ -387,7 +387,7 @@
             <div id="main" style="width: 100%;height:420px;"></div>
             <div class="moe">
             	<p>账户余额： <span id="user_money">{$user.money|number_format=###,2,'.',''}</span>  </p>
-            	<p>保证金：<span id="user_promise_money">{$user.promise_money|number_format=###,2,'.',''}</span></p>
+            	<p>占用保证金：<span id="user_promise_money">{$user.promise_money|number_format=###,2,'.',''}</span></p>
             	<p>可用余额：<span id="user_real_money">{$user.real_money|number_format=###,2,'.',''}</span></p>
             </div>
         </div>

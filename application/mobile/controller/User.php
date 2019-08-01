@@ -438,6 +438,18 @@ class User extends Common
             return $list;
         }
     }
+    public function order_info(){
+        $oid=input('get.oid');
+        $where=[];
+        $where[]=['oid','=',$oid];
+        $where[]=['order_status','=',2];
+        $where[]=['uid','=',$this->user];
+        $info=db::name('order')->where($where)->find();
+        if(!$info){
+            $this->error('参数错误','/mobile/User/index');
+        }
+        $this->assign('info',$info);
+    }
     public function re_pwd()
     {
         if(request()->isAjax()){
