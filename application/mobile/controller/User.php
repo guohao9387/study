@@ -12,7 +12,7 @@ class User extends Common
         $this->user = session('user');
         $this->user_name = session('user_name');
         if (empty($this->user)) {
-            $this->redirect('/Mobile/Login/login');
+            $this->redirect('/mobile/Login/login');
         }
 
         $this->info=db::name('user')->where('uid',$this->user)->find();
