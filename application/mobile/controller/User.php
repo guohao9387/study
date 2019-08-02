@@ -197,8 +197,8 @@ class User extends Common
             $data['version'] = '1.1';
             $data['pay_id'] = $param['type'];
             $data['out_trade_no'] = $order_sn;
-            $data['return_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/mobile/User/index';
-            $data['notify_url'] = 'http://'.$_SERVER['SERVER_NAME'].'/index/Notify/index';
+            $data['return_url'] = 'https://'.$_SERVER['SERVER_NAME'].'/mobile/User/index';
+            $data['notify_url'] = 'https://'.$_SERVER['SERVER_NAME'].'/index/Notify/index';
             ksort($data);
             $fieldString = array();
             foreach ($data as $key => $value) {
