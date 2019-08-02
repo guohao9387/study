@@ -1119,7 +1119,7 @@ $(function  () {
     var loadingSecond;
     function prepareWs(){
         var url = baseUrl + "/openPrice";
-        url = 'https://aioq.cn/golang/openPrice';
+//        url = 'https://aioq.cn/golang/openPrice';
         //获取产品开盘价
         $.ajax({
             type: 'get',
@@ -1143,7 +1143,7 @@ $(function  () {
         if(loc.protocol == 'https:')
             wsUrl = 'wss:'
         wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
-        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
+//        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
 
         var ws = new WebSocket(wsUrl)
 //        console.log(wsUrl);

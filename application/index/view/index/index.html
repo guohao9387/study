@@ -165,7 +165,7 @@
         <ul class="active hg40  trade_qu_list" style="height: 40px;line-height: 40px;">
 
             <li class="trade_moshi trade_qu_pai current">
-                <a> USDT交易区 </a>
+                <a> USD交易区 </a>
             </li>
         </ul>
     </div>
@@ -173,14 +173,14 @@
 <div class="price_today">
     <div class="autobox">
         <ul class="price_today_ull">
-            <li data-sort="0" style="cursor: default;">交易市场</li>
+            <li data-sort="0" style="cursor: default;">产品名称</li>
             <li class="click-sort" data-sort="1" data-flaglist="0" data-toggle="0">最新成交价 <i
                     class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
             </li>
-            <li class="click-sort" data-sort="2" data-flaglist="0" data-toggle="0">买一价 <i
+            <li class="click-sort" data-sort="2" data-flaglist="0" data-toggle="0">涨跌<i
                     class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
             </li>
-            <li class="click-sort" data-sort="3" data-flaglist="0" data-toggle="0">卖一价 <i
+            <li class="click-sort" data-sort="3" data-flaglist="0" data-toggle="0">涨幅<i
                     class="cagret cagret-down"></i> <i class="cagret cagret-up"></i>
             </li>
             <li class="click-sort" data-sort="6" data-flaglist="0" data-toggle="0">24H成交量 <i
@@ -204,8 +204,8 @@
                 </a>
             </dt>
             <dd class="orange" style="text-indent: 1.6em;" id="{$val.abbreviation}">0</dd>
-            <dd style="text-indent: 1.6rem;">0</dd>
-            <dd style="text-indent: 1.6rem;">0</dd>
+            <dd style="text-indent: 1.6rem;" id="up_down_val_{$val.abbreviation}">0</dd>
+            <dd style="text-indent: 1.6rem;" id="up_down_per_{$val.abbreviation}">0</dd>
             <dd class="w142" style="    text-indent: 1.6rem;">0</dd>
             <dd class="w142" style="    text-indent: 2.5rem;">0</dd>
             <dd class="w102" style="width:150px;text-align: center;text-indent: 0.5em;"><input type="button" value="去交易" class="btns2" onclick="top.location='/index/Trade/index'"></dd>
@@ -653,34 +653,70 @@
 <script type="text/javascript">
     var loc = window.location;
     var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
-    var uid=3;
-    var wsUrl ='ws:';
-    if(loc.protocol == 'https:')
-        wsUrl = 'wss:'
-    wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
-    var ws = new WebSocket(wsUrl)
-//    var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid=3");
-
-    ws.onopen = function()
-    {
-        // Web Socket 已连接上，使用 send() 方法发送数据
-        //ws.send("发送数据");
-    };
-
-    ws.onmessage = function (evt)
-    {
-        //console.log(evt.data);
-        var data=JSON.parse(evt.data);
-        $.each(data,function(k,v){
-            var id='#'+k;
-            var last_price=$(id).html();
-            var now_price=v['USD'];
-            if(now_price>=last_price){
-                $(id).attr("style","color:red;");
-            }else{
-                $(id).attr("style","color:green;");
+    var openPrice = [];
+    function math_floor(number,per){
+        number = parseFloat(number);
+//        console.log(number);
+        return number.toFixed(2);
+    }
+    function countRange(nowPrice,productAbbreviation){
+        var range=nowPrice-openPrice[productAbbreviation];
+        var range_per=range/openPrice[productAbbreviation]*100;
+        var up_down_val=  "#up_down_val_"+productAbbreviation;
+        var up_down_per=  "#up_down_per_"+productAbbreviation;
+        var name="#"+productAbbreviation;
+        var color;
+        if(nowPrice>=openPrice[productAbbreviation]){
+            color='red';
+        }else if(nowPrice<openPrice[productAbbreviation]){
+            color='green';
+        }
+        $(up_down_val).text(math_floor(range)).parent().attr("style","color:"+color+";");
+        $(up_down_per).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+        $(name).attr("style","color:"+color+";");
+    }
+    $(function  () {
+        var url = baseUrl + "/openPrice";
+//        url = 'https://aioq.cn/golang/openPrice';
+        //获取产品开盘价
+        $.ajax({
+            type: 'get',
+            url: url,
+            //async: false,//同步
+            success : function(data) {
+                for(let i in data){
+                    openPrice[i] =data[i]['USD'];
+                }
+            },
+            error : function(errMsg) {
+                //不知道该干啥
             }
-            $(id).html(v['USD']);
-        })
-    };
+        });
+        var wsUrl ='ws:';
+        if(loc.protocol == 'https:')
+            wsUrl = 'wss:'
+        wsUrl += '//' + loc.host + '/golang/ws?uid=' + 3;
+//        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
+        var ws = new WebSocket(wsUrl);
+        ws.onopen = function()
+        {
+        };
+
+        ws.onmessage = function (evt)
+        {
+            var data=JSON.parse(evt.data);
+            if(data.status){
+
+            }else{
+
+                $.each(data,function(k,v){
+                    var abbreviation='#'+k;//固定产品位置
+                    var new_price=v['USD'];
+                    $(abbreviation).text(new_price);
+                    //计算涨幅跌幅
+                    countRange(new_price,k);
+                });
+            }
+        };
+    });
 </script>
