@@ -148,14 +148,29 @@ class User extends Common
     {
         if(request()->isAjax()){
             $param=input('post.');
-            if($param['type']!='5001'&&$param['type']!='2004'&&$param['type']!='QWJ_QUICK'&&$param['type']!='7001'){
+            if($param['type']=='5001'||$param['type']=='2004'){
+                if($param['money']<500){
+                    return json_return(0,'最低充值金额500');
+                }
+                if($param['money']>30000){
+                    return json_return(0,'最大充值金额30000');
+                }
+            }elseif($param['type']=='7001'){
+                if($param['money']<100){
+                    return json_return(0,'最低充值金额100');
+                }
+                if($param['money']>200000){
+                    return json_return(0,'最大充值金额200000');
+                }
+            }elseif($param['type']=='QWJ_QUICK'){
+                if($param['money']<100){
+                    return json_return(0,'最低充值金额100');
+                }
+                if($param['money']>10000){
+                    return json_return(0,'最大充值金额10000');
+                }
+            }else{
                 return json_return(0,'参数有误');
-            }
-            if($param['money']<500){
-                return json_return(0,'最低充值金额500');
-            }
-            if($param['money']>30000){
-                return json_return(0,'最大充值金额30000');
             }
             $order_sn='rn'.time().rand(1000,9999);
             $data=[];
