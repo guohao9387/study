@@ -29,7 +29,7 @@
   </div>
 
   <!--新闻切换-->
-  <div class="wy-ind-news" style="background-color: #232222">
+  <div class="wy-ind-news" style="background-color: #121524">
     <i class="news-icon-laba"></i>
     <div class="swiper-container swiper-news">
       <div class="swiper-wrapper">
@@ -43,8 +43,20 @@
     </div>
     <a href="/mobile/Notice/notice_list" class="newsmore"><i class="news-icon-more"></i></a>
   </div>
-
-    <div class="weui-panel weui-panel_access">
+  <div class="huodnews clearboth">
+      <h2>功能服务</h2>
+      <ul>
+        <li >
+            <img src="/static/mobile/images/price.png" style="height:5rem"/>
+            <p>货币行情</p>
+        </li>
+        <li>
+            <img src="/static/mobile/images/trade.png" style="height:5rem"/>
+            <p>产品交易</p>
+        </li>
+      </ul>
+  </div>
+    <div class="weui-panel_access">
         <div class="weui-panel__hd" style="color: white">新闻资讯</div>
         <div class="weui-panel__bd">
             {volist name="news_list" id="val"}
@@ -98,7 +110,8 @@
 <script>
 	$(".swiper-banner").swiper({
         loop: true,
-        autoplay: 3000
+        autoplay: 3000,
+
       });
 	$(".swiper-news").swiper({
 		loop: true,

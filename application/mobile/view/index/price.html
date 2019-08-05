@@ -12,8 +12,9 @@
 <link rel="stylesheet" href="/static/mobile/css/style.css">
     <style>
         .pagelist{
-            padding:10px;
+            padding:10px 0;
             padding-top: 0;
+            background: #121524;
             border-top: 1px solid #586C94;
         }
         .clearboth:after{
@@ -25,70 +26,91 @@
 
         }
         .pagelist ul li{
-            padding: 10px 0;
-            width: 100%;
-            border-bottom: 1px solid #586C94;
+            padding: 15px 10px;
+           
+            border-bottom: 1px solid #070915;
         }
         .pagelist ul li:last-child{
-            border-bottom:0;
+          
         }
-        .pagelist ul li .pali-left{
-            width: 73%;
+        .pagelist ul li>div{
+            
             float: left;
         }
-        .pagelist ul li .pali-right{
-            width: 22%;
-            float: right;
-        }
-        .pali-left>div{
-            height: 20px;
-            line-height: 20px;
-
-        }
-        .pali-left .pl-first{
+        
+       
+         .pl-first{
+            width: 35%;
             margin-bottom: 2px;
         }
-        .pali-left .pl-first p:first-child{
+        .pl-first img{
+            width:35%;
             float: left;
+            
+margin-right: 3%;
+        }
+        .pl-first p{
+            margin-top: 6%;
+            float: left;
+            width: 62%;
             color: white;
             font-size: 14px;
             font-weight: bold;
         }
-        .pali-left .pl-first p:first-child small{
+         .pl-first p span{
             font-size: 12px;
-            color: #D4D4D4;
+            color: rgba(255,255,255,0.7);
         }
 
-        .pali-left .pl-first p:last-child{
-            float: right;
-            color: white;
-            font-size: 13px;
-        }
-        .pali-left .pl-tw p:first-child{
-            float: left;
+       .pl-tw{
+        width: 30%!important;
+        text-align: right;
+       }
+         .pl-tw p{
+            /*float: left;*/
             color: #D4D4D4;
-            font-size: 12px;
+            font-size: 15px;
+            margin-top:6%;
 
         }
-        .pali-left .pl-tw p:last-child{
-            float: right;
-            color: white;
-            font-size: 12px;
+        .pali-right{
+            width: 35%!important;
+            text-align: right;
         }
         .pali-right button{
+            width: 70%;
             font-size: 12px;
             height: 35px;
             line-height: 35px;
-            background:orange;
+            background:#03c086;
             color: white;
             outline: none;
             border: none;
-            width: 100%;
-            text-align: center;
-            border-radius: 5px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            -o-border-radius:5px;
+            
+        text-align: center;
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            -o-border-radius:15px;
+        }
+        .pagelist .pahe{
+            padding: 10px;
+            border-bottom:1px solid #070915
+
+        }
+        .pahe .pahe-h{
+            width: 35%;
+            float: left;
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+        }
+        .pahe .pahe-h:nth-child(2){
+            width: 30%;
+            text-align: right;
+        }
+        .pahe .pahe-h:last-child{
+           float: right;
+           text-align: right;
         }
     </style>
 </head>
@@ -99,20 +121,31 @@
 <div class='weui-content'>
 <div class="pagelist">
 	<ul>
+        <div class="pahe clearboth">
+          <div class="pahe-h">
+              币种
+          </div>
+            <div class="pahe-h">
+              最新价格
+          </div>
+          <div class="pahe-h">
+              涨跌幅
+          </div>
+        </div>
         {volist name="product" id="val"}
         <li class="clearboth">
-            <div class="pali-left">
-                <div class="pl-first clearboth">
-                    <p class="weui-media-box__bd">{$val.desc_name}</p>
-                    <p class="weui-media-box__bd" >涨跌<span id="up_down_val_{$val.abbreviation}">0.00</span></p>
-                </div>
-                <div class="pl-tw clearboth">
-                    <p id="{$val.abbreviation}">0.00</p>
-                    <p>涨幅<span id="up_down_per_{$val.abbreviation}">0.00</span>%</p>
-                </div>
+
+            <div class="pl-first clearboth">
+                <img src="{$val.image}" />
+                <p class="weui-media-box__bd" >{$val.desc_name}</p>
             </div>
+            <div class="pl-tw clearboth">
+                <p id="{$val.abbreviation}">0.00</p>
+
+            </div>
+
             <div class="pali-right">
-                <button><a href="/mobile/Trade/index?id={$val.id}" style="color: white">交易</a></button>
+                <button><a href="/mobile/Trade/index?id={$val.id}" style="color: white" id="up_down_per_{$val.abbreviation}">3.50</a></button>
             </div>
         </li>
 
@@ -165,17 +198,17 @@
         var name="#"+productAbbreviation;
         var color;
         if(nowPrice>=openPrice[productAbbreviation]){
-            color='red';
+            color='#e76e43';
         }else if(nowPrice<openPrice[productAbbreviation]){
-            color='green';
+            color='#03c086';
         }
         $(up_down_val).text(math_floor(range)).parent().attr("style","color:"+color+";");
-        $(up_down_per).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+        $(up_down_per).text(math_floor(range_per)).parent().attr("style","background:"+color+";");
         $(name).attr("style","color:"+color+";");
     }
     $(function  () {
         var url = baseUrl + "/openPrice";
-//        url = 'https://aioq.cn/golang/openPrice';
+        url = 'https://aioq.cn/golang/openPrice';
         //获取产品开盘价
         $.ajax({
             type: 'get',
@@ -194,7 +227,7 @@
         if(loc.protocol == 'https:')
             wsUrl = 'wss:'
         wsUrl += '//' + loc.host + '/golang/ws?uid=' + 3;
-//        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
+        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
         var ws = new WebSocket(wsUrl);
         ws.onopen = function()
         {
