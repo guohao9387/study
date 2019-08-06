@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>{$GLOBALS['title']}</title>
+<meta name="keywords" content="{$GLOBALS['title']}" />
+<meta name="description" content="{$GLOBALS['title']}" />
+<link rel="stylesheet" href="/static/mobile/css/weui.min.css">
+<link rel="stylesheet" href="/static/mobile/css/jquery-weui.css">
+<link rel="stylesheet" href="/static/mobile/css/style.css">
+    <style>
+        .pagelist{
+            padding:10px;
+            padding-top: 0;
+            border-top: 1px solid #586C94;
+        }
+        .clearboth:after{
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .pagelist ul {
+
+        }
+        .pagelist ul li{
+            padding: 10px 0;
+            width: 100%;
+            border-bottom: 1px solid #586C94;
+        }
+        .pagelist ul li:last-child{
+            border-bottom:0;
+        }
+        .pagelist ul li .pali-left{
+            width: 73%;
+            float: left;
+        }
+        .pagelist ul li .pali-right{
+            width: 22%;
+            float: right;
+        }
+        .pali-left>div{
+            height: 20px;
+            line-height: 20px;
+
+        }
+        .pali-left .pl-first{
+            margin-bottom: 2px;
+        }
+        .pali-left .pl-first p:first-child{
+            float: left;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .pali-left .pl-first p:first-child small{
+            font-size: 12px;
+            color: #D4D4D4;
+        }
+
+        .pali-left .pl-first p:last-child{
+            float: right;
+            color: white;
+            font-size: 13px;
+        }
+        .pali-left .pl-tw p:first-child{
+            float: left;
+            color: #D4D4D4;
+            font-size: 12px;
+
+        }
+        .pali-left .pl-tw p:last-child{
+            float: right;
+            color: white;
+            font-size: 12px;
+        }
+        .pali-right button{
+            font-size: 12px;
+            height: 35px;
+            line-height: 35px;
+            background:orange;
+            color: white;
+            outline: none;
+            border: none;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -o-border-radius:5px;
+        }
+    </style>
+</head>
+<body ontouchstart>
+<!--顶部搜索-->
+
+<!--主体-->
+<div class='weui-content'>
+<div class="pagelist">
+	<ul>
+        {volist name="product" id="val"}
+        <li class="clearboth">
+            <div class="pali-left">
+                <div class="pl-first clearboth">
+                    <p class="weui-media-box__bd">{$val.desc_name}</p>
+                    <p class="weui-media-box__bd" >涨跌<span id="up_down_val_{$val.abbreviation}">0.00</span></p>
+                </div>
+                <div class="pl-tw clearboth">
+                    <p id="{$val.abbreviation}">0.00</p>
+                    <p>涨幅<span id="up_down_per_{$val.abbreviation}">0.00</span>%</p>
+                </div>
+            </div>
+            <div class="pali-right">
+                <button><a href="/mobile/Trade/index?id={$val.id}" style="color: white">交易</a></button>
+            </div>
+        </li>
+
+        {/volist}
+	</ul>
+</div>
+</div>
+
+<!--底部导航-->
+<div class="foot-black"></div>
+<div class="weui-tabbar wy-foot-menu">
+  <a href="/mobile/Index/index" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon foot-menu-home"></div>
+    <p class="weui-tabbar__label">首页</p>
+  </a>
+
+    <a href="/mobile/Index/price" class="weui-tabbar__item  weui-bar__item--on">
+        <div class="weui-tabbar__icon foot-menu-price"></div>
+        <p class="weui-tabbar__label">行情</p>
+    </a>
+  <a href="/mobile/Trade/index?id=3" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon foot-menu-list"></div>
+    <p class="weui-tabbar__label">交易中心</p>
+  </a>
+  <a href="/mobile/Coin/index" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon foot-menu-cart"></div>
+    <p class="weui-tabbar__label">申购币</p>
+  </a>
+  <a href="/mobile/User/index" class="weui-tabbar__item">
+    <div class="weui-tabbar__icon foot-menu-member"></div>
+    <p class="weui-tabbar__label">我的</p>
+  </a>
+</div>
+
+<script src="/static/index/js/jquery-2.1.1.min.js"></script>
+<script>
+    var loc = window.location;
+    var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
+    var openPrice = [];
+    function math_floor(number,per){
+        number = parseFloat(number);
+//        console.log(number);
+        return number.toFixed(2);
+    }
+    function countRange(nowPrice,productAbbreviation){
+        var range=nowPrice-openPrice[productAbbreviation];
+        var range_per=range/openPrice[productAbbreviation]*100;
+        var up_down_val=  "#up_down_val_"+productAbbreviation;
+        var up_down_per=  "#up_down_per_"+productAbbreviation;
+        var name="#"+productAbbreviation;
+        var color;
+        if(nowPrice>=openPrice[productAbbreviation]){
+            color='red';
+        }else if(nowPrice<openPrice[productAbbreviation]){
+            color='green';
+        }
+        $(up_down_val).text(math_floor(range)).parent().attr("style","color:"+color+";");
+        $(up_down_per).text(math_floor(range_per)).parent().attr("style","color:"+color+";");
+        $(name).attr("style","color:"+color+";");
+    }
+    $(function  () {
+        var url = baseUrl + "/openPrice";
+//        url = 'https://aioq.cn/golang/openPrice';
+        //获取产品开盘价
+        $.ajax({
+            type: 'get',
+            url: url,
+            //async: false,//同步
+            success : function(data) {
+                for(let i in data){
+                    openPrice[i] =data[i]['USD'];
+                }
+            },
+            error : function(errMsg) {
+                //不知道该干啥
+            }
+        });
+        var wsUrl ='ws:';
+        if(loc.protocol == 'https:')
+            wsUrl = 'wss:'
+        wsUrl += '//' + loc.host + '/golang/ws?uid=' + 3;
+//        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
+        var ws = new WebSocket(wsUrl);
+        ws.onopen = function()
+        {
+        };
+
+        ws.onmessage = function (evt)
+        {
+            var data=JSON.parse(evt.data);
+            if(data.status){
+
+            }else{
+                $.each(data,function(k,v){
+                    var abbreviation='#'+k;//固定产品位置
+                    var new_price=v['USD'];
+                    $(abbreviation).text(new_price);
+                    //计算涨幅跌幅
+                    countRange(new_price,k);
+                });
+            }
+        };
+    });
+</script>
+</body>
+</html>
