@@ -888,7 +888,7 @@ var option = {
             xAxisIndex: [0, 1]
         }]
     },
-    dataZoom: [{
+    /*dataZoom: [{
         type: 'slider',
         xAxisIndex: [0, 1],
         realtime: false,
@@ -906,7 +906,7 @@ var option = {
         end: 70,
         top: 30,
         height: 20
-    }],
+    }],*/
     xAxis: [{
         type: 'category',
         data: dates,
@@ -1287,7 +1287,8 @@ $(function  () {
     });
 
 
-	setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
+    var coinType = $('#active_product_name').attr('data-abbreviation');
+	setCandlestick(coinType,"1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
 });
 function close_order(oid){
     layer.confirm('确认要平仓吗？',function(index){
