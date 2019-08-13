@@ -8,6 +8,7 @@ class Login extends Common
         if(request()->isAjax()){
             $username=input('post.username');
             $pwd=input('post.password');
+            $remember=input('post.remember');
 //            $vcode=input('post.vcode');
             if(!$username){
                 $data = array();
@@ -59,6 +60,13 @@ class Login extends Common
                     db::name('user')->update($data);
                     session('user',$user['uid']);
                     session('user_name',$username);
+                    if($remember==1){
+                        cookie('username',$username,86400*7);
+                        cookie('password',$pwd,86400*7);
+                    }else{
+                        cookie('username',null);
+                        cookie('password',null);
+                    }
                     $data = array();
                     $data['status'] = 1;
                     $data['msg'] = '登录成功';
@@ -76,10 +84,26 @@ class Login extends Common
                 return json($data);
             }
         }else{
+            if(cookie('username')){
+                $where=array();
+                $where[] = ['username','=',cookie('username')];
+                $where[] = ['login_status','=',1];
+                $where[] = ['password','=',md5(cookie('password'))];
+                $user=db::name('user')->where($where)->field('uid,password,nickname,login_status')->find();
+                if($user){
+                    add_user_operation($user['uid'],cookie('username'),1,1,'会员登录', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
+                    $data = [];
+                    $data['last_login_ip'] = get_real_ip();
+                    $data['last_login_time'] = date('Y-m-d H:i:s');
+                    $data['uid'] = $user['uid'];
+                    db::name('user')->update($data);
+                    session('user',$user['uid']);
+                    session('user_name',cookie('username'));
+                }
+            }
             if (session('user')) {
                 $this->redirect('/mobile/User/index');
             }
-
             return $this->fetch();
         }
     }
@@ -234,6 +258,8 @@ class Login extends Common
         add_user_operation(session('user'),select_user_username(session('user')),1,1,'会员退出登陆', $_SERVER['REQUEST_URI'], serialize($_REQUEST));
         session('user',null);
         session('user_name',null);
+        cookie('username',null);
+        cookie('password',null);
         $this->redirect('/mobile/Login/login');
     }
 
