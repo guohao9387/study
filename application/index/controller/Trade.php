@@ -40,15 +40,17 @@ class Trade extends Common
         $product_list=db::name('product')->where($where)->select();
         $this->assign('product_list',$product_list);
 
+        $id=input('get.id')?input('get.id'):3;
         $where=[];
         $where[]=['status','=',1];
         $where[]=['show_status','=',1];
-        $where[]=['id','=',input('get.id')?input('get.id'):3];
+        $where[]=['id','=',$id];
         $product=db::name('product')->where($where)->find();
         if(!$product){
             $this->error('该产品暂未开放','/mobile/Index/index');
         }
         $this->assign('product',$product);
+        $this->assign('id',$id);
 
         return $this->fetch();
     }

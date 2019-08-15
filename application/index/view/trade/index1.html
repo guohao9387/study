@@ -348,7 +348,7 @@
 
       <div class="product_list">
           {volist name="product_list" id="val"}
-          <div class="symbolitem {if $key==0}active{/if}" data-product-abbreviation-name="{$val.abbreviation}" >
+          <div class="symbolitem {if $id==$val.id}active{/if}" data-product-abbreviation-name="{$val.abbreviation}" >
               <input type="hidden" id="{$val.abbreviation}_id" value="{$val.id}"/>
               <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract|number_format=###,2,'.',''}"/>
               <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand|number_format=###,2,'.',''}"/>
@@ -406,7 +406,7 @@
          <div class="button" title="realtime"><span>1day</span></div>
        </div>
      </div>
-     <div class="kxt" style="background-color: #0d161f">
+     <div class="kxt " id="main" style="background-color: #0d161f">
 
      </div>
    </div>
@@ -553,19 +553,19 @@
                     <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
                             data-v-c4371006="">品种</span>
                         <div data-v-c4371006="" class="chosecontype">
-                            <div data-v-c4371006="" class="con product_name">{$product_list[0]['desc_name']}</div>
+                            <div data-v-c4371006="" class="con product_name">{$product['desc_name']}</div>
                         </div>
                     </div>
                     <div data-v-c4371006="" class="itemcon clearfix" style="    width: 100%;"><span
                             data-v-c4371006="">当前价格</span>
                         <div data-v-c4371006="" class="chosecontype">
-                            <div data-v-c4371006="" class="con product_price_change" data-product-abbreviation="{$product_list[0]['abbreviation']}" >0.00</div>
+                            <div data-v-c4371006="" class="con product_price_change" data-product-abbreviation="{$product['abbreviation']}" >0.00</div>
                         </div>
                     </div>
                     <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
                             data-v-c4371006="">交易单位</span>
                         <div data-v-c4371006="" class="chosecontype">
-                            <div data-v-c4371006="" class="con eaffer contract">{$product_list[0]['contract']|number_format=###,2,'.',''}</div>
+                            <div data-v-c4371006="" class="con eaffer contract">{$product['contract']|number_format=###,2,'.',''}</div>
                         </div>
                     </div>
                     <div data-v-c4371006="" class="itemcon clearfix" style="width: 100%;"><span
@@ -591,12 +591,12 @@
                     <div data-v-c4371006="" class="itemcon clearfix" style="overflow: hidden;width: 100%;">
                         <span data-v-c4371006="">手续费</span>
                         <div data-v-c4371006="" class="chosecontype">
-                            <div data-v-c4371006="" class="con fee">{$product_list[0]['fee']|number_format=###,2,'.',''}</div>
+                            <div data-v-c4371006="" class="con fee">{$product['fee']|number_format=###,2,'.',''}</div>
                         </div>
                     </div>
                 </div>
                 <div data-v-c4371006="" class="more" style="display: block;">
-                    <input type="hidden" id="point_wave" value="{$product_list[0]['wave']}"/>
+                    <input type="hidden" id="point_wave" value="{$product['wave']}"/>
                     <div data-v-c4371006="">
                         <div data-v-c4371006="" class="moresize">设置止盈应<span class="win_des">大于</span>等于<span class="target_profit">0.00</span></div>
                         <div data-v-c4371006="" class="moresize">设置止损应<span class="loss_des">小于</span>等于<span class="stop_loss">0.00</span></div>
@@ -621,7 +621,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="id" class="form_id" value="{$product_list[0]['id']}"/>
+            <input type="hidden" name="id" class="form_id" value="{$product['id']}"/>
             <input type="hidden" class="form_direction" name="direction" value="1"/>
             <button style="background-color: orange;color: white" type="submit" class="create_order" lay-submit lay-filter="create_order">确定</button>
             <button class="m-cancel" type="button" style="margin-left: 20px; orange;color: white">取消</button>
@@ -632,286 +632,286 @@
 
 <script>
 
-//var myChart = echarts.init(document.getElementById('main'));
+var myChart = echarts.init(document.getElementById('main'));
 var loc = window.location;
 var baseUrl  = loc.protocol  + '//' + loc.host + '/golang'
-//function setCandlestick(coinType,gap,count){
-//
-//    function setOnUi(dataFromApi){
-//        //var myChart = echarts.init(document.getElementById('main'));
-//
-//        Date.prototype.format = function(fmt) {
-//            var o = {
-//                "M+" : this.getMonth()+1,                 //月份
-//                "d+" : this.getDate(),                    //日
-//                "h+" : this.getHours(),                   //小时
-//                "m+" : this.getMinutes(),                 //分
-//                "s+" : this.getSeconds(),                 //秒
-//                "q+" : Math.floor((this.getMonth()+3)/3), //季度
-//                "S"  : this.getMilliseconds()             //毫秒
-//            };
-//            if(/(y+)/.test(fmt)) {
-//                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
-//            }
-//            for(var k in o) {
-//                if(new RegExp("("+ k +")").test(fmt)){
-//                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
-//                }
-//            }
-//            return fmt;
-//        }
-//
-//        function calculateMA(dayCount, data) {
-//            var result = [];
-//            for (var i = 0, len = data.length; i < len; i++) {
-//                if (i < dayCount) {
-//                    result.push('-');
-//                    continue;
-//                }
-//                var sum = 0;
-//                for (var j = 0; j < dayCount; j++) {
-//                    sum += data[i - j][1];
-//                }
-//                result.push(sum / dayCount);
-//            }
-//            return result;
-//        }
-//
-//        var datefmt = "yyyy-MM-dd";
-//        if(gap == "hour"){
-//            datefmt = "yyyy-MM-dd mm时";
-//        }
-//        if(gap == "minute"){
-//            datefmt = "yyyy-MM-dd mm:hh";
-//        }
-//
-//        var dates = dataFromApi.Data.map(function (item) {
-//            return new Date(item.time*1000).format(datefmt);
-//        });
-//
-//        var data = dataFromApi.Data.map(function (item) {
-//            return [item.open,item.close,item.low,item.high];
-//        });
-//
-//        var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
-//        $.each(valueToday,function(k,v){
-//            $("#price-k-" +k).text(v);
-//        });
-//
-//        var option = {
-//            backgroundColor: '#21202D',
-//            legend: {
-//                data: ['K线','MA5', 'MA10', 'MA20', 'MA30'],
-//                inactiveColor: '#777',
-//                align: 'right',
-//                textStyle: {
-//                    color: '#fff'
-//                }
-//            },
-//            tooltip: {
-//                trigger: 'axis',
-//                formatter:function(params) {
-//
-//                    var valuePointTo = dataFromApi.Data[params[0].dataIndex];
-//                    //修改dom
-//                    $.each(valuePointTo,
-//                            function(k, v) {
-//                                $("#price-k-" + k).text(v);
-//                            });
-//
-//                    var kStyle = '<br><span style="display:inline-block;vertical-align:middle;margin-right:8px;margin-left:3px;border-radius:4px;width:4px;height:4px;background-color:#0CF49B;"></span>';
-//
-//                    var relVal = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#0CF49B;"></span>' + params[0].axisValue;
-//                    for (var i = 0, l = params.length; i < l; i++) {
-//                        relVal += '<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#0CF49B;"></span>' + params[i].seriesName + ': ';
-//
-//                        if (params[i].seriesType == "candlestick") {
-//                            relVal += kStyle + '开: ' + params[i].data[1] + kStyle + '收: ' + params[i].data[2] + kStyle + '低: ' + params[i].data[3] + kStyle + '高: ' + params[i].data[4];
-//                        } else {
-//                            var d = params[i].data;
-//                            if(parseFloat(d).toString() =="NaN"){
-//                                relVal += params[i].data;
-//                            }else {
-//                                relVal += params[i].data.toFixed(2);
-//                            }
-//                        }
-//                    }
-//                    return relVal;
-//                },
-//                axisPointer: {
-//                    animation: false,
-//                    type: 'cross',
-//                    lineStyle: {
-//                        color: '#376df4',
-//                        width: 2,
-//                        opacity: 1
-//                    }
-//                }
-//            },
-//            xAxis: {
-//                type: 'category',
-//                data: dates,
-//                axisLine: {
-//                    lineStyle: {
-//                        color: '#8392A5'
-//                    }
-//                }
-//            },
-//            yAxis: {
-//                scale: true,
-//                axisLine: {
-//                    lineStyle: {
-//                        color: '#8392A5'
-//                    }
-//                },
-//                splitLine: {
-//                    show: false
-//                }
-//            },
-//            grid: {
-//                bottom: 80
-//            },
-//            dataZoom: [{
-//                textStyle: {
-//                    color: '#8392A5'
-//                },
-//                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
-//                handleSize: '80%',
-//                dataBackground: {
-//                    areaStyle: {
-//                        color: '#8392A5'
-//                    },
-//                    lineStyle: {
-//                        opacity: 0.8,
-//                        color: '#8392A5'
-//                    }
-//                },
-//                handleStyle: {
-//                    color: '#fff',
-//                    shadowBlur: 3,
-//                    shadowColor: 'rgba(0, 0, 0, 0.6)',
-//                    shadowOffsetX: 2,
-//                    shadowOffsetY: 2
-//                }
-//            }, {
-//                type: 'inside'
-//            }],
-//            animation: false,
-//            series: [{
-//                type: 'candlestick',
-//                name: 'K线',
-//                data: data,
-//                itemStyle: {
-//                    normal: {
-//                        color: '#FD1050',
-//                        color0: '#0CF49B',
-//                        borderColor: '#FD1050',
-//                        borderColor0: '#0CF49B'
-//                    }
-//                },
-//                markLine: {
-//                    data: [{
-//                        yAxis: valueToday.close
-//                    }
-//                    ]
-//                }
-//            },
-//                {
-//                    name: 'MA5',
-//                    type: 'line',
-//                    data: calculateMA(5, data),
-//                    smooth: true,
-//                    showSymbol: false,
-//                    lineStyle: {
-//                        normal: {
-//                            width: 1
-//                        }
-//                    }
-//                }/*,
-//                 {
-//                 name: 'MA10',
-//                 type: 'line',
-//                 data: calculateMA(10, data),
-//                 smooth: true,
-//                 showSymbol: false,
-//                 lineStyle: {
-//                 normal: {
-//                 width: 1
-//                 }
-//                 }
-//                 },
-//                 {
-//                 name: 'MA20',
-//                 type: 'line',
-//                 data: calculateMA(20, data),
-//                 smooth: true,
-//                 showSymbol: false,
-//                 lineStyle: {
-//                 normal: {
-//                 width: 1
-//                 }
-//                 }
-//                 },
-//                 {
-//                 name: 'MA30',
-//                 type: 'line',
-//                 data: calculateMA(30, data),
-//                 smooth: true,
-//                 showSymbol: false,
-//                 lineStyle: {
-//                 normal: {
-//                 width: 1
-//                 }
-//                 }
-//                 }*/
-//            ]
-//        };
-//        myChart.setOption(option);
-//        var zr = myChart.getZr();
-//        zr.on('mouseout', function(){
-//            var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
-//            $.each(valueToday,function(k,v){
-//                $("#price-k-" +k).text(v);
-//            });
-//
-//        });
-//        /*
-//         myChart.on('mouseover', function(param){
-//         if(param.seriesType == "candlestick"){
-//         var valuePointTo = dataFromApi.Data[param.dataIndex];
-//         $.each(valuePointTo,function(k,v){
-//         $("#price-k-" +k).text(v);
-//         });
-//         }
-//         });
-//
-//         myChart.on('mouseout', function(param){
-//         if(param.seriesType == "candlestick"){
-//         var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
-//         $.each(valueToday,function(k,v){
-//         $("#price-k-" +k).text(v);
-//         });
-//
-//         }
-//         });
-//         */
-//    }
-//    var url = baseUrl + "/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
+function setCandlestick(coinType,gap,count){
+
+    function setOnUi(dataFromApi){
+        //var myChart = echarts.init(document.getElementById('main'));
+
+        Date.prototype.format = function(fmt) {
+            var o = {
+                "M+" : this.getMonth()+1,                 //月份
+                "d+" : this.getDate(),                    //日
+                "h+" : this.getHours(),                   //小时
+                "m+" : this.getMinutes(),                 //分
+                "s+" : this.getSeconds(),                 //秒
+                "q+" : Math.floor((this.getMonth()+3)/3), //季度
+                "S"  : this.getMilliseconds()             //毫秒
+            };
+            if(/(y+)/.test(fmt)) {
+                fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+            }
+            for(var k in o) {
+                if(new RegExp("("+ k +")").test(fmt)){
+                    fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+                }
+            }
+            return fmt;
+        }
+
+        function calculateMA(dayCount, data) {
+            var result = [];
+            for (var i = 0, len = data.length; i < len; i++) {
+                if (i < dayCount) {
+                    result.push('-');
+                    continue;
+                }
+                var sum = 0;
+                for (var j = 0; j < dayCount; j++) {
+                    sum += data[i - j][1];
+                }
+                result.push(sum / dayCount);
+            }
+            return result;
+        }
+
+        var datefmt = "yyyy-MM-dd";
+        if(gap == "hour"){
+            datefmt = "yyyy-MM-dd mm时";
+        }
+        if(gap == "minute"){
+            datefmt = "yyyy-MM-dd mm:hh";
+        }
+
+        var dates = dataFromApi.Data.map(function (item) {
+            return new Date(item.time*1000).format(datefmt);
+        });
+
+        var data = dataFromApi.Data.map(function (item) {
+            return [item.open,item.close,item.low,item.high];
+        });
+
+        var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
+        $.each(valueToday,function(k,v){
+            $("#price-k-" +k).text(v);
+        });
+
+        var option = {
+            backgroundColor: '#141c26',
+            legend: {
+                data: ['K线','MA5', 'MA10', 'MA20', 'MA30'],
+                inactiveColor: '#777',
+                align: 'right',
+                textStyle: {
+                    color: '#fff'
+                }
+            },
+            tooltip: {
+                trigger: 'axis',
+                formatter:function(params) {
+
+                    var valuePointTo = dataFromApi.Data[params[0].dataIndex];
+                    //修改dom
+                    $.each(valuePointTo,
+                            function(k, v) {
+                                $("#price-k-" + k).text(v);
+                            });
+
+                    var kStyle = '<br><span style="display:inline-block;vertical-align:middle;margin-right:8px;margin-left:3px;border-radius:4px;width:4px;height:4px;background-color:#0CF49B;"></span>';
+
+                    var relVal = '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#0CF49B;"></span>' + params[0].axisValue;
+                    for (var i = 0, l = params.length; i < l; i++) {
+                        relVal += '<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#0CF49B;"></span>' + params[i].seriesName + ': ';
+
+                        if (params[i].seriesType == "candlestick") {
+                            relVal += kStyle + '开: ' + params[i].data[1] + kStyle + '收: ' + params[i].data[2] + kStyle + '低: ' + params[i].data[3] + kStyle + '高: ' + params[i].data[4];
+                        } else {
+                            var d = params[i].data;
+                            if(parseFloat(d).toString() =="NaN"){
+                                relVal += params[i].data;
+                            }else {
+                                relVal += params[i].data.toFixed(2);
+                            }
+                        }
+                    }
+                    return relVal;
+                },
+                axisPointer: {
+                    animation: false,
+                    type: 'cross',
+                    lineStyle: {
+                        color: '#376df4',
+                        width: 2,
+                        opacity: 1
+                    }
+                }
+            },
+            xAxis: {
+                type: 'category',
+                data: dates,
+                axisLine: {
+                    lineStyle: {
+                        color: '#8392A5'
+                    }
+                }
+            },
+            yAxis: {
+                scale: true,
+                axisLine: {
+                    lineStyle: {
+                        color: '#8392A5'
+                    }
+                },
+                splitLine: {
+                    show: false
+                }
+            },
+            grid: {
+                bottom: 80
+            },
+            dataZoom: [{
+                textStyle: {
+                    color: '#8392A5'
+                },
+                handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%',
+                dataBackground: {
+                    areaStyle: {
+                        color: '#8392A5'
+                    },
+                    lineStyle: {
+                        opacity: 0.8,
+                        color: '#8392A5'
+                    }
+                },
+                handleStyle: {
+                    color: '#fff',
+                    shadowBlur: 3,
+                    shadowColor: 'rgba(0, 0, 0, 0.6)',
+                    shadowOffsetX: 2,
+                    shadowOffsetY: 2
+                }
+            }, {
+                type: 'inside'
+            }],
+            animation: false,
+            series: [{
+                type: 'candlestick',
+                name: 'K线',
+                data: data,
+                itemStyle: {
+                    normal: {
+                        color: '#FD1050',
+                        color0: '#0CF49B',
+                        borderColor: '#FD1050',
+                        borderColor0: '#0CF49B'
+                    }
+                },
+                markLine: {
+                    data: [{
+                        yAxis: valueToday.close
+                    }
+                    ]
+                }
+            },
+                {
+                    name: 'MA5',
+                    type: 'line',
+                    data: calculateMA(5, data),
+                    smooth: true,
+                    showSymbol: false,
+                    lineStyle: {
+                        normal: {
+                            width: 1
+                        }
+                    }
+                }/*,
+                 {
+                 name: 'MA10',
+                 type: 'line',
+                 data: calculateMA(10, data),
+                 smooth: true,
+                 showSymbol: false,
+                 lineStyle: {
+                 normal: {
+                 width: 1
+                 }
+                 }
+                 },
+                 {
+                 name: 'MA20',
+                 type: 'line',
+                 data: calculateMA(20, data),
+                 smooth: true,
+                 showSymbol: false,
+                 lineStyle: {
+                 normal: {
+                 width: 1
+                 }
+                 }
+                 },
+                 {
+                 name: 'MA30',
+                 type: 'line',
+                 data: calculateMA(30, data),
+                 smooth: true,
+                 showSymbol: false,
+                 lineStyle: {
+                 normal: {
+                 width: 1
+                 }
+                 }
+                 }*/
+            ]
+        };
+        myChart.setOption(option);
+        var zr = myChart.getZr();
+        zr.on('mouseout', function(){
+            var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
+            $.each(valueToday,function(k,v){
+                $("#price-k-" +k).text(v);
+            });
+
+        });
+        /*
+         myChart.on('mouseover', function(param){
+         if(param.seriesType == "candlestick"){
+         var valuePointTo = dataFromApi.Data[param.dataIndex];
+         $.each(valuePointTo,function(k,v){
+         $("#price-k-" +k).text(v);
+         });
+         }
+         });
+
+         myChart.on('mouseout', function(param){
+         if(param.seriesType == "candlestick"){
+         var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
+         $.each(valueToday,function(k,v){
+         $("#price-k-" +k).text(v);
+         });
+
+         }
+         });
+         */
+    }
+    var url = baseUrl + "/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
 //    var url = 'https://aioq.cn/golang' + "/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
-//
-//    $.ajax({
-//        type: 'get',
-//        url: url,
-//        //async: false,//同步
-//        success : function(msg) {
-//            //alert(JSON.strinify(msg));
-//            setOnUi(msg);
-//        },
-//        error : function(errMsg) {
-//            //不知道该干啥
-//        }
-//    });
-//}
+
+    $.ajax({
+        type: 'get',
+        url: url,
+        //async: false,//同步
+        success : function(msg) {
+            //alert(JSON.strinify(msg));
+            setOnUi(msg);
+        },
+        error : function(errMsg) {
+            //不知道该干啥
+        }
+    });
+}
 //切换1min 5min
 $('.group').click(function(){
     $(this).addClass('select').siblings().removeClass('select');
@@ -1190,7 +1190,7 @@ $(function  () {
 
 
         var ws = new WebSocket(wsUrl)
-        //var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
+//        var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
         console.log(wsUrl);
         ws.onopen = function()
         {
@@ -1248,12 +1248,12 @@ $(function  () {
                     if(k==active_name){
                         //计算止盈止损
                         count_wave(new_price);
-//                        var opt = myChart.getOption();
-//                        if(opt){
-//                            opt.series[0].markLine.data[0].yAxis = new_price;
-//                            myChart.clear();
-//                            myChart.setOption(opt);
-//                        }
+                        var opt = myChart.getOption();
+                        if(opt){
+                            opt.series[0].markLine.data[0].yAxis = new_price;
+                            myChart.clear();
+                            myChart.setOption(opt);
+                        }
                     }
                     //计算涨幅跌幅
                     countRange(new_price,k);
@@ -1334,7 +1334,9 @@ $(function  () {
         });
 
     });
-    setCandlestick("BTC","1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
+    var coinType = $('.product_price_change').first().attr('data-product-abbreviation');
+//    var coinType = $('#active_product_name').attr('data-abbreviation');
+    setCandlestick(coinType,"1day",30);//1.货币, 2. day,hour,minute 按天，小时，分钟. 3. 几条柱子
 });
 function keep_order_list_add(data){
 //        console.log(data);
