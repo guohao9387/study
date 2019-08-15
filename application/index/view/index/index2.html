@@ -193,23 +193,22 @@
         </ul>
     </div>
 </div>
-
 <ul class="price_today_ul" id="price_today_ul" style="margin: 0px auto;width: 1200px;background: #FFF;box-shadow: 2px 2px 4px #D7DAE0;">
     {volist name='product' id='val'}
     <li>
         <dl class="autobox clear">
-            <dt style="text-indent: 3rem;">
+            <dt>
                 <a href="/index/Trade/index">
                     <img src="{$val.image}" style="vertical-align: middle;margin-right: 5px;width: 19px;margin-left: 12px;">
                     {$val.name}
                 </a>
             </dt>
-            <dd class="orange" id="{$val.abbreviation}">0</dd>
-            <dd id="up_down_val_{$val.abbreviation}">0</dd>
-            <dd id="up_down_per_{$val.abbreviation}">0</dd>
-            <dd class="w142" >0</dd>
-            <dd class="w142">0</dd>
-            <dd class="w102" style="text-indent: 6rem;" ><input type="button" value="去交易" class="btns2" onclick="top.location='/index/Trade/index?id={$val.id}'"></dd>
+            <dd class="orange" style="text-indent: 1.6em;" id="{$val.abbreviation}">0</dd>
+            <dd style="text-indent: 1.6rem;" id="up_down_val_{$val.abbreviation}">0</dd>
+            <dd style="text-indent: 1.6rem;" id="up_down_per_{$val.abbreviation}">0</dd>
+            <dd class="w142" style="    text-indent: 1.6rem;">0</dd>
+            <dd class="w142" style="    text-indent: 2.5rem;">0</dd>
+            <dd class="w102" style="width:150px;text-align: center;text-indent: 0.5em;"><input type="button" value="去交易" class="btns2" onclick="top.location='/index/Trade/index?id={$val.id}'"></dd>
         </dl>
     </li>
     {/volist}
@@ -223,13 +222,6 @@
             <span style="font-size: 16px;">风险提示&nbsp;</span>
             数字货币交易具有一定的风险（预挖、暴涨暴跌、庄家操控、团队解散、技术缺陷等），据国家五部委《关于防范比特币风险的通知》，aioq.cn艾比特交易平台仅为数字货币的爱好者提供一个自由的网上交换平台，对币的投资价值不承担任何审查、担保、赔偿的责任，如果您不能接受，请不要进行交易！</span>
         </p>
-    </div>
-</div>
-<div class="index_news mt20 index_news1" style="    padding-bottom: 0px;">
-    <div style="padding: 20px 20px;border-color: #FFD0B7;">
-        <div style="text-align: center;font-size: 2rem;color: #000000"><b>随时随地</b></div>
-        <div style="text-align: center;font-size: 2rem;color: #000000"><b>多平台终端交易</b></div>
-        <img src="/static/index/images/trade_info.png" alt="" style="width: 100%"/>
     </div>
 </div>
 <div class="tag-box">
@@ -550,8 +542,9 @@
     <div id="kf1" class="sidetool hidden-xs">
         <ul>
             <li>
-                <a href="http://wpa.qq.com/msgrd?v=3&uin={$kefu.qq}&site=qq&menu=yes" target="_blank"><i class="sidetool-item qq"></i></a>
-                <span style="cursor:pointer;" onclick="javascript:window.open('http://wpa.qq.com/msgrd?v=3&uin={$kefu.qq}&site=qq&menu=yes');">QQ在线客服</span>
+                <a href="javascript:" target="_blank"><i class="sidetool-item qq"></i></a>
+                <span style="cursor:pointer;"
+                      onclick="javascript:window.open('http://wpa.qq.com/msgrd?v=3&uin={$kefu.qq}&site=qq&menu=yes');">QQ在线客服</span>
             </li>
             <li>
                 <a href="#" onclick="javascript:return false;"><i class="sidetool-item wechat"></i></a>

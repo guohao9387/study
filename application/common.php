@@ -8,6 +8,9 @@ function reset_cache(){
         $sys[$v['key']] = $v['value'];
     }
     cache('config',$sys);
+    cache('qq_kefu',null);
+    cache('weixin_kefu',null);
+    cache('phone_kefu',null);
     return $sys;
 }
 function is_weixin(){

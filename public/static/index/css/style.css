@@ -1457,7 +1457,7 @@ input[type=text]::-ms-clear,html .hide,select::-ms-expand,.hide {
 
 .price_today li {
 	float: left;
-	width: 131px;
+	width: 14%;
 	text-align: center;
 	color: #FFF;
 	line-height: 40px;
@@ -1477,9 +1477,9 @@ input[type=text]::-ms-clear,html .hide,select::-ms-expand,.hide {
 
 .price_today_ul dd,.price_today_ul dt {
 	float: left;
-	width: 130px;
-	overflow: hidden;
-	text-align: left;
+	width: 14%;
+	/*overflow: hidden;*/
+	text-align: center;
 	font-size: 14px;
 	font-family: tahoma,Microsoft YaHei,Arial,Helvetica,sans-serif;
 	line-height: 40px;

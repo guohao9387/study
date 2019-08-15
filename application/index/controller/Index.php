@@ -57,5 +57,33 @@ class Index extends Common
 
         return $this->fetch();
     }
+    public function index1()
+    {
+        $where=[];
+        $where[]=['status','=',1];
+        $where[]=['show_status','=',1];
+        $product=db::name('product')->where($where)->field('id,name,abbreviation,contract,image')->select();
+        $this->assign('product',$product);
+
+        $where=[];
+        $where[]=['status','=',1];
+        $where[]=['type','=',1];
+        $list=db::name('notice')->where($where)->order('sort desc')->limit(6)->select();
+        $this->assign('notice_list',$list);
+
+        $where=[];
+        $where[]=['status','=',1];
+        $where[]=['type','=',1];
+        $list=db::name('news')->where($where)->order('sort desc')->limit(6)->select();
+        $this->assign('news_list',$list);
+
+        $where=[];
+        $where[]=['status','=',1];
+        $where[]=['type','=',1];
+        $list=db::name('adv')->where($where)->order('sort desc')->select();
+        $this->assign('adv',$list);
+
+        return $this->fetch();
+    }
 
 }
