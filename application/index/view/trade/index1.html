@@ -385,8 +385,8 @@
            </div>
          </div>
          <div class="bit_btn_box clear">
-           <button class="btn buybtn" type="button" name="button" onclick="set_direction('买入',1)">买入</button>
-           <button class="btn sellbtn" type="button" name="button" onclick="set_direction('卖出',2)">卖出</button>
+           <button class="btn sellbtn" type="button" name="button" onclick="set_direction('买入',1)">买入</button>
+           <button class="btn buybtn" type="button" name="button" onclick="set_direction('卖出',2)">卖出</button>
          </div>
        </div>
      </div>
@@ -721,10 +721,10 @@ function setCandlestick(coinType,gap,count){
                 data: data,
                 itemStyle: {
                     normal: {
-                        color: '#FD1050',
-                        color0: '#0CF49B',
-                        borderColor: '#FD1050',
-                        borderColor0: '#0CF49B'
+                        color: '#e54c4c',
+                        color0: '#4bbb82',
+                        borderColor: '#e54c4c',
+                        borderColor0: '#4bbb82'
                     }
                 },
                 markLine: {
@@ -1109,7 +1109,7 @@ $(function  () {
 
         var ws = new WebSocket(wsUrl)
 //        var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
-        console.log(wsUrl);
+//        console.log(wsUrl);
         ws.onopen = function()
         {
             layer.close(loadingFirst);
