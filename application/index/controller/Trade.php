@@ -14,7 +14,42 @@ class Trade extends Common
 //            $this->redirect('/index/Login/login');
         }
     }
-    public function index2(){
+    public function index1(){
+        if($this->user){
+            $user=db::name('user')->where('uid',$this->user)->find();
+            $user['real_money']=$user['money']-$user['promise_money'];
+            $where=[];
+            $where[]=['order_status','=',1];
+            $where[]=['uid','=',$this->user];
+            $keep_order_list=db::name('order')->order('oid desc')->where($where)->select();
+        }else{
+            $user=[];
+            $user['real_money']=0.00;
+            $user['uid']=4;
+            $user['money']=0.00;
+            $user['promise_money']=0.00;
+            $user['lever']=1;
+            $keep_order_list=[];
+        }
+        $this->assign('user',$user);
+        $this->assign('keep_order_list',$keep_order_list);
+
+        $where=[];
+        $where[]=['status','=',1];
+        $where[]=['show_status','=',1];
+        $product_list=db::name('product')->where($where)->select();
+        $this->assign('product_list',$product_list);
+
+        $where=[];
+        $where[]=['status','=',1];
+        $where[]=['show_status','=',1];
+        $where[]=['id','=',input('get.id')?input('get.id'):3];
+        $product=db::name('product')->where($where)->find();
+        if(!$product){
+            $this->error('该产品暂未开放','/mobile/Index/index');
+        }
+        $this->assign('product',$product);
+
         return $this->fetch();
     }
     public function index()
@@ -44,6 +79,15 @@ class Trade extends Common
         $product_list=db::name('product')->where($where)->select();
         $this->assign('product_list',$product_list);
 
+        $where=[];
+        $where[]=['status','=',1];
+        $where[]=['show_status','=',1];
+        $where[]=['id','=',input('get.id')?input('get.id'):3];
+        $product=db::name('product')->where($where)->find();
+        if(!$product){
+            $this->error('该产品暂未开放','/mobile/Index/index');
+        }
+        $this->assign('product',$product);
 
 
         return $this->fetch();

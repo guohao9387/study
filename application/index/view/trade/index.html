@@ -1079,13 +1079,6 @@
         $(this).addClass("active");
         $(this).siblings().removeClass("active");
     });
-    //建仓确认按钮
-    $(".btn .btnsure").click(function () {
-        $('.promise_money').text(0.00);
-        $(".models").show();
-        $('.shosu').val('').focus();
-
-    });
     //建仓取消按钮
     $(".models .m-cancel").click(function () {
         if( $("input[name='target_profit_check']").is(':checked') ){
@@ -1113,6 +1106,9 @@
         }
         $('.order_direction').text(val);
         $('.form_direction').val(number);
+        $('.promise_money').text(0.00);
+        $(".models").show();
+        $('.shosu').val('').focus();
     }
     //手数失焦事件，必须数字，并计算保证金
     $(".models .shosu").blur(function () {
@@ -1303,43 +1299,7 @@
                     });
                 }
             });
-            //计算涨幅跌幅
 
-            $(".list ul li").click(function () {
-                $(this).addClass("active");
-                $(this).siblings().removeClass("active");
-                //产品名称
-                var name= $(this).attr('data-product-abbreviation-name');
-                var now_price=$(this).find('.l').text();
-                $('.product_name').text($(this).children('.title').text());
-                $('.product_price_change').attr('data-product-abbreviation',name).text(now_price);
-                $('.up_down_val').attr('data-product-up-down-val',name);
-                $('.up_down').attr('data-product-up-down',name);
-                var form_id='#'+name+'_id';
-                var contract_id='#'+name+'_contract';
-                var min_hand_id='#'+name+'_min_hand';
-                var fee_id='#'+name+'_fee';
-                var wave_id='#'+name+'_wave';
-
-                var form_id_val=$(form_id).val();
-                var contract_val=$(contract_id).val();
-                var min_hand_val=$(min_hand_id).val();
-                var fee_val=$(fee_id).val();
-                var wave_val=$(wave_id).val();
-                $('.contract').text(contract_val);
-                $('.min_hand').text(min_hand_val);
-                $('.fee').text(fee_val);
-                $('.point_wave').val(wave_val);
-                $('.form_id').val(form_id_val);
-
-                $('.target_profit').text(now_price-(-wave_val));
-                $('input[name="target_profit"]').val(now_price-(-wave_val));
-
-                $('.stop_loss').text(now_price-wave_val);
-                $('input[name="stop_loss"]').val(now_price-wave_val);
-                countRange(now_price,name);
-                setCandlestick(name,"1day",30);
-            });
             var uid="{$user.uid}";
             var wsUrl ='ws:';
             if(loc.protocol == 'https:')
