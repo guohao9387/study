@@ -348,7 +348,7 @@
 
       <div class="product_list">
           {volist name="product_list" id="val"}
-          <div class="symbolitem" data-product-abbreviation-name="{$val.abbreviation}">
+          <div class="symbolitem {if $key==0}active{/if}" data-product-abbreviation-name="{$val.abbreviation}" >
               <input type="hidden" id="{$val.abbreviation}_id" value="{$val.id}"/>
               <input type="hidden" id="{$val.abbreviation}_contract" value="{$val.contract|number_format=###,2,'.',''}"/>
               <input type="hidden" id="{$val.abbreviation}_min_hand" value="{$val.min_hand|number_format=###,2,'.',''}"/>
