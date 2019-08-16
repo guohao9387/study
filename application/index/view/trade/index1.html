@@ -793,8 +793,8 @@ function setCandlestick(coinType,gap,count){
             });
 
         });
-        /*
-         myChart.on('mouseover', function(param){
+
+         /*myChart.on('mouseover', function(param){
          if(param.seriesType == "candlestick"){
          var valuePointTo = dataFromApi.Data[param.dataIndex];
          $.each(valuePointTo,function(k,v){
@@ -811,8 +811,8 @@ function setCandlestick(coinType,gap,count){
          });
 
          }
-         });
-         */
+         });*/
+
     }
     var url = baseUrl + "/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
 //    var url = 'https://aioq.cn/golang' + "/candlestick?coinType="+coinType +"&gap=" + gap + "&count=" + count;
@@ -847,7 +847,7 @@ $(".symbolitem").click(function () {
     var name= $(this).attr('data-product-abbreviation-name');
     var now_price=$(this).find('.price').text();
     $('.product_name').text($(this).find('.title').text());
-    $('.product_price_change').attr('data-product-abbreviation',name).text(now_price);
+    $('.product_price_change').attr('data-product-abbreviation',name).attr('data-color',name).text(now_price);
     $('.up_down_val').attr('data-product-up-down-val',name);
     $('.up_down').attr('data-product-up-down',name);
     var form_id='#'+name+'_id';
