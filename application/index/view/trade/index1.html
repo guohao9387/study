@@ -275,8 +275,8 @@
               <dd>
                   <span class="symbolname title">{$val.desc_name}</span>
                   <span class="price {$val.abbreviation}" data-color="{$val.abbreviation}">0.00</span>
-                  <span class="buy " data-product-up-down="{$val['abbreviation']}">0.00</span>
-                  <span class="buy "><b  data-product-up-down-val="{$val['abbreviation']}">0.00</b>%</span>
+                  <span class=" " data-product-up-down="{$val['abbreviation']}">0.00</span>
+                  <span class=" "><b  data-product-up-down-val="{$val['abbreviation']}">0.00</b>%</span>
               </dd>
           </div>
           {/volist}
@@ -1102,12 +1102,12 @@ $(function  () {
         var uid="{$user.uid}";
         var wsUrl ='ws:';
         if(loc.protocol == 'https:')
-            wsUrl = 'wss:'
+        wsUrl = 'wss:'
         wsUrl += '//' + loc.host + '/golang/ws?uid=' + uid;
 //        wsUrl= 'wss://aioq.cn/golang/ws?uid=4';
 
 
-        var ws = new WebSocket(wsUrl)
+        var ws = new WebSocket(wsUrl);
 //        var ws = new WebSocket("ws://47.90.122.200:8080/ws?uid="+uid);
 //        console.log(wsUrl);
         ws.onopen = function()
