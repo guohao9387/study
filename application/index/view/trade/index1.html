@@ -689,7 +689,7 @@ function setCandlestick(coinType,gap,count){
             grid: {
                 bottom: 80
             },
-            dataZoom: [{
+            /*dataZoom: [{
                 textStyle: {
                     color: '#8392A5'
                 },
@@ -713,7 +713,7 @@ function setCandlestick(coinType,gap,count){
                 }
             }, {
                 type: 'inside'
-            }],
+            }],*/
             animation: false,
             series: [{
                 type: 'candlestick',
@@ -1167,9 +1167,9 @@ $(function  () {
                         //计算止盈止损
                         count_wave(new_price);
                         var opt = myChart.getOption();
-                        if(opt){
+                        if(opt && opt.series[0]){
                             opt.series[0].markLine.data[0].yAxis = new_price;
-                            myChart.clear();
+                            //myChart.clear();
                             myChart.setOption(opt);
                         }
                     }
