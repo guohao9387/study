@@ -14,7 +14,7 @@ class Trade extends Common
 //            $this->redirect('/index/Login/login');
         }
     }
-    public function index3(){
+    public function index(){
         if($this->user){
             $user=db::name('user')->where('uid',$this->user)->find();
             $user['real_money']=$user['money']-$user['promise_money'];
@@ -54,7 +54,7 @@ class Trade extends Common
 
         return $this->fetch();
     }
-    public function index()
+    public function index3()
     {
         if($this->user){
             $user=db::name('user')->where('uid',$this->user)->find();
