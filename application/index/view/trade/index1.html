@@ -610,11 +610,15 @@ function setCandlestick(coinType,gap,count){
         var data = dataFromApi.Data.map(function (item) {
             return [item.open,item.close,item.low,item.high];
         });
+			var volumes = dataFromApi.Data.map(function (item) {
+				return item.high;
+			});
 
         var valueToday = dataFromApi.Data[dataFromApi.Data.length - 1];
         $.each(valueToday,function(k,v){
             $("#price-k-" +k).text(v);
         });
+//var volumes = [86160000, -79330000, 102600000, -104890000, -85230000, -115230000, 99410000, 90120000, 79990000, 107100000, 81020000, 91710000, 84510000, 118160000, 89390000, 89820000, 100210000, 102720000, 134120000, 83770000, 92570000, 109090000, 100920000, 136670000, 80100000, 97060000, 95020000, 81530000, 80020000, 85590000, 75790000, 87390000, 88560000, 86640000, 88440000, 103260000, 79120000, 95530000, 111990000, 87790000, 86480000, 79180000, 68940000, 73190000, 147390000, 78530000, 75560000, 82270000, 71870000, 78750000, 71260000, 69690000, 90540000, 101690000, 93740000, 94130000, 91950000, 248680000, 99380000, 85130000, 89440000];
 
         var option = {
             backgroundColor: '#141c26',
@@ -666,7 +670,7 @@ function setCandlestick(coinType,gap,count){
                     }
                 }
             },
-            xAxis: {
+            xAxis: [{
                 type: 'category',
                 data: dates,
                 axisLine: {
@@ -674,21 +678,63 @@ function setCandlestick(coinType,gap,count){
                         color: '#8392A5'
                     }
                 }
-            },
-            yAxis: {
+            }, {
+        type: 'category',
+        gridIndex: 1,
+        data: dates,
+        scale: true,
+        boundaryGap: false,
+        splitLine: {show: false},
+        axisLabel: {show: false},
+        axisTick: {show: false},
+        axisLine: {lineStyle: {color: '#777'}},
+        splitNumber: 20,
+        min: 'dataMin',
+        max: 'dataMax',
+        axisPointer: {
+            type: 'shadow',
+            label: {show: false},
+            triggerTooltip: true,
+            handle: {
+                show: false,
+                margin: 30,
+                color: '#B80C00'
+            }
+        }
+    }],
+            yAxis: [{
                 scale: true,
                 axisLine: {
                     lineStyle: {
                         color: '#8392A5'
                     }
                 },
+				splitNumber: 2,
                 splitLine: {
                     show: false
                 }
-            },
-            grid: {
-                bottom: 80
-            },
+            }, {
+        scale: true,
+        gridIndex: 1,
+        splitNumber: 2,
+        axisLabel: {show: false},
+        axisLine: {show: false},
+        axisTick: {show: false},
+        splitLine: {show: false}
+    }],
+            grid: [{
+        /*left: 20,
+        right: 20,
+        top: 80,
+        height: 240
+	 */
+		bottom: 80
+    }, {
+        //left: 20,
+        //right: 20,
+        height: 40,
+        top: 360
+    }],
             /*dataZoom: [{
                 textStyle: {
                     color: '#8392A5'
@@ -781,7 +827,22 @@ function setCandlestick(coinType,gap,count){
                  width: 1
                  }
                  }
-                 }
+                 },
+			{
+				name: 'Volume',
+				type: 'bar',
+				xAxisIndex: 1,
+				yAxisIndex: 1,
+				itemStyle: {
+					normal: {
+						color: '#7fbe9e'
+					},
+					emphasis: {
+						color: '#140'
+					}
+				},
+				data: volumes
+			}
             ]
         };
         myChart.setOption(option);
