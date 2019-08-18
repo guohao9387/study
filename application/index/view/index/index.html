@@ -207,8 +207,8 @@
             <dd class="orange" id="{$val.abbreviation}">0</dd>
             <dd id="up_down_val_{$val.abbreviation}">0</dd>
             <dd id="up_down_per_{$val.abbreviation}">0</dd>
-            <dd class="w142" >0</dd>
-            <dd class="w142">0</dd>
+			<dd id = "amount_{$val.abbreviation}" class="w142" >0</dd>
+			<dd id = "volume_{$val.abbreviation}" class="w142">0</dd>
             <dd class="w102" style="text-indent: 6rem;" ><input type="button" value="去交易" class="btns2" onclick="top.location='/index/Trade/index?id={$val.id}'"></dd>
         </dl>
     </li>
@@ -726,5 +726,21 @@
                 });
             }
         };
+		function load24HVolume(coinType){
+        $.ajax({
+            type: 'get',
+            url: baseUrl + '/market/detail?symbol=' + coinType.toLowerCase() + 'usdt',
+			dataType: "json",
+            async: true,
+            success : function(data) {
+					$('#amount_' + coinType).text(data.tick.amount.toFixed(2));
+					$('#volume_' + coinType).text('$'+data.tick.vol.toFixed(2));
+			}
+			});
+
+		}
+		$.each($('.orange'), function(index,item){
+					load24HVolume(item.id);
+		})
     });
 </script>
