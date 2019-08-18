@@ -54,7 +54,7 @@ class Trade extends Common
 
         return $this->fetch();
     }
-    public function index1()
+    public function index()
     {
         if($this->user){
             $user=db::name('user')->where('uid',$this->user)->find();
