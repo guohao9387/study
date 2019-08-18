@@ -727,20 +727,19 @@
             }
         };
 		function load24HVolume(coinType){
-        $.ajax({
-            type: 'get',
-            url: baseUrl + '/market/detail?symbol=' + coinType.toLowerCase() + 'usdt',
-			dataType: "json",
-            async: true,
-            success : function(data) {
-					$('#amount_' + coinType).text(data.tick.amount.toFixed(2));
-					$('#volume_' + coinType).text('$'+data.tick.vol.toFixed(2));
-			}
-			});
-
+            $.ajax({
+                type: 'get',
+                url: baseUrl + '/market/detail?symbol=' + coinType.toLowerCase() + 'usdt',
+                dataType: "json",
+                async: true,
+                success : function(data) {
+                        $('#amount_' + coinType).text(data.tick.amount.toFixed(2));
+                        $('#volume_' + coinType).text('$'+data.tick.vol.toFixed(2));
+                }
+            });
 		}
 		$.each($('.orange'), function(index,item){
-					load24HVolume(item.id);
+            load24HVolume(item.id);
 		})
     });
 </script>
