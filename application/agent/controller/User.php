@@ -44,7 +44,7 @@ class User extends Common{
                 if($param['status'] == 1||$param['status'] == 2){
                     $where[]=['login_status','=',$param['status']];
                 }else{
-                    $where[]=['trade_status','=',$param['trade_status']];
+                    $where[]=['trade_status','=',$param['status']];
                 }
             }
 
