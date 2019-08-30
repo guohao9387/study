@@ -26,19 +26,20 @@ class Coin extends Common
     public function buy(){
         if(request()->isAjax()){
             $param=input('post.');
-            if($param['number']<=0){
-                $data=[];
-                $data['status']=0;
-                $data['msg']='数量有误';
-                return json($data);
-            }
+
             $where=[];
             $where[]=['status','=',1];
             $where[]=['show_status','=',1];
             $where[]=['id','=',$param['id']];
             $info=db::name('apply_coin')->where($where)->find();
             if($info){
-                $amount=$param['number']*$info['price']*$info['min_hand'];
+                if($param['number']<=$info['min_hand']){
+                    $data=[];
+                    $data['status']=0;
+                    $data['msg']='数量有误';
+                    return json($data);
+                }
+                $amount=$param['number']*$info['price'];
                 db::startTrans();
                 $user = db::name('user')->lock(true)->where('uid',session('user'))->find();
                 if(($user['money']-$user['promise_money'])<$amount){
