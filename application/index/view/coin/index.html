@@ -194,8 +194,8 @@
                 </td>
                 <td class="name">{$val.name}</td>
                 <td>{$val.describe}</td>
-                <td class="price">{$val.price}</td>
-                <td class="min_hand">{$val.min_hand}/手</td>
+                <td class="price">{$val.price|number_format=###,2,'.',''}</td>
+                <td class="min_hand">{$val.min_hand|number_format=###,2,'.',''}/手</td>
                 <td><button class="buy" data-id="{$val.id}">购买</button></td>
             </tr>
             {/volist}

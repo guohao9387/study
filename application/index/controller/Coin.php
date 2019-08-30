@@ -55,7 +55,7 @@ class Coin extends Common
             $where[]=['id','=',$param['id']];
             $info=db::name('apply_coin')->where($where)->find();
             if($info){
-                if($param['number']<=$info['min_hand']){
+                if($param['number']<$info['min_hand']){
                     $data=[];
                     $data['status']=0;
                     $data['msg']='数量有误';
