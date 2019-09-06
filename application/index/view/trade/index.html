@@ -1138,7 +1138,7 @@ function x100(x){
 }
 function toRead(x){
     x = x + '';
-    return x.slice(0,-2) + '.'  + x.slice(-2);
+    return ( x.length <3 ? '0':x.slice(0,-2) ) + '.'  + x.slice(-2);
 }
 $(function  () {
     var layer;
