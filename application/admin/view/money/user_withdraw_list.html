@@ -62,6 +62,13 @@
         </form>
     </div>
     <div class="layui-row">
+        <a href="/admin/Money/user_withdraw_list?start={:quick_time_select(1)}&end={:quick_time_select(2)}&status={:input('get.status')}&order_sn={:input('get.order_sn')}&username={:input('get.username')}&page_number={:input('get.page_number')}" class="layui-btn layui-btn-sm layui-btn-normal">昨天</a>
+        <a href="/admin/Money/user_withdraw_list?start={:quick_time_select(2)}&end=&status={:input('get.status')}&order_sn={:input('get.order_sn')}&username={:input('get.username')}&page_number={:input('get.page_number')}" class="layui-btn layui-btn-sm layui-btn-normal">今天</a>
+        <a href="/admin/Money/user_withdraw_list?start={:quick_time_select(3)}&end=&status={:input('get.status')}&order_sn={:input('get.order_sn')}&username={:input('get.username')}&page_number={:input('get.page_number')}" class="layui-btn layui-btn-sm layui-btn-normal">本周</a>
+        <a href="/admin/Money/user_withdraw_list?start={:quick_time_select(4)}&end={:quick_time_select(5)}&status={:input('get.status')}&order_sn={:input('get.order_sn')}&username={:input('get.username')}&page_number={:input('get.page_number')}" class="layui-btn layui-btn-sm layui-btn-normal">上周</a>
+        <a href="/admin/Money/user_withdraw_list?start={:quick_time_select(6)}&end=&status={:input('get.status')}&order_sn={:input('get.order_sn')}&username={:input('get.username')}&page_number={:input('get.page_number')}" class="layui-btn layui-btn-sm layui-btn-normal">本月</a>
+        <a href="/admin/Money/user_withdraw_list?start={:quick_time_select(7)}&end={:quick_time_select(8)}&status={:input('get.status')}&order_sn={:input('get.order_sn')}&username={:input('get.username')}&page_number={:input('get.page_number')}" class="layui-btn layui-btn-sm layui-btn-normal">上月</a>
+
         <a href="{:url('admin/Money/user_withdraw_list',input('get.'))}&start={:quick_time_select(1)}&end={:quick_time_select(2)}" class="layui-btn layui-btn-sm layui-btn-normal">昨天</a>
         <a href="{:url('admin/Money/user_withdraw_list',input('get.'))}&start={:quick_time_select(2)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">今天</a>
         <a href="{:url('admin/Money/user_withdraw_list',input('get.'))}&start={:quick_time_select(3)}&end=" class="layui-btn layui-btn-sm layui-btn-normal">本周</a>
