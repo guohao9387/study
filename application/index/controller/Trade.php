@@ -350,7 +350,7 @@ class Trade extends Common
                 db::rollback();
                 return json_return(0,'操作失败');
             }
-            $after=db::name('user')->where('uid',$this->user)->find();
+//            $after=db::name('user')->where('uid',$this->user)->find();
             //更新订单状态
             $data=[];
             $data['oid']=$order['oid'];

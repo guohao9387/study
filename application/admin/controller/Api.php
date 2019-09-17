@@ -60,7 +60,7 @@ class Api extends Common{
                 db::rollback();
                 return json_return(0,'操作失败');
             }
-            $after=db::name('user')->where('uid',$user['uid'])->find();
+//            $after=db::name('user')->where('uid',$user['uid'])->find();
             //更新订单状态
             $data=[];
             $data['oid']=$order['oid'];
