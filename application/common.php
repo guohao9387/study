@@ -1108,19 +1108,24 @@ function new_baocang($order,$now_price,$direction){
         $msg['promise_money']=-$order['money'];
         bar($user['uid'],$msg);
     }else{
-        //应操作金额
+        //应增加保证金金额
         if($use_money<$order['first_money']){
+            //如果可用余额小于应增加保证金金额
             $order_money=$use_money;
         }else{
             $order_money=$order['first_money'];
         }
+        //增加后订单保证金额
         $amount=$order['money']+$order_money;
+
         if($direction==1){
+            //如果买涨
             $loss_point=$amount/$order['hand']/$order['contract']+$order['buy_price'];
         }else{
+            //如果买跌
             $loss_point=$order['buy_price']-$amount/$order['hand']/$order['contract'];
         }
-        //操作保证金账户余额,增加默认保证金
+        //操作保证金账户余额,增加保证金
         $status=db::name('user')->where('uid',$user['uid'])->setInc('promise_money',$order_money);
         //操作订单保证金
         $where=[];

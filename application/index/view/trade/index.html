@@ -1219,7 +1219,7 @@ $(function  () {
                         handle_money(data.money,data.promise_money);
                     });
                 }
-                //爆仓
+                //假爆仓
                 if(data.status==105){
                     var tr='.'+data.oid;
                     $(tr).children('.money').text(math_floor(data.tr_money));

@@ -1180,7 +1180,7 @@ $(function  () {
                         handle_money(data.money,data.promise_money);
                     });
                 }
-                //止盈平仓，止损平仓
+                //爆仓,止盈平仓，止损平仓
                 if(data.status==102){
                     layer.msg(data.msg,{icon: 2,time:3000},function(){
                         var tr='.'+data.oid;
@@ -1188,7 +1188,7 @@ $(function  () {
                         handle_money(data.money,data.promise_money);
                     });
                 }
-                //爆仓
+                //假爆仓
                 if(data.status==105){
                     handle_money(data.money,data.promise_money);
                 }
