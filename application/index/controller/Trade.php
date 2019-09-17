@@ -207,6 +207,7 @@ class Trade extends Common
                 $order['pid']=$product_info['id'];
                 $order['product_name']=$product_info['name'];
                 $order['product_abbreviation']=$product_info['abbreviation'];
+                $order['first_money']=$amount;
                 $order['money']=$amount;
                 $order['hand']=$param['hand'];
                 $order['contract']=$product_info['contract'];

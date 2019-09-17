@@ -1211,13 +1211,19 @@ $(function  () {
                         handle_money(data.money,data.promise_money);
                     });
                 }
-                //爆仓,止盈平仓，止损平仓
+                //止盈平仓，止损平仓
                 if(data.status==102){
                     layer.msg(data.msg,{icon: 2,time:3000},function(){
                         var tr='.'+data.oid;
                         $(tr).remove();
                         handle_money(data.money,data.promise_money);
                     });
+                }
+                //爆仓
+                if(data.status==105){
+                    var tr='.'+data.oid;
+                    $(tr).children('.money').text(math_floor(data.tr_money));
+                    handle_money(data.money,data.promise_money);
                 }
                 //资金变化
                 if(data.status==201){

@@ -168,6 +168,7 @@ class Trade extends Common
                 $order['product_name']=$product_info['name'];
                 $order['product_abbreviation']=$product_info['abbreviation'];
                 $order['money']=$amount;
+                $order['first_money']=$amount;
                 $order['hand']=$param['hand'];
                 $order['contract']=$product_info['contract'];
                 $order['lever']=$user['lever'];

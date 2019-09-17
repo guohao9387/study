@@ -1060,6 +1060,89 @@ function save_order($order,$now_price,$type,$money){
     $msg['oid']=$order['oid'];
     send_msg_agent($user['agent_id'],$msg);
 }
+//新爆仓
+function new_baocang($order,$now_price,$direction){
+    db::startTrans();
+    $where=[];
+    $where[]=['status','=',1];
+    $where[]=['uid','=',$order['uid']];
+    $user=db::name('user')->where($where)->lock(true)->find();
+    //可用余额
+    $use_money=$user['money']-$user['promise_money'];
+    if($use_money<=0){
+        $status=db::name('user')->where('uid',$user['uid'])->setDec('promise_money',$order['money']);
+        //操作账户余额
+        $status=db::name('user')->where('uid',$user['uid'])->setInc('money',$user['money']);
+        $after=db::name('user')->where('uid',$user['uid'])->find();
+        //更新订单状态
+        $data=[];
+        $data['oid']=$order['oid'];
+        $data['sell_price']=$now_price;
+        $data['profit']=-$user['money'];
+        $data['order_status']=2;
+        $data['order_close_type']='爆仓';
+        $data['update_time']=date('Y-m-d H:i:s');
+        $status=db::name('order')->update($data);
+        //添加资金记录
+        $data=[];
+        $data['uid']=$user['uid'];
+        $data['username']=$user['username'];
+        $data['nickname']=$user['nickname'];
+        $data['from_oid']=$order['oid'];
+        $data['operation_id']=0;
+        $data['before_money']=$user['money'];
+        $data['money']=-$user['money'];
+        $data['after_money']=$after['money'];
+        $data['type']=3;
+        $data['type_info']='平仓';
+        $data['remark']='爆仓，结算收益';
+        $data['add_time']=date('Y-m-d H:i:s');
+        $status=db::name('user_money_log')->insert($data);
+        db::commit();
+        //给用户发送消息
+        $msg=[];
+        $msg['status']=102;
+        $msg['msg']='您的订单【单号：'.$order['order_sn'].'】，已经爆仓';
+        $msg['oid']=$order['oid'];
+        $msg['money']=-$user['money'];
+        $msg['promise_money']=-$order['money'];
+        bar($user['uid'],$msg);
+    }else{
+        //应操作金额
+        if($use_money<$order['first_money']){
+            $order_money=$use_money;
+        }else{
+            $order_money=$order['first_money'];
+        }
+        $amount=$order['money']+$order_money;
+        if($direction==1){
+            $loss_point=$amount/$order['hand']/$order['contract']+$order['buy_price'];
+        }else{
+            $loss_point=$order['buy_price']-$amount/$order['hand']/$order['contract'];
+        }
+        //操作保证金账户余额,增加默认保证金
+        $status=db::name('user')->where('uid',$user['uid'])->setInc('promise_money',$order_money);
+        //操作订单保证金
+        $where=[];
+        $where[]=['oid','=',$order['oid']];
+        $data=[];
+        $data['money']=$amount;
+        $data['loss_point']=$loss_point;
+        $status=db::name('order')->where($where)->update($data);
+        //给用户发送消息
+        $msg=[];
+        $msg['status']=105;
+        $msg['oid']=$order['oid'];
+        $msg['money']=0;
+        $msg['promise_money']=$order_money;
+        $msg['tr_money']=$amount;
+        bar($user['uid'],$msg);
+    }
+    $msg=[];
+    $msg['status']=1002;
+    $msg['oid']=$order['oid'];
+    send_msg_agent($user['agent_id'],$msg);
+}
 function cache_night_fee(){
     $where=[];
     $where[]=['status','=',1];
