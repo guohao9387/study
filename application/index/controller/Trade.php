@@ -87,7 +87,7 @@ class Trade extends Common
         $where[]=['id','=',input('get.id')?input('get.id'):3];
         $product=db::name('product')->where($where)->find();
         if(!$product){
-            $this->error('该产品暂未开放','/mobile/Index/index');
+            $this->error('该产品暂未开放','/index/Index/index');
         }
         $this->assign('product',$product);
 
