@@ -14,6 +14,9 @@ class Order extends Common{
             if(!empty($param['username'])){
                 $where[] = ['username','=',$param['username']];
             }
+            if(!empty($param['agent_name'])){
+                $where[] = ['agent_name','=',$param['agent_name']];
+            }
             if(!empty($param['pid'])){
                 $where[] = ['pid','=',$param['pid']];
             }
